@@ -1,0 +1,151 @@
+XGK=E:/reps/denis-belov/xgk_/src
+DIR=E:/reps/denis-belov/c-test/xgk
+NAME=threads
+
+
+
+$(DIR)/build-debug/$(NAME).exe : \
+$(DIR)/tmp/glad.obj \
+$(DIR)/tmp/win-x64.obj \
+$(DIR)/tmp/vec4.obj \
+$(DIR)/tmp/vec4-32.obj \
+$(DIR)/tmp/vec4-128.obj \
+$(DIR)/tmp/quat-32.obj \
+$(DIR)/tmp/quat-128.obj \
+$(DIR)/tmp/$(NAME).obj
+  link \
+  $(DIR)/tmp/glad.obj \
+  $(DIR)/tmp/win-x64.obj \
+  $(DIR)/tmp/vec4.obj \
+  $(DIR)/tmp/vec4-32.obj \
+  $(DIR)/tmp/vec4-128.obj \
+  $(DIR)/tmp/quat-32.obj \
+  $(DIR)/tmp/quat-128.obj \
+  $(DIR)/tmp/$(NAME).obj \
+  gdi32.lib \
+  user32.lib \
+  shell32.lib \
+  glfw3.lib \
+  /OUT:$(DIR)/build-debug/$(NAME).exe \
+  /SUBSYSTEM:CONSOLE \
+  /NODEFAULTLIB:LIBCMT \
+  /LIBPATH:E:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/lib-vc2017
+
+
+$(DIR)/tmp/glad.obj : E:/clibs/glad/src/glad.c
+  cl \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /IE:/clibs/glad/include \
+  /Fo$(DIR)/tmp/glad.obj \
+  E:/clibs/glad/src/glad.c
+
+
+
+$(DIR)/tmp/win-x64.obj : $(XGK)/util/win-x64.asm
+  ml64 \
+  /Fo$(DIR)/tmp/win-x64.obj \
+  /c \
+  $(XGK)/util/win-x64.asm
+
+
+
+$(DIR)/tmp/vec4.obj : $(XGK)/data/vec4/vec4.cpp
+  cl \
+  $(XGK)/data/vec4/vec4.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /Fo$(DIR)/tmp/vec4.obj \
+  /FA \
+  /Fa$(DIR)/tmp/vec4.asm
+
+
+
+$(DIR)/tmp/vec4-32.obj : $(XGK)/data/vec4/vec4-32.cpp
+  cl \
+  $(XGK)/data/vec4/vec4-32.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /Fo$(DIR)/tmp/vec4-32.obj \
+  /FA \
+  /Fa$(DIR)/tmp/vec4-32.asm
+
+
+
+$(DIR)/tmp/vec4-128.obj : $(XGK)/data/vec4/vec4-128.cpp
+  cl \
+  $(XGK)/data/vec4/vec4-128.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /Fo$(DIR)/tmp/vec4-128.obj \
+  /FA \
+  /Fa$(DIR)/tmp/vec4-128.asm
+
+
+
+$(DIR)/tmp/quat-32.obj : $(XGK)/data/quat/quat-32.cpp
+  cl \
+  $(XGK)/data/quat/quat-32.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /Fo$(DIR)/tmp/quat-32.obj \
+  /FA \
+  /Fa$(DIR)/tmp/quat-32.asm
+
+
+
+$(DIR)/tmp/quat-128.obj : $(XGK)/data/quat/quat-128.cpp
+  cl \
+  $(XGK)/data/quat/quat-128.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /Fo$(DIR)/tmp/quat-128.obj \
+  /FA \
+  /Fa$(DIR)/tmp/quat-128.asm
+
+
+
+$(DIR)/tmp/$(NAME).obj : \
+$(DIR)/src/$(NAME).cpp \
+$(DIR)/tmp/shaders.h \
+$(XGK)/data/data.h \
+$(XGK)/time.h \
+$(XGK)/uniform.h
+  cl \
+  $(DIR)/src/$(NAME).cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /IE:/clibs/glad/include \
+  /IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include/GLFW \
+  /IE:/reps/denis-belov \
+  /Fo$(DIR)/tmp/$(NAME).obj \
+  /FA \
+  /Fa$(DIR)/tmp/$(NAME).asm
+
+
+
+$(DIR)/tmp/shaders.h : $(DIR)/src/shaders.h
+  node \
+  E:/reps/denis-belov/c-build/src/glsl \
+  $(DIR)/src/shaders.h \
+  $(DIR)/tmp/shaders.h

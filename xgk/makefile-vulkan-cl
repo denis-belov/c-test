@@ -1,0 +1,32 @@
+NAME=threads-vulkan
+
+E:/reps/denis-belov/c-test/xgk/build-debug/$(NAME).exe : E:/reps/denis-belov/c-test/xgk/tmp/$(NAME).obj
+	link \
+	E:/reps/denis-belov/c-test/xgk/tmp/$(NAME).obj \
+	/OUT:E:/reps/denis-belov/c-test/xgk/build-debug/$(NAME).exe \
+	/SUBSYSTEM:CONSOLE \
+	/NODEFAULTLIB:LIBCMT \
+	/LIBPATH:E:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/lib-vc2017 \
+	/LIBPATH:E:/reps/denis-belov/c-test/xgk/src \
+	gdi32.lib \
+	user32.lib \
+	shell32.lib \
+	glfw3.lib
+
+E:/reps/denis-belov/c-test/xgk/tmp/$(NAME).obj : E:/reps/denis-belov/c-test/xgk/src/$(NAME).cpp E:/reps/denis-belov/c-test/xgk/tmp/shaders-vulkan.h E:/reps/denis-belov/xgk_/src/vulkan.h
+	cl \
+	/c \
+	/EHsc \
+	/MD \
+	/MP999 \
+	/IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include/GLFW \
+  /IE:/clibs/VulkanSDK/1.1.121.0/Include/vulkan \
+  /IE:/reps/denis-belov \
+	/FoE:/reps/denis-belov/c-test/xgk/tmp/$(NAME).obj \
+	E:/reps/denis-belov/c-test/xgk/src/$(NAME).cpp
+
+E:/reps/denis-belov/c-test/xgk/tmp/shaders-vulkan.h : E:/reps/denis-belov/c-test/xgk/src/shaders-vulkan.h
+  node \
+  E:/reps/denis-belov/c-build/src/glsl2 \
+  E:/reps/denis-belov/c-test/xgk/src/shaders-vulkan.h \
+  E:/reps/denis-belov/c-test/xgk/tmp/shaders-vulkan.h
