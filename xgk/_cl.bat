@@ -1,1 +1,0 @@
-cls && node ../../c-build/src/make makefile-cl && node ../../c-build/src/run E:\reps\denis-belov\c-test\xgk\build-debug threads.exe && dumpbin /disasm E:\reps\denis-belov\c-test\xgk\build-debug\threads.exe /out:E:\reps\denis-belov\c-test\xgk\tmp\threads-disasm.asm

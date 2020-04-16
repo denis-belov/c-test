@@ -8,6 +8,7 @@ INCLUDELIB OLDNAMES
 PUBLIC	?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z ; std::_Narrow_char_traits<char,int>::length
 PUBLIC	?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z ; std::_Narrow_char_traits<char,int>::eq_int_type
 PUBLIC	?eof@?$_Narrow_char_traits@DH@std@@SAHXZ	; std::_Narrow_char_traits<char,int>::eof
+PUBLIC	?expand@@YAXPEAXE_K@Z				; expand
 PUBLIC	main
 PUBLIC	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
 PUBLIC	??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
@@ -16,10 +17,14 @@ PUBLIC	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; st
 PUBLIC	??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ; std::basic_ostream<char,std::char_traits<char> >::sentry::sentry
 PUBLIC	??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
 PUBLIC	??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::operator bool
-PUBLIC	??_C@_07BAIOBDMJ@mul32?3?5@			; `string'
-PUBLIC	??_C@_08IBFMJPID@mul128?3?5@			; `string'
-PUBLIC	__xmm@3ed1eb853e9eb8523e570a3d3de147ae
-PUBLIC	__xmm@3f4f5c293f35c28f3f1c28f63f028f5c
+PUBLIC	??_C@_01CLKCMJKC@?5@				; `string'
+PUBLIC	__real@3f800000
+PUBLIC	__real@40000000
+PUBLIC	__real@40400000
+PUBLIC	__real@40800000
+PUBLIC	__real@41300000
+EXTRN	??_U@YAPEAX_K@Z:PROC				; operator new[]
+EXTRN	??_V@YAXPEAX@Z:PROC				; operator delete[]
 EXTRN	__std_terminate:PROC
 EXTRN	?uncaught_exception@std@@YA_NXZ:PROC		; std::uncaught_exception
 EXTRN	__imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z:PROC
@@ -28,22 +33,23 @@ EXTRN	__imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z:PROC
 EXTRN	__imp_?widen@?$basic_ios@DU?$char_traits@D@std@@@std@@QEBADD@Z:PROC
 EXTRN	__imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ:PROC
 EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z:PROC
-EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_J@Z:PROC
+EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z:PROC
 EXTRN	__imp_?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@D@Z:PROC
 EXTRN	__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ:PROC
-EXTRN	?premul32@QUAT@DATA@XGK@@YAXPEAX0@Z:PROC	; XGK::DATA::QUAT::premul32
-EXTRN	?premul128@QUAT@DATA@XGK@@YAXPEAX0@Z:PROC	; XGK::DATA::QUAT::premul128
-EXTRN	clock64:PROC
 EXTRN	__CxxFrameHandler4:PROC
-EXTRN	__GSHandlerCheck:PROC
-EXTRN	__security_check_cookie:PROC
+EXTRN	memcpy:PROC
 EXTRN	__imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A:BYTE
-EXTRN	__security_cookie:QWORD
 EXTRN	_fltused:DWORD
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$main DD	imagerel $LN25
-	DD	imagerel $LN25+636
+$pdata$?expand@@YAXPEAXE_K@Z DD imagerel $LN4
+	DD	imagerel $LN4+103
+	DD	imagerel $unwind$?expand@@YAXPEAXE_K@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$main DD	imagerel $LN6
+	DD	imagerel $LN6+637
 	DD	imagerel $unwind$main
 pdata	ENDS
 ;	COMDAT pdata
@@ -88,23 +94,29 @@ $pdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagere
 	DD	imagerel $LN13+62
 	DD	imagerel $unwind$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
 pdata	ENDS
-;	COMDAT __xmm@3f4f5c293f35c28f3f1c28f63f028f5c
+;	COMDAT __real@41300000
 CONST	SEGMENT
-__xmm@3f4f5c293f35c28f3f1c28f63f028f5c DB '\', 08fH, 02H, '?', 0f6H, '(', 01cH
-	DB	'?', 08fH, 0c2H, '5?)\O?'
+__real@41300000 DD 041300000r			; 11
 CONST	ENDS
-;	COMDAT __xmm@3ed1eb853e9eb8523e570a3d3de147ae
+;	COMDAT __real@40800000
 CONST	SEGMENT
-__xmm@3ed1eb853e9eb8523e570a3d3de147ae DB 0aeH, 'G', 0e1H, '==', 0aH, 'W>'
-	DB	'R', 0b8H, 09eH, '>', 085H, 0ebH, 0d1H, '>'
+__real@40800000 DD 040800000r			; 4
 CONST	ENDS
-;	COMDAT ??_C@_08IBFMJPID@mul128?3?5@
+;	COMDAT __real@40400000
 CONST	SEGMENT
-??_C@_08IBFMJPID@mul128?3?5@ DB 'mul128: ', 00H		; `string'
+__real@40400000 DD 040400000r			; 3
 CONST	ENDS
-;	COMDAT ??_C@_07BAIOBDMJ@mul32?3?5@
+;	COMDAT __real@40000000
 CONST	SEGMENT
-??_C@_07BAIOBDMJ@mul32?3?5@ DB 'mul32: ', 00H		; `string'
+__real@40000000 DD 040000000r			; 2
+CONST	ENDS
+;	COMDAT __real@3f800000
+CONST	SEGMENT
+__real@3f800000 DD 03f800000r			; 1
+CONST	ENDS
+;	COMDAT ??_C@_01CLKCMJKC@?5@
+CONST	SEGMENT
+??_C@_01CLKCMJKC@?5@ DB ' ', 00H			; `string'
 CONST	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -264,15 +276,16 @@ $unwind$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$main DD	0c2d19H
-	DD	015741eH
-	DD	014641eH
-	DD	013541eH
-	DD	012341eH
-	DD	0f01ad21eH
-	DD	0c016e018H
-	DD	imagerel __GSHandlerCheck
-	DD	060H
+$unwind$main DD	040a01H
+	DD	06340aH
+	DD	07006320aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?expand@@YAXPEAXE_K@Z DD 060f01H
+	DD	07640fH
+	DD	06340fH
+	DD	0700b320fH
 xdata	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ
@@ -862,193 +875,203 @@ text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT main
 _TEXT	SEGMENT
-q0$ = 32
-q1$ = 48
-q2$ = 64
-q3$ = 80
-__$ArrayPad$ = 96
 main	PROC						; COMDAT
-; File E:\reps\denis-belov\c-test\xgk\src\threads.cpp
-; Line 21
-$LN25:
+; File E:\reps\denis-belov\c-test_\xgk\src\threads.cpp
+; Line 22
+$LN6:
 	mov	QWORD PTR [rsp+8], rbx
-	mov	QWORD PTR [rsp+16], rbp
-	mov	QWORD PTR [rsp+24], rsi
-	mov	QWORD PTR [rsp+32], rdi
-	push	r12
-	push	r14
-	push	r15
-	sub	rsp, 112				; 00000070H
-	mov	rax, QWORD PTR __security_cookie
-	xor	rax, rsp
-	mov	QWORD PTR __$ArrayPad$[rsp], rax
-; Line 23
-	movaps	xmm0, XMMWORD PTR __xmm@3ed1eb853e9eb8523e570a3d3de147ae
-; Line 38
-	xor	ebp, ebp
-	movaps	xmm1, XMMWORD PTR __xmm@3f4f5c293f35c28f3f1c28f63f028f5c
-	mov	r14d, 9999				; 0000270fH
-	movaps	XMMWORD PTR q0$[rsp], xmm0
-	mov	edi, ebp
-	movaps	XMMWORD PTR q1$[rsp], xmm1
-	mov	esi, r14d
-	movaps	XMMWORD PTR q2$[rsp], xmm0
-	movaps	XMMWORD PTR q3$[rsp], xmm1
-	npad	4
-$LL4@main:
-; Line 42
-	call	clock64
-	mov	rbx, rax
-; Line 43
-	call	clock64
-	sub	rax, rbx
-	add	rdi, rax
-	sub	rsi, 1
-	jne	SHORT $LL4@main
-; Line 47
-	mov	r12, -6667320040242656219		; a378ebbf957e4c25H
-; Line 51
-	mov	rsi, rbp
-	mov	rax, r12
-	mov	r15, r14
-	mul	rdi
-	sub	rdi, rdx
-	shr	rdi, 1
-	add	rdi, rdx
-	shr	rdi, 13
-	npad	4
-$LL7@main:
-; Line 55
-	call	clock64
-; Line 56
-	lea	rdx, QWORD PTR q1$[rsp]
-	mov	rbx, rax
-	lea	rcx, QWORD PTR q0$[rsp]
-	call	?premul32@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul32
-; Line 57
-	lea	rdx, QWORD PTR q0$[rsp]
-	lea	rcx, QWORD PTR q1$[rsp]
-	call	?premul32@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul32
-; Line 58
-	lea	rdx, QWORD PTR q1$[rsp]
-	lea	rcx, QWORD PTR q0$[rsp]
-	call	?premul32@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul32
-; Line 59
-	lea	rdx, QWORD PTR q0$[rsp]
-	lea	rcx, QWORD PTR q1$[rsp]
-	call	?premul32@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul32
-; Line 60
-	call	clock64
-	sub	rax, rbx
-	add	rsi, rax
-	sub	r15, 1
-	jne	SHORT $LL7@main
-; Line 63
-	mov	rax, r12
-	mul	rsi
-	sub	rsi, rdx
-	shr	rsi, 1
-	add	rsi, rdx
-	shr	rsi, 13
-$LL10@main:
-; Line 71
-	call	clock64
-; Line 72
-	lea	rdx, QWORD PTR q3$[rsp]
-	mov	rbx, rax
-	lea	rcx, QWORD PTR q2$[rsp]
-	call	?premul128@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul128
-; Line 73
-	lea	rdx, QWORD PTR q2$[rsp]
-	lea	rcx, QWORD PTR q3$[rsp]
-	call	?premul128@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul128
-; Line 74
-	lea	rdx, QWORD PTR q3$[rsp]
-	lea	rcx, QWORD PTR q2$[rsp]
-	call	?premul128@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul128
-; Line 75
-	lea	rdx, QWORD PTR q2$[rsp]
-	lea	rcx, QWORD PTR q3$[rsp]
-	call	?premul128@QUAT@DATA@XGK@@YAXPEAX0@Z	; XGK::DATA::QUAT::premul128
-; Line 76
-	call	clock64
-	sub	rax, rbx
-	add	rbp, rax
-	sub	r14, 1
-	jne	SHORT $LL10@main
-; Line 83
+	push	rdi
+	sub	rsp, 32					; 00000020H
+; Line 24
+	mov	ecx, 16
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 31
+	movss	xmm1, DWORD PTR __real@3f800000
+	mov	rdi, rax
+	mov	DWORD PTR [rax], 1065353216		; 3f800000H
+	mov	DWORD PTR [rax+4], 1073741824		; 40000000H
+	mov	DWORD PTR [rax+8], 1077936128		; 40400000H
+	mov	DWORD PTR [rax+12], 1082130432		; 40800000H
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 84
-	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	mov	rdx, rdi
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_J@Z
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
 	mov	rcx, rax
-	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 85
-	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 86
-	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	sub	rsi, rdi
-	mov	rax, rsi
-	cdq
-	and	edx, 3
-	lea	rbx, QWORD PTR [rdx+rax]
-	lea	rdx, OFFSET FLAT:??_C@_07BAIOBDMJ@mul32?3?5@
-	sar	rbx, 2
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR __real@40000000
 	mov	rcx, rax
-	mov	rdx, rbx
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_J@Z
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
 	mov	rcx, rax
-	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 87
-	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 88
-	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
-	mov	rax, r12
-	mul	rbp
-	sub	rbp, rdx
-	shr	rbp, 1
-	lea	rax, QWORD PTR [rdx+rbp]
-	shr	rax, 13
-	sub	rax, rdi
-	cdq
-	and	edx, 3
-	lea	rbx, QWORD PTR [rdx+rax]
-	lea	rdx, OFFSET FLAT:??_C@_08IBFMJPID@mul128?3?5@
-	sar	rbx, 2
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR __real@40400000
 	mov	rcx, rax
-	mov	rdx, rbx
-	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@_J@Z
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR __real@40800000
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+16]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
 	mov	rcx, rax
 	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
 	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
-; Line 110
+; Line 9
+	mov	ecx, 32					; 00000020H
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 11
+	movups	xmm0, XMMWORD PTR [rdi]
+; Line 13
+	mov	rcx, rdi
+	mov	rbx, rax
+	movups	XMMWORD PTR [rax], xmm0
+	movups	xmm1, XMMWORD PTR [rdi+16]
+	movups	XMMWORD PTR [rax+16], xmm1
+	call	??_V@YAXPEAX@Z				; operator delete[]
+; Line 15
+	mov	ecx, 32					; 00000020H
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 17
+	movups	xmm0, XMMWORD PTR [rbx]
+; Line 19
+	mov	rcx, rbx
+	movups	XMMWORD PTR [rax], xmm0
+	movups	xmm1, XMMWORD PTR [rbx+16]
+	movups	XMMWORD PTR [rax+16], xmm1
+	call	??_V@YAXPEAX@Z				; operator delete[]
+; Line 35
+	movss	xmm1, DWORD PTR [rdi]
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+4]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+8]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+12]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+16]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+; Line 39
+	movss	xmm1, DWORD PTR [rdi]
+	mov	DWORD PTR [rdi+20], 1093664768		; 41300000H
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+4]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+8]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+12]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR [rdi+16]
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??_C@_01CLKCMJKC@?5@
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+	movss	xmm1, DWORD PTR __real@41300000
+	mov	rcx, rax
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@M@Z
+	mov	rcx, rax
+	lea	rdx, OFFSET FLAT:??$endl@DU?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@@Z ; std::endl<char,std::char_traits<char> >
+	call	QWORD PTR __imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z
+; Line 41
+	mov	rcx, rdi
+	call	??_V@YAXPEAX@Z				; operator delete[]
+; Line 46
+	mov	rbx, QWORD PTR [rsp+48]
 	xor	eax, eax
-; Line 111
-	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
-	xor	rcx, rsp
-	call	__security_check_cookie
-	lea	r11, QWORD PTR [rsp+112]
-	mov	rbx, QWORD PTR [r11+32]
-	mov	rbp, QWORD PTR [r11+40]
-	mov	rsi, QWORD PTR [r11+48]
-	mov	rdi, QWORD PTR [r11+56]
-	mov	rsp, r11
-	pop	r15
-	pop	r14
-	pop	r12
+	add	rsp, 32					; 00000020H
+	pop	rdi
 	ret	0
 main	ENDP
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?expand@@YAXPEAXE_K@Z
+_TEXT	SEGMENT
+addr$ = 48
+type_size$ = 56
+new_size$ = 64
+?expand@@YAXPEAXE_K@Z PROC				; expand, COMDAT
+; File E:\reps\denis-belov\c-test_\xgk\src\threads.cpp
+; Line 5
+$LN4:
+	mov	QWORD PTR [rsp+8], rbx
+	mov	QWORD PTR [rsp+16], rsi
+	push	rdi
+	sub	rsp, 32					; 00000020H
+; Line 7
+	movzx	esi, dl
+	mov	rbx, rcx
+	imul	rsi, r8
+; Line 9
+	mov	rcx, rsi
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 11
+	mov	r8, rsi
+	mov	rdx, rbx
+	mov	rcx, rax
+	mov	rdi, rax
+	call	memcpy
+; Line 13
+	mov	rcx, rbx
+	call	??_V@YAXPEAX@Z				; operator delete[]
+; Line 15
+	mov	rcx, rsi
+	call	??_U@YAPEAX_K@Z				; operator new[]
+; Line 17
+	mov	r8, rsi
+	mov	rdx, rdi
+	mov	rcx, rax
+	call	memcpy
+; Line 19
+	mov	rcx, rdi
+; Line 20
+	mov	rbx, QWORD PTR [rsp+48]
+	mov	rsi, QWORD PTR [rsp+56]
+	add	rsp, 32					; 00000020H
+	pop	rdi
+; Line 19
+	jmp	??_V@YAXPEAX@Z				; operator delete[]
+?expand@@YAXPEAXE_K@Z ENDP				; expand
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?eof@?$_Narrow_char_traits@DH@std@@SAHXZ

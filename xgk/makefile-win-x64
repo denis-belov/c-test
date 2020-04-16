@@ -1,0 +1,87 @@
+XGK=E:/reps/denis-belov/xgk__/build-win-x64
+XGK_SRC=E:/reps/denis-belov/xgk__/src
+DIR=E:/reps/denis-belov/c-test_/$(FOLDER)
+NAME=threads
+
+
+
+$(DIR)/build-debug/$(NAME).exe : \
+$(DIR)/tmp/glad.obj \
+$(XGK)/lib/xgk.lib \
+$(DIR)/tmp/$(NAME).obj
+  link \
+  $(DIR)/tmp/glad.obj \
+  $(DIR)/tmp/$(NAME).obj \
+  xgk.lib \
+  gdi32.lib \
+  user32.lib \
+  shell32.lib \
+  glfw3.lib \
+  /OUT:$(DIR)/build-debug/$(NAME).exe \
+  /SUBSYSTEM:CONSOLE \
+  /NODEFAULTLIB:LIBCMT \
+  /LIBPATH:E:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/lib-vc2017 \
+  /LIBPATH:$(XGK)/lib
+
+
+
+$(XGK)/lib/xgk.lib : \
+$(XGK_SRC)/util/win-x64.asm \
+$(XGK_SRC)/data/vec4/vec4.cpp \
+$(XGK_SRC)/data/vec4/vec4-32.cpp \
+$(XGK_SRC)/data/vec4/vec4-128.cpp \
+$(XGK_SRC)/data/quat/quat.cpp \
+$(XGK_SRC)/data/quat/quat-32.cpp \
+$(XGK_SRC)/data/quat/quat-128.cpp \
+$(XGK_SRC)/data/mat4/mat4.cpp \
+$(XGK_SRC)/data/mat4/mat4-32.cpp \
+$(XGK_SRC)/data/mat4/mat4-128.cpp \
+$(XGK_SRC)/object/object.cpp \
+$(XGK_SRC)/orbit/orbit.cpp
+  node E:/reps/denis-belov/c-build/src/make E:/reps/denis-belov/xgk__/makefile-win-x64
+
+
+
+$(DIR)/tmp/glad.obj : E:/clibs/glad/src/glad.c
+  cl \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /IE:/clibs/glad/include \
+  /Fo$(DIR)/tmp/glad.obj \
+  E:/clibs/glad/src/glad.c
+
+
+
+$(DIR)/tmp/$(NAME).obj : \
+$(DIR)/src/$(NAME).cpp \
+$(XGK_SRC)/data/data.h \
+$(XGK_SRC)/time/time_.h \
+$(XGK_SRC)/uniform.h \
+$(XGK_SRC)/object/object.h \
+$(XGK_SRC)/orbit/orbit.h \
+$(XGK_SRC)/uniform.h \
+$(DIR)/tmp/shaders.h
+  cl \
+  $(DIR)/src/$(NAME).cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /IE:/clibs/glad/include \
+  /IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include/GLFW \
+  /I$(XGK_SRC) \
+  /I$(DIR) \
+  /Fo$(DIR)/tmp/$(NAME).obj \
+  /FA \
+  /Fa$(DIR)/tmp/$(NAME).asm
+
+
+
+$(DIR)/tmp/shaders.h : $(DIR)/src/shaders.h
+  node \
+  E:/reps/denis-belov/c-build/src/glsl \
+  $(DIR)/src/shaders.h \
+  $(DIR)/tmp/shaders.h

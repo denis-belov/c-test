@@ -17,6 +17,11 @@ E:/reps/denis-belov/js-web-test/src/js/$(NAME).js : E:/reps/denis-belov/c-test/x
   -I E:/reps/denis-belov \
   E:/reps/denis-belov/c-test/xgk/src/$(NAME).cpp
 
+
+$(XGK)/a/a.lib : \
+$(XGK_SRC)/data/vec4/vec4.cpp
+  node E:/reps/denis-belov/c-build/src/make E:/reps/denis-belov/xgk__/makefile-wasm
+
 E:/reps/denis-belov/c-test/xgk/tmp/shaders.h : E:/reps/denis-belov/c-test/xgk/src/shaders.h
   node \
   E:/reps/denis-belov/c-build/src/glsl \

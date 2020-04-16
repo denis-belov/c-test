@@ -1,0 +1,1 @@
+cls && node ../../c-build/src/make makefile-cl FOLDER=perf && node ../../c-build/src/run E:\reps\denis-belov\c-test_\perf\build-debug threads.exe && dumpbin /disasm E:\reps\denis-belov\c-test_\perf\build-debug\threads.exe /out:E:\reps\denis-belov\c-test_\perf\tmp\threads-disasm.asm
