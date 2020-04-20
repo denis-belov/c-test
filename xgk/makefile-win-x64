@@ -1,32 +1,35 @@
-XGK=E:/reps/denis-belov/xgk__/build-win-x64
-XGK_SRC=E:/reps/denis-belov/xgk__/src
-DIR=E:/reps/denis-belov/c-test_/$(FOLDER)
-NAME=threads
+DIR=E:/reps/denis-belov/c-test/$(FOLDER)
+SRC=$(DIR)/src
+BUILD=$(DIR)/build-win-x64
+XGK_BUILD=E:/reps/denis-belov/xgk/build-win-x64
+XGK_SRC=E:/reps/denis-belov/xgk/src
+NAME=test
 
 
 
-$(DIR)/build-debug/$(NAME).exe : \
-$(DIR)/tmp/glad.obj \
-$(XGK)/lib/xgk.lib \
-$(DIR)/tmp/$(NAME).obj
+$(BUILD)/exe/$(NAME).exe : \
+$(BUILD)/obj/glad.obj \
+$(BUILD)/obj/$(NAME).obj \
+$(XGK_BUILD)/lib/xgk.lib
   link \
-  $(DIR)/tmp/glad.obj \
-  $(DIR)/tmp/$(NAME).obj \
+  $(BUILD)/obj/glad.obj \
+  $(BUILD)/obj/$(NAME).obj \
   xgk.lib \
   gdi32.lib \
   user32.lib \
   shell32.lib \
   glfw3.lib \
-  /OUT:$(DIR)/build-debug/$(NAME).exe \
+  /OUT:$(BUILD)/exe/$(NAME).exe \
   /SUBSYSTEM:CONSOLE \
   /NODEFAULTLIB:LIBCMT \
   /LIBPATH:E:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/lib-vc2017 \
-  /LIBPATH:$(XGK)/lib
+  /LIBPATH:$(XGK_BUILD)/lib
 
 
 
-$(XGK)/lib/xgk.lib : \
+$(XGK_BUILD)/lib/xgk.lib : \
 $(XGK_SRC)/util/win-x64.asm \
+$(XGK_SRC)/data/data.h \
 $(XGK_SRC)/data/vec4/vec4.cpp \
 $(XGK_SRC)/data/vec4/vec4-32.cpp \
 $(XGK_SRC)/data/vec4/vec4-128.cpp \
@@ -36,35 +39,39 @@ $(XGK_SRC)/data/quat/quat-128.cpp \
 $(XGK_SRC)/data/mat4/mat4.cpp \
 $(XGK_SRC)/data/mat4/mat4-32.cpp \
 $(XGK_SRC)/data/mat4/mat4-128.cpp \
+$(XGK_SRC)/object/object.h \
 $(XGK_SRC)/object/object.cpp \
+$(XGK_SRC)/time/time.h \
+$(XGK_SRC)/time/time.cpp \
+$(XGK_SRC)/orbit/orbit.h \
 $(XGK_SRC)/orbit/orbit.cpp
-  node E:/reps/denis-belov/c-build/src/make E:/reps/denis-belov/xgk__/makefile-win-x64
+  node E:/reps/denis-belov/c-build/src/make E:/reps/denis-belov/xgk/makefile-win-x64
 
 
 
-$(DIR)/tmp/glad.obj : E:/clibs/glad/src/glad.c
+$(BUILD)/obj/glad.obj : E:/clibs/glad/src/glad.c
   cl \
+  E:/clibs/glad/src/glad.c \
   /c \
   /EHsc \
   /MD \
   /MP999 \
   /IE:/clibs/glad/include \
-  /Fo$(DIR)/tmp/glad.obj \
-  E:/clibs/glad/src/glad.c
+  /Fo$(BUILD)/obj/glad.obj \
+  /FA \
+  /Fa$(BUILD)/masm/glad.asm
 
 
 
-$(DIR)/tmp/$(NAME).obj : \
-$(DIR)/src/$(NAME).cpp \
+$(BUILD)/obj/$(NAME).obj : \
+$(SRC)/$(NAME).cpp \
 $(XGK_SRC)/data/data.h \
-$(XGK_SRC)/time/time_.h \
-$(XGK_SRC)/uniform.h \
 $(XGK_SRC)/object/object.h \
+$(XGK_SRC)/time/time.h \
 $(XGK_SRC)/orbit/orbit.h \
-$(XGK_SRC)/uniform.h \
-$(DIR)/tmp/shaders.h
+$(BUILD)/temp/shaders.h
   cl \
-  $(DIR)/src/$(NAME).cpp \
+  $(SRC)/$(NAME).cpp \
   /c \
   /EHsc \
   /MD \
@@ -73,15 +80,15 @@ $(DIR)/tmp/shaders.h
   /IE:/clibs/glad/include \
   /IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include/GLFW \
   /I$(XGK_SRC) \
-  /I$(DIR) \
-  /Fo$(DIR)/tmp/$(NAME).obj \
+  /I$(BUILD) \
+  /Fo$(BUILD)/obj/$(NAME).obj \
   /FA \
-  /Fa$(DIR)/tmp/$(NAME).asm
+  /Fa$(BUILD)/masm/$(NAME).asm
 
 
 
-$(DIR)/tmp/shaders.h : $(DIR)/src/shaders.h
+$(BUILD)/temp/shaders.h : $(SRC)/shaders.h
   node \
   E:/reps/denis-belov/c-build/src/glsl \
-  $(DIR)/src/shaders.h \
-  $(DIR)/tmp/shaders.h
+  $(SRC)/shaders.h \
+  $(BUILD)/temp/shaders.h

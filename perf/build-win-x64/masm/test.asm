@@ -55,7 +55,9 @@ PUBLIC	?_Allocate@_Default_allocate_traits@std@@SAPEAX_K@Z ; std::_Default_alloc
 PUBLIC	?_Adjust_manually_vector_aligned@std@@YAXAEAPEAXAEA_K@Z ; std::_Adjust_manually_vector_aligned
 PUBLIC	?_Orphan_all@_Container_base0@std@@QEAAXXZ	; std::_Container_base0::_Orphan_all
 PUBLIC	?_Alloc_proxy@_Container_base0@std@@QEAAXAEBU_Fake_allocator@2@@Z ; std::_Container_base0::_Alloc_proxy
-PUBLIC	?simd128@DATA@XGK@@YAXXZ			; XGK::DATA::simd128
+PUBLIC	?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z ; std::_Narrow_char_traits<char,int>::length
+PUBLIC	?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z ; std::_Narrow_char_traits<char,int>::eq_int_type
+PUBLIC	?eof@?$_Narrow_char_traits@DH@std@@SAHXZ	; std::_Narrow_char_traits<char,int>::eof
 PUBLIC	main
 PUBLIC	??0?$allocator@M@std@@QEAA@XZ			; std::allocator<float>::allocator<float>
 PUBLIC	?deallocate@?$allocator@M@std@@QEAAXQEAM_K@Z	; std::allocator<float>::deallocate
@@ -81,6 +83,8 @@ PUBLIC	?_Getal@?$vector@MV?$allocator@M@std@@@std@@AEBAAEBV?$allocator@M@2@XZ ; 
 PUBLIC	??0?$_Vector_val@U?$_Simple_types@M@std@@@std@@QEAA@XZ ; std::_Vector_val<std::_Simple_types<float> >::_Vector_val<std::_Simple_types<float> >
 PUBLIC	?_Get_first@?$_Compressed_pair@V?$allocator@M@std@@V?$_Vector_val@U?$_Simple_types@M@std@@@2@$00@std@@QEAAAEAV?$allocator@M@2@XZ ; std::_Compressed_pair<std::allocator<float>,std::_Vector_val<std::_Simple_types<float> >,1>::_Get_first
 PUBLIC	?_Get_first@?$_Compressed_pair@V?$allocator@M@std@@V?$_Vector_val@U?$_Simple_types@M@std@@@2@$00@std@@QEBAAEBV?$allocator@M@2@XZ ; std::_Compressed_pair<std::allocator<float>,std::_Vector_val<std::_Simple_types<float> >,1>::_Get_first
+PUBLIC	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+PUBLIC	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBE@Z ; std::operator<<<std::char_traits<char> >
 PUBLIC	??$_Unfancy_maybe_null@M@std@@YAPEAMPEAM@Z	; std::_Unfancy_maybe_null<float>
 PUBLIC	??$move@AEAM@std@@YA$$QEAMAEAM@Z		; std::move<float &>
 PUBLIC	??$emplace_back@M@?$vector@MV?$allocator@M@std@@@std@@QEAAX$$QEAM@Z ; std::vector<float,std::allocator<float> >::emplace_back<float>
@@ -97,6 +101,11 @@ PUBLIC	??$_Destroy_range@V?$allocator@M@std@@@std@@YAXPEAMQEAMAEAV?$allocator@M@
 PUBLIC	??$_Allocate_manually_vector_aligned@U_Default_allocate_traits@std@@@std@@YAPEAX_K@Z ; std::_Allocate_manually_vector_aligned<std::_Default_allocate_traits>
 PUBLIC	??$_Uninitialized_move@PEAMV?$allocator@M@std@@@std@@YAPEAMQEAM0PEAMAEAV?$allocator@M@0@@Z ; std::_Uninitialized_move<float *,std::allocator<float> >
 PUBLIC	??$_Get_size_of_n@$03@std@@YA_K_K@Z		; std::_Get_size_of_n<4>
+PUBLIC	??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::_Sentry_base
+PUBLIC	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+PUBLIC	??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ; std::basic_ostream<char,std::char_traits<char> >::sentry::sentry
+PUBLIC	??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
+PUBLIC	??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::operator bool
 PUBLIC	??$_Get_unwrapped@M@std@@YAPEAMQEAM@Z		; std::_Get_unwrapped<float>
 PUBLIC	??$_Copy_memmove@PEAMPEAM@std@@YAPEAMPEAM00@Z	; std::_Copy_memmove<float *,float *>
 PUBLIC	??_7exception@std@@6B@				; std::exception::`vftable'
@@ -126,47 +135,50 @@ PUBLIC	??_R4bad_array_new_length@std@@6B@		; std::bad_array_new_length::`RTTI Co
 PUBLIC	??_R3bad_array_new_length@std@@8		; std::bad_array_new_length::`RTTI Class Hierarchy Descriptor'
 PUBLIC	??_R2bad_array_new_length@std@@8		; std::bad_array_new_length::`RTTI Base Class Array'
 PUBLIC	??_R1A@?0A@EA@bad_array_new_length@std@@8	; std::bad_array_new_length::`RTTI Base Class Descriptor at (0,-1,0,64)'
-PUBLIC	__real@3dfbe76d
 PUBLIC	__real@3f000000
 PUBLIC	__real@3f800000
-PUBLIC	__real@4013e76d
+PUBLIC	__real@40400000
 PUBLIC	__real@41a00000
-PUBLIC	__real@42f63efa
+PUBLIC	__real@5f000000
 EXTRN	??2@YAPEAX_K@Z:PROC				; operator new
 EXTRN	??3@YAXPEAX_K@Z:PROC				; operator delete
+EXTRN	__std_terminate:PROC
 EXTRN	__imp__invalid_parameter_noinfo_noreturn:PROC
+EXTRN	?uncaught_exception@std@@YA_NXZ:PROC		; std::uncaught_exception
 EXTRN	__std_exception_copy:PROC
 EXTRN	__std_exception_destroy:PROC
 EXTRN	??_Eexception@std@@UEAAPEAXI@Z:PROC		; std::exception::`vector deleting destructor'
 EXTRN	??_Ebad_alloc@std@@UEAAPEAXI@Z:PROC		; std::bad_alloc::`vector deleting destructor'
 EXTRN	??_Ebad_array_new_length@std@@UEAAPEAXI@Z:PROC	; std::bad_array_new_length::`vector deleting destructor'
 EXTRN	?_Xlength_error@std@@YAXPEBD@Z:PROC		; std::_Xlength_error
+EXTRN	__imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z:PROC
+EXTRN	__imp_?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z:PROC
+EXTRN	__imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z:PROC
+EXTRN	__imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ:PROC
+EXTRN	__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ:PROC
 EXTRN	gladLoadGL:PROC
 EXTRN	glfwInit:PROC
 EXTRN	glfwTerminate:PROC
 EXTRN	glfwWindowHint:PROC
 EXTRN	glfwCreateWindow:PROC
-EXTRN	glfwDestroyWindow:PROC
 EXTRN	glfwMakeContextCurrent:PROC
+EXTRN	glfwSwapBuffers:PROC
 EXTRN	glfwSwapInterval:PROC
-EXTRN	?simd128@VEC4@DATA@XGK@@YAXXZ:PROC		; XGK::DATA::VEC4::simd128
-EXTRN	?simd128@QUAT@DATA@XGK@@YAXXZ:PROC		; XGK::DATA::QUAT::simd128
-EXTRN	?print@MAT4@DATA@XGK@@YAXPEAX@Z:PROC		; XGK::DATA::MAT4::print
-EXTRN	?simd128@MAT4@DATA@XGK@@YAXXZ:PROC		; XGK::DATA::MAT4::simd128
-EXTRN	?init@OBJECT@XGK@@YAXPEAX@Z:PROC		; XGK::OBJECT::init
-EXTRN	?preRotX@OBJECT@XGK@@YAXPEAXM@Z:PROC		; XGK::OBJECT::preRotX
-EXTRN	?preRotY@OBJECT@XGK@@YAXPEAXM@Z:PROC		; XGK::OBJECT::preRotY
-EXTRN	?transX@OBJECT@XGK@@YAXPEAXM@Z:PROC		; XGK::OBJECT::transX
-EXTRN	?update@OBJECT@XGK@@YAXPEAX@Z:PROC		; XGK::OBJECT::update
+EXTRN	clock64:PROC
 EXTRN	_CxxThrowException:PROC
 EXTRN	__CxxFrameHandler4:PROC
 EXTRN	__GSHandlerCheck_EH4:PROC
 EXTRN	__security_check_cookie:PROC
 EXTRN	memmove:PROC
 EXTRN	??_7type_info@@6B@:BYTE				; type_info::`vftable'
+EXTRN	__imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A:BYTE
 EXTRN	glad_glLineWidth:QWORD
+EXTRN	glad_glClear:QWORD
 EXTRN	glad_glClearColor:QWORD
+EXTRN	glad_glFinish:QWORD
+EXTRN	glad_glGetString:QWORD
 EXTRN	glad_glViewport:QWORD
+EXTRN	glad_glDrawArrays:QWORD
 EXTRN	glad_glBindBuffer:QWORD
 EXTRN	glad_glGenBuffers:QWORD
 EXTRN	glad_glBufferData:QWORD
@@ -178,6 +190,7 @@ EXTRN	glad_glEnableVertexAttribArray:QWORD
 EXTRN	glad_glLinkProgram:QWORD
 EXTRN	glad_glShaderSource:QWORD
 EXTRN	glad_glUseProgram:QWORD
+EXTRN	glad_glUniform1f:QWORD
 EXTRN	glad_glVertexAttribPointer:QWORD
 EXTRN	__security_cookie:QWORD
 EXTRN	_fltused:DWORD
@@ -231,14 +244,8 @@ $pdata$?_Adjust_manually_vector_aligned@std@@YAXAEAPEAXAEA_K@Z DD imagerel $LN13
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?simd128@DATA@XGK@@YAXXZ DD imagerel $LN4
-	DD	imagerel $LN4+23
-	DD	imagerel $unwind$?simd128@DATA@XGK@@YAXXZ
-pdata	ENDS
-;	COMDAT pdata
-pdata	SEGMENT
-$pdata$main DD	imagerel $LN110
-	DD	imagerel $LN110+1171
+$pdata$main DD	imagerel $LN149
+	DD	imagerel $LN149+1539
 	DD	imagerel $unwind$main
 pdata	ENDS
 ;	COMDAT pdata
@@ -285,6 +292,18 @@ $pdata$?_Xlength@?$vector@MV?$allocator@M@std@@@std@@CAXXZ DD imagerel $LN4
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DD imagerel $LN100
+	DD	imagerel $LN100+457
+	DD	imagerel $unwind$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA DD imagerel ?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA
+	DD	imagerel ?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA+59
+	DD	imagerel $unwind$?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z DD imagerel $LN94
 	DD	imagerel $LN94+393
 	DD	imagerel $unwind$??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z
@@ -327,21 +346,45 @@ $pdata$??$_Get_size_of_n@$03@std@@YA_K_K@Z DD imagerel $LN7
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN8
+	DD	imagerel $LN8+44
+	DD	imagerel $unwind$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagerel $LN8
+	DD	imagerel $LN8+36
+	DD	imagerel $unwind$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD imagerel $LN24
+	DD	imagerel $LN24+122
+	DD	imagerel $unwind$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD imagerel $LN13
+	DD	imagerel $LN13+62
+	DD	imagerel $unwind$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$??$_Copy_memmove@PEAMPEAM@std@@YAPEAMPEAM00@Z DD imagerel $LN4
 	DD	imagerel $LN4+48
 	DD	imagerel $unwind$??$_Copy_memmove@PEAMPEAM@std@@YAPEAMPEAM00@Z
 pdata	ENDS
-;	COMDAT __real@42f63efa
+;	COMDAT __real@5f000000
 CONST	SEGMENT
-__real@42f63efa DD 042f63efar			; 123.123
+__real@5f000000 DD 05f000000r			; 9.22337e+18
 CONST	ENDS
 ;	COMDAT __real@41a00000
 CONST	SEGMENT
 __real@41a00000 DD 041a00000r			; 20
 CONST	ENDS
-;	COMDAT __real@4013e76d
+;	COMDAT __real@40400000
 CONST	SEGMENT
-__real@4013e76d DD 04013e76dr			; 2.311
+__real@40400000 DD 040400000r			; 3
 CONST	ENDS
 ;	COMDAT __real@3f800000
 CONST	SEGMENT
@@ -350,10 +393,6 @@ CONST	ENDS
 ;	COMDAT __real@3f000000
 CONST	SEGMENT
 __real@3f000000 DD 03f000000r			; 0.5
-CONST	ENDS
-;	COMDAT __real@3dfbe76d
-CONST	SEGMENT
-__real@3dfbe76d DD 03dfbe76dr			; 0.123
 CONST	ENDS
 ;	COMDAT ??_R1A@?0A@EA@bad_array_new_length@std@@8
 rdata$r	SEGMENT
@@ -555,6 +594,85 @@ $unwind$??$_Copy_memmove@PEAMPEAM@std@@YAPEAMPEAM00@Z DD 040a01H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$ip2state$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 04H
+	DB	','
+	DB	00H
+	DB	'<'
+	DB	02H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 02H
+	DB	0eH
+	DD	imagerel __std_terminate
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 068H
+	DD	imagerel $stateUnwindMap$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+	DD	imagerel $ip2state$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD 020619H
+	DD	030023206H
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$ip2state$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DB 04H
+	DB	'X'
+	DB	00H
+	DB	'H'
+	DB	02H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DB 02H
+	DB	0cH
+	DD	imagerel ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+	DB	060H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DB 028H
+	DD	imagerel $stateUnwindMap$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+	DD	imagerel $ip2state$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD 040f11H
+	DD	07340fH
+	DD	0700b320fH
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$ip2state$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 02H
+	DB	'6'
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DB 060H
+	DD	imagerel $ip2state$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ DD 010419H
+	DD	04204H
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z DD 020601H
+	DD	030023206H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $unwind$??$_Get_size_of_n@$03@std@@YA_K_K@Z DD 010401H
 	DD	04204H
 xdata	ENDS
@@ -634,6 +752,78 @@ $unwind$??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEA
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
+$unwind$?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA DD 020a01H
+	DD	05006320aH
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$ip2state$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 0eH
+	DB	0e2H
+	DB	00H
+	DB	'T'
+	DB	02H
+	DB	0b6H
+	DB	06H
+	DB	0d8H
+	DB	04H
+	DB	'L'
+	DB	0aH
+	DB	'&'
+	DB	0cH
+	DB	'2'
+	DB	00H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$handlerMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 02H
+	DB	011H
+	DB	080H
+	DD	imagerel ?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA
+	DB	091H, 05H
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$tryMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 02H
+	DB	04H
+	DB	04H
+	DB	06H
+	DD	imagerel $handlerMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$stateUnwindMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 0cH
+	DB	0aH
+	DD	imagerel ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+	DB	040H
+	DB	03aH
+	DD	imagerel ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+	DB	040H
+	DB	030H
+	DB	038H
+	DB	07eH
+	DD	imagerel __std_terminate
+	DB	02eH
+	DD	imagerel __std_terminate
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$cppxdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DB 038H
+	DD	imagerel $stateUnwindMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+	DD	imagerel $tryMap$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+	DD	imagerel $ip2state$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z DD 081619H
+	DD	0d3416H
+	DD	0f0125216H
+	DD	0c00ee010H
+	DD	0600b700cH
+	DD	imagerel __CxxFrameHandler4
+	DD	imagerel $cppxdata$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
 $unwind$?_Xlength@?$vector@MV?$allocator@M@std@@@std@@CAXXZ DD 010401H
 	DD	04204H
 xdata	ENDS
@@ -673,13 +863,11 @@ $unwind$?deallocate@?$allocator@M@std@@QEAAXQEAM_K@Z DD 010401H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$ip2state$main DB 06H
-	DB	019H, 03H
+$ip2state$main DB 04H
+	DB	'E', 02H
 	DB	00H
-	DB	'f'
+	DB	0b1H, 02H
 	DB	02H
-	DB	'a', 0cH
-	DB	00H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -696,26 +884,21 @@ $cppxdata$main DB 028H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$main DD	0154319H
-	DD	0e9835H
-	DD	0f8830H
-	DD	010782bH
-	DD	0116827H
-	DD	02c7423H
-	DD	02b6423H
-	DD	02a3423H
-	DD	0240123H
+$unwind$main DD	0154919H
+	DD	0489838H
+	DD	0498833H
+	DD	04a782eH
+	DD	04b682aH
+	DD	0a07426H
+	DD	09f6426H
+	DD	09e3426H
+	DD	0980126H
 	DD	0e016f018H
 	DD	0c012d014H
 	DD	05010H
 	DD	imagerel __GSHandlerCheck_EH4
 	DD	imagerel $cppxdata$main
-	DD	0d2H
-xdata	ENDS
-;	COMDAT xdata
-xdata	SEGMENT
-$unwind$?simd128@DATA@XGK@@YAXXZ DD 010401H
-	DD	04204H
+	DD	0472H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -802,6 +985,223 @@ _Ptr$ = 8
 ; Line 277
 	ret	0
 ??$_Get_unwrapped@M@std@@YAPEAMQEAM@Z ENDP		; std::_Get_unwrapped<float>
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ
+_TEXT	SEGMENT
+this$ = 8
+??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ PROC ; std::basic_ostream<char,std::char_traits<char> >::sentry::operator bool, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 131
+	movzx	eax, BYTE PTR [rcx+8]
+; Line 132
+	ret	0
+??Bsentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEBA_NXZ ENDP ; std::basic_ostream<char,std::char_traits<char> >::sentry::operator bool
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+_TEXT	SEGMENT
+this$ = 48
+??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ PROC ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 115
+$LN13:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rcx
+; Line 117
+	call	?uncaught_exception@std@@YA_NXZ		; std::uncaught_exception
+	npad	1
+	test	al, al
+	jne	SHORT $LN2@sentry
+; Line 118
+	mov	rcx, QWORD PTR [rbx]
+	call	QWORD PTR __imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+	npad	1
+$LN2@sentry:
+; Line 77
+	mov	rdx, QWORD PTR [rbx]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 76
+	mov	rcx, QWORD PTR [rcx+rdx+72]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 78
+	test	rcx, rcx
+	je	SHORT $LN10@sentry
+; Line 79
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+16]
+	npad	1
+$LN10@sentry:
+; Line 123
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ENDP ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+_TEXT	SEGMENT
+this$ = 48
+_Ostr$ = 56
+??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z PROC ; std::basic_ostream<char,std::char_traits<char> >::sentry::sentry, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 90
+$LN24:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+8], rcx
+	push	rdi
+	sub	rsp, 32					; 00000020H
+	mov	rbx, rdx
+	mov	rdi, rcx
+; Line 69
+	mov	QWORD PTR [rcx], rdx
+; Line 70
+	mov	rdx, QWORD PTR [rdx]
+	movsxd	rax, DWORD PTR [rdx+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 76
+	mov	rcx, QWORD PTR [rax+rbx+72]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 71
+	test	rcx, rcx
+	je	SHORT $LN8@sentry
+; Line 72
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+	mov	rdx, QWORD PTR [rbx]
+$LN8@sentry:
+; Line 92
+	movsxd	rcx, DWORD PTR [rdx+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 295
+	cmp	DWORD PTR [rcx+rbx+16], 0
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 92
+	je	SHORT $LN2@sentry
+; Line 93
+	xor	al, al
+; Line 94
+	jmp	SHORT $LN1@sentry
+$LN2@sentry:
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 66
+	mov	rcx, QWORD PTR [rcx+rbx+80]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 98
+	test	rcx, rcx
+	je	SHORT $LN4@sentry
+	cmp	rcx, rbx
+	je	SHORT $LN4@sentry
+; Line 104
+	call	QWORD PTR __imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+; Line 105
+	mov	rax, QWORD PTR [rbx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 295
+	cmp	DWORD PTR [rcx+rbx+16], 0
+	sete	al
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 105
+	jmp	SHORT $LN1@sentry
+$LN4@sentry:
+; Line 99
+	mov	al, 1
+$LN1@sentry:
+; Line 106
+	mov	BYTE PTR [rdi+8], al
+	mov	rax, rdi
+	mov	rbx, QWORD PTR [rsp+56]
+	add	rsp, 32					; 00000020H
+	pop	rdi
+	ret	0
+??0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ENDP ; std::basic_ostream<char,std::char_traits<char> >::sentry::sentry
+_TEXT	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+this$ = 48
+_Ostr$ = 56
+?dtor$0@?0???0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z@4HA PROC ; `std::basic_ostream<char,std::char_traits<char> >::sentry::sentry'::`1'::dtor$0
+	mov	rcx, QWORD PTR this$[rdx]
+	jmp	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+?dtor$0@?0???0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z@4HA ENDP ; `std::basic_ostream<char,std::char_traits<char> >::sentry::sentry'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+this$ = 48
+_Ostr$ = 56
+?dtor$0@?0???0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z@4HA PROC ; `std::basic_ostream<char,std::char_traits<char> >::sentry::sentry'::`1'::dtor$0
+	mov	rcx, QWORD PTR this$[rdx]
+	jmp	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+?dtor$0@?0???0sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z@4HA ENDP ; `std::basic_ostream<char,std::char_traits<char> >::sentry::sentry'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ
+_TEXT	SEGMENT
+this$ = 48
+??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ PROC ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 76
+$LN8:
+	sub	rsp, 40					; 00000028H
+; Line 77
+	mov	rdx, QWORD PTR [rcx]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 76
+	mov	rcx, QWORD PTR [rcx+rdx+72]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 78
+	test	rcx, rcx
+	je	SHORT $LN2@Sentry_bas
+; Line 79
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+16]
+	npad	1
+$LN2@Sentry_bas:
+; Line 81
+	add	rsp, 40					; 00000028H
+	ret	0
+??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ENDP ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z
+_TEXT	SEGMENT
+this$ = 48
+_Ostr$ = 56
+??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z PROC ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::_Sentry_base, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 69
+$LN8:
+	push	rbx
+	sub	rsp, 32					; 00000020H
+	mov	QWORD PTR [rcx], rdx
+	mov	rbx, rcx
+; Line 70
+	mov	rax, QWORD PTR [rdx]
+	movsxd	r8, DWORD PTR [rax+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 76
+	mov	rcx, QWORD PTR [r8+rdx+72]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 71
+	test	rcx, rcx
+	je	SHORT $LN6@Sentry_bas
+; Line 72
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+8]
+$LN6@Sentry_bas:
+; Line 74
+	mov	rax, rbx
+	add	rsp, 32					; 00000020H
+	pop	rbx
+	ret	0
+??0_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@AEAV12@@Z ENDP ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::_Sentry_base
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ??$_Get_size_of_n@$03@std@@YA_K_K@Z
@@ -1420,6 +1820,354 @@ _Ptr$ = 8
 ??$_Unfancy_maybe_null@M@std@@YAPEAMPEAM@Z ENDP		; std::_Unfancy_maybe_null<float>
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
+;	COMDAT ??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBE@Z
+_TEXT	SEGMENT
+_Ostr$ = 8
+_Val$ = 16
+??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBE@Z PROC ; std::operator<<<std::char_traits<char> >, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 912
+	jmp	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBE@Z ENDP ; std::operator<<<std::char_traits<char> >
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z
+_TEXT	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z PROC ; std::operator<<<std::char_traits<char> >, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 738
+$LN100:
+	mov	QWORD PTR [rsp+16], rbx
+	mov	QWORD PTR [rsp+8], rcx
+	push	rsi
+	push	rdi
+	push	r12
+	push	r14
+	push	r15
+	sub	rsp, 48					; 00000030H
+	mov	r15, rdx
+	mov	rsi, rcx
+; Line 742
+	xor	ebx, ebx
+	mov	DWORD PTR _State$[rsp], ebx
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring
+; Line 326
+	mov	r14, -1
+	npad	7
+$LL93@operator:
+	inc	r14
+	cmp	BYTE PTR [rdx+r14], bl
+	jne	SHORT $LL93@operator
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 744
+	mov	rcx, QWORD PTR [rcx]
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 363
+	mov	rdi, QWORD PTR [rax+rsi+40]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 744
+	test	rdi, rdi
+	jle	SHORT $LN17@operator
+	cmp	rdi, r14
+	jle	SHORT $LN17@operator
+	sub	rdi, r14
+	jmp	SHORT $LN18@operator
+$LN17@operator:
+	xor	edi, edi
+$LN18@operator:
+; Line 69
+	mov	r12, rsi
+	mov	QWORD PTR _Ok$[rsp], rsi
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 76
+	mov	r8, QWORD PTR [rax+rsi+72]
+	mov	rdx, rcx
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 71
+	test	r8, r8
+	je	SHORT $LN39@operator
+; Line 72
+	mov	rax, QWORD PTR [r8]
+	mov	rcx, r8
+	call	QWORD PTR [rax+8]
+	mov	rcx, QWORD PTR [rsi]
+	mov	rdx, rcx
+$LN39@operator:
+; Line 92
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 295
+	cmp	DWORD PTR [rax+rsi+16], 0
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 92
+	je	SHORT $LN33@operator
+; Line 93
+	xor	al, al
+; Line 94
+	jmp	SHORT $LN96@operator
+$LN33@operator:
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 66
+	mov	rax, QWORD PTR [rax+rsi+80]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 98
+	test	rax, rax
+	je	SHORT $LN35@operator
+	cmp	rax, rsi
+	je	SHORT $LN35@operator
+; Line 104
+	mov	rcx, rax
+	call	QWORD PTR __imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ
+; Line 105
+	mov	rcx, QWORD PTR [rsi]
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 295
+	cmp	DWORD PTR [rax+rsi+16], 0
+	sete	al
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 105
+	mov	rdx, rcx
+	jmp	SHORT $LN96@operator
+$LN35@operator:
+; Line 99
+	mov	al, 1
+$LN96@operator:
+; Line 106
+	mov	BYTE PTR _Ok$[rsp+8], al
+; Line 747
+	test	al, al
+	jne	SHORT $LN8@operator
+; Line 748
+	mov	ebx, 4
+; Line 749
+	jmp	$LN22@operator
+$LN8@operator:
+; Line 751
+	movsxd	rax, DWORD PTR [rcx+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 326
+	mov	ecx, DWORD PTR [rax+rsi+24]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 751
+	and	ecx, 448				; 000001c0H
+	cmp	ecx, 64					; 00000040H
+	je	SHORT $LN89@operator
+	npad	4
+$LL4@operator:
+; Line 752
+	test	rdi, rdi
+	jle	SHORT $LN3@operator
+; Line 753
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	movzx	edx, BYTE PTR [rcx+rsi+88]
+	mov	rcx, QWORD PTR [rcx+rsi+72]
+	call	QWORD PTR __imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+	cmp	eax, -1
+	je	SHORT $LN97@operator
+; Line 752
+	dec	rdi
+	jmp	SHORT $LL4@operator
+$LN3@operator:
+; Line 760
+	mov	rdx, QWORD PTR [rsi]
+$LN89@operator:
+	movsxd	rax, DWORD PTR [rdx+4]
+	mov	r8, r14
+	mov	rdx, r15
+	mov	rcx, QWORD PTR [rax+rsi+72]
+	call	QWORD PTR __imp_?sputn@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAA_JPEBD_J@Z
+	cmp	rax, r14
+	jne	SHORT $LN97@operator
+$LL94@operator:
+; Line 765
+	test	rdi, rdi
+	jle	SHORT $LN6@operator
+; Line 766
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	movzx	edx, BYTE PTR [rcx+rsi+88]
+	mov	rcx, QWORD PTR [rcx+rsi+72]
+	call	QWORD PTR __imp_?sputc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@QEAAHD@Z
+	cmp	eax, -1
+	je	SHORT $LN97@operator
+; Line 765
+	dec	rdi
+	jmp	SHORT $LL94@operator
+$LN97@operator:
+; Line 773
+	mov	ebx, 4
+	mov	DWORD PTR _State$[rsp], ebx
+$LN6@operator:
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xiosbase
+; Line 368
+	mov	QWORD PTR [rcx+rsi+40], 0
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+	jmp	SHORT $LN22@operator
+$LN23@operator:
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+	mov	rsi, QWORD PTR _Ostr$[rsp]
+	mov	ebx, DWORD PTR _State$[rsp]
+	mov	r12, QWORD PTR _Ok$[rsp]
+$LN22@operator:
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 777
+	mov	rax, QWORD PTR [rsi]
+	movsxd	rcx, DWORD PTR [rax+4]
+	add	rcx, rsi
+	xor	r8d, r8d
+	mov	edx, ebx
+	call	QWORD PTR __imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+	npad	1
+; Line 117
+	call	?uncaught_exception@std@@YA_NXZ		; std::uncaught_exception
+	test	al, al
+	jne	SHORT $LN74@operator
+; Line 118
+	mov	rcx, r12
+	call	QWORD PTR __imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ
+	npad	1
+$LN74@operator:
+; Line 77
+	mov	rax, QWORD PTR [r12]
+	movsxd	rcx, DWORD PTR [rax+4]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ios
+; Line 76
+	mov	rcx, QWORD PTR [rcx+r12+72]
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 78
+	test	rcx, rcx
+	je	SHORT $LN78@operator
+; Line 79
+	mov	rax, QWORD PTR [rcx]
+	call	QWORD PTR [rax+16]
+	npad	1
+$LN78@operator:
+; Line 778
+	mov	rax, rsi
+; Line 779
+	mov	rbx, QWORD PTR [rsp+104]
+	add	rsp, 48					; 00000030H
+	pop	r15
+	pop	r14
+	pop	r12
+	pop	rdi
+	pop	rsi
+	ret	0
+??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ENDP ; std::operator<<<std::char_traits<char> >
+_TEXT	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?dtor$1@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$1
+	lea	rcx, QWORD PTR _Ok$[rdx]
+	jmp	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+?dtor$1@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$1
+text$x	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?dtor$0@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$0
+	lea	rcx, QWORD PTR _Ok$[rdx]
+	jmp	??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
+?dtor$0@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$0
+text$x	ENDS
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::catch$4
+; Line 774
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z$0:
+	mov	rdx, QWORD PTR _Ostr$[rbp]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+	add	rcx, rdx
+	mov	r8b, 1
+	mov	edx, 4
+	call	QWORD PTR __imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+	npad	1
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::catch$4
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?dtor$1@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$1
+	lea	rcx, QWORD PTR _Ok$[rdx]
+	jmp	??1_Sentry_base@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::_Sentry_base::~_Sentry_base
+?dtor$1@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$1
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?dtor$0@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$0
+	lea	rcx, QWORD PTR _Ok$[rdx]
+	jmp	??1sentry@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAA@XZ ; std::basic_ostream<char,std::char_traits<char> >::sentry::~sentry
+?dtor$0@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::dtor$0
+text$x	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT text$x
+text$x	SEGMENT
+_Ok$ = 32
+_Ostr$ = 96
+_Val$ = 104
+_State$ = 112
+?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA PROC ; `std::operator<<<std::char_traits<char> >'::`1'::catch$4
+; Line 774
+	mov	QWORD PTR [rsp+16], rdx
+	push	rbp
+	sub	rsp, 32					; 00000020H
+	mov	rbp, rdx
+__catch$??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z$0:
+	mov	rdx, QWORD PTR _Ostr$[rbp]
+	mov	rax, QWORD PTR [rdx]
+	movsxd	rcx, DWORD PTR [rax+4]
+	add	rcx, rdx
+	mov	r8b, 1
+	mov	edx, 4
+	call	QWORD PTR __imp_?setstate@?$basic_ios@DU?$char_traits@D@std@@@std@@QEAAXH_N@Z
+	npad	1
+	mov	rax, 0
+	add	rsp, 32					; 00000020H
+	pop	rbp
+	ret	0
+	int	3
+?catch$4@?0???$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z@4HA ENDP ; `std::operator<<<std::char_traits<char> >'::`1'::catch$4
+text$x	ENDS
+; Function compile flags: /Ogtpy
 ;	COMDAT ?_Get_first@?$_Compressed_pair@V?$allocator@M@std@@V?$_Vector_val@U?$_Simple_types@M@std@@@2@$00@std@@QEBAAEBV?$allocator@M@2@XZ
 _TEXT	SEGMENT
 this$ = 8
@@ -2035,15 +2783,17 @@ $T2 = 48
 $T3 = 48
 $T4 = 48
 vertex_data$ = 56
-$T5 = 80
-$T6 = 84
-vertex_buffer$ = 88
-obj$ = 96
-__$ArrayPad$ = 208
+ub1$ = 80
+$T5 = 84
+$T6 = 88
+vertex_buffer$ = 92
+window$1$ = 96
+buffer$ = 112
+__$ArrayPad$ = 1136
 main	PROC						; COMDAT
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 21
-$LN110:
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 79
+$LN149:
 	mov	rax, rsp
 	mov	QWORD PTR [rax+8], rbx
 	mov	QWORD PTR [rax+16], rsi
@@ -2053,8 +2803,8 @@ $LN110:
 	push	r13
 	push	r14
 	push	r15
-	lea	rbp, QWORD PTR [rax-72]
-	sub	rsp, 288				; 00000120H
+	lea	rbp, QWORD PTR [rax-1000]
+	sub	rsp, 1216				; 000004c0H
 	movaps	XMMWORD PTR [rax-56], xmm6
 	movaps	XMMWORD PTR [rax-72], xmm7
 	movaps	XMMWORD PTR [rax-88], xmm8
@@ -2062,391 +2812,31 @@ $LN110:
 	mov	rax, QWORD PTR __security_cookie
 	xor	rax, rsp
 	mov	QWORD PTR __$ArrayPad$[rbp-256], rax
-; Line 23
+; Line 81
 	call	glfwInit
 	test	eax, eax
-	je	SHORT $LN107@main
-; Line 28
-	xor	r13d, r13d
-	mov	QWORD PTR [rsp+32], r13
+	je	SHORT $LN146@main
+; Line 86
+	xor	r12d, r12d
+	mov	QWORD PTR [rsp+32], r12
 	xor	r9d, r9d
 	lea	r8, OFFSET FLAT:??_C@_0P@MANJCCCM@Simple?5example@
 	mov	edx, 480				; 000001e0H
 	mov	ecx, 640				; 00000280H
 	call	glfwCreateWindow
-	mov	r12, rax
-; Line 30
+	mov	QWORD PTR window$1$[rsp], rax
+; Line 88
 	test	rax, rax
-	jne	SHORT $LN6@main
-; Line 32
+	jne	SHORT $LN21@main
+; Line 90
 	call	glfwTerminate
-$LN107@main:
-; Line 410
+$LN146@main:
+; Line 411
 	mov	eax, 1
-	jmp	$LN1@main
-$LN6@main:
-; Line 37
-	mov	rcx, r12
-	call	glfwMakeContextCurrent
-; Line 39
-	mov	edx, 2
-	mov	ecx, 139266				; 00022002H
-	call	glfwWindowHint
-; Line 40
-	xor	edx, edx
-	mov	ecx, 139267				; 00022003H
-	call	glfwWindowHint
-; Line 42
-	call	gladLoadGL
-; Line 43
-	mov	ecx, 1
-	call	glfwSwapInterval
-; Line 45
-	xor	edx, edx
-	xor	ecx, ecx
-	mov	r9d, 480				; 000001e0H
-	mov	r8d, 640				; 00000280H
-	call	QWORD PTR glad_glViewport
-; Line 46
-	movss	xmm8, DWORD PTR __real@3f800000
-	movaps	xmm3, xmm8
-	xorps	xmm2, xmm2
-	xorps	xmm1, xmm1
-	xorps	xmm0, xmm0
-	call	QWORD PTR glad_glClearColor
-	xorps	xmm0, xmm0
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 314
-	movdqu	XMMWORD PTR vertex_data$[rsp], xmm0
-	mov	r14, r13
-	mov	QWORD PTR vertex_data$[rsp+16], r13
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 37
-	mov	rbx, r13
-; Line 56
-	mov	DWORD PTR $T5[rsp], ebx
-; Line 59
-	mov	DWORD PTR $T6[rsp], 1065353216		; 3f800000H
-	movss	xmm9, DWORD PTR __real@3f000000
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-	npad	10
-$LL4@main:
-; Line 55
-	lea	rdi, QWORD PTR [rbx+1]
-	xorps	xmm6, xmm6
-	test	rdi, rdi
-	js	SHORT $LN104@main
-	cvtsi2ss xmm6, rdi
-	jmp	SHORT $LN105@main
-$LN104@main:
-	mov	rcx, rdi
-	shr	rcx, 1
-	mov	rax, rdi
-	and	eax, 1
-	or	rcx, rax
-	cvtsi2ss xmm6, rcx
-	addss	xmm6, xmm6
-$LN105@main:
-	mulss	xmm6, xmm9
-	subss	xmm6, xmm8
-	movss	DWORD PTR $T4[rsp], xmm6
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 655
-	cmp	rdx, r14
-	je	SHORT $LN18@main
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	movss	DWORD PTR [rdx], xmm6
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	rdx, 4
-	mov	QWORD PTR vertex_data$[rsp+8], rdx
-; Line 656
-	jmp	SHORT $LN17@main
-$LN18@main:
-; Line 659
-	lea	r8, QWORD PTR $T4[rsp]
-	lea	rcx, QWORD PTR vertex_data$[rsp]
-	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
-	mov	r14, QWORD PTR vertex_data$[rsp+16]
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-$LN17@main:
-; Line 655
-	cmp	rdx, r14
-	je	SHORT $LN27@main
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	mov	DWORD PTR [rdx], r13d
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	rdx, 4
-	mov	QWORD PTR vertex_data$[rsp+8], rdx
-; Line 656
-	jmp	SHORT $LN26@main
-$LN27@main:
-; Line 659
-	lea	r8, QWORD PTR $T5[rsp]
-	lea	rcx, QWORD PTR vertex_data$[rsp]
-	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
-	mov	r14, QWORD PTR vertex_data$[rsp+16]
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-$LN26@main:
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 57
-	xorps	xmm7, xmm7
-	test	rbx, rbx
-	js	SHORT $LN102@main
-	cvtsi2ss xmm7, rbx
-	jmp	SHORT $LN103@main
-$LN102@main:
-	mov	rax, rbx
-	shr	rax, 1
-	and	ebx, 1
-	or	rax, rbx
-	cvtsi2ss xmm7, rax
-	addss	xmm7, xmm7
-$LN103@main:
-	movss	DWORD PTR $T3[rsp], xmm7
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 655
-	cmp	rdx, r14
-	je	SHORT $LN36@main
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	movss	DWORD PTR [rdx], xmm7
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	rdx, 4
-	mov	QWORD PTR vertex_data$[rsp+8], rdx
-; Line 656
-	jmp	SHORT $LN35@main
-$LN36@main:
-; Line 659
-	lea	r8, QWORD PTR $T3[rsp]
-	lea	rcx, QWORD PTR vertex_data$[rsp]
-	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
-	mov	r14, QWORD PTR vertex_data$[rsp+16]
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-$LN35@main:
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 58
-	movss	DWORD PTR $T2[rsp], xmm6
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 655
-	cmp	rdx, r14
-	je	SHORT $LN45@main
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	movss	DWORD PTR [rdx], xmm6
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	rdx, 4
-	mov	QWORD PTR vertex_data$[rsp+8], rdx
-; Line 656
-	jmp	SHORT $LN44@main
-$LN45@main:
-; Line 659
-	lea	r8, QWORD PTR $T2[rsp]
-	lea	rcx, QWORD PTR vertex_data$[rsp]
-	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
-	mov	r14, QWORD PTR vertex_data$[rsp+16]
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-$LN44@main:
-; Line 655
-	cmp	rdx, r14
-	je	SHORT $LN54@main
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	mov	DWORD PTR [rdx], 1065353216		; 3f800000H
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	rdx, 4
-	mov	QWORD PTR vertex_data$[rsp+8], rdx
-; Line 656
-	jmp	SHORT $LN53@main
-$LN54@main:
-; Line 659
-	lea	r8, QWORD PTR $T6[rsp]
-	lea	rcx, QWORD PTR vertex_data$[rsp]
-	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
-	mov	r14, QWORD PTR vertex_data$[rsp+16]
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-$LN53@main:
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 60
-	movss	DWORD PTR $T1[rsp], xmm7
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 655
-	cmp	rdx, r14
-	je	SHORT $LN63@main
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	movss	DWORD PTR [rdx], xmm7
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	rdx, 4
-	mov	QWORD PTR vertex_data$[rsp+8], rdx
-; Line 656
-	jmp	SHORT $LN2@main
-$LN63@main:
-; Line 659
-	lea	r8, QWORD PTR $T1[rsp]
-	lea	rcx, QWORD PTR vertex_data$[rsp]
-	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
-	mov	r14, QWORD PTR vertex_data$[rsp+16]
-	mov	rdx, QWORD PTR vertex_data$[rsp+8]
-$LN2@main:
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 53
-	mov	rbx, rdi
-	cmp	rdi, 3
-	jb	$LL4@main
-; Line 66
-	lea	rdx, QWORD PTR vertex_buffer$[rsp]
-	mov	ecx, 1
-	call	QWORD PTR glad_glGenBuffers
-; Line 67
-	mov	edx, DWORD PTR vertex_buffer$[rsp]
-	mov	ecx, 34962				; 00008892H
-	call	QWORD PTR glad_glBindBuffer
-; Line 68
-	mov	r9d, 35044				; 000088e4H
-	mov	r15, QWORD PTR vertex_data$[rsp]
-	mov	r8, r15
-	mov	edx, 72					; 00000048H
-	lea	ecx, QWORD PTR [r9-82]
-	call	QWORD PTR glad_glBufferData
-; Line 70
-	mov	ecx, 35633				; 00008b31H
-	call	QWORD PTR glad_glCreateShader
-	mov	esi, eax
-; Line 71
-	xor	r9d, r9d
-	lea	r8, OFFSET FLAT:?vertex_shader_code@@3PEBDEB ; vertex_shader_code
-	lea	edx, QWORD PTR [r9+1]
-	mov	ecx, eax
-	call	QWORD PTR glad_glShaderSource
-; Line 72
-	mov	ecx, esi
-	call	QWORD PTR glad_glCompileShader
-; Line 74
-	mov	ecx, 35632				; 00008b30H
-	call	QWORD PTR glad_glCreateShader
-	mov	edi, eax
-; Line 75
-	xor	r9d, r9d
-	lea	r8, OFFSET FLAT:?fragment_shader_code@@3PEBDEB ; fragment_shader_code
-	lea	edx, QWORD PTR [r9+1]
-	mov	ecx, eax
-	call	QWORD PTR glad_glShaderSource
-; Line 76
-	mov	ecx, edi
-	call	QWORD PTR glad_glCompileShader
-; Line 78
-	call	QWORD PTR glad_glCreateProgram
-	mov	ebx, eax
-; Line 79
-	mov	edx, esi
-	mov	ecx, eax
-	call	QWORD PTR glad_glAttachShader
-; Line 80
-	mov	edx, edi
-	mov	ecx, ebx
-	call	QWORD PTR glad_glAttachShader
-; Line 81
-	mov	ecx, ebx
-	call	QWORD PTR glad_glLinkProgram
-; Line 82
-	mov	ecx, ebx
-	call	QWORD PTR glad_glUseProgram
-; Line 84
-	xor	ecx, ecx
-	call	QWORD PTR glad_glEnableVertexAttribArray
-; Line 85
-	mov	QWORD PTR [rsp+40], r13
-	mov	DWORD PTR [rsp+32], r13d
-	xor	r9d, r9d
-	lea	edx, QWORD PTR [r9+3]
-	xor	ecx, ecx
-	mov	r8d, 5126				; 00001406H
-	call	QWORD PTR glad_glVertexAttribPointer
-; Line 87
-	movss	xmm0, DWORD PTR __real@41a00000
-	call	QWORD PTR glad_glLineWidth
-; File E:\reps\denis-belov\xgk__\src\data\data.h
-; Line 186
-	call	?simd128@VEC4@DATA@XGK@@YAXXZ		; XGK::DATA::VEC4::simd128
-; Line 187
-	call	?simd128@QUAT@DATA@XGK@@YAXXZ		; XGK::DATA::QUAT::simd128
-; Line 188
-	call	?simd128@MAT4@DATA@XGK@@YAXXZ		; XGK::DATA::MAT4::simd128
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 94
-	lea	rcx, QWORD PTR obj$[rsp]
-	call	?init@OBJECT@XGK@@YAXPEAX@Z		; XGK::OBJECT::init
-; Line 95
-	movss	xmm1, DWORD PTR __real@3dfbe76d
-	lea	rcx, QWORD PTR obj$[rsp]
-	call	?preRotX@OBJECT@XGK@@YAXPEAXM@Z		; XGK::OBJECT::preRotX
-; Line 96
-	movss	xmm1, DWORD PTR __real@42f63efa
-	lea	rcx, QWORD PTR obj$[rsp]
-	call	?transX@OBJECT@XGK@@YAXPEAXM@Z		; XGK::OBJECT::transX
-; Line 97
-	movss	xmm1, DWORD PTR __real@4013e76d
-	lea	rcx, QWORD PTR obj$[rsp]
-	call	?preRotY@OBJECT@XGK@@YAXPEAXM@Z		; XGK::OBJECT::preRotY
-; Line 98
-	lea	rcx, QWORD PTR obj$[rsp]
-	call	?update@OBJECT@XGK@@YAXPEAX@Z		; XGK::OBJECT::update
-; Line 100
-	lea	rcx, QWORD PTR obj$[rsp]
-	call	?print@MAT4@DATA@XGK@@YAXPEAX@Z		; XGK::DATA::MAT4::print
-; Line 404
-	mov	rcx, r12
-	call	glfwDestroyWindow
-; Line 405
-	call	glfwTerminate
-	npad	1
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 1650
-	test	r15, r15
-	je	SHORT $LN76@main
-; Line 1652
-	sub	r14, r15
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 867
-	and	r14, -4
-	mov	rax, r15
-; Line 186
-	cmp	r14, 4096				; 00001000H
-	jb	SHORT $LN92@main
-; Line 104
-	add	r14, 39					; 00000027H
-; Line 107
-	mov	r15, QWORD PTR [r15-8]
-	sub	rax, r15
-; Line 121
-	add	rax, -8
-	cmp	rax, 31
-	jbe	SHORT $LN92@main
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	int	3
-$LN92@main:
-; Line 191
-	mov	rdx, r14
-	mov	rcx, r15
-	call	??3@YAXPEAX_K@Z				; operator delete
-$LN76@main:
-; File E:\reps\denis-belov\c-test_\perf\src\threads.cpp
-; Line 409
-	xor	eax, eax
-$LN1@main:
-; Line 410
 	mov	rcx, QWORD PTR __$ArrayPad$[rbp-256]
 	xor	rcx, rsp
 	call	__security_check_cookie
-	lea	r11, QWORD PTR [rsp+288]
+	lea	r11, QWORD PTR [rsp+1216]
 	mov	rbx, QWORD PTR [r11+48]
 	mov	rsi, QWORD PTR [r11+56]
 	mov	rdi, QWORD PTR [r11+64]
@@ -2461,7 +2851,462 @@ $LN1@main:
 	pop	r12
 	pop	rbp
 	ret	0
-$LN106@main:
+$LN21@main:
+; Line 95
+	mov	rcx, rax
+	call	glfwMakeContextCurrent
+; Line 97
+	mov	edx, 2
+	mov	ecx, 139266				; 00022002H
+	call	glfwWindowHint
+; Line 98
+	xor	edx, edx
+	mov	ecx, 139267				; 00022003H
+	call	glfwWindowHint
+; Line 100
+	call	gladLoadGL
+; Line 101
+	xor	ecx, ecx
+	call	glfwSwapInterval
+; Line 103
+	xor	edx, edx
+	xor	ecx, ecx
+	mov	r9d, 480				; 000001e0H
+	mov	r8d, 640				; 00000280H
+	call	QWORD PTR glad_glViewport
+; Line 104
+	movss	xmm8, DWORD PTR __real@3f800000
+	movaps	xmm3, xmm8
+	xorps	xmm2, xmm2
+	xorps	xmm1, xmm1
+	xorps	xmm0, xmm0
+	call	QWORD PTR glad_glClearColor
+	xorps	xmm0, xmm0
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 314
+	movdqu	XMMWORD PTR vertex_data$[rsp], xmm0
+	mov	r8, r12
+	mov	QWORD PTR vertex_data$[rsp+16], r12
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 95
+	mov	rbx, r12
+; Line 114
+	mov	DWORD PTR $T5[rsp], ebx
+; Line 117
+	mov	DWORD PTR $T6[rsp], 1065353216		; 3f800000H
+	movss	xmm9, DWORD PTR __real@3f000000
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+	npad	6
+$LL4@main:
+; Line 113
+	lea	rdi, QWORD PTR [rbx+1]
+	xorps	xmm6, xmm6
+	test	rdi, rdi
+	js	SHORT $LN143@main
+	cvtsi2ss xmm6, rdi
+	jmp	SHORT $LN144@main
+$LN143@main:
+	mov	rcx, rdi
+	shr	rcx, 1
+	mov	rax, rdi
+	and	eax, 1
+	or	rcx, rax
+	cvtsi2ss xmm6, rcx
+	addss	xmm6, xmm6
+$LN144@main:
+	mulss	xmm6, xmm9
+	subss	xmm6, xmm8
+	movss	DWORD PTR $T4[rsp], xmm6
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 655
+	cmp	rdx, r8
+	je	SHORT $LN33@main
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	movss	DWORD PTR [rdx], xmm6
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	rdx, 4
+	mov	QWORD PTR vertex_data$[rsp+8], rdx
+; Line 656
+	jmp	SHORT $LN32@main
+$LN33@main:
+; Line 659
+	lea	r8, QWORD PTR $T4[rsp]
+	lea	rcx, QWORD PTR vertex_data$[rsp]
+	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
+	mov	r8, QWORD PTR vertex_data$[rsp+16]
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+$LN32@main:
+; Line 655
+	cmp	rdx, r8
+	je	SHORT $LN42@main
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	mov	DWORD PTR [rdx], r12d
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	rdx, 4
+	mov	QWORD PTR vertex_data$[rsp+8], rdx
+; Line 656
+	jmp	SHORT $LN41@main
+$LN42@main:
+; Line 659
+	lea	r8, QWORD PTR $T5[rsp]
+	lea	rcx, QWORD PTR vertex_data$[rsp]
+	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
+	mov	r8, QWORD PTR vertex_data$[rsp+16]
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+$LN41@main:
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 115
+	xorps	xmm7, xmm7
+	test	rbx, rbx
+	js	SHORT $LN141@main
+	cvtsi2ss xmm7, rbx
+	jmp	SHORT $LN142@main
+$LN141@main:
+	mov	rax, rbx
+	shr	rax, 1
+	and	ebx, 1
+	or	rax, rbx
+	cvtsi2ss xmm7, rax
+	addss	xmm7, xmm7
+$LN142@main:
+	movss	DWORD PTR $T3[rsp], xmm7
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 655
+	cmp	rdx, r8
+	je	SHORT $LN51@main
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	movss	DWORD PTR [rdx], xmm7
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	rdx, 4
+	mov	QWORD PTR vertex_data$[rsp+8], rdx
+; Line 656
+	jmp	SHORT $LN50@main
+$LN51@main:
+; Line 659
+	lea	r8, QWORD PTR $T3[rsp]
+	lea	rcx, QWORD PTR vertex_data$[rsp]
+	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
+	mov	r8, QWORD PTR vertex_data$[rsp+16]
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+$LN50@main:
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 116
+	movss	DWORD PTR $T2[rsp], xmm6
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 655
+	cmp	rdx, r8
+	je	SHORT $LN60@main
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	movss	DWORD PTR [rdx], xmm6
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	rdx, 4
+	mov	QWORD PTR vertex_data$[rsp+8], rdx
+; Line 656
+	jmp	SHORT $LN59@main
+$LN60@main:
+; Line 659
+	lea	r8, QWORD PTR $T2[rsp]
+	lea	rcx, QWORD PTR vertex_data$[rsp]
+	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
+	mov	r8, QWORD PTR vertex_data$[rsp+16]
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+$LN59@main:
+; Line 655
+	cmp	rdx, r8
+	je	SHORT $LN69@main
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	mov	DWORD PTR [rdx], 1065353216		; 3f800000H
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	rdx, 4
+	mov	QWORD PTR vertex_data$[rsp+8], rdx
+; Line 656
+	jmp	SHORT $LN68@main
+$LN69@main:
+; Line 659
+	lea	r8, QWORD PTR $T6[rsp]
+	lea	rcx, QWORD PTR vertex_data$[rsp]
+	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
+	mov	r8, QWORD PTR vertex_data$[rsp+16]
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+$LN68@main:
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 118
+	movss	DWORD PTR $T1[rsp], xmm7
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 655
+	cmp	rdx, r8
+	je	SHORT $LN78@main
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	movss	DWORD PTR [rdx], xmm7
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	rdx, 4
+	mov	QWORD PTR vertex_data$[rsp+8], rdx
+; Line 656
+	jmp	SHORT $LN2@main
+$LN78@main:
+; Line 659
+	lea	r8, QWORD PTR $T1[rsp]
+	lea	rcx, QWORD PTR vertex_data$[rsp]
+	call	??$_Emplace_reallocate@M@?$vector@MV?$allocator@M@std@@@std@@QEAAPEAMQEAM$$QEAM@Z ; std::vector<float,std::allocator<float> >::_Emplace_reallocate<float>
+	mov	r8, QWORD PTR vertex_data$[rsp+16]
+	mov	rdx, QWORD PTR vertex_data$[rsp+8]
+$LN2@main:
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 111
+	mov	rbx, rdi
+	cmp	rdi, 3
+	jb	$LL4@main
+; Line 124
+	lea	rdx, QWORD PTR vertex_buffer$[rsp]
+	mov	ecx, 1
+	call	QWORD PTR glad_glGenBuffers
+; Line 125
+	mov	edx, DWORD PTR vertex_buffer$[rsp]
+	mov	ecx, 34962				; 00008892H
+	call	QWORD PTR glad_glBindBuffer
+; Line 126
+	mov	r9d, 35044				; 000088e4H
+	mov	r8, QWORD PTR vertex_data$[rsp]
+	mov	edx, 72					; 00000048H
+	lea	ecx, QWORD PTR [r9-82]
+	call	QWORD PTR glad_glBufferData
+; Line 128
+	mov	ecx, 35633				; 00008b31H
+	call	QWORD PTR glad_glCreateShader
+	mov	edi, eax
+; Line 129
+	xor	r9d, r9d
+	lea	r8, OFFSET FLAT:?vertex_shader_code@@3PEBDEB ; vertex_shader_code
+	lea	edx, QWORD PTR [r9+1]
+	mov	ecx, eax
+	call	QWORD PTR glad_glShaderSource
+; Line 130
+	mov	ecx, edi
+	call	QWORD PTR glad_glCompileShader
+; Line 132
+	mov	ecx, 35632				; 00008b30H
+	call	QWORD PTR glad_glCreateShader
+	mov	ebx, eax
+; Line 133
+	xor	r9d, r9d
+	lea	r8, OFFSET FLAT:?fragment_shader_code@@3PEBDEB ; fragment_shader_code
+	lea	edx, QWORD PTR [r9+1]
+	mov	ecx, eax
+	call	QWORD PTR glad_glShaderSource
+; Line 134
+	mov	ecx, ebx
+	call	QWORD PTR glad_glCompileShader
+; Line 136
+	call	QWORD PTR glad_glCreateProgram
+	mov	r13d, eax
+; Line 137
+	mov	edx, edi
+	mov	ecx, eax
+	call	QWORD PTR glad_glAttachShader
+; Line 138
+	mov	edx, ebx
+	mov	ecx, r13d
+	call	QWORD PTR glad_glAttachShader
+; Line 139
+	mov	ecx, r13d
+	call	QWORD PTR glad_glLinkProgram
+; Line 140
+	mov	ecx, r13d
+	call	QWORD PTR glad_glUseProgram
+; Line 142
+	xor	ecx, ecx
+	call	QWORD PTR glad_glEnableVertexAttribArray
+; Line 143
+	mov	QWORD PTR [rsp+40], r12
+	mov	DWORD PTR [rsp+32], r12d
+	xor	r9d, r9d
+	lea	edx, QWORD PTR [r9+3]
+	xor	ecx, ecx
+	mov	r8d, 5126				; 00001406H
+	call	QWORD PTR glad_glVertexAttribPointer
+; Line 145
+	movss	xmm0, DWORD PTR __real@41a00000
+	call	QWORD PTR glad_glLineWidth
+; Line 147
+	mov	ecx, 7936				; 00001f00H
+	call	QWORD PTR glad_glGetString
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\ostream
+; Line 912
+	mov	rdx, rax
+	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
+	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
+; File E:\reps\denis-belov\c-test\perf\src\test.cpp
+; Line 158
+	lea	rdx, QWORD PTR ub1$[rsp]
+	mov	ecx, 1
+	call	QWORD PTR glad_glGenBuffers
+; Line 159
+	mov	edx, DWORD PTR ub1$[rsp]
+	mov	ecx, 35345				; 00008a11H
+	call	QWORD PTR glad_glBindBuffer
+; Line 160
+	mov	r9d, 35048				; 000088e8H
+	lea	r8, QWORD PTR buffer$[rsp]
+	mov	edx, 1024				; 00000400H
+	mov	ecx, 35345				; 00008a11H
+	call	QWORD PTR glad_glBufferData
+; Line 162
+	call	QWORD PTR glad_glFinish
+	movss	xmm8, DWORD PTR __real@40400000
+	movss	xmm7, DWORD PTR __real@5f000000
+	npad	4
+$LL5@main:
+; Line 164
+	call	QWORD PTR glad_glFinish
+	mov	r15, r12
+	mov	edi, 2048				; 00000800H
+	npad	2
+$LL10@main:
+	call	clock64
+	mov	rbx, rax
+	call	QWORD PTR glad_glFinish
+	call	clock64
+	sub	rax, rbx
+	add	r15, rax
+	sub	rdi, 1
+	jne	SHORT $LL10@main
+	shr	r15, 11
+; Line 166
+	mov	r14, r12
+; Line 164
+	mov	edi, 2048				; 00000800H
+	npad	5
+$LL13@main:
+; Line 166
+	call	clock64
+	mov	rbx, rax
+; Line 168
+	mov	edx, DWORD PTR ub1$[rsp]
+	mov	ecx, 35345				; 00008a11H
+	call	QWORD PTR glad_glBindBuffer
+; Line 169
+	call	QWORD PTR glad_glFinish
+	call	clock64
+	sub	rax, rbx
+	add	r14, rax
+; Line 166
+	sub	rdi, 1
+	jne	SHORT $LL13@main
+; Line 169
+	shr	r14, 11
+; Line 171
+	mov	rsi, r12
+; Line 169
+	mov	edi, 2048				; 00000800H
+	npad	6
+$LL16@main:
+; Line 171
+	call	clock64
+	mov	rbx, rax
+; Line 173
+	mov	ecx, r13d
+	call	QWORD PTR glad_glUseProgram
+; Line 174
+	call	QWORD PTR glad_glFinish
+	call	clock64
+	sub	rax, rbx
+	add	rsi, rax
+; Line 171
+	sub	rdi, 1
+	jne	SHORT $LL16@main
+; Line 174
+	shr	rsi, 11
+; Line 176
+	mov	rdi, r12
+; Line 174
+	mov	r12d, 2048				; 00000800H
+$LL19@main:
+; Line 176
+	call	clock64
+	mov	rbx, rax
+; Line 178
+	mov	ecx, r13d
+	call	QWORD PTR glad_glUseProgram
+; Line 179
+	call	QWORD PTR glad_glFinish
+	call	clock64
+	sub	rax, rbx
+	add	rdi, rax
+; Line 176
+	sub	r12, 1
+	jne	SHORT $LL19@main
+; Line 179
+	shr	rdi, 11
+; Line 181
+	sub	rdi, r15
+	mov	ecx, 16384				; 00004000H
+	call	QWORD PTR glad_glClear
+	lea	rax, QWORD PTR [rdi+rsi]
+	add	rax, r14
+	xorps	xmm0, xmm0
+	cvtsi2ss xmm0, rax
+	divss	xmm0, xmm8
+	xor	eax, eax
+	comiss	xmm0, xmm7
+	jb	SHORT $LN140@main
+	subss	xmm0, xmm7
+	comiss	xmm0, xmm7
+	jae	SHORT $LN140@main
+	mov	rcx, -9223372036854775808		; 8000000000000000H
+	mov	rax, rcx
+$LN140@main:
+	cvttss2si rcx, xmm0
+	add	rcx, rax
+	xorps	xmm6, xmm6
+	js	SHORT $LN138@main
+	cvtsi2ss xmm6, rcx
+	jmp	SHORT $LN139@main
+$LN138@main:
+	mov	rax, rcx
+	shr	rax, 1
+	and	ecx, 1
+	or	rax, rcx
+	cvtsi2ss xmm6, rax
+	addss	xmm6, xmm6
+$LN139@main:
+	sub	r14, r15
+	xorps	xmm1, xmm1
+	cvtsi2ss xmm1, r14
+	divss	xmm1, xmm6
+	xor	ecx, ecx
+	call	QWORD PTR glad_glUniform1f
+	sub	rsi, r15
+	xorps	xmm1, xmm1
+	cvtsi2ss xmm1, rsi
+	divss	xmm1, xmm6
+	mov	ecx, 1
+	call	QWORD PTR glad_glUniform1f
+	xorps	xmm1, xmm1
+	cvtsi2ss xmm1, rdi
+	divss	xmm1, xmm6
+	mov	ecx, 2
+	call	QWORD PTR glad_glUniform1f
+	xor	edx, edx
+	lea	ecx, QWORD PTR [rdx+1]
+	lea	r8d, QWORD PTR [rdx+6]
+	call	QWORD PTR glad_glDrawArrays
+	mov	rcx, QWORD PTR window$1$[rsp]
+	call	glfwSwapBuffers
+	xor	r12d, r12d
+	jmp	$LL5@main
+	int	3
 main	ENDP
 _TEXT	ENDS
 ;	COMDAT text$x
@@ -2471,11 +3316,13 @@ $T2 = 48
 $T3 = 48
 $T4 = 48
 vertex_data$ = 56
-$T5 = 80
-$T6 = 84
-vertex_buffer$ = 88
-obj$ = 96
-__$ArrayPad$ = 208
+ub1$ = 80
+$T5 = 84
+$T6 = 88
+vertex_buffer$ = 92
+window$1$ = 96
+buffer$ = 112
+__$ArrayPad$ = 1136
 main$dtor$0 PROC
 	lea	rcx, QWORD PTR vertex_data$[rdx]
 	jmp	??1?$vector@MV?$allocator@M@std@@@std@@QEAA@XZ ; std::vector<float,std::allocator<float> >::~vector<float,std::allocator<float> >
@@ -2489,33 +3336,59 @@ $T2 = 48
 $T3 = 48
 $T4 = 48
 vertex_data$ = 56
-$T5 = 80
-$T6 = 84
-vertex_buffer$ = 88
-obj$ = 96
-__$ArrayPad$ = 208
+ub1$ = 80
+$T5 = 84
+$T6 = 88
+vertex_buffer$ = 92
+window$1$ = 96
+buffer$ = 112
+__$ArrayPad$ = 1136
 main$dtor$0 PROC
 	lea	rcx, QWORD PTR vertex_data$[rdx]
 	jmp	??1?$vector@MV?$allocator@M@std@@@std@@QEAA@XZ ; std::vector<float,std::allocator<float> >::~vector<float,std::allocator<float> >
 main$dtor$0 ENDP
 text$x	ENDS
 ; Function compile flags: /Ogtpy
-;	COMDAT ?simd128@DATA@XGK@@YAXXZ
+;	COMDAT ?eof@?$_Narrow_char_traits@DH@std@@SAHXZ
 _TEXT	SEGMENT
-?simd128@DATA@XGK@@YAXXZ PROC				; XGK::DATA::simd128, COMDAT
-; File E:\reps\denis-belov\xgk__\src\data\data.h
-; Line 184
-$LN4:
-	sub	rsp, 40					; 00000028H
-; Line 186
-	call	?simd128@VEC4@DATA@XGK@@YAXXZ		; XGK::DATA::VEC4::simd128
-; Line 187
-	call	?simd128@QUAT@DATA@XGK@@YAXXZ		; XGK::DATA::QUAT::simd128
-; Line 189
-	add	rsp, 40					; 00000028H
-; Line 188
-	jmp	?simd128@MAT4@DATA@XGK@@YAXXZ		; XGK::DATA::MAT4::simd128
-?simd128@DATA@XGK@@YAXXZ ENDP				; XGK::DATA::simd128
+?eof@?$_Narrow_char_traits@DH@std@@SAHXZ PROC		; std::_Narrow_char_traits<char,int>::eof, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring
+; Line 411
+	mov	eax, -1
+; Line 412
+	ret	0
+?eof@?$_Narrow_char_traits@DH@std@@SAHXZ ENDP		; std::_Narrow_char_traits<char,int>::eof
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z
+_TEXT	SEGMENT
+_Left$ = 8
+_Right$ = 16
+?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z PROC ; std::_Narrow_char_traits<char,int>::eq_int_type, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring
+; Line 403
+	mov	eax, DWORD PTR [rdx]
+	cmp	DWORD PTR [rcx], eax
+	sete	al
+; Line 404
+	ret	0
+?eq_int_type@?$_Narrow_char_traits@DH@std@@SA_NAEBH0@Z ENDP ; std::_Narrow_char_traits<char,int>::eq_int_type
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z
+_TEXT	SEGMENT
+_First$ = 8
+?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z PROC	; std::_Narrow_char_traits<char,int>::length, COMDAT
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring
+; Line 326
+	mov	rax, -1
+$LL3@length:
+	inc	rax
+	cmp	BYTE PTR [rcx+rax], 0
+	jne	SHORT $LL3@length
+; Line 328
+	ret	0
+?length@?$_Narrow_char_traits@DH@std@@SA_KQEBD@Z ENDP	; std::_Narrow_char_traits<char,int>::length
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?_Alloc_proxy@_Container_base0@std@@QEAAXAEBU_Fake_allocator@2@@Z
