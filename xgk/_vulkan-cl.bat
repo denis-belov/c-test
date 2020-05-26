@@ -1,1 +1,0 @@
-cls && node ../../c-build/src/make makefile-vulkan-cl && node ../../c-build/src/run E:\reps\denis-belov\c-test\xgk\build-debug threads-vulkan.exe

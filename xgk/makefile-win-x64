@@ -29,6 +29,8 @@ $(XGK_BUILD)/lib/xgk.lib
 
 $(XGK_BUILD)/lib/xgk.lib : \
 $(XGK_SRC)/util/win-x64.asm \
+$(XGK_SRC)/util/util.h \
+$(XGK_SRC)/util/util.cpp \
 $(XGK_SRC)/data/data.h \
 $(XGK_SRC)/data/vec4/vec4.cpp \
 $(XGK_SRC)/data/vec4/vec4-32.cpp \
@@ -44,7 +46,8 @@ $(XGK_SRC)/object/object.cpp \
 $(XGK_SRC)/time/time.h \
 $(XGK_SRC)/time/time.cpp \
 $(XGK_SRC)/orbit/orbit.h \
-$(XGK_SRC)/orbit/orbit.cpp
+$(XGK_SRC)/orbit/orbit.cpp \
+$(XGK_SRC)/api/vulkan.h
   node E:/reps/denis-belov/c-build/src/make E:/reps/denis-belov/xgk/makefile-win-x64
 
 
@@ -65,10 +68,14 @@ $(BUILD)/obj/glad.obj : E:/clibs/glad/src/glad.c
 
 $(BUILD)/obj/$(NAME).obj : \
 $(SRC)/$(NAME).cpp \
+$(XGK_SRC)/api/opengl.h \
+$(XGK_SRC)/api/vulkan.h \
+$(XGK_SRC)/util/util.h \
 $(XGK_SRC)/data/data.h \
 $(XGK_SRC)/object/object.h \
 $(XGK_SRC)/time/time.h \
 $(XGK_SRC)/orbit/orbit.h \
+$(XGK_SRC)/api/vulkan.h \
 $(BUILD)/temp/shaders.h
   cl \
   $(SRC)/$(NAME).cpp \
@@ -77,8 +84,9 @@ $(BUILD)/temp/shaders.h
   /MD \
   /MP999 \
   /O2 \
-  /IE:/clibs/glad/include \
   /IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include/GLFW \
+  /IE:/clibs/glad/include \
+  /IE:/clibs/VulkanSDK/1.1.121.0/Include/vulkan \
   /I$(XGK_SRC) \
   /I$(BUILD) \
   /Fo$(BUILD)/obj/$(NAME).obj \
