@@ -1,4 +1,4 @@
-// #define DEBUG
+#define DEBUG
 
 #include <cstdint>
 #include <iostream>
@@ -27,25 +27,6 @@
 #include "orbit/orbit.h"
 
 #include "temp/shaders.h"
-
-
-
-using namespace XGK::VULKAN;
-
-
-
-GLFWwindow* window = nullptr;
-
-
-
-Instance vk_inst;
-VkSurfaceKHR vk_surf = VK_NULL_HANDLE;
-Device vk_dev;
-
-
-
-#include "xgk.h"
-#include "api/opengl.h"
 
 
 
@@ -123,6 +104,32 @@ void test (const float interpolation, void* additional) {
 
 
 
+void transition_thread_function (void) {
+
+  while (render_flag) {
+
+    XGK::TIME::getFrameTime(&time_);
+    XGK::TIME::updateTransitions(&time_);
+  }
+};
+
+
+
+void idle_function (void) {};
+
+void (* loop_function) (void) = idle_function;
+
+void (* destroy_api_function) (void) = idle_function;
+
+
+
+void initGL (void);
+void destroyGL (void);
+void initVK (void);
+void destroyVK (void);
+
+GLFWwindow* window = nullptr;
+
 void glfw_key_callback (GLFWwindow* window, int key, int scancode, int action, int mods) {
 
   if (action != GLFW_RELEASE) {
@@ -143,18 +150,22 @@ void glfw_key_callback (GLFWwindow* window, int key, int scancode, int action, i
 
       XGK::DATA::simd128();
     }
-    // else if (key == GLFW_KEY_O) {
+    else if (key == GLFW_KEY_O) {
 
-    //   XGK::OPENGL::initContext();
-    // }
-    // else if (key == GLFW_KEY_V) {
+      if (destroy_api_function != destroyGL) {
 
-    //   initContext();
-    // }
+        initGL();
+      }
+    }
+    else if (key == GLFW_KEY_V) {
+
+      if (destroy_api_function != destroyVK) {
+
+        initVK();
+      }
+    }
   }
 };
-
-
 
 void glfw_error_callback (int error, const char* description) {
 
@@ -163,44 +174,76 @@ void glfw_error_callback (int error, const char* description) {
 
 
 
-void transition_thread_function () {
+using namespace XGK::VULKAN;
 
-  while (render_flag) {
+Instance vk_inst;
+VkSurfaceKHR vk_surf = VK_NULL_HANDLE;
+Device vk_dev;
+VkQueue vk_graphics_queue = VK_NULL_HANDLE;
+VkQueue vk_present_queue = VK_NULL_HANDLE;
 
-    XGK::TIME::getFrameTime(&time_);
-    XGK::TIME::updateTransitions(&time_);
+void* vk_uniform_buffer_mem_addr = nullptr;
+uint8_t curr_image = 0;
+std::vector<VkFence> vk_fences;
+VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE;
+std::vector<VkSemaphore> vk_image_aqcuired_semaphores;
+std::vector<VkSemaphore> vk_submission_completed_semaphores;
+std::vector<uint32_t> vk_image_indices;
+std::vector<VkSubmitInfo> vk_submit_i;
+std::vector<VkPresentInfoKHR> vk_present_i;
+VkPipelineStageFlags vk_wait_stages = 0;
+std::vector<VkCommandBuffer> vk_cmd_buffers;
+
+
+
+void loop_function_VK (void) {
+
+  memcpy(vk_uniform_buffer_mem_addr, &orbit, 64);
+
+  vkWaitForFences(vk_dev.handle, 1, &vk_fences[curr_image], VK_TRUE, 0xFFFFFFFF);
+
+  vkResetFences(vk_dev.handle, 1, &vk_fences[curr_image]);
+
+  vkAcquireNextImageKHR(vk_dev.handle, vk_swapchain, 0xFFFFFFFF, vk_image_aqcuired_semaphores[curr_image], VK_NULL_HANDLE, &vk_image_indices[curr_image]);
+
+  vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_fences[curr_image]);
+
+  vkQueuePresentKHR(vk_present_queue, &vk_present_i[curr_image]);
+
+  curr_image++;
+
+  if (curr_image > 3) {
+
+    curr_image = 0;
   }
 };
 
+void destroyVK (void) {
 
+  vkDeviceWaitIdle(vk_dev.handle);
 
-int main (void) {
+  vk_dev.destroy();
 
-  XGK::TIME::init(&time_, 8);
+  vk_inst.destroy();
 
+  glfwDestroyWindow(window);
+};
 
+void initVK (void) {
 
-  XGK::DATA::simd32();
+  // destroy current context
 
-  XGK::ORBIT::init(&orbit, &orbit_object, &orbit_transition);
-  XGK::OBJECT::setTransZ(orbit.object, 10.0f);
-  XGK::ORBIT::update(&orbit);
-  XGK::DATA::MAT4::makeProjPersp(orbit.proj_mat, 45.0f, 800.0f / 600.0f, 1.0f, 2000.0f, 1.0f);
-
-  // orbit.speed_x = 0.1f;
-  // orbit.speed_y = 0.1f;
-  // XGK::ORBIT::rotate(&orbit);
-  // XGK::ORBIT::update(&orbit);
+  destroy_api_function();
 
 
 
   // glfw
 
-  glfwInit();
-
   glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
-  window = glfwCreateWindow(800, 600, "Simple example", nullptr, nullptr);
+  window = glfwCreateWindow(800, 600, "", nullptr, nullptr);
+
+  glfwSetKeyCallback(window, glfw_key_callback);
 
 
 
@@ -236,8 +279,8 @@ int main (void) {
 
   vk_dev.create(vk_physical_device, vk_dev.graphics_queue_family_index != vk_dev.present_queue_family_index ? 2 : 1, queue_ci.data(), 0, nullptr, 1, vk_dev_exts);
 
-  VkQueue vk_graphics_queue = vk_dev.Queue(vk_dev.graphics_queue_family_index, 0);
-  VkQueue vk_present_queue = vk_dev.Queue(vk_dev.present_queue_family_index, 0);
+  vk_graphics_queue = vk_dev.Queue(vk_dev.graphics_queue_family_index, 0);
+  vk_present_queue = vk_dev.Queue(vk_dev.present_queue_family_index, 0);
 
 
 
@@ -276,37 +319,6 @@ int main (void) {
       VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
       VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
     },
-
-    // // color
-    // {
-    //   0,
-    //   VK_FORMAT_B8G8R8A8_UNORM,
-    //   VK_SAMPLE_COUNT_4_BIT,
-    //   VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_DONT_CARE,
-    //   VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
-    //   VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
-    // },
-
-
-    // // depth
-    // {
-    //   0,
-    //   VK_FORMAT_D32_SFLOAT,
-    //   VK_SAMPLE_COUNT_1_BIT,
-    //   VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_DONT_CARE,
-    //   VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
-    //   VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL
-    // },
-
-    // // color_resolve
-    // {
-    //   0,
-    //   VK_FORMAT_B8G8R8A8_UNORM,
-    //   VK_SAMPLE_COUNT_1_BIT,
-    //   VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_STORE,
-    //   VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
-    //   VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
-    // },
   };
 
   // object accessed by subpass
@@ -338,10 +350,10 @@ int main (void) {
 
   // resourses
 
-  VkSwapchainKHR vk_swapchain = vk_dev.SwapchainKHR(
+  vk_swapchain = vk_dev.SwapchainKHR(
 
     vk_surf,
-    3,
+    4,
     VK_FORMAT_B8G8R8A8_UNORM,
     VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
     800, 600,
@@ -366,9 +378,9 @@ int main (void) {
   std::vector<VkDeviceMemory> vk_render_image_mems(vk_swapchain_image_count);
   std::vector<VkImageView> vk_render_image_views(vk_swapchain_image_count);
   std::vector<VkFramebuffer> vk_framebuffers(vk_swapchain_image_count);
-  std::vector<VkFence> vk_fences(vk_swapchain_image_count);
-  std::vector<VkSemaphore> vk_submission_completed_semaphores(vk_swapchain_image_count);
-  std::vector<VkSemaphore> vk_image_aqcuired_semaphores(vk_swapchain_image_count);
+  vk_fences.resize(vk_swapchain_image_count);
+  vk_submission_completed_semaphores.resize(vk_swapchain_image_count);
+  vk_image_aqcuired_semaphores.resize(vk_swapchain_image_count);
 
   std::vector<VkImage> vk_depth_images(vk_swapchain_image_count);
   std::vector<VkImageView> vk_depth_image_views(vk_swapchain_image_count);
@@ -460,7 +472,7 @@ int main (void) {
       VK_IMAGE_VIEW_TYPE_2D,
       VK_FORMAT_D32_SFLOAT,
       VK_COMPONENT_SWIZZLE_IDENTITY, VK_COMPONENT_SWIZZLE_IDENTITY, VK_COMPONENT_SWIZZLE_IDENTITY, VK_COMPONENT_SWIZZLE_IDENTITY,
-      VK_IMAGE_ASPECT_DEPTH_BIT | VK_IMAGE_ASPECT_STENCIL_BIT,
+      VK_IMAGE_ASPECT_DEPTH_BIT,
       0, 1,
       0, 1
     );
@@ -513,7 +525,7 @@ int main (void) {
 
   vk_dev.bindMem(vk_uniform_buffer, vk_uniform_buffer_mem);
 
-  void* vk_uniform_buffer_mem_addr = vk_dev.mapMem(vk_uniform_buffer_mem, 0, 128, 0);
+  vk_uniform_buffer_mem_addr = vk_dev.mapMem(vk_uniform_buffer_mem, 0, 128, 0);
 
   memcpy(vk_uniform_buffer_mem_addr, &orbit, 128);
 
@@ -557,7 +569,8 @@ int main (void) {
 
   VkPipelineTessellationStateCreateInfo vk_default_ppl_tess = PplTess(0, 0);
 
-  VkViewport viewport = { 0.0f, 0.0f, 800.0f, 600.0f, 0.0f, 1.0f };
+  // flip vulkan viewport
+  VkViewport viewport = { 0.0f, 600.0f, 800.0f, -600.0f, 0.0f, 1.0f };
   VkRect2D scissor = { { 0, 0 }, { 800, 600 } };
 
   VkPipelineViewportStateCreateInfo vk_default_ppl_view = PplView(1, &viewport, 1, &scissor);
@@ -640,11 +653,11 @@ int main (void) {
 
   VkCommandPool vk_cmd_pool = vk_dev.CmdPool(vk_dev.graphics_queue_family_index);
 
-  std::vector<VkCommandBuffer> vk_cmd_buffers = vk_dev.CmdBuffer(vk_cmd_pool, VK_COMMAND_BUFFER_LEVEL_PRIMARY, vk_swapchain_image_count);
+  vk_cmd_buffers = vk_dev.CmdBuffer(vk_cmd_pool, VK_COMMAND_BUFFER_LEVEL_PRIMARY, vk_swapchain_image_count);
 
 
 
-  VkPipelineStageFlags vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+  vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
 
   VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
 
@@ -652,10 +665,10 @@ int main (void) {
   clear_value[0].color = { 0.0f, 0.0f, 0.0f, 1.0f };
   clear_value[1].depthStencil = { 1.0f, 0 };
 
-  std::vector<VkSubmitInfo> vk_submit_i(vk_swapchain_image_count);
-  std::vector<VkPresentInfoKHR> vk_present_i(vk_swapchain_image_count);
+  vk_submit_i.resize(vk_swapchain_image_count);
+  vk_present_i.resize(vk_swapchain_image_count);
   std::vector<VkRenderPassBeginInfo> render_pass_bi(vk_swapchain_image_count);
-  std::vector<uint32_t> vk_image_indices(vk_swapchain_image_count);
+  vk_image_indices.resize(vk_swapchain_image_count);
 
   VkDeviceSize vk_vertex_buffer_offset = 0;
 
@@ -685,330 +698,135 @@ int main (void) {
     );
   }
 
-  uint8_t curr_image = 0;
+  curr_image = 0;
+
+  loop_function = loop_function_VK;
+
+  destroy_api_function = destroyVK;
+};
 
 
 
-  // XGK::OPENGL::initContext(800, 600);
-  // initContext(800, 600, &vulkan_context, VK_SAMPLE_COUNT_4_BIT);
+void loop_function_D3D (void);
+
+void destroyD3D (void);
+
+void initD3D (void);
 
 
 
-  glfwSetErrorCallback(glfw_error_callback);
+void loop_function_GL (void) {
+
+  glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
+  glBufferSubData(GL_UNIFORM_BUFFER, 0, 64, &orbit);
+
+  glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / 4);
+
+  glfwSwapBuffers(window);
+};
+
+void destroyGL (void) {
+
+  glFinish();
+
+  glfwDestroyWindow(window);
+};
+
+void initGL (void) {
+
+  destroy_api_function();
+
+  glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+
+  window = glfwCreateWindow(800, 600, "", nullptr, nullptr);
+
   glfwSetKeyCallback(window, glfw_key_callback);
+  glfwMakeContextCurrent(window);
+  glfwSwapInterval(1);
+
+  gladLoadGL();
+
+  glViewport(0, 0, 800, 600);
+  glEnable(GL_DEPTH_TEST);
+  glDepthFunc(GL_LESS);
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+
+
+  GLuint uniform_buffer;
+  glGenBuffers(1, &uniform_buffer);
+  glBindBuffer(GL_UNIFORM_BUFFER, uniform_buffer);
+  glBufferData(GL_UNIFORM_BUFFER, 128, &orbit, GL_DYNAMIC_DRAW);
+  glBindBufferBase(GL_UNIFORM_BUFFER, 0, uniform_buffer);
+
+
+
+  GLuint vertex_buffer;
+  glGenBuffers(1, &vertex_buffer);
+  glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+  GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
+  glShaderSource(vertex_shader, 1, &vertex_shader_code_opengl, nullptr);
+  glCompileShader(vertex_shader);
+
+  GLuint fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fragment_shader, 1, &fragment_shader_code_opengl, nullptr);
+  glCompileShader(fragment_shader);
+
+  GLuint program = glCreateProgram();
+  glAttachShader(program, vertex_shader);
+  glAttachShader(program, fragment_shader);
+  glLinkProgram(program);
+
+  glUseProgram(program);
+
+
+
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, 0, 0, 0);
+
+
+
+  loop_function = loop_function_GL;
+
+  destroy_api_function = destroyGL;
+};
+
+
+
+int main (void) {
+
+  XGK::TIME::init(&time_, 8);
+
+
+
+  XGK::DATA::simd32();
+
+  XGK::ORBIT::init(&orbit, &orbit_object, &orbit_transition);
+  XGK::OBJECT::setTransZ(orbit.object, 10.0f);
+  XGK::ORBIT::update(&orbit);
+  XGK::DATA::MAT4::makeProjPersp(orbit.proj_mat, 45.0f, 800.0f / 600.0f, 1.0f, 2000.0f, 1.0f);
+
+  // orbit.speed_x = 0.1f;
+  // orbit.speed_y = 0.1f;
+  // XGK::ORBIT::rotate(&orbit);
+  // XGK::ORBIT::update(&orbit);
+
+
+
+  glfwInit();
+  glfwSetErrorCallback(glfw_error_callback);
 
 
 
   // wrap into function
   // vkGetPhysicalDeviceFormatProperties(vulkan_context.physical_devices[0], VK_FORMAT_R32G32B32_SFLOAT, &vulkan_context.format_props);
   // std::cout << (vulkan_context.format_props.bufferFeatures & VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT) << std::endl;
-
-
-
-  // GLuint uniform_buffer;
-  // glGenBuffers(1, &uniform_buffer);
-  // glBindBuffer(GL_UNIFORM_BUFFER, uniform_buffer);
-  // glBufferData(GL_UNIFORM_BUFFER, 128, &orbit, GL_DYNAMIC_DRAW);
-  // glBindBufferBase(GL_UNIFORM_BUFFER, 0, uniform_buffer);
-
-
-
-  // GLuint vertex_buffer;
-  // glGenBuffers(1, &vertex_buffer);
-  // glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-  // glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-  // GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
-  // glShaderSource(vertex_shader, 1, &vertex_shader_code_opengl, nullptr);
-  // glCompileShader(vertex_shader);
-
-  // GLuint fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-  // glShaderSource(fragment_shader, 1, &fragment_shader_code_opengl, nullptr);
-  // glCompileShader(fragment_shader);
-
-  // GLuint program = glCreateProgram();
-  // glAttachShader(program, vertex_shader);
-  // glAttachShader(program, fragment_shader);
-  // glLinkProgram(program);
-
-  // glUseProgram(program);
-
-
-
-  // glEnableVertexAttribArray(0);
-  // glVertexAttribPointer(0, 3, GL_FLOAT, 0, 0, 0);
-
-
-
-  // uint32_t queue_index = 0;
-
-
-
-  // VkBufferCreateInfo vertex_buffer_ci = BufCI(sizeof(vertices), VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_SHARING_MODE_EXCLUSIVE, 1, &queue_index);
-
-  // // VkBuffer vertex_buffer = createBuf(vk_dev.handle, &vertex_buffer_ci);
-  // VkBuffer vertex_buffer = vulkan_context.createBuf(sizeof(vertices), VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_SHARING_MODE_EXCLUSIVE, 1, &queue_index);
-
-  // VkMemoryRequirements vertex_buffer_mem_reqs = getBufMemReqs(vk_dev.handle, vertex_buffer);
-
-  // VkMemoryAllocateInfo vertex_buffer_mem_ai = MemAI(vertex_buffer_mem_reqs.size, getMemTypeIndex(&vulkan_context, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT));
-
-  // VkDeviceMemory vertex_buffer_device_mem = allocMem(vk_dev.handle, &vertex_buffer_mem_ai);
-
-  // vkBindBufferMemory(vk_dev.handle, vertex_buffer, vertex_buffer_device_mem, 0);
-
-  // void* vertex_buffer_mem_addr = mapMem(vk_dev.handle, vertex_buffer_device_mem, 0, sizeof(vertices), 0);
-
-  // memcpy(vertex_buffer_mem_addr, vertices, sizeof(vertices));
-
-  // vkGetBufferMemoryRequirements(vk_dev.handle, vertex_buffer, &vulkan_context.mem_reqs);
-
-  // VkBufferCreateInfo
-  //   vertex_buffer_ci = BufCI();
-  //   vertex_buffer_ci.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
-  //   vertex_buffer_ci.size = sizeof(vertices);
-  //   vertex_buffer_ci.queueFamilyIndexCount = 1;
-  //   vertex_buffer_ci.pQueueFamilyIndices = &queue_index;
-
-  // VkMemoryAllocateInfo
-  //   mem_ai = MemAI();
-  //   mem_ai.allocationSize = vertex_buffer_mem_reqs.size;
-  //   mem_ai.memoryTypeIndex = getMemTypeIndex(&vulkan_context, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
-
-  // void* vertex_buffer_mem_addr;
-  // vkMapMemory(vk_dev.handle, vertex_buffer_device_mem, 0, sizeof(vertices), 0, &vertex_buffer_mem_addr);
-
-
-
-  // VkBufferCreateInfo
-  //   uniform_buffer_ci = BufCI();
-  //   uniform_buffer_ci.usage = VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT;
-  //   uniform_buffer_ci.size = 128;
-  //   uniform_buffer_ci.queueFamilyIndexCount = 1;
-  //   uniform_buffer_ci.pQueueFamilyIndices = &queue_index;
-
-  // VkBuffer uniform_buffer = createBuffer(vk_dev.handle, &uniform_buffer_ci);
-
-  // vkGetBufferMemoryRequirements(vk_dev.handle, uniform_buffer, &vulkan_context.mem_reqs);
-
-  // VkMemoryAllocateInfo
-  //   mem_ai_2 = MemAI();
-  //   mem_ai_2.allocationSize = vulkan_context.mem_reqs.size;
-  //   mem_ai_2.memoryTypeIndex = getMemTypeIndex(&vulkan_context, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT);
-
-  // VkDeviceMemory uniform_buffer_device_mem = allocMem(vk_dev.handle, &mem_ai_2);
-
-  // vkBindBufferMemory(vk_dev.handle, uniform_buffer, uniform_buffer_device_mem, 0);
-
-  // void* vertex_buffer_mem_addr_2;
-  // vkMapMemory(vk_dev.handle, uniform_buffer_device_mem, 0, 128, 0, &vertex_buffer_mem_addr_2);
-  // memcpy(vertex_buffer_mem_addr_2, &orbit, 128);
-
-
-
-  // VkDescriptorSetLayoutBinding descr_set_layout_binding = DescrSetLayoutBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1, VK_SHADER_STAGE_VERTEX_BIT, nullptr);
-
-  // VkDescriptorSetLayoutCreateInfo desrc_set_layout_ci = DescrSetLayoutCI(1, &descr_set_layout_binding);
-
-  // VkDescriptorSetLayout descr_set_layout = createDescriptorSetLayout(vk_dev.handle, &desrc_set_layout_ci);
-
-  // VkDescriptorSetLayoutCreateInfo
-  //   // desrc_set_layout_ci = initDescriptorSetLayoutCI();
-  //   desrc_set_layout_ci = DescrSetLayoutCI();
-  //   desrc_set_layout_ci.bindingCount = 1;
-  //   desrc_set_layout_ci.pBindings = &descr_set_layout_binding;
-
-  // VkDescriptorSetLayout descr_set_layout = VK_NULL_HANDLE;
-  // vkCreateDescriptorSetLayout(vk_dev.handle, &desrc_set_layout_ci, nullptr, &descr_set_layout);
-
-
-
-  // VkDescriptorPoolSize descr_pool_size = getDescriptorPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1);
-
-  // VkDescriptorPoolCreateInfo descr_pool_ci = DescrPoolCI(1, 1, &descr_pool_size);
-
-  // VkDescriptorPool descr_pool = createDescrPool(vk_dev.handle, &descr_pool_ci);
-
-  // VkDescriptorPoolCreateInfo descr_pool_ci = { 0 };
-  // initDescriptorPoolCI(&descr_pool_ci);
-  // descr_pool_ci.maxSets = 1;
-  // descr_pool_ci.poolSizeCount = 1;
-  // descr_pool_ci.pPoolSizes = &descr_pool_size;
-  // VkDescriptorPool descr_pool = VK_NULL_HANDLE;
-  // vkCreateDescriptorPool(vk_dev.handle, &descr_pool_ci, nullptr, &descr_pool);
-
-
-
-  // VkDescriptorSet descr_set = VK_NULL_HANDLE;
-
-  // VkDescriptorSetAllocateInfo descr_set_ai = DescrSetAI(descr_pool, 1, &descr_set_layout);
-
-  // vkAllocateDescriptorSets(vk_dev.handle, &descr_set_ai, &descr_set);
-
-  // VkDescriptorSetAllocateInfo descr_set_ai = { 0 };
-  // initDescriptorSetAI(&descr_set_ai);
-  // descr_set_ai.descriptorPool = descr_pool;
-  // descr_set_ai.descriptorSetCount = 1;
-  // descr_set_ai.pSetLayouts = &descr_set_layout;
-
-  // vkAllocateDescriptorSets(vk_dev.handle, &descr_set_ai, &descr_set);
-
-
-
-  // VkDescriptorBufferInfo descr_bi = DescrBufferI(uniform_buffer, 0, VK_WHOLE_SIZE);
-
-  // VkWriteDescriptorSet write_descr_set = { 0 };
-  // initWriteDescriptorSet(&write_descr_set);
-  // write_descr_set.dstSet = descr_set;
-  // // write_descr_set.dstArrayElement = 1;
-  // write_descr_set.descriptorCount = 1;
-  // write_descr_set.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-  // write_descr_set.pBufferInfo = &descr_bi;
-
-  // vkUpdateDescriptorSets(vk_dev.handle, 1, &write_descr_set, 0, nullptr);
-
-  // VkDescriptorBufferInfo descr_bi = { 0 };
-  // initDescriptorBufferI(&descr_bi);
-  // descr_bi.buffer = uniform_buffer;
-  // descr_bi.offset = 0;
-  // descr_bi.range = VK_WHOLE_SIZE;
-
-  // VkWriteDescriptorSet write_descr_set = { 0 };
-  // initWriteDescriptorSet(&write_descr_set);
-  // write_descr_set.dstSet = descr_set;
-  // // write_descr_set.dstArrayElement = 1;
-  // write_descr_set.descriptorCount = 1;
-  // write_descr_set.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-  // write_descr_set.pBufferInfo = &descr_bi;
-
-  // vkUpdateDescriptorSets(vk_dev.handle, 1, &write_descr_set, 0, nullptr);
-
-
-
-  // VkShaderModuleCreateInfo vertex_shader_module_ci = { 0 };
-  // initShaderModuleCI(&vertex_shader_module_ci);
-  // vertex_shader_module_ci.pCode = vertex_shader_code_vulkan;
-  // vertex_shader_module_ci.codeSize = sizeof(vertex_shader_code_vulkan);
-
-  // VkShaderModule vertex_shader_module = VK_NULL_HANDLE;
-  // vkCreateShaderModule(vk_dev.handle, &vertex_shader_module_ci, nullptr, &vertex_shader_module);
-
-  // VkPipelineShaderStageCreateInfo vertex_shader_stage_ci = { 0 };
-  // initPplShader(&vertex_shader_stage_ci);
-  // vertex_shader_stage_ci.module = vertex_shader_module;
-
-  // VkShaderModuleCreateInfo fragment_shader_module_ci = { 0 };
-  // initShaderModuleCI(&fragment_shader_module_ci);
-  // fragment_shader_module_ci.pCode = fragment_shader_code_vulkan;
-  // fragment_shader_module_ci.codeSize = sizeof(fragment_shader_code_vulkan);
-
-  // VkShaderModule fragment_shader_module = VK_NULL_HANDLE;
-  // vkCreateShaderModule(vk_dev.handle, &fragment_shader_module_ci, nullptr, &fragment_shader_module);
-
-  // VkPipelineShaderStageCreateInfo fragment_shader_stage_ci = { 0 };
-  // initPplShader(&fragment_shader_stage_ci);
-  // fragment_shader_stage_ci.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
-  // fragment_shader_stage_ci.module = fragment_shader_module;
-
-  // VkVertexInputBindingDescription vertex_binding_desc = { 0 };
-  // initVertexInputBindingDesc(&vertex_binding_desc);
-
-  // VkVertexInputAttributeDescription vertex_attr_desc = { 0 };
-  // initVertexInputAttribDesc(&vertex_attr_desc);
-  // vertex_attr_desc.format = VK_FORMAT_R32G32B32_SFLOAT;
-
-  // VkPipelineVertexInputStateCreateInfo vertex_state_ci = { 0 };
-  // initPplVertex(&vertex_state_ci);
-  // vertex_state_ci.vertexBindingDescriptionCount = 1;
-  // vertex_state_ci.pVertexBindingDescriptions = &vertex_binding_desc;
-  // vertex_state_ci.vertexAttributeDescriptionCount = 1;
-  // vertex_state_ci.pVertexAttributeDescriptions = &vertex_attr_desc;
-
-  // VkPipelineInputAssemblyStateCreateInfo input_asm_state_ci = { 0 };
-  // initPplInputAsm(&input_asm_state_ci);
-  // input_asm_state_ci.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
-
-  // VkGraphicsPipelineCreateInfo pipeline_ci = { 0 };
-  // initPplCI2(&vulkan_context, &pipeline_ci);
-
-  // VkPipelineShaderStageCreateInfo pipeline_stages[2] = { vertex_shader_stage_ci, fragment_shader_stage_ci };
-
-  // pipeline_ci.stageCount = 2;
-  // pipeline_ci.pStages = pipeline_stages;
-  // pipeline_ci.pVertexInputState = &vertex_state_ci;
-  // pipeline_ci.pInputAssemblyState = &input_asm_state_ci;
-
-  // VkPipelineLayoutCreateInfo pipeline_layout_ci = { 0 };
-  // initPplLayoutCI(&pipeline_layout_ci);
-  // pipeline_layout_ci.setLayoutCount = 1;
-  // pipeline_layout_ci.pSetLayouts = &descr_set_layout;
-
-  // VkPipelineLayout pipeline_layout = VK_NULL_HANDLE;
-  // vkCreatePipelineLayout(vk_dev.handle, &pipeline_layout_ci, nullptr, &pipeline_layout);
-  // pipeline_ci.layout = pipeline_layout;
-
-  // VkPipeline pipeline = VK_NULL_HANDLE;
-  // vkCreateGraphicsPipelines(vk_dev.handle, VK_NULL_HANDLE, 1, &pipeline_ci, nullptr, &pipeline);
-
-
-
-  // VkCommandPool command_pool = VK_NULL_HANDLE;
-  // VkCommandPoolCreateInfo command_pool_ci = { 0 };
-  // initCommandPoolCI(&command_pool_ci);
-  // vkCreateCommandPool(vk_dev.handle, &command_pool_ci, nullptr, &command_pool);
-  // VkCommandBufferAllocateInfo command_pool_ai = { 0 };
-  // initCommandBufferAI(&command_pool_ai);
-  // command_pool_ai.commandPool = command_pool;
-  // command_pool_ai.commandBufferCount = 3;
-  // VkCommandBuffer command_buffers[3];
-  // vkAllocateCommandBuffers(vk_dev.handle, &command_pool_ai, command_buffers);
-
-
-
-  // VkSubmitInfo submit_i[3];
-
-  // VkPipelineStageFlags wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
-
-  // VkCommandBufferBeginInfo command_buffer_bi = { 0 };
-  // initCmdBufferBI(&command_buffer_bi);
-  // command_buffer_bi.flags = VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT;
-
-  // VkClearValue clear_value = { 0 };
-  // clear_value.color = { 0.0f, 0.0f, 0.0f, 1.0f };
-
-  // VkRenderPassBeginInfo render_pass_bi[3];
-
-  // VkDeviceSize offset = 0;
-
-  // for (uint32_t i = 0; i < 3; i++) {
-
-  //   initRenderPassBI(&render_pass_bi[i]);
-  //   render_pass_bi[i].renderPass = vulkan_context.render_pass;
-  //   render_pass_bi[i].renderArea = { 0, 0, 800, 600 };
-  //   render_pass_bi[i].framebuffer = vulkan_context.framebuffers[i];
-  //   render_pass_bi[i].clearValueCount = 1;
-  //   render_pass_bi[i].pClearValues = &clear_value;
-
-  //   vkBeginCommandBuffer(command_buffers[i], &command_buffer_bi);
-  //   vkCmdBindDescriptorSets(command_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline_layout, 0, 1, &descr_set, 0, nullptr);
-  //   vkCmdBindVertexBuffers(command_buffers[i], 0, 1, &vertex_buffer, &offset);
-  //   vkCmdBeginRenderPass(command_buffers[i], &render_pass_bi[i], VK_SUBPASS_CONTENTS_INLINE);
-  //   vkCmdBindPipeline(command_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
-  //   vkCmdDraw(command_buffers[i], sizeof(vertices) / 12, 1, 0, 0);
-  //   vkCmdEndRenderPass(command_buffers[i]);
-  //   vkEndCommandBuffer(command_buffers[i]);
-
-  //   initSubmitI(&submit_i[i]);
-  //   submit_i[i].waitSemaphoreCount = 1;
-  //   submit_i[i].pWaitSemaphores = &vulkan_context.image_available_semaphores[i];
-  //   submit_i[i].pWaitDstStageMask = &wait_stages;
-  //   submit_i[i].commandBufferCount = 1;
-  //   submit_i[i].pCommandBuffers = &command_buffers[i];
-  //   submit_i[i].signalSemaphoreCount = 1;
-  //   submit_i[i].pSignalSemaphores = &vulkan_context.render_finished_semaphores[i];
-  // }
-
-  // uint8_t curr_image = 0;
+  initGL();
 
 
 
@@ -1034,68 +852,16 @@ int main (void) {
 
     orbit_mutex.unlock();
 
-    // glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-
-    // glBufferSubData(GL_UNIFORM_BUFFER, 0, 64, &orbit);
-
-    // glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / 4);
-
-    // glfwSwapBuffers(window);
-
-    memcpy(vk_uniform_buffer_mem_addr, &orbit, 64);
-
-    vkWaitForFences(vk_dev.handle, 1, &vk_fences[curr_image], VK_TRUE, 0xFFFFFFFF);
-
-    vkResetFences(vk_dev.handle, 1, &vk_fences[curr_image]);
-
-    vkAcquireNextImageKHR(vk_dev.handle, vk_swapchain, 0xFFFFFFFF, vk_image_aqcuired_semaphores[curr_image], VK_NULL_HANDLE, &vk_image_indices[curr_image]);
-
-    vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_fences[curr_image]);
-
-    vkQueuePresentKHR(vk_present_queue, &vk_present_i[curr_image]);
-
-    curr_image++;
-
-    if (curr_image > 2) {
-
-      curr_image = 0;
-    }
+    loop_function();
   }
+
+
 
   transition_thread.join();
 
-  vkDeviceWaitIdle(vk_dev.handle);
 
 
-
-  // XGK::OPENGL::destroyContext();
-
-  // vkFreeCommandBuffers(vk_dev.handle, command_pool, 3, command_buffers);
-  // vkDestroyCommandPool(vk_dev.handle, command_pool, nullptr);
-
-  // vkDestroyPipeline(vk_dev.handle, pipeline, nullptr);
-  // vkDestroyPipelineLayout(vk_dev.handle, pipeline_layout, nullptr);
-  // // destroyDescrSetLayouts(&pipeline_layout_ci);
-  // vkDestroyShaderModule(vk_dev.handle, fragment_shader_module, nullptr);
-  // vkDestroyShaderModule(vk_dev.handle, vertex_shader_module, nullptr);
-
-  // vkDestroyDescriptorSetLayout(vk_dev.handle, descr_set_layout, nullptr);
-  // // vkFreeDescriptorSets(vk_dev.handle, descr_pool, 1, &descr_set);
-  // vkDestroyDescriptorPool(vk_dev.handle, descr_pool, nullptr);
-  // vkDestroyBuffer(vk_dev.handle, vertex_buffer, nullptr);
-  // vkFreeMemory(vk_dev.handle, vertex_buffer_device_mem, nullptr);
-  // vkDestroyBuffer(vk_dev.handle, uniform_buffer, nullptr);
-  // vkFreeMemory(vk_dev.handle, uniform_buffer_device_mem, nullptr);
-
-  // destroyContext(&vulkan_context);
-
-
-
-  vk_dev.destroy();
-
-  vk_inst.destroy();
-
-  glfwDestroyWindow(window);
+  destroy_api_function();
 
 
 
