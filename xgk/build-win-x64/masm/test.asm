@@ -5,26 +5,6 @@ include listing.inc
 INCLUDELIB MSVCRT
 INCLUDELIB OLDNAMES
 
-PUBLIC	?vertex_shader_code_opengl@@3PEBDEB		; vertex_shader_code_opengl
-PUBLIC	??_C@_0BNA@IJLFGMCA@?1?1?5?$CDversion?5300?5es?6?5?5?$CDversion?54@ ; `string'
-PUBLIC	?fragment_shader_code_opengl@@3PEBDEB		; fragment_shader_code_opengl
-PUBLIC	??_C@_0BAI@PFMDJIJN@?1?1?5?$CDversion?5300?5es?6?5?5?$CDversion?54@ ; `string'
-PUBLIC	?bez@@3PAMA					; bez
-PUBLIC	?render_flag@@3EA				; render_flag
-PUBLIC	?orbit@@3UOrbit@XGK@@A				; orbit
-PUBLIC	?orbit_object@@3UObject@XGK@@A			; orbit_object
-PUBLIC	?orbit_transition@@3UTransition@XGK@@A		; orbit_transition
-PUBLIC	?orbit_view_mat_flag@@3EA			; orbit_view_mat_flag
-PUBLIC	?idle_function@@YAXXZ				; idle_function
-PUBLIC	?loop_function@@3P6AXXZEA			; loop_function
-PUBLIC	?destroy_api_function@@3P6AXXZEA		; destroy_api_function
-PUBLIC	?window@@3PEAUGLFWwindow@@EA			; window
-PUBLIC	?vk_surf@@3PEAUVkSurfaceKHR_T@@EA		; vk_surf
-PUBLIC	?vk_graphics_queue@@3PEAUVkQueue_T@@EA		; vk_graphics_queue
-PUBLIC	?vk_present_queue@@3PEAUVkQueue_T@@EA		; vk_present_queue
-PUBLIC	?vk_uniform_buffer_mem_addr@@3PEAXEA		; vk_uniform_buffer_mem_addr
-PUBLIC	?curr_image@@3EA				; curr_image
-PUBLIC	?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA	; vk_swapchain
 PUBLIC	?vk_wait_stages@@3IA				; vk_wait_stages
 PUBLIC	?vkGetInstanceProcAddr@@3P6AP6AXXZPEAUVkInstance_T@@PEBD@ZEA ; vkGetInstanceProcAddr
 PUBLIC	?vkCreateInstance@@3P6A?AW4VkResult@@PEBUVkInstanceCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkInstance_T@@@ZEA ; vkCreateInstance
@@ -111,20 +91,27 @@ PUBLIC	?vkUpdateDescriptorSets@@3P6AXPEAUVkDevice_T@@IPEBUVkWriteDescriptorSet@@
 PUBLIC	?vkAllocateDescriptorSets@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkDescriptorSetAllocateInfo@@PEAPEAUVkDescriptorSet_T@@@ZEA ; vkAllocateDescriptorSets
 PUBLIC	?vkDestroyDescriptorSetLayout@@3P6AXPEAUVkDevice_T@@PEAUVkDescriptorSetLayout_T@@PEBUVkAllocationCallbacks@@@ZEA ; vkDestroyDescriptorSetLayout
 PUBLIC	?hmodule@VULKAN@XGK@@3PEAUHINSTANCE__@@EA	; XGK::VULKAN::hmodule
+PUBLIC	?vertex_shader_code_opengl@@3PEBDEB		; vertex_shader_code_opengl
+PUBLIC	??_C@_0BNA@IJLFGMCA@?1?1?5?$CDversion?5300?5es?6?5?5?$CDversion?54@ ; `string'
+PUBLIC	?fragment_shader_code_opengl@@3PEBDEB		; fragment_shader_code_opengl
+PUBLIC	??_C@_0BAI@PFMDJIJN@?1?1?5?$CDversion?5300?5es?6?5?5?$CDversion?54@ ; `string'
+PUBLIC	?bez@@3PAMA					; bez
+PUBLIC	?render_flag@@3EA				; render_flag
+PUBLIC	?orbit@@3UOrbit@XGK@@A				; orbit
+PUBLIC	?orbit_object@@3UObject@XGK@@A			; orbit_object
+PUBLIC	?orbit_transition@@3UTransition@XGK@@A		; orbit_transition
+PUBLIC	?orbit_view_mat_flag@@3EA			; orbit_view_mat_flag
+PUBLIC	?idle_function@@YAXXZ				; idle_function
+PUBLIC	?loop_function@@3P6AXXZEA			; loop_function
+PUBLIC	?destroy_api_function@@3P6AXXZEA		; destroy_api_function
+PUBLIC	?window@@3PEAUGLFWwindow@@EA			; window
+PUBLIC	?vk_surf@@3PEAUVkSurfaceKHR_T@@EA		; vk_surf
+PUBLIC	?vk_graphics_queue@@3PEAUVkQueue_T@@EA		; vk_graphics_queue
+PUBLIC	?vk_present_queue@@3PEAUVkQueue_T@@EA		; vk_present_queue
+PUBLIC	?vk_uniform_buffer_mem_addr@@3PEAXEA		; vk_uniform_buffer_mem_addr
+PUBLIC	?curr_image@@3EA				; curr_image
+PUBLIC	?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA	; vk_swapchain
 _BSS	SEGMENT
-?bez@@3PAMA DD	03e8H DUP (?)				; bez
-?orbit@@3UOrbit@XGK@@A DB 0b0H DUP (?)			; orbit
-?orbit_object@@3UObject@XGK@@A DB 080H DUP (?)		; orbit_object
-?orbit_transition@@3UTransition@XGK@@A DB 030H DUP (?)	; orbit_transition
-?window@@3PEAUGLFWwindow@@EA DQ 01H DUP (?)		; window
-?vk_surf@@3PEAUVkSurfaceKHR_T@@EA DQ 01H DUP (?)	; vk_surf
-?vk_graphics_queue@@3PEAUVkQueue_T@@EA DQ 01H DUP (?)	; vk_graphics_queue
-?vk_present_queue@@3PEAUVkQueue_T@@EA DQ 01H DUP (?)	; vk_present_queue
-?vk_uniform_buffer_mem_addr@@3PEAXEA DQ 01H DUP (?)	; vk_uniform_buffer_mem_addr
-?curr_image@@3EA DB 01H DUP (?)				; curr_image
-	ALIGN	8
-
-?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA DQ 01H DUP (?)	; vk_swapchain
 ?vk_wait_stages@@3IA DD 01H DUP (?)			; vk_wait_stages
 	ALIGN	8
 
@@ -213,6 +200,19 @@ _BSS	SEGMENT
 ?vkAllocateDescriptorSets@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkDescriptorSetAllocateInfo@@PEAPEAUVkDescriptorSet_T@@@ZEA DQ 01H DUP (?) ; vkAllocateDescriptorSets
 ?vkDestroyDescriptorSetLayout@@3P6AXPEAUVkDevice_T@@PEAUVkDescriptorSetLayout_T@@PEBUVkAllocationCallbacks@@@ZEA DQ 01H DUP (?) ; vkDestroyDescriptorSetLayout
 ?hmodule@VULKAN@XGK@@3PEAUHINSTANCE__@@EA DQ 01H DUP (?) ; XGK::VULKAN::hmodule
+?bez@@3PAMA DD	03e8H DUP (?)				; bez
+?orbit@@3UOrbit@XGK@@A DB 0b0H DUP (?)			; orbit
+?orbit_object@@3UObject@XGK@@A DB 080H DUP (?)		; orbit_object
+?orbit_transition@@3UTransition@XGK@@A DB 030H DUP (?)	; orbit_transition
+?window@@3PEAUGLFWwindow@@EA DQ 01H DUP (?)		; window
+?vk_surf@@3PEAUVkSurfaceKHR_T@@EA DQ 01H DUP (?)	; vk_surf
+?vk_graphics_queue@@3PEAUVkQueue_T@@EA DQ 01H DUP (?)	; vk_graphics_queue
+?vk_present_queue@@3PEAUVkQueue_T@@EA DQ 01H DUP (?)	; vk_present_queue
+?vk_uniform_buffer_mem_addr@@3PEAXEA DQ 01H DUP (?)	; vk_uniform_buffer_mem_addr
+?curr_image@@3EA DB 01H DUP (?)				; curr_image
+	ALIGN	8
+
+?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA DQ 01H DUP (?)	; vk_swapchain
 _BSS	ENDS
 ;	COMDAT ??_C@_0BAI@PFMDJIJN@?1?1?5?$CDversion?5300?5es?6?5?5?$CDversion?54@
 CONST	SEGMENT
@@ -878,6 +878,7 @@ PUBLIC	?unlock@_Mutex_base@std@@QEAAXXZ		; std::_Mutex_base::unlock
 PUBLIC	?_Mymtx@_Mutex_base@std@@AEAAPEAU_Mtx_internal_imp_t@@XZ ; std::_Mutex_base::_Mymtx
 PUBLIC	??0mutex@std@@QEAA@XZ				; std::mutex::mutex
 PUBLIC	??1mutex@std@@QEAA@XZ				; std::mutex::~mutex
+PUBLIC	??0ImVec2@@QEAA@MM@Z				; ImVec2::ImVec2
 PUBLIC	?loadGlobalFunctions@VULKAN@XGK@@YAXXZ		; XGK::VULKAN::loadGlobalFunctions
 PUBLIC	?loadSharedLibrary@VULKAN@XGK@@YAXXZ		; XGK::VULKAN::loadSharedLibrary
 PUBLIC	?freeSharedLibrary@VULKAN@XGK@@YAXXZ		; XGK::VULKAN::freeSharedLibrary
@@ -2106,6 +2107,15 @@ PUBLIC	??_C@_0BF@COCMEDFO@VK_KHR_win32_surface@	; `string'
 PUBLIC	??_C@_0BE@DEFJLCKG@VK_EXT_debug_report@		; `string'
 PUBLIC	??_C@_0BB@MGNLFLJB@VK_KHR_swapchain@		; `string'
 PUBLIC	??_C@_04GHJNJNPO@main@				; `string'
+PUBLIC	??_C@_03LGFKAKCF@XGK@				; `string'
+PUBLIC	??_C@_06BKLEJAEP@opengl@			; `string'
+PUBLIC	??_C@_0L@DEAECJM@vulkan?5128@			; `string'
+PUBLIC	??_C@_07BFJLNCFM@simd?532@			; `string'
+PUBLIC	??_C@_08NPFOPCHN@simd?5128@			; `string'
+PUBLIC	??_C@_04MKNBDEPB@exit@				; `string'
+PUBLIC	??_C@_0CN@EIPBEGMP@Application?5average?5?$CF?43f?5ms?1fra@ ; `string'
+PUBLIC	??_C@_08OKBABAGJ@1?477?5WIP@			; `string'
+PUBLIC	??_C@_0N@OMJDJCFB@?$CDversion?5450@		; `string'
 PUBLIC	??_C@_03JMGAKCCH@END@				; `string'
 PUBLIC	??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long@	; `string'
 PUBLIC	??_R4exception@std@@6B@				; std::exception::`RTTI Complete Object Locator'
@@ -2131,6 +2141,7 @@ PUBLIC	__real@42340000
 PUBLIC	__real@447a0000
 PUBLIC	__real@44fa0000
 PUBLIC	__real@5f000000
+PUBLIC	__real@bf800000
 PUBLIC	__xmm@00000000000000000000002c00000001
 PUBLIC	__xmm@00000000000000000000007e00000001
 PUBLIC	__xmm@00000000000000010000000200000001
@@ -2164,10 +2175,6 @@ EXTRN	__imp_?_Osfx@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAXXZ:PROC
 EXTRN	__imp_??6?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV01@P6AAEAV01@AEAV01@@Z@Z:PROC
 EXTRN	__imp_?put@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@D@Z:PROC
 EXTRN	__imp_?flush@?$basic_ostream@DU?$char_traits@D@std@@@std@@QEAAAEAV12@XZ:PROC
-EXTRN	__imp_FreeLibrary:PROC
-EXTRN	__imp_GetModuleHandleA:PROC
-EXTRN	__imp_GetProcAddress:PROC
-EXTRN	__imp_LoadLibraryA:PROC
 EXTRN	__imp__beginthreadex:PROC
 EXTRN	_Thrd_join:PROC
 EXTRN	_Thrd_id:PROC
@@ -2178,6 +2185,10 @@ EXTRN	_Mtx_unlock:PROC
 EXTRN	_Cnd_do_broadcast_at_thread_exit:PROC
 EXTRN	?_Throw_C_error@std@@YAXH@Z:PROC		; std::_Throw_C_error
 EXTRN	?_Throw_Cpp_error@std@@YAXH@Z:PROC		; std::_Throw_Cpp_error
+EXTRN	__imp_FreeLibrary:PROC
+EXTRN	__imp_GetModuleHandleA:PROC
+EXTRN	__imp_GetProcAddress:PROC
+EXTRN	__imp_LoadLibraryA:PROC
 EXTRN	gladLoadGL:PROC
 EXTRN	glfwInit:PROC
 EXTRN	glfwTerminate:PROC
@@ -2191,6 +2202,26 @@ EXTRN	glfwMakeContextCurrent:PROC
 EXTRN	glfwSwapBuffers:PROC
 EXTRN	glfwSwapInterval:PROC
 EXTRN	glfwGetWin32Window:PROC
+EXTRN	?CreateContext@ImGui@@YAPEAUImGuiContext@@PEAUImFontAtlas@@@Z:PROC ; ImGui::CreateContext
+EXTRN	?DestroyContext@ImGui@@YAXPEAUImGuiContext@@@Z:PROC ; ImGui::DestroyContext
+EXTRN	?GetIO@ImGui@@YAAEAUImGuiIO@@XZ:PROC		; ImGui::GetIO
+EXTRN	?NewFrame@ImGui@@YAXXZ:PROC			; ImGui::NewFrame
+EXTRN	?Render@ImGui@@YAXXZ:PROC			; ImGui::Render
+EXTRN	?GetDrawData@ImGui@@YAPEAUImDrawData@@XZ:PROC	; ImGui::GetDrawData
+EXTRN	?StyleColorsDark@ImGui@@YAXPEAUImGuiStyle@@@Z:PROC ; ImGui::StyleColorsDark
+EXTRN	?Begin@ImGui@@YA_NPEBDPEA_NH@Z:PROC		; ImGui::Begin
+EXTRN	?End@ImGui@@YAXXZ:PROC				; ImGui::End
+EXTRN	?SameLine@ImGui@@YAXMM@Z:PROC			; ImGui::SameLine
+EXTRN	?Text@ImGui@@YAXPEBDZZ:PROC			; ImGui::Text
+EXTRN	?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z:PROC	; ImGui::Button
+EXTRN	?DebugCheckVersionAndDataLayout@ImGui@@YA_NPEBD_K11111@Z:PROC ; ImGui::DebugCheckVersionAndDataLayout
+EXTRN	?ImGui_ImplGlfw_InitForOpenGL@@YA_NPEAUGLFWwindow@@_N@Z:PROC ; ImGui_ImplGlfw_InitForOpenGL
+EXTRN	?ImGui_ImplGlfw_Shutdown@@YAXXZ:PROC		; ImGui_ImplGlfw_Shutdown
+EXTRN	?ImGui_ImplGlfw_NewFrame@@YAXXZ:PROC		; ImGui_ImplGlfw_NewFrame
+EXTRN	?ImGui_ImplOpenGL3_Init@@YA_NPEBD@Z:PROC	; ImGui_ImplOpenGL3_Init
+EXTRN	?ImGui_ImplOpenGL3_Shutdown@@YAXXZ:PROC		; ImGui_ImplOpenGL3_Shutdown
+EXTRN	?ImGui_ImplOpenGL3_NewFrame@@YAXXZ:PROC		; ImGui_ImplOpenGL3_NewFrame
+EXTRN	?ImGui_ImplOpenGL3_RenderDrawData@@YAXPEAUImDrawData@@@Z:PROC ; ImGui_ImplOpenGL3_RenderDrawData
 EXTRN	?makeBezierCurve3Sequence2@UTIL@XGK@@YAXMMMM_KPEAM@Z:PROC ; XGK::UTIL::makeBezierCurve3Sequence2
 EXTRN	?simd32@VEC4@DATA@XGK@@YAXXZ:PROC		; XGK::DATA::VEC4::simd32
 EXTRN	?simd128@VEC4@DATA@XGK@@YAXXZ:PROC		; XGK::DATA::VEC4::simd128
@@ -4027,20 +4058,32 @@ $pdata$?transition_thread_function@@YAXXZ DD imagerel $LN10
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?initGL@@YAXXZ DD imagerel $LN4
-	DD	imagerel $LN4+570
+$pdata$?initGL@@YAXXZ DD imagerel $LN5
+	DD	imagerel $LN5+29
 	DD	imagerel $unwind$?initGL@@YAXXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
+$pdata$2$?initGL@@YAXXZ DD imagerel $LN5+29
+	DD	imagerel $LN5+688
+	DD	imagerel $chain$2$?initGL@@YAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
+$pdata$3$?initGL@@YAXXZ DD imagerel $LN5+688
+	DD	imagerel $LN5+695
+	DD	imagerel $chain$3$?initGL@@YAXXZ
+pdata	ENDS
+;	COMDAT pdata
+pdata	SEGMENT
 $pdata$?destroyGL@@YAXXZ DD imagerel $LN4
-	DD	imagerel $LN4+26
+	DD	imagerel $LN4+43
 	DD	imagerel $unwind$?destroyGL@@YAXXZ
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?initVK@@YAXXZ DD imagerel $LN1351
-	DD	imagerel $LN1351+11188
+$pdata$?initVK@@YAXXZ DD imagerel $LN1352
+	DD	imagerel $LN1352+11220
 	DD	imagerel $unwind$?initVK@@YAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -4057,8 +4100,8 @@ $pdata$?destroyVK@@YAXXZ DD imagerel $LN34
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z DD imagerel $LN36
-	DD	imagerel $LN36+220
+$pdata$?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z DD imagerel $LN23
+	DD	imagerel $LN23+124
 	DD	imagerel $unwind$?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z
 pdata	ENDS
 ;	COMDAT pdata
@@ -4423,8 +4466,8 @@ $pdata$?_Xlength@?$vector@UVkRenderPassBeginInfo@@V?$allocator@UVkRenderPassBegi
 pdata	ENDS
 ;	COMDAT pdata
 pdata	SEGMENT
-$pdata$?loop_function_GL@@YAXXZ DD imagerel $LN4
-	DD	imagerel $LN4+70
+$pdata$?loop_function_GL@@YAXXZ DD imagerel $LN26
+	DD	imagerel $LN26+436
 	DD	imagerel $unwind$?loop_function_GL@@YAXXZ
 pdata	ENDS
 ;	COMDAT pdata
@@ -6036,6 +6079,10 @@ CONST	SEGMENT
 __xmm@00000000000000000000002c00000001 DB 01H, 00H, 00H, 00H, ',', 00H, 00H
 	DB	00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H, 00H
 CONST	ENDS
+;	COMDAT __real@bf800000
+CONST	SEGMENT
+__real@bf800000 DD 0bf800000r			; -1
+CONST	ENDS
 ;	COMDAT __real@5f000000
 CONST	SEGMENT
 __real@5f000000 DD 05f000000r			; 9.22337e+18
@@ -6183,6 +6230,43 @@ CONST	ENDS
 ;	COMDAT ??_C@_03JMGAKCCH@END@
 CONST	SEGMENT
 ??_C@_03JMGAKCCH@END@ DB 'END', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0N@OMJDJCFB@?$CDversion?5450@
+CONST	SEGMENT
+??_C@_0N@OMJDJCFB@?$CDversion?5450@ DB '#version 450', 00H ; `string'
+CONST	ENDS
+;	COMDAT ??_C@_08OKBABAGJ@1?477?5WIP@
+CONST	SEGMENT
+??_C@_08OKBABAGJ@1?477?5WIP@ DB '1.77 WIP', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0CN@EIPBEGMP@Application?5average?5?$CF?43f?5ms?1fra@
+CONST	SEGMENT
+??_C@_0CN@EIPBEGMP@Application?5average?5?$CF?43f?5ms?1fra@ DB 'Applicati'
+	DB	'on average %.3f ms/frame (%.1f FPS)', 00H	; `string'
+CONST	ENDS
+;	COMDAT ??_C@_04MKNBDEPB@exit@
+CONST	SEGMENT
+??_C@_04MKNBDEPB@exit@ DB 'exit', 00H			; `string'
+CONST	ENDS
+;	COMDAT ??_C@_08NPFOPCHN@simd?5128@
+CONST	SEGMENT
+??_C@_08NPFOPCHN@simd?5128@ DB 'simd 128', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_07BFJLNCFM@simd?532@
+CONST	SEGMENT
+??_C@_07BFJLNCFM@simd?532@ DB 'simd 32', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_0L@DEAECJM@vulkan?5128@
+CONST	SEGMENT
+??_C@_0L@DEAECJM@vulkan?5128@ DB 'vulkan 128', 00H	; `string'
+CONST	ENDS
+;	COMDAT ??_C@_06BKLEJAEP@opengl@
+CONST	SEGMENT
+??_C@_06BKLEJAEP@opengl@ DB 'opengl', 00H		; `string'
+CONST	ENDS
+;	COMDAT ??_C@_03LGFKAKCF@XGK@
+CONST	SEGMENT
+??_C@_03LGFKAKCF@XGK@ DB 'XGK', 00H			; `string'
 CONST	ENDS
 ;	COMDAT ??_C@_04GHJNJNPO@main@
 CONST	SEGMENT
@@ -9887,8 +9971,9 @@ $unwind$main DD	010411H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?loop_function_GL@@YAXXZ DD 010401H
-	DD	04204H
+$unwind$?loop_function_GL@@YAXXZ DD 030e01H
+	DD	02680eH
+	DD	06204H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -10259,29 +10344,29 @@ xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
 $ip2state$?initVK@@YAXXZ DB '4'
-	DB	084H
+	DB	0b2H
 	DB	00H
-	DB	0a9H, 0eH
+	DB	0cdH, 0eH
 	DB	02H
 	DB	09H, 012H
 	DB	04H
-	DB	'=', 03H
+	DB	'1', 03H
 	DB	06H
 	DB	'A', 02H
 	DB	08H
-	DB	0b1H, 02H
+	DB	0bdH, 02H
 	DB	0aH
-	DB	']', 02H
+	DB	'}', 02H
 	DB	0cH
 	DB	'}', 02H
 	DB	0eH
 	DB	019H, 03H
 	DB	010H
-	DB	'e', 02H
+	DB	0a9H, 02H
 	DB	012H
-	DB	0e5H, 02H
+	DB	0d1H, 02H
 	DB	014H
-	DB	081H, '3'
+	DB	'13'
 	DB	016H
 	DB	095H, '$'
 	DB	018H
@@ -10394,10 +10479,25 @@ $unwind$?destroyGL@@YAXXZ DD 010401H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
-$unwind$?initGL@@YAXXZ DD 060f01H
-	DD	0b640fH
-	DD	0a340fH
-	DD	0700b520fH
+$chain$3$?initGL@@YAXXZ DD 021H
+	DD	imagerel $LN5
+	DD	imagerel $LN5+29
+	DD	imagerel $unwind$?initGL@@YAXXZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$chain$2$?initGL@@YAXXZ DD 060f21H
+	DD	08740fH
+	DD	09640aH
+	DD	0e3405H
+	DD	imagerel $LN5
+	DD	imagerel $LN5+29
+	DD	imagerel $unwind$?initGL@@YAXXZ
+xdata	ENDS
+;	COMDAT xdata
+xdata	SEGMENT
+$unwind$?initGL@@YAXXZ DD 020601H
+	DD	0e0029206H
 xdata	ENDS
 ;	COMDAT xdata
 xdata	SEGMENT
@@ -28058,10 +28158,10 @@ $T1 = 64
 _Decay_copied$2 = 96
 main	PROC						; COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 793
+; Line 884
 $LN77:
 	sub	rsp, 88					; 00000058H
-; Line 795
+; Line 886
 	mov	edx, 8
 	lea	rcx, OFFSET FLAT:?time_@@3UTime@XGK@@A	; time_
 	call	?init@TIME@XGK@@YAXPEAUTime@2@_K@Z	; XGK::TIME::init
@@ -28073,19 +28173,19 @@ $LN77:
 ; Line 183
 	call	?simd32@MAT4@DATA@XGK@@YAXXZ		; XGK::DATA::MAT4::simd32
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 801
+; Line 892
 	lea	r8, OFFSET FLAT:?orbit_transition@@3UTransition@XGK@@A ; orbit_transition
 	lea	rdx, OFFSET FLAT:?orbit_object@@3UObject@XGK@@A ; orbit_object
 	lea	rcx, OFFSET FLAT:?orbit@@3UOrbit@XGK@@A	; orbit
 	call	?init@ORBIT@XGK@@YAXPEAUOrbit@2@PEAUObject@2@PEAUTransition@2@@Z ; XGK::ORBIT::init
-; Line 802
+; Line 893
 	movss	xmm1, DWORD PTR __real@41200000
 	mov	rcx, QWORD PTR ?orbit@@3UOrbit@XGK@@A+128
 	call	?setTransZ@OBJECT@XGK@@YAXPEAUObject@2@M@Z ; XGK::OBJECT::setTransZ
-; Line 803
+; Line 894
 	lea	rcx, OFFSET FLAT:?orbit@@3UOrbit@XGK@@A	; orbit
 	call	?update@ORBIT@XGK@@YAXPEAUOrbit@2@@Z	; XGK::ORBIT::update
-; Line 804
+; Line 895
 	movss	xmm3, DWORD PTR __real@3f800000
 	movss	DWORD PTR [rsp+40], xmm3
 	movss	xmm0, DWORD PTR __real@44fa0000
@@ -28094,14 +28194,14 @@ $LN77:
 	movss	xmm1, DWORD PTR __real@42340000
 	lea	rcx, OFFSET FLAT:?orbit@@3UOrbit@XGK@@A+64
 	call	QWORD PTR ?makeProjPersp@MAT4@DATA@XGK@@3P6AXPEAXMMMMM@ZEA ; XGK::DATA::MAT4::makeProjPersp
-; Line 813
+; Line 904
 	call	glfwInit
-; Line 814
+; Line 905
 	lea	rcx, OFFSET FLAT:?glfw_error_callback@@YAXHPEBD@Z ; glfw_error_callback
 	call	glfwSetErrorCallback
-; Line 821
+; Line 912
 	call	?initGL@@YAXXZ				; initGL
-; Line 825
+; Line 916
 	lea	rax, OFFSET FLAT:?bez@@3PAMA		; bez
 	mov	QWORD PTR [rsp+40], rax
 	mov	QWORD PTR [rsp+32], 1000		; 000003e8H
@@ -28139,11 +28239,11 @@ $LN16@main:
 	test	rax, rax
 	je	$LN9@main
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 837
+; Line 928
 	cmp	BYTE PTR ?render_flag@@3EA, 0		; render_flag
 	je	SHORT $LN3@main
 $LL2@main:
-; Line 839
+; Line 930
 	call	glfwPollEvents
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\mutex
 ; Line 47
@@ -28154,7 +28254,7 @@ $LL2@main:
 	test	eax, eax
 	jne	$LN66@main
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 843
+; Line 934
 	lea	rcx, OFFSET FLAT:?orbit@@3UOrbit@XGK@@A	; orbit
 	call	?update@ORBIT@XGK@@YAXPEAUOrbit@2@@Z	; XGK::ORBIT::update
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\mutex
@@ -28166,9 +28266,9 @@ $LL2@main:
 	test	eax, eax
 	jne	$LN67@main
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 847
+; Line 938
 	call	QWORD PTR ?loop_function@@3P6AXXZEA	; loop_function
-; Line 837
+; Line 928
 	cmp	BYTE PTR ?render_flag@@3EA, 0		; render_flag
 	jne	SHORT $LL2@main
 $LN3@main:
@@ -28192,11 +28292,11 @@ $LN3@main:
 ; Line 117
 	movdqa	XMMWORD PTR transition_thread$[rsp], xmm0
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 856
+; Line 947
 	call	QWORD PTR ?destroy_api_function@@3P6AXXZEA ; destroy_api_function
-; Line 860
+; Line 951
 	call	glfwTerminate
-; Line 864
+; Line 955
 	lea	rdx, OFFSET FLAT:??_C@_03JMGAKCCH@END@
 	mov	rcx, QWORD PTR __imp_?cout@std@@3V?$basic_ostream@DU?$char_traits@D@std@@@1@A
 	call	??$?6U?$char_traits@D@std@@@std@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@0@AEAV10@PEBD@Z ; std::operator<<<std::char_traits<char> >
@@ -28214,9 +28314,9 @@ $LN3@main:
 	int	3
 $LN61@main:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 868
+; Line 959
 	xor	eax, eax
-; Line 869
+; Line 960
 	add	rsp, 88					; 00000058H
 	ret	0
 $LN75@main:
@@ -28301,30 +28401,146 @@ text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?loop_function_GL@@YAXXZ
 _TEXT	SEGMENT
+$T1 = 64
+$T2 = 64
+$T3 = 64
+$T4 = 64
+$T5 = 64
 ?loop_function_GL@@YAXXZ PROC				; loop_function_GL, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 710
-$LN4:
-	sub	rsp, 40					; 00000028H
-; Line 712
+; Line 776
+$LN26:
+	sub	rsp, 56					; 00000038H
+; Line 778
 	mov	ecx, 16640				; 00004100H
+	movaps	XMMWORD PTR [rsp+32], xmm6
 	call	QWORD PTR glad_glClear
-; Line 714
+; Line 780
 	xor	edx, edx
 	lea	r9, OFFSET FLAT:?orbit@@3UOrbit@XGK@@A	; orbit
 	mov	ecx, 35345				; 00008a11H
 	lea	r8d, QWORD PTR [rdx+64]
 	call	QWORD PTR glad_glBufferSubData
-; Line 716
+; Line 782
 	xor	edx, edx
-	lea	r8d, QWORD PTR [rdx+108]
 	lea	ecx, QWORD PTR [rdx+4]
+	lea	r8d, QWORD PTR [rdx+108]
 	call	QWORD PTR glad_glDrawArrays
-; Line 718
+; Line 784
+	call	?ImGui_ImplOpenGL3_NewFrame@@YAXXZ	; ImGui_ImplOpenGL3_NewFrame
+	call	?ImGui_ImplGlfw_NewFrame@@YAXXZ		; ImGui_ImplGlfw_NewFrame
+	call	?NewFrame@ImGui@@YAXXZ			; ImGui::NewFrame
+	xor	r8d, r8d
+	lea	rcx, OFFSET FLAT:??_C@_03LGFKAKCF@XGK@
+	xor	edx, edx
+	call	?Begin@ImGui@@YA_NPEBDPEA_NH@Z		; ImGui::Begin
+	lea	rdx, QWORD PTR $T5[rsp]
+; File E:\reps\ocornut\imgui\imgui.h
+; Line 212
+	mov	QWORD PTR $T5[rsp], 0
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	lea	rcx, OFFSET FLAT:??_C@_06BKLEJAEP@opengl@
+	call	?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z	; ImGui::Button
+	test	al, al
+	je	SHORT $LN2@loop_funct
+	call	?initGL@@YAXXZ				; initGL
+$LN2@loop_funct:
+	movss	xmm6, DWORD PTR __real@bf800000
+	xorps	xmm0, xmm0
+	movaps	xmm1, xmm6
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+	lea	rdx, QWORD PTR $T4[rsp]
+; File E:\reps\ocornut\imgui\imgui.h
+; Line 212
+	mov	QWORD PTR $T4[rsp], 0
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	lea	rcx, OFFSET FLAT:??_C@_0L@DEAECJM@vulkan?5128@
+	call	?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z	; ImGui::Button
+	test	al, al
+	je	SHORT $LN3@loop_funct
+	call	?initVK@@YAXXZ				; initVK
+$LN3@loop_funct:
+	lea	rdx, QWORD PTR $T3[rsp]
+; File E:\reps\ocornut\imgui\imgui.h
+; Line 212
+	mov	QWORD PTR $T3[rsp], 0
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	lea	rcx, OFFSET FLAT:??_C@_07BFJLNCFM@simd?532@
+	call	?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z	; ImGui::Button
+	test	al, al
+	je	SHORT $LN4@loop_funct
+; File E:\reps\denis-belov\xgk\src\data\data.h
+; Line 181
+	call	?simd32@VEC4@DATA@XGK@@YAXXZ		; XGK::DATA::VEC4::simd32
+; Line 182
+	call	?simd32@QUAT@DATA@XGK@@YAXXZ		; XGK::DATA::QUAT::simd32
+; Line 183
+	call	?simd32@MAT4@DATA@XGK@@YAXXZ		; XGK::DATA::MAT4::simd32
+$LN4@loop_funct:
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	movaps	xmm1, xmm6
+	xorps	xmm0, xmm0
+	call	?SameLine@ImGui@@YAXMM@Z		; ImGui::SameLine
+	lea	rdx, QWORD PTR $T2[rsp]
+; File E:\reps\ocornut\imgui\imgui.h
+; Line 212
+	mov	QWORD PTR $T2[rsp], 0
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	lea	rcx, OFFSET FLAT:??_C@_08NPFOPCHN@simd?5128@
+	call	?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z	; ImGui::Button
+	test	al, al
+	je	SHORT $LN5@loop_funct
+; File E:\reps\denis-belov\xgk\src\data\data.h
+; Line 188
+	call	?simd128@VEC4@DATA@XGK@@YAXXZ		; XGK::DATA::VEC4::simd128
+; Line 189
+	call	?simd128@QUAT@DATA@XGK@@YAXXZ		; XGK::DATA::QUAT::simd128
+; Line 190
+	call	?simd128@MAT4@DATA@XGK@@YAXXZ		; XGK::DATA::MAT4::simd128
+$LN5@loop_funct:
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	lea	rdx, QWORD PTR $T1[rsp]
+; File E:\reps\ocornut\imgui\imgui.h
+; Line 212
+	mov	QWORD PTR $T1[rsp], 0
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 784
+	lea	rcx, OFFSET FLAT:??_C@_04MKNBDEPB@exit@
+	call	?Button@ImGui@@YA_NPEBDAEBUImVec2@@@Z	; ImGui::Button
+	movzx	ecx, BYTE PTR ?render_flag@@3EA		; render_flag
+	xor	edx, edx
+	test	al, al
+	cmovne	ecx, edx
+	mov	BYTE PTR ?render_flag@@3EA, cl		; render_flag
+	call	?GetIO@ImGui@@YAAEAUImGuiIO@@XZ		; ImGui::GetIO
+	movss	xmm6, DWORD PTR [rax+928]
+	cvtps2pd xmm6, xmm6
+	call	?GetIO@ImGui@@YAAEAUImGuiIO@@XZ		; ImGui::GetIO
+	lea	rcx, OFFSET FLAT:??_C@_0CN@EIPBEGMP@Application?5average?5?$CF?43f?5ms?1fra@
+	movss	xmm0, DWORD PTR __real@447a0000
+	movaps	xmm2, xmm6
+	divss	xmm0, DWORD PTR [rax+928]
+	movq	r8, xmm6
+	cvtps2pd xmm1, xmm0
+	movq	rdx, xmm1
+	call	?Text@ImGui@@YAXPEBDZZ			; ImGui::Text
+	call	?End@ImGui@@YAXXZ			; ImGui::End
+	call	?Render@ImGui@@YAXXZ			; ImGui::Render
+	call	?GetDrawData@ImGui@@YAPEAUImDrawData@@XZ ; ImGui::GetDrawData
+	mov	rcx, rax
+	call	?ImGui_ImplOpenGL3_RenderDrawData@@YAXPEAUImDrawData@@@Z ; ImGui_ImplOpenGL3_RenderDrawData
+; Line 786
 	mov	rcx, QWORD PTR ?window@@3PEAUGLFWwindow@@EA ; window
-; Line 719
-	add	rsp, 40					; 00000028H
-; Line 718
+; Line 787
+	movaps	xmm6, XMMWORD PTR [rsp+32]
+	add	rsp, 56					; 00000038H
+; Line 786
 	jmp	glfwSwapBuffers
 ?loop_function_GL@@YAXXZ ENDP				; loop_function_GL
 _TEXT	ENDS
@@ -29820,14 +30036,14 @@ _TEXT	ENDS
 _TEXT	SEGMENT
 ?loop_function_VK@@YAXXZ PROC				; loop_function_VK, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 199
+; Line 254
 $LN20:
 	mov	QWORD PTR [rsp+8], rbx
 	push	rdi
 	sub	rsp, 48					; 00000030H
-; Line 201
+; Line 256
 	mov	rax, QWORD PTR ?vk_uniform_buffer_mem_addr@@3PEAXEA ; vk_uniform_buffer_mem_addr
-; Line 203
+; Line 258
 	mov	edx, 1
 	movaps	xmm0, XMMWORD PTR ?orbit@@3UOrbit@XGK@@A
 	mov	ebx, -1					; ffffffffH
@@ -29846,10 +30062,10 @@ $LN20:
 	mov	rax, QWORD PTR ?vk_fences@@3V?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@A
 	lea	r8, QWORD PTR [rax+rcx*8]
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 203
+; Line 258
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkWaitForFences@@3P6A?AW4VkResult@@PEAUVkDevice_T@@IPEBQEAUVkFence_T@@I_K@ZEA ; vkWaitForFences
-; Line 205
+; Line 260
 	movzx	ecx, BYTE PTR ?curr_image@@3EA		; curr_image
 	mov	edx, 1
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
@@ -29857,17 +30073,17 @@ $LN20:
 	mov	rax, QWORD PTR ?vk_fences@@3V?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@A
 	lea	r8, QWORD PTR [rax+rcx*8]
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 205
+; Line 260
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkResetFences@@3P6A?AW4VkResult@@PEAUVkDevice_T@@IPEBQEAUVkFence_T@@@ZEA ; vkResetFences
-; Line 207
+; Line 262
 	movzx	r10d, BYTE PTR ?curr_image@@3EA		; curr_image
 	xor	edi, edi
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1458
 	mov	rax, QWORD PTR ?vk_image_indices@@3V?$vector@IV?$allocator@I@std@@@std@@A
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 207
+; Line 262
 	mov	r8d, ebx
 	mov	r9, QWORD PTR ?vk_image_aqcuired_semaphores@@3V?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@A
 	mov	rdx, QWORD PTR ?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA ; vk_swapchain
@@ -29875,31 +30091,31 @@ $LN20:
 ; Line 1458
 	lea	rcx, QWORD PTR [rax+r10*4]
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 207
+; Line 262
 	mov	r9, QWORD PTR [r9+r10*8]
 	mov	QWORD PTR [rsp+40], rcx
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	mov	QWORD PTR [rsp+32], rdi
 	call	QWORD PTR ?vkAcquireNextImageKHR@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkSwapchainKHR_T@@_KPEAUVkSemaphore_T@@PEAUVkFence_T@@PEAI@ZEA ; vkAcquireNextImageKHR
-; Line 209
+; Line 264
 	movzx	r10d, BYTE PTR ?curr_image@@3EA		; curr_image
 	lea	edx, QWORD PTR [rdi+1]
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1458
 	mov	rax, QWORD PTR ?vk_submit_i@@3V?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@A
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 209
+; Line 264
 	mov	r9, QWORD PTR ?vk_fences@@3V?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@A
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1458
 	lea	rcx, QWORD PTR [r10+r10*8]
 	lea	r8, QWORD PTR [rax+rcx*8]
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 209
+; Line 264
 	mov	rcx, QWORD PTR ?vk_graphics_queue@@3PEAUVkQueue_T@@EA ; vk_graphics_queue
 	mov	r9, QWORD PTR [r9+r10*8]
 	call	QWORD PTR ?vkQueueSubmit@@3P6A?AW4VkResult@@PEAUVkQueue_T@@IPEBUVkSubmitInfo@@PEAUVkFence_T@@@ZEA ; vkQueueSubmit
-; Line 211
+; Line 266
 	movzx	edx, BYTE PTR ?curr_image@@3EA		; curr_image
 	mov	rcx, QWORD PTR ?vk_present_queue@@3PEAUVkQueue_T@@EA ; vk_present_queue
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
@@ -29907,11 +30123,11 @@ $LN20:
 	shl	rdx, 6
 	add	rdx, QWORD PTR ?vk_present_i@@3V?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@A
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 211
+; Line 266
 	call	QWORD PTR ?vkQueuePresentKHR@@3P6A?AW4VkResult@@PEAUVkQueue_T@@PEBUVkPresentInfoKHR@@@ZEA ; vkQueuePresentKHR
-; Line 213
+; Line 268
 	movzx	ecx, BYTE PTR ?curr_image@@3EA		; curr_image
-; Line 219
+; Line 274
 	mov	rbx, QWORD PTR [rsp+64]
 	inc	cl
 	cmp	cl, 3
@@ -29978,7 +30194,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_cmd_buffers@@YAXXZ PROC				; `dynamic initializer for 'vk_cmd_buffers'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 195
+; Line 250
 	lea	rcx, OFFSET FLAT:??__Fvk_cmd_buffers@@YAXXZ ; `dynamic atexit destructor for 'vk_cmd_buffers''
 	jmp	atexit
 ??__Evk_cmd_buffers@@YAXXZ ENDP				; `dynamic initializer for 'vk_cmd_buffers''
@@ -30038,7 +30254,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_present_i@@YAXXZ PROC				; `dynamic initializer for 'vk_present_i'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 193
+; Line 248
 	lea	rcx, OFFSET FLAT:??__Fvk_present_i@@YAXXZ ; `dynamic atexit destructor for 'vk_present_i''
 	jmp	atexit
 ??__Evk_present_i@@YAXXZ ENDP				; `dynamic initializer for 'vk_present_i''
@@ -30785,7 +31001,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_submit_i@@YAXXZ PROC				; `dynamic initializer for 'vk_submit_i'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 192
+; Line 247
 	lea	rcx, OFFSET FLAT:??__Fvk_submit_i@@YAXXZ ; `dynamic atexit destructor for 'vk_submit_i''
 	jmp	atexit
 ??__Evk_submit_i@@YAXXZ ENDP				; `dynamic initializer for 'vk_submit_i''
@@ -31571,7 +31787,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_image_indices@@YAXXZ PROC			; `dynamic initializer for 'vk_image_indices'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 191
+; Line 246
 	lea	rcx, OFFSET FLAT:??__Fvk_image_indices@@YAXXZ ; `dynamic atexit destructor for 'vk_image_indices''
 	jmp	atexit
 ??__Evk_image_indices@@YAXXZ ENDP			; `dynamic initializer for 'vk_image_indices''
@@ -32290,7 +32506,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_submission_completed_semaphores@@YAXXZ PROC	; `dynamic initializer for 'vk_submission_completed_semaphores'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 190
+; Line 245
 	lea	rcx, OFFSET FLAT:??__Fvk_submission_completed_semaphores@@YAXXZ ; `dynamic atexit destructor for 'vk_submission_completed_semaphores''
 	jmp	atexit
 ??__Evk_submission_completed_semaphores@@YAXXZ ENDP	; `dynamic initializer for 'vk_submission_completed_semaphores''
@@ -32350,7 +32566,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_image_aqcuired_semaphores@@YAXXZ PROC		; `dynamic initializer for 'vk_image_aqcuired_semaphores'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 189
+; Line 244
 	lea	rcx, OFFSET FLAT:??__Fvk_image_aqcuired_semaphores@@YAXXZ ; `dynamic atexit destructor for 'vk_image_aqcuired_semaphores''
 	jmp	atexit
 ??__Evk_image_aqcuired_semaphores@@YAXXZ ENDP		; `dynamic initializer for 'vk_image_aqcuired_semaphores''
@@ -32410,7 +32626,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_fences@@YAXXZ PROC				; `dynamic initializer for 'vk_fences'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 187
+; Line 242
 	lea	rcx, OFFSET FLAT:??__Fvk_fences@@YAXXZ	; `dynamic atexit destructor for 'vk_fences''
 	jmp	atexit
 ??__Evk_fences@@YAXXZ ENDP				; `dynamic initializer for 'vk_fences''
@@ -32428,7 +32644,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_dev@@YAXXZ PROC					; `dynamic initializer for 'vk_dev'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 181
+; Line 236
 	lea	rcx, OFFSET FLAT:??__Fvk_dev@@YAXXZ	; `dynamic atexit destructor for 'vk_dev''
 	jmp	atexit
 ??__Evk_dev@@YAXXZ ENDP					; `dynamic initializer for 'vk_dev''
@@ -32488,7 +32704,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Evk_inst@@YAXXZ PROC				; `dynamic initializer for 'vk_inst'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 179
+; Line 234
 	lea	rcx, OFFSET FLAT:??__Fvk_inst@@YAXXZ	; `dynamic atexit destructor for 'vk_inst''
 	jmp	atexit
 ??__Evk_inst@@YAXXZ ENDP				; `dynamic initializer for 'vk_inst''
@@ -32500,21 +32716,21 @@ error$ = 48
 description$ = 56
 ?glfw_error_callback@@YAXHPEBD@Z PROC			; glfw_error_callback, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 170
+; Line 225
 $LN4:
 	push	rbx
 	sub	rsp, 32					; 00000020H
-; Line 172
+; Line 227
 	mov	ecx, 2
 	mov	rbx, rdx
 	call	QWORD PTR __imp___acrt_iob_func
 	mov	r8, rbx
 	lea	rdx, OFFSET FLAT:??_C@_0L@DCCGFMBN@Error?3?5?$CFs?6@
 	mov	rcx, rax
-; Line 173
+; Line 228
 	add	rsp, 32					; 00000020H
 	pop	rbx
-; Line 172
+; Line 227
 	jmp	fprintf
 ?glfw_error_callback@@YAXHPEBD@Z ENDP			; glfw_error_callback
 _TEXT	ENDS
@@ -32528,24 +32744,25 @@ action$ = 88
 mods$ = 96
 ?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z PROC	; glfw_key_callback, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 133
-$LN36:
+; Line 188
+$LN23:
 	sub	rsp, 56					; 00000038H
-; Line 135
+; Line 190
 	test	r9d, r9d
-	je	$LN13@glfw_key_c
-; Line 137
-	cmp	edx, 90					; 0000005aH
+	je	SHORT $LN17@glfw_key_c
+; Line 192
+	cmp	edx, 256				; 00000100H
 	jne	SHORT $LN3@glfw_key_c
-; Line 139
+; Line 194
 	mov	BYTE PTR ?render_flag@@3EA, 0		; render_flag
-; Line 168
+$LN17@glfw_key_c:
+; Line 223
 	add	rsp, 56					; 00000038H
 	ret	0
 $LN3@glfw_key_c:
-; Line 141
+; Line 196
 	cmp	edx, 88					; 00000058H
-	jne	SHORT $LN5@glfw_key_c
+	jne	SHORT $LN17@glfw_key_c
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\mutex
 ; Line 47
 	lea	rcx, OFFSET FLAT:?orbit_mutex@@3Vmutex@std@@A ; orbit_mutex
@@ -32553,9 +32770,9 @@ $LN3@glfw_key_c:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\thr\xthreads.h
 ; Line 138
 	test	eax, eax
-	jne	$LN34@glfw_key_c
+	jne	SHORT $LN22@glfw_key_c
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 145
+; Line 200
 	movss	xmm2, DWORD PTR __real@3a83126f
 	lea	rax, OFFSET FLAT:?test@@YAXMPEAX@Z	; test
 	movaps	xmm3, xmm2
@@ -32570,64 +32787,16 @@ $LN3@glfw_key_c:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\thr\xthreads.h
 ; Line 138
 	test	eax, eax
-	jne	SHORT $LN35@glfw_key_c
-	jmp	SHORT $LN13@glfw_key_c
-$LN5@glfw_key_c:
-; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 149
-	cmp	edx, 83					; 00000053H
-	jne	SHORT $LN7@glfw_key_c
-; File E:\reps\denis-belov\xgk\src\data\data.h
-; Line 188
-	call	?simd128@VEC4@DATA@XGK@@YAXXZ		; XGK::DATA::VEC4::simd128
-; Line 189
-	call	?simd128@QUAT@DATA@XGK@@YAXXZ		; XGK::DATA::QUAT::simd128
-; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 168
-	add	rsp, 56					; 00000038H
-; File E:\reps\denis-belov\xgk\src\data\data.h
-; Line 190
-	jmp	?simd128@MAT4@DATA@XGK@@YAXXZ		; XGK::DATA::MAT4::simd128
-$LN7@glfw_key_c:
-; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 153
-	cmp	edx, 79					; 0000004fH
-	jne	SHORT $LN9@glfw_key_c
-; Line 155
-	lea	rax, OFFSET FLAT:?destroyGL@@YAXXZ	; destroyGL
-	cmp	QWORD PTR ?destroy_api_function@@3P6AXXZEA, rax ; destroy_api_function
-	je	SHORT $LN13@glfw_key_c
-; Line 168
-	add	rsp, 56					; 00000038H
-; Line 157
-	jmp	?initGL@@YAXXZ				; initGL
-$LN9@glfw_key_c:
-; Line 160
-	cmp	edx, 86					; 00000056H
-	jne	SHORT $LN13@glfw_key_c
-; Line 162
-	lea	rax, OFFSET FLAT:?destroyVK@@YAXXZ	; destroyVK
-	cmp	QWORD PTR ?destroy_api_function@@3P6AXXZEA, rax ; destroy_api_function
-	je	SHORT $LN13@glfw_key_c
-; Line 168
-	add	rsp, 56					; 00000038H
-; Line 164
-	jmp	?initVK@@YAXXZ				; initVK
-$LN13@glfw_key_c:
-; Line 168
-	add	rsp, 56					; 00000038H
-	ret	0
-$LN34@glfw_key_c:
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\thr\xthreads.h
+	je	SHORT $LN17@glfw_key_c
 ; Line 139
 	mov	ecx, eax
 	call	?_Throw_C_error@std@@YAXH@Z		; std::_Throw_C_error
 	int	3
-$LN35@glfw_key_c:
+$LN22@glfw_key_c:
 	mov	ecx, eax
 	call	?_Throw_C_error@std@@YAXH@Z		; std::_Throw_C_error
 	int	3
-$LN32@glfw_key_c:
+$LN20@glfw_key_c:
 ?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z ENDP	; glfw_key_callback
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
@@ -32635,14 +32804,14 @@ _TEXT	ENDS
 _TEXT	SEGMENT
 ?destroyVK@@YAXXZ PROC					; destroyVK, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 221
+; Line 276
 $LN34:
 	push	rbx
 	sub	rsp, 32					; 00000020H
-; Line 223
+; Line 278
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkDeviceWaitIdle@@3P6A?AW4VkResult@@PEAUVkDevice_T@@@ZEA ; vkDeviceWaitIdle
-; Line 225
+; Line 280
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	call	?destroy@Device@VULKAN@XGK@@QEAAXXZ	; XGK::VULKAN::Device::destroy
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
@@ -32716,19 +32885,19 @@ $LN5@destroyVK:
 	mov	rcx, QWORD PTR ?hmodule@VULKAN@XGK@@3PEAUHINSTANCE__@@EA ; XGK::VULKAN::hmodule
 	call	QWORD PTR __imp_FreeLibrary
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 229
+; Line 284
 	mov	rcx, QWORD PTR ?window@@3PEAUGLFWwindow@@EA ; window
-; Line 230
+; Line 285
 	add	rsp, 32					; 00000020H
 	pop	rbx
-; Line 229
+; Line 284
 	jmp	glfwDestroyWindow
 ?destroyVK@@YAXXZ ENDP					; destroyVK
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?initVK@@YAXXZ
 _TEXT	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -32744,138 +32913,138 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?initVK@@YAXXZ PROC					; initVK, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 232
-$LN1351:
+; Line 287
+$LN1352:
 	mov	rax, rsp
 	mov	QWORD PTR [rax+8], rbx
 	mov	QWORD PTR [rax+16], rsi
@@ -32892,14 +33061,19 @@ $LN1351:
 	xor	rax, rsp
 	mov	QWORD PTR __$ArrayPad$[rbp-256], rax
 	xor	r15d, r15d
-	mov	DWORD PTR $T39[rbp-256], r15d
-; Line 236
-	call	QWORD PTR ?destroy_api_function@@3P6AXXZEA ; destroy_api_function
-; Line 242
+	mov	DWORD PTR $T43[rbp-256], r15d
+; Line 289
+	lea	rcx, OFFSET FLAT:?destroyVK@@YAXXZ	; destroyVK
+	mov	rax, QWORD PTR ?destroy_api_function@@3P6AXXZEA ; destroy_api_function
+	cmp	rax, rcx
+	je	$LN1256@initVK
+; Line 293
+	call	rax
+; Line 299
 	xor	edx, edx
 	mov	ecx, 139265				; 00022001H
 	call	glfwWindowHint
-; Line 244
+; Line 301
 	mov	QWORD PTR [rsp+32], r15
 	xor	r9d, r9d
 	lea	r8, OFFSET FLAT:??_C@_00CNPNBAHC@@
@@ -32907,58 +33081,58 @@ $LN1351:
 	mov	ecx, 800				; 00000320H
 	call	glfwCreateWindow
 	mov	QWORD PTR ?window@@3PEAUGLFWwindow@@EA, rax ; window
-; Line 246
+; Line 303
 	lea	rdx, OFFSET FLAT:?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z ; glfw_key_callback
 	mov	rcx, rax
 	call	glfwSetKeyCallback
-; Line 252
+; Line 309
 	lea	rax, OFFSET FLAT:??_C@_0BM@LGHMGEMH@VK_LAYER_KHRONOS_validation@
-	mov	QWORD PTR vk_inst_layers$[rbp-256], rax
-; Line 253
+	mov	QWORD PTR vk_inst_layers$57[rbp-256], rax
+; Line 310
 	lea	rax, OFFSET FLAT:??_C@_0P@IENCOMCD@VK_KHR_surface@
-	mov	QWORD PTR vk_inst_exts$[rbp-256], rax
+	mov	QWORD PTR vk_inst_exts$135[rbp-256], rax
 	lea	rax, OFFSET FLAT:??_C@_0BF@COCMEDFO@VK_KHR_win32_surface@
-	mov	QWORD PTR vk_inst_exts$[rbp-248], rax
+	mov	QWORD PTR vk_inst_exts$135[rbp-248], rax
 	lea	rax, OFFSET FLAT:??_C@_0BE@DEFJLCKG@VK_EXT_debug_report@
-	mov	QWORD PTR vk_inst_exts$[rbp-240], rax
+	mov	QWORD PTR vk_inst_exts$135[rbp-240], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 313
-	mov	DWORD PTR $T84[rbp-256], r15d
+	mov	DWORD PTR $T133[rbp-256], r15d
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR $T84[rbp-248], xmm0
+	movdqu	XMMWORD PTR $T133[rbp-248], xmm0
 ; Line 316
-	mov	DWORD PTR $T84[rbp-232], r15d
+	mov	DWORD PTR $T133[rbp-232], r15d
 ; Line 317
-	mov	QWORD PTR $T84[rbp-224], r15
+	mov	QWORD PTR $T133[rbp-224], r15
 ; Line 318
-	mov	DWORD PTR $T84[rbp-216], r15d
+	mov	DWORD PTR $T133[rbp-216], r15d
 ; Line 319
-	mov	DWORD PTR $T84[rbp-212], 4194304	; 00400000H
+	mov	DWORD PTR $T133[rbp-212], 4194304	; 00400000H
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 255
-	movups	xmm0, XMMWORD PTR $T84[rbp-256]
-	movups	XMMWORD PTR app_i$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T84[rbp-240]
-	movups	XMMWORD PTR app_i$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T84[rbp-224]
-	movups	XMMWORD PTR app_i$[rbp-224], xmm0
-; Line 258
+; Line 312
+	movups	xmm0, XMMWORD PTR $T133[rbp-256]
+	movups	XMMWORD PTR app_i$73[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T133[rbp-240]
+	movups	XMMWORD PTR app_i$73[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T133[rbp-224]
+	movups	XMMWORD PTR app_i$73[rbp-224], xmm0
+; Line 315
 	mov	QWORD PTR [rsp+64], r15
 	mov	QWORD PTR [rsp+56], r15
 	mov	DWORD PTR [rsp+48], r15d
-	lea	rax, QWORD PTR vk_inst_exts$[rbp-256]
+	lea	rax, QWORD PTR vk_inst_exts$135[rbp-256]
 	mov	QWORD PTR [rsp+40], rax
 	mov	DWORD PTR [rsp+32], 3
-	lea	r9, QWORD PTR vk_inst_layers$[rbp-256]
+	lea	r9, QWORD PTR vk_inst_layers$57[rbp-256]
 	lea	r8d, QWORD PTR [r15+1]
-	lea	rdx, QWORD PTR app_i$[rbp-256]
+	lea	rdx, QWORD PTR app_i$73[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_inst@@3UInstance@VULKAN@XGK@@A ; vk_inst
 	call	?create@Instance@VULKAN@XGK@@QEAAXPEBUVkApplicationInfo@@IPEBQEBDI1IPEBXPEBUVkAllocationCallbacks@@@Z ; XGK::VULKAN::Instance::create
-; Line 263
+; Line 320
 	mov	rax, QWORD PTR ?vk_inst@@3UInstance@VULKAN@XGK@@A+16
 	mov	rsi, QWORD PTR [rax]
-; Line 265
+; Line 322
 	mov	rcx, QWORD PTR ?window@@3PEAUGLFWwindow@@EA ; window
 	call	glfwGetWin32Window
 	mov	rbx, rax
@@ -32966,50 +33140,50 @@ $LN1351:
 	call	QWORD PTR __imp_GetModuleHandleA
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 471
-	mov	DWORD PTR info$66[rbp-256], 1000009000	; 3b9aed28H
+	mov	DWORD PTR info$114[rbp-256], 1000009000	; 3b9aed28H
 ; Line 472
-	mov	QWORD PTR info$66[rbp-248], r15
+	mov	QWORD PTR info$114[rbp-248], r15
 ; Line 473
-	mov	DWORD PTR info$66[rbp-240], r15d
+	mov	DWORD PTR info$114[rbp-240], r15d
 ; Line 474
-	mov	QWORD PTR info$66[rbp-232], rax
+	mov	QWORD PTR info$114[rbp-232], rax
 ; Line 475
-	mov	QWORD PTR info$66[rbp-224], rbx
+	mov	QWORD PTR info$114[rbp-224], rbx
 ; Line 478
-	mov	QWORD PTR surface$27[rsp], r15
+	mov	QWORD PTR surface$26[rsp], r15
 ; Line 480
-	lea	r9, QWORD PTR surface$27[rsp]
+	lea	r9, QWORD PTR surface$26[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$66[rbp-256]
+	lea	rdx, QWORD PTR info$114[rbp-256]
 	mov	rcx, QWORD PTR ?vk_inst@@3UInstance@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateWin32SurfaceKHR@@3P6A?AW4VkResult@@PEAUVkInstance_T@@PEBUVkWin32SurfaceCreateInfoKHR@@PEBUVkAllocationCallbacks@@PEAPEAUVkSurfaceKHR_T@@@ZEA ; vkCreateWin32SurfaceKHR
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_inst@@3UInstance@VULKAN@XGK@@A+32
 	cmp	rdx, QWORD PTR ?vk_inst@@3UInstance@VULKAN@XGK@@A+40
-	je	SHORT $LN32@initVK
+	je	SHORT $LN33@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR surface$27[rsp]
+	mov	rax, QWORD PTR surface$26[rsp]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_inst@@3UInstance@VULKAN@XGK@@A+32, 8
 ; Line 656
-	jmp	SHORT $LN31@initVK
-$LN32@initVK:
+	jmp	SHORT $LN32@initVK
+$LN33@initVK:
 ; Line 659
-	lea	r8, QWORD PTR surface$27[rsp]
+	lea	r8, QWORD PTR surface$26[rsp]
 	lea	rcx, OFFSET FLAT:?vk_inst@@3UInstance@VULKAN@XGK@@A+24
 	call	??$_Emplace_reallocate@AEBQEAUVkSurfaceKHR_T@@@?$vector@PEAUVkSurfaceKHR_T@@V?$allocator@PEAUVkSurfaceKHR_T@@@std@@@std@@QEAAPEAPEAUVkSurfaceKHR_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkSurfaceKHR_T *,std::allocator<VkSurfaceKHR_T *> >::_Emplace_reallocate<VkSurfaceKHR_T * const &>
-$LN31@initVK:
+$LN32@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 265
-	mov	r14, QWORD PTR surface$27[rsp]
+; Line 322
+	mov	r14, QWORD PTR surface$26[rsp]
 	mov	QWORD PTR ?vk_surf@@3PEAUVkSurfaceKHR_T@@EA, r14 ; vk_surf
-; Line 267
+; Line 324
 	lea	rax, OFFSET FLAT:??_C@_0BB@MGNLFLJB@VK_KHR_swapchain@
-	mov	QWORD PTR vk_dev_exts$[rbp-256], rax
+	mov	QWORD PTR vk_dev_exts$58[rbp-256], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 992
 	xor	r8d, r8d
@@ -33062,17 +33236,17 @@ $LN31@initVK:
 ; Line 1089
 	mov	rbx, r15
 	cmp	DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+8, r15d
-	jbe	SHORT $LN1317@initVK
+	jbe	SHORT $LN1318@initVK
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 265
+; Line 322
 	mov	rdi, r15
-	npad	2
-$LL41@initVK:
+	npad	15
+$LL42@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1091
-	mov	DWORD PTR surface_support$33[rbp-256], r15d
+	mov	DWORD PTR surface_support$32[rbp-256], r15d
 ; Line 1093
-	lea	r9, QWORD PTR surface_support$33[rbp-256]
+	lea	r9, QWORD PTR surface_support$32[rbp-256]
 	mov	r8, r14
 	mov	edx, ebx
 	mov	rcx, rsi
@@ -33080,56 +33254,56 @@ $LL41@initVK:
 ; Line 1095
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+16
 	test	BYTE PTR [rdi+rcx], 1
-	je	SHORT $LN1316@initVK
+	je	SHORT $LN1317@initVK
 ; Line 1097
 	mov	DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+612, ebx
 ; Line 1098
 	mov	eax, DWORD PTR [rdi+rcx+4]
 	mov	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+616, rax
-$LN1316@initVK:
+$LN1317@initVK:
 ; Line 1101
-	cmp	DWORD PTR surface_support$33[rbp-256], r15d
-	je	SHORT $LN39@initVK
+	cmp	DWORD PTR surface_support$32[rbp-256], r15d
+	je	SHORT $LN40@initVK
 ; Line 1103
 	mov	DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+624, ebx
 ; Line 1104
 	mov	eax, DWORD PTR [rdi+rcx+4]
 	mov	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+632, rax
-$LN39@initVK:
+$LN40@initVK:
 ; Line 1089
 	inc	rbx
 	add	rdi, 24
 	mov	eax, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+8
 	cmp	rbx, rax
-	jb	SHORT $LL41@initVK
-$LN1317@initVK:
+	jb	SHORT $LL42@initVK
+$LN1318@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 271
+; Line 328
 	movss	xmm6, DWORD PTR __real@3f800000
-	mov	DWORD PTR queue_priorities$[rbp-256], 1065353216 ; 3f800000H
+	mov	DWORD PTR queue_priorities$39[rbp-256], 1065353216 ; 3f800000H
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 529
-	mov	DWORD PTR $T83[rbp-256], 2
+	mov	DWORD PTR $T132[rbp-256], 2
 ; Line 530
-	mov	QWORD PTR $T83[rbp-248], r15
+	mov	QWORD PTR $T132[rbp-248], r15
 ; Line 531
-	mov	DWORD PTR $T83[rbp-240], r15d
+	mov	DWORD PTR $T132[rbp-240], r15d
 ; Line 532
 	mov	eax, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+612
-	mov	DWORD PTR $T83[rbp-236], eax
+	mov	DWORD PTR $T132[rbp-236], eax
 ; Line 533
-	mov	DWORD PTR $T83[rbp-232], 1
+	mov	DWORD PTR $T132[rbp-232], 1
 ; Line 534
-	lea	rax, QWORD PTR queue_priorities$[rbp-256]
-	mov	QWORD PTR $T83[rbp-224], rax
+	lea	rax, QWORD PTR queue_priorities$39[rbp-256]
+	mov	QWORD PTR $T132[rbp-224], rax
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 273
-	movups	xmm0, XMMWORD PTR $T83[rbp-256]
-	movups	XMMWORD PTR $T57[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T83[rbp-240]
-	movups	XMMWORD PTR $T57[rbp-240], xmm1
-	movsd	xmm0, QWORD PTR $T83[rbp-224]
-	movsd	QWORD PTR $T57[rbp-224], xmm0
+; Line 330
+	movups	xmm0, XMMWORD PTR $T132[rbp-256]
+	movups	XMMWORD PTR $T95[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T132[rbp-240]
+	movups	XMMWORD PTR $T95[rbp-240], xmm1
+	movsd	xmm0, QWORD PTR $T132[rbp-224]
+	movsd	QWORD PTR $T95[rbp-224], xmm0
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 47
 	mov	ecx, 40					; 00000028H
@@ -33137,352 +33311,352 @@ $LN1317@initVK:
 	mov	rbx, rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR queue_ci$[rbp-256], rax
+	mov	QWORD PTR queue_ci$62[rbp-256], rax
 ; Line 1602
 	lea	rdi, QWORD PTR [rax+40]
-	mov	QWORD PTR queue_ci$[rbp-240], rdi
+	mov	QWORD PTR queue_ci$62[rbp-240], rdi
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xutility
 ; Line 1744
 	mov	r8d, 40					; 00000028H
-	lea	rdx, QWORD PTR $T57[rbp-256]
+	lea	rdx, QWORD PTR $T95[rbp-256]
 	mov	rcx, rax
 	call	memmove
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 442
-	mov	QWORD PTR queue_ci$[rbp-248], rdi
+	mov	QWORD PTR queue_ci$62[rbp-248], rdi
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 275
+; Line 332
 	mov	edx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+612
 	mov	ecx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+624
 	cmp	edx, ecx
-	je	$LN115@initVK
+	je	$LN116@initVK
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 529
-	mov	DWORD PTR $T82[rbp-256], 2
+	mov	DWORD PTR $T131[rbp-256], 2
 ; Line 530
-	mov	QWORD PTR $T82[rbp-248], r15
+	mov	QWORD PTR $T131[rbp-248], r15
 ; Line 531
-	mov	DWORD PTR $T82[rbp-240], r15d
+	mov	DWORD PTR $T131[rbp-240], r15d
 ; Line 532
-	mov	DWORD PTR $T82[rbp-236], ecx
+	mov	DWORD PTR $T131[rbp-236], ecx
 ; Line 533
-	mov	DWORD PTR $T82[rbp-232], 1
+	mov	DWORD PTR $T131[rbp-232], 1
 ; Line 534
-	lea	rax, QWORD PTR queue_priorities$[rbp-256]
-	mov	QWORD PTR $T82[rbp-224], rax
+	lea	rax, QWORD PTR queue_priorities$39[rbp-256]
+	mov	QWORD PTR $T131[rbp-224], rax
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 277
-	movups	xmm0, XMMWORD PTR $T82[rbp-256]
-	movups	XMMWORD PTR $T40[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T82[rbp-240]
-	movups	XMMWORD PTR $T40[rbp-240], xmm1
-	movsd	xmm0, QWORD PTR $T82[rbp-224]
-	movsd	QWORD PTR $T40[rbp-224], xmm0
+; Line 334
+	movups	xmm0, XMMWORD PTR $T131[rbp-256]
+	movups	XMMWORD PTR $T61[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T131[rbp-240]
+	movups	XMMWORD PTR $T61[rbp-240], xmm1
+	movsd	xmm0, QWORD PTR $T131[rbp-224]
+	movsd	QWORD PTR $T61[rbp-224], xmm0
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 659
-	lea	r8, QWORD PTR $T40[rbp-256]
+	lea	r8, QWORD PTR $T61[rbp-256]
 	mov	rdx, rdi
-	lea	rcx, QWORD PTR queue_ci$[rbp-256]
+	lea	rcx, QWORD PTR queue_ci$62[rbp-256]
 	call	??$_Emplace_reallocate@UVkDeviceQueueCreateInfo@@@?$vector@UVkDeviceQueueCreateInfo@@V?$allocator@UVkDeviceQueueCreateInfo@@@std@@@std@@QEAAPEAUVkDeviceQueueCreateInfo@@QEAU2@$$QEAU2@@Z ; std::vector<VkDeviceQueueCreateInfo,std::allocator<VkDeviceQueueCreateInfo> >::_Emplace_reallocate<VkDeviceQueueCreateInfo>
-	mov	rbx, QWORD PTR queue_ci$[rbp-256]
+	mov	rbx, QWORD PTR queue_ci$62[rbp-256]
 	mov	ecx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+624
 	mov	edx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+612
-$LN115@initVK:
+$LN116@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 280
+; Line 337
 	mov	eax, r15d
 	cmp	edx, ecx
 	setne	al
 	inc	eax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1141
-	mov	DWORD PTR info$65[rbp-256], 3
+	mov	DWORD PTR info$113[rbp-256], 3
 ; Line 1142
-	mov	QWORD PTR info$65[rbp-248], r15
+	mov	QWORD PTR info$113[rbp-248], r15
 ; Line 1143
-	mov	DWORD PTR info$65[rbp-240], r15d
+	mov	DWORD PTR info$113[rbp-240], r15d
 ; Line 1144
-	mov	DWORD PTR info$65[rbp-236], eax
+	mov	DWORD PTR info$113[rbp-236], eax
 ; Line 1145
-	mov	QWORD PTR info$65[rbp-232], rbx
+	mov	QWORD PTR info$113[rbp-232], rbx
 ; Line 1146
-	mov	DWORD PTR info$65[rbp-224], r15d
+	mov	DWORD PTR info$113[rbp-224], r15d
 ; Line 1147
-	mov	QWORD PTR info$65[rbp-216], r15
+	mov	QWORD PTR info$113[rbp-216], r15
 ; Line 1148
-	mov	DWORD PTR info$65[rbp-208], 1
+	mov	DWORD PTR info$113[rbp-208], 1
 ; Line 1149
-	lea	rax, QWORD PTR vk_dev_exts$[rbp-256]
-	mov	QWORD PTR info$65[rbp-200], rax
+	lea	rax, QWORD PTR vk_dev_exts$58[rbp-256]
+	mov	QWORD PTR info$113[rbp-200], rax
 ; Line 1150
-	mov	QWORD PTR info$65[rbp-192], r15
+	mov	QWORD PTR info$113[rbp-192], r15
 ; Line 1153
 	lea	r9, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$65[rbp-256]
+	lea	rdx, QWORD PTR info$113[rbp-256]
 	mov	rcx, rsi
 	call	QWORD PTR ?vkCreateDevice@@3P6A?AW4VkResult@@PEAUVkPhysicalDevice_T@@PEBUVkDeviceCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkDevice_T@@@ZEA ; vkCreateDevice
 ; Line 1155
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	?loadDeviceFunctions@VULKAN@XGK@@YAXPEAUVkDevice_T@@@Z ; XGK::VULKAN::loadDeviceFunctions
 ; Line 1160
-	mov	QWORD PTR queue$25[rsp], r15
+	mov	QWORD PTR queue$24[rsp], r15
 ; Line 1162
-	lea	r9, QWORD PTR queue$25[rsp]
+	lea	r9, QWORD PTR queue$24[rsp]
 	xor	r8d, r8d
 	mov	edx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+612
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkGetDeviceQueue@@3P6AXPEAUVkDevice_T@@IIPEAPEAUVkQueue_T@@@ZEA ; vkGetDeviceQueue
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 282
-	mov	rax, QWORD PTR queue$25[rsp]
+; Line 339
+	mov	rax, QWORD PTR queue$24[rsp]
 	mov	QWORD PTR ?vk_graphics_queue@@3PEAUVkQueue_T@@EA, rax ; vk_graphics_queue
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1160
-	mov	QWORD PTR queue$24[rsp], r15
+	mov	QWORD PTR queue$23[rsp], r15
 ; Line 1162
-	lea	r9, QWORD PTR queue$24[rsp]
+	lea	r9, QWORD PTR queue$23[rsp]
 	xor	r8d, r8d
 	mov	edx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+624
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkGetDeviceQueue@@3P6AXPEAUVkDevice_T@@IIPEAPEAUVkQueue_T@@@ZEA ; vkGetDeviceQueue
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 283
-	mov	rax, QWORD PTR queue$24[rsp]
+; Line 340
+	mov	rax, QWORD PTR queue$23[rsp]
 	mov	QWORD PTR ?vk_present_queue@@3PEAUVkQueue_T@@EA, rax ; vk_present_queue
-; Line 294
-	mov	DWORD PTR vk_render_pass_attach$[rbp-256], r15d
-; Line 295
-	mov	DWORD PTR vk_render_pass_attach$[rbp-252], 44 ; 0000002cH
-; Line 296
-	mov	DWORD PTR vk_render_pass_attach$[rbp-248], 4
-; Line 297
-	mov	DWORD PTR vk_render_pass_attach$[rbp-244], 1
+; Line 351
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-256], r15d
+; Line 352
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-252], 44 ; 0000002cH
+; Line 353
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-248], 4
+; Line 354
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-244], 1
 	movdqa	xmm0, XMMWORD PTR __xmm@00000000000000010000000200000001
-	movdqa	XMMWORD PTR vk_render_pass_attach$[rbp-240], xmm0
-; Line 299
-	mov	QWORD PTR vk_render_pass_attach$[rbp-224], 1000001002 ; 3b9acdeaH
-; Line 306
-	mov	DWORD PTR vk_render_pass_attach$[rbp-216], 126 ; 0000007eH
-; Line 307
-	mov	DWORD PTR vk_render_pass_attach$[rbp-212], 4
-; Line 308
+	movdqa	XMMWORD PTR vk_render_pass_attach$134[rbp-240], xmm0
+; Line 356
+	mov	QWORD PTR vk_render_pass_attach$134[rbp-224], 1000001002 ; 3b9acdeaH
+; Line 363
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-216], 126 ; 0000007eH
+; Line 364
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-212], 4
+; Line 365
 	movdqa	xmm0, XMMWORD PTR __xmm@00000001000000020000000100000001
-	movdqa	XMMWORD PTR vk_render_pass_attach$[rbp-208], xmm0
-; Line 310
-	mov	DWORD PTR vk_render_pass_attach$[rbp-192], r15d
-	mov	QWORD PTR vk_render_pass_attach$[rbp-188], 3
-; Line 316
-	mov	DWORD PTR vk_render_pass_attach$[rbp-180], 44 ; 0000002cH
-; Line 317
+	movdqa	XMMWORD PTR vk_render_pass_attach$134[rbp-208], xmm0
+; Line 367
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-192], r15d
+	mov	QWORD PTR vk_render_pass_attach$134[rbp-188], 3
+; Line 373
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-180], 44 ; 0000002cH
+; Line 374
 	movdqa	xmm0, XMMWORD PTR __xmm@00000002000000000000000200000001
-	movdqa	XMMWORD PTR vk_render_pass_attach$[rbp-176], xmm0
-; Line 319
-	mov	QWORD PTR vk_render_pass_attach$[rbp-160], 1
-; Line 320
-	mov	DWORD PTR vk_render_pass_attach$[rbp-152], 1000001002 ; 3b9acdeaH
-; Line 325
-	mov	DWORD PTR color_attach_ref$[rbp-256], r15d
-	mov	DWORD PTR color_attach_ref$[rbp-252], 2
-; Line 326
-	mov	DWORD PTR depth_attach_ref$[rbp-256], 1
-	mov	DWORD PTR depth_attach_ref$[rbp-252], 3
-; Line 327
-	mov	DWORD PTR color_attach_resolve_ref$[rbp-256], 2
-	mov	DWORD PTR color_attach_resolve_ref$[rbp-252], 2
-; Line 330
-	mov	QWORD PTR subpass_desc$[rbp-256], r15
-; Line 331
-	mov	DWORD PTR subpass_desc$[rbp-248], r15d
-	mov	QWORD PTR subpass_desc$[rbp-240], r15
-; Line 332
-	mov	DWORD PTR subpass_desc$[rbp-232], 1
-	lea	rax, QWORD PTR color_attach_ref$[rbp-256]
-	mov	QWORD PTR subpass_desc$[rbp-224], rax
-	lea	rax, QWORD PTR color_attach_resolve_ref$[rbp-256]
-	mov	QWORD PTR subpass_desc$[rbp-216], rax
-	lea	rax, QWORD PTR depth_attach_ref$[rbp-256]
-	mov	QWORD PTR subpass_desc$[rbp-208], rax
+	movdqa	XMMWORD PTR vk_render_pass_attach$134[rbp-176], xmm0
+; Line 376
+	mov	QWORD PTR vk_render_pass_attach$134[rbp-160], 1
+; Line 377
+	mov	DWORD PTR vk_render_pass_attach$134[rbp-152], 1000001002 ; 3b9acdeaH
+; Line 382
+	mov	DWORD PTR color_attach_ref$44[rbp-256], r15d
+	mov	DWORD PTR color_attach_ref$44[rbp-252], 2
+; Line 383
+	mov	DWORD PTR depth_attach_ref$46[rbp-256], 1
+	mov	DWORD PTR depth_attach_ref$46[rbp-252], 3
+; Line 384
+	mov	DWORD PTR color_attach_resolve_ref$45[rbp-256], 2
+	mov	DWORD PTR color_attach_resolve_ref$45[rbp-252], 2
+; Line 387
+	mov	QWORD PTR subpass_desc$68[rbp-256], r15
+; Line 388
+	mov	DWORD PTR subpass_desc$68[rbp-248], r15d
+	mov	QWORD PTR subpass_desc$68[rbp-240], r15
+; Line 389
+	mov	DWORD PTR subpass_desc$68[rbp-232], 1
+	lea	rax, QWORD PTR color_attach_ref$44[rbp-256]
+	mov	QWORD PTR subpass_desc$68[rbp-224], rax
+	lea	rax, QWORD PTR color_attach_resolve_ref$45[rbp-256]
+	mov	QWORD PTR subpass_desc$68[rbp-216], rax
+	lea	rax, QWORD PTR depth_attach_ref$46[rbp-256]
+	mov	QWORD PTR subpass_desc$68[rbp-208], rax
 	xorps	xmm0, xmm0
-	movups	XMMWORD PTR subpass_desc$[rbp-200], xmm0
-; Line 337
-	mov	DWORD PTR subpass_dep$[rbp-256], -1	; ffffffffH
-	mov	DWORD PTR subpass_dep$[rbp-252], r15d
-; Line 338
-	mov	DWORD PTR subpass_dep$[rbp-248], 1024	; 00000400H
-	mov	QWORD PTR subpass_dep$[rbp-244], 1024	; 00000400H
-; Line 339
-	mov	QWORD PTR subpass_dep$[rbp-236], 384	; 00000180H
+	movups	XMMWORD PTR subpass_desc$68[rbp-200], xmm0
+; Line 394
+	mov	DWORD PTR subpass_dep$101[rbp-256], -1	; ffffffffH
+	mov	DWORD PTR subpass_dep$101[rbp-252], r15d
+; Line 395
+	mov	DWORD PTR subpass_dep$101[rbp-248], 1024 ; 00000400H
+	mov	QWORD PTR subpass_dep$101[rbp-244], 1024 ; 00000400H
+; Line 396
+	mov	QWORD PTR subpass_dep$101[rbp-236], 384	; 00000180H
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1183
-	mov	DWORD PTR info$64[rbp-256], 38		; 00000026H
+	mov	DWORD PTR info$112[rbp-256], 38		; 00000026H
 ; Line 1184
-	mov	QWORD PTR info$64[rbp-248], r15
+	mov	QWORD PTR info$112[rbp-248], r15
 ; Line 1185
-	mov	DWORD PTR info$64[rbp-240], r15d
+	mov	DWORD PTR info$112[rbp-240], r15d
 ; Line 1186
-	mov	DWORD PTR info$64[rbp-236], 3
+	mov	DWORD PTR info$112[rbp-236], 3
 ; Line 1187
-	lea	rax, QWORD PTR vk_render_pass_attach$[rbp-256]
-	mov	QWORD PTR info$64[rbp-232], rax
+	lea	rax, QWORD PTR vk_render_pass_attach$134[rbp-256]
+	mov	QWORD PTR info$112[rbp-232], rax
 ; Line 1188
-	mov	DWORD PTR info$64[rbp-224], 1
+	mov	DWORD PTR info$112[rbp-224], 1
 ; Line 1189
-	lea	rax, QWORD PTR subpass_desc$[rbp-256]
-	mov	QWORD PTR info$64[rbp-216], rax
+	lea	rax, QWORD PTR subpass_desc$68[rbp-256]
+	mov	QWORD PTR info$112[rbp-216], rax
 ; Line 1190
-	mov	DWORD PTR info$64[rbp-208], 1
+	mov	DWORD PTR info$112[rbp-208], 1
 ; Line 1191
-	lea	rax, QWORD PTR subpass_dep$[rbp-256]
-	mov	QWORD PTR info$64[rbp-200], rax
+	lea	rax, QWORD PTR subpass_dep$101[rbp-256]
+	mov	QWORD PTR info$112[rbp-200], rax
 ; Line 1194
-	mov	QWORD PTR render_pass$32[rbp-256], r15
+	mov	QWORD PTR render_pass$31[rbp-256], r15
 ; Line 1196
-	lea	r9, QWORD PTR render_pass$32[rbp-256]
+	lea	r9, QWORD PTR render_pass$31[rbp-256]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$64[rbp-256]
+	lea	rdx, QWORD PTR info$112[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateRenderPass@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkRenderPassCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkRenderPass_T@@@ZEA ; vkCreateRenderPass
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+648
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+656
-	je	SHORT $LN135@initVK
+	je	SHORT $LN136@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR render_pass$32[rbp-256]
+	mov	rax, QWORD PTR render_pass$31[rbp-256]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+648, 8
 ; Line 656
-	jmp	SHORT $LN134@initVK
-$LN135@initVK:
+	jmp	SHORT $LN135@initVK
+$LN136@initVK:
 ; Line 659
-	lea	r8, QWORD PTR render_pass$32[rbp-256]
+	lea	r8, QWORD PTR render_pass$31[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+640
 	call	??$_Emplace_reallocate@AEBQEAUVkRenderPass_T@@@?$vector@PEAUVkRenderPass_T@@V?$allocator@PEAUVkRenderPass_T@@@std@@@std@@QEAAPEAPEAUVkRenderPass_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkRenderPass_T *,std::allocator<VkRenderPass_T *> >::_Emplace_reallocate<VkRenderPass_T * const &>
-$LN134@initVK:
+$LN135@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1228
-	mov	DWORD PTR info$63[rbp-256], 1000001000	; 3b9acde8H
+	mov	DWORD PTR info$111[rbp-256], 1000001000	; 3b9acde8H
 ; Line 1229
-	mov	QWORD PTR info$63[rbp-248], r15
+	mov	QWORD PTR info$111[rbp-248], r15
 ; Line 1230
-	mov	DWORD PTR info$63[rbp-240], r15d
+	mov	DWORD PTR info$111[rbp-240], r15d
 ; Line 1231
 	mov	rax, QWORD PTR ?vk_surf@@3PEAUVkSurfaceKHR_T@@EA ; vk_surf
-	mov	QWORD PTR info$63[rbp-232], rax
+	mov	QWORD PTR info$111[rbp-232], rax
 ; Line 1232
-	mov	DWORD PTR info$63[rbp-224], 4
+	mov	DWORD PTR info$111[rbp-224], 4
 ; Line 1233
-	mov	QWORD PTR info$63[rbp-220], 44		; 0000002cH
+	mov	QWORD PTR info$111[rbp-220], 44		; 0000002cH
 ; Line 1236
-	mov	DWORD PTR info$63[rbp-212], 800		; 00000320H
+	mov	DWORD PTR info$111[rbp-212], 800	; 00000320H
 ; Line 1237
-	mov	DWORD PTR info$63[rbp-208], 600		; 00000258H
+	mov	DWORD PTR info$111[rbp-208], 600	; 00000258H
 ; Line 1239
-	mov	DWORD PTR info$63[rbp-204], 1
+	mov	DWORD PTR info$111[rbp-204], 1
 ; Line 1240
-	mov	QWORD PTR info$63[rbp-200], 16
+	mov	QWORD PTR info$111[rbp-200], 16
 ; Line 1242
-	mov	DWORD PTR info$63[rbp-192], r15d
+	mov	DWORD PTR info$111[rbp-192], r15d
 ; Line 1243
-	mov	QWORD PTR info$63[rbp-184], r15
+	mov	QWORD PTR info$111[rbp-184], r15
 ; Line 1244
-	mov	DWORD PTR info$63[rbp-176], 1
+	mov	DWORD PTR info$111[rbp-176], 1
 ; Line 1245
-	mov	DWORD PTR info$63[rbp-172], 1
+	mov	DWORD PTR info$111[rbp-172], 1
 ; Line 1246
-	mov	DWORD PTR info$63[rbp-168], 2
+	mov	DWORD PTR info$111[rbp-168], 2
 ; Line 1247
-	mov	DWORD PTR info$63[rbp-164], 1
+	mov	DWORD PTR info$111[rbp-164], 1
 ; Line 1248
-	mov	QWORD PTR info$63[rbp-160], r15
+	mov	QWORD PTR info$111[rbp-160], r15
 ; Line 1251
-	mov	QWORD PTR swapchain$26[rsp], r15
+	mov	QWORD PTR swapchain$25[rsp], r15
 ; Line 1253
-	lea	r9, QWORD PTR swapchain$26[rsp]
+	lea	r9, QWORD PTR swapchain$25[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$63[rbp-256]
+	lea	rdx, QWORD PTR info$111[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateSwapchainKHR@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkSwapchainCreateInfoKHR@@PEBUVkAllocationCallbacks@@PEAPEAUVkSwapchainKHR_T@@@ZEA ; vkCreateSwapchainKHR
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+672
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+680
-	je	SHORT $LN146@initVK
+	je	SHORT $LN147@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR swapchain$26[rsp]
+	mov	rax, QWORD PTR swapchain$25[rsp]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+672, 8
 ; Line 656
-	jmp	SHORT $LN145@initVK
-$LN146@initVK:
+	jmp	SHORT $LN146@initVK
+$LN147@initVK:
 ; Line 659
-	lea	r8, QWORD PTR swapchain$26[rsp]
+	lea	r8, QWORD PTR swapchain$25[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+664
 	call	??$_Emplace_reallocate@AEBQEAUVkSwapchainKHR_T@@@?$vector@PEAUVkSwapchainKHR_T@@V?$allocator@PEAUVkSwapchainKHR_T@@@std@@@std@@QEAAPEAPEAUVkSwapchainKHR_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkSwapchainKHR_T *,std::allocator<VkSwapchainKHR_T *> >::_Emplace_reallocate<VkSwapchainKHR_T * const &>
-$LN145@initVK:
+$LN146@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 353
-	mov	r8, QWORD PTR swapchain$26[rsp]
+; Line 410
+	mov	r8, QWORD PTR swapchain$25[rsp]
 	mov	QWORD PTR ?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA, r8 ; vk_swapchain
-; Line 370
-	lea	rdx, QWORD PTR vk_swapchain_images$[rbp-256]
+; Line 427
+	lea	rdx, QWORD PTR vk_swapchain_images$64[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	call	?getSwapchainImages@Device@VULKAN@XGK@@QEAA?AV?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@PEAUVkSwapchainKHR_T@@@Z ; XGK::VULKAN::Device::getSwapchainImages
 	npad	1
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1438
-	mov	rsi, QWORD PTR vk_swapchain_images$[rbp-248]
-	sub	rsi, QWORD PTR vk_swapchain_images$[rbp-256]
+	mov	rsi, QWORD PTR vk_swapchain_images$64[rbp-248]
+	sub	rsi, QWORD PTR vk_swapchain_images$64[rbp-256]
 	sar	rsi, 3
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR vk_swapchain_image_views$[rbp-256], xmm0
-	mov	QWORD PTR vk_swapchain_image_views$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_swapchain_image_views$54[rbp-256], xmm0
+	mov	QWORD PTR vk_swapchain_image_views$54[rbp-240], r15
 ; Line 401
 	mov	r13, 2305843009213693951		; 1fffffffffffffffH
 	test	rsi, rsi
-	je	$LN1314@initVK
+	je	$LN1315@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1333@initVK
+	ja	$LN1334@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 35
 	lea	rdi, QWORD PTR [rsi*8]
 ; Line 170
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN237@initVK
+	jb	SHORT $LN238@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [rdi+39]
 ; Line 86
 	cmp	rcx, rdi
-	jbe	$LN1334@initVK
+	jbe	$LN1335@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN246@initVK
+	je	SHORT $LN247@initVK
 ; Line 92
 	lea	r15, QWORD PTR [rax+39]
 	and	r15, -32				; ffffffffffffffe0H
 ; Line 93
 	mov	QWORD PTR [r15-8], rax
-$LN238@initVK:
+$LN239@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_swapchain_image_views$1$[rsp], r15
-$LN1329@initVK:
+	mov	QWORD PTR vk_swapchain_image_views$1$[rbp-256], r15
+$LN1330@initVK:
 	mov	r14, rsi
-	mov	QWORD PTR vk_swapchain_image_views$[rbp-256], r15
+	mov	QWORD PTR vk_swapchain_image_views$54[rbp-256], r15
 ; Line 1602
 	lea	rbx, QWORD PTR [r15+rdi]
-	mov	QWORD PTR vk_swapchain_image_views$[rbp-240], rbx
+	mov	QWORD PTR vk_swapchain_image_views$54[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, rdi
@@ -33491,92 +33665,92 @@ $LN1329@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_swapchain_image_views$[rbp-248], rbx
+	mov	QWORD PTR vk_swapchain_image_views$54[rbp-248], rbx
 ; Line 1600
 	lea	rdi, QWORD PTR [rsi*8]
 ; Line 404
 	xor	r15d, r15d
-	jmp	SHORT $LN266@initVK
-$LN246@initVK:
+	jmp	SHORT $LN267@initVK
+$LN247@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN237@initVK:
+$LN238@initVK:
 ; Line 175
 	test	rdi, rdi
-	je	SHORT $LN238@initVK
+	je	SHORT $LN239@initVK
 ; Line 47
 	mov	rcx, rdi
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	r15, rax
-	mov	QWORD PTR vk_swapchain_image_views$1$[rsp], rax
+	mov	QWORD PTR vk_swapchain_image_views$1$[rbp-256], rax
 ; Line 176
-	jmp	SHORT $LN1329@initVK
-$LN1314@initVK:
+	jmp	SHORT $LN1330@initVK
+$LN1315@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
 	lea	rdi, QWORD PTR [rsi*8]
-	mov	rax, QWORD PTR vk_swapchain_image_views$[rbp-256]
-	mov	QWORD PTR vk_swapchain_image_views$1$[rsp], rax
-$LN266@initVK:
+	mov	rax, QWORD PTR vk_swapchain_image_views$54[rbp-256]
+	mov	QWORD PTR vk_swapchain_image_views$1$[rbp-256], rax
+$LN267@initVK:
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR vk_render_images$[rbp-256], xmm0
-	mov	QWORD PTR vk_render_images$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_render_images$53[rbp-256], xmm0
+	mov	QWORD PTR vk_render_images$53[rbp-240], r15
 ; Line 401
 	test	rsi, rsi
-	je	SHORT $LN1318@initVK
+	je	SHORT $LN1319@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1335@initVK
+	ja	$LN1336@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 35
 	lea	r14, QWORD PTR [rsi*8]
 ; Line 170
 	cmp	r14, 4096				; 00001000H
-	jb	SHORT $LN291@initVK
+	jb	SHORT $LN292@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [r14+39]
 ; Line 86
 	cmp	rcx, r14
-	jbe	$LN1336@initVK
+	jbe	$LN1337@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN300@initVK
+	je	SHORT $LN301@initVK
 ; Line 92
 	lea	r12, QWORD PTR [rax+39]
 	and	r12, -32				; ffffffffffffffe0H
 ; Line 93
 	mov	QWORD PTR [r12-8], rax
 ; Line 171
-	jmp	SHORT $LN290@initVK
-$LN300@initVK:
+	jmp	SHORT $LN291@initVK
+$LN301@initVK:
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN291@initVK:
+$LN292@initVK:
 ; Line 175
 	test	r14, r14
-	je	SHORT $LN292@initVK
+	je	SHORT $LN293@initVK
 ; Line 47
 	mov	rcx, r14
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	r12, rax
 ; Line 176
-	jmp	SHORT $LN290@initVK
-$LN292@initVK:
+	jmp	SHORT $LN291@initVK
+$LN293@initVK:
 ; Line 179
 	mov	r12, r15
-$LN290@initVK:
+$LN291@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_render_images$[rbp-256], r12
+	mov	QWORD PTR vk_render_images$53[rbp-256], r12
 ; Line 1602
 	lea	rbx, QWORD PTR [r14+r12]
-	mov	QWORD PTR vk_render_images$[rbp-240], rbx
+	mov	QWORD PTR vk_render_images$53[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, r14
@@ -33585,60 +33759,60 @@ $LN290@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_render_images$[rbp-248], rbx
+	mov	QWORD PTR vk_render_images$53[rbp-248], rbx
 ; Line 401
-	jmp	SHORT $LN320@initVK
-$LN1318@initVK:
-	mov	r12, QWORD PTR vk_render_images$[rbp-256]
-$LN320@initVK:
+	jmp	SHORT $LN321@initVK
+$LN1319@initVK:
+	mov	r12, QWORD PTR vk_render_images$53[rbp-256]
+$LN321@initVK:
 	xorps	xmm0, xmm0
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 376
+; Line 433
 	xor	eax, eax
-	movups	XMMWORD PTR vk_render_image_mem_reqs$[rbp-256], xmm0
-	mov	QWORD PTR vk_render_image_mem_reqs$[rbp-240], rax
-; Line 377
+	movups	XMMWORD PTR vk_render_image_mem_reqs$42[rbp-256], xmm0
+	mov	QWORD PTR vk_render_image_mem_reqs$42[rbp-240], rax
+; Line 434
 	mov	QWORD PTR vk_render_image_dev_local_mem_index$1$[rsp], r15
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 314
-	movdqu	XMMWORD PTR vk_render_image_mems$[rbp-256], xmm0
-	mov	QWORD PTR vk_render_image_mems$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_render_image_mems$52[rbp-256], xmm0
+	mov	QWORD PTR vk_render_image_mems$52[rbp-240], r15
 ; Line 401
 	test	rsi, rsi
-	je	$LN1319@initVK
+	je	$LN1320@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1337@initVK
+	ja	$LN1338@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 35
 	lea	r14, QWORD PTR [rsi*8]
 ; Line 170
 	cmp	r14, 4096				; 00001000H
-	jb	SHORT $LN345@initVK
+	jb	SHORT $LN346@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [r14+39]
 ; Line 86
 	cmp	rcx, r14
-	jbe	$LN1338@initVK
+	jbe	$LN1339@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN354@initVK
+	je	SHORT $LN355@initVK
 ; Line 92
 	lea	r15, QWORD PTR [rax+39]
 	and	r15, -32				; ffffffffffffffe0H
 ; Line 93
 	mov	QWORD PTR [r15-8], rax
-$LN346@initVK:
+$LN347@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_render_image_mems$1$[rbp-256], r15
-$LN344@initVK:
-	mov	QWORD PTR vk_render_image_mems$[rbp-256], r15
+	mov	QWORD PTR vk_render_image_mems$1$[rsp], r15
+$LN345@initVK:
+	mov	QWORD PTR vk_render_image_mems$52[rbp-256], r15
 ; Line 1602
 	lea	rbx, QWORD PTR [r14+r15]
-	mov	QWORD PTR vk_render_image_mems$[rbp-240], rbx
+	mov	QWORD PTR vk_render_image_mems$52[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, r14
@@ -33647,90 +33821,90 @@ $LN344@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_render_image_mems$[rbp-248], rbx
+	mov	QWORD PTR vk_render_image_mems$52[rbp-248], rbx
 ; Line 401
 	xor	r15d, r15d
-	jmp	SHORT $LN374@initVK
-$LN354@initVK:
+	jmp	SHORT $LN375@initVK
+$LN355@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN345@initVK:
+$LN346@initVK:
 ; Line 175
 	test	r14, r14
-	je	SHORT $LN346@initVK
+	je	SHORT $LN347@initVK
 ; Line 47
 	mov	rcx, r14
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	r15, rax
-	mov	QWORD PTR vk_render_image_mems$1$[rbp-256], rax
+	mov	QWORD PTR vk_render_image_mems$1$[rsp], rax
 ; Line 176
-	jmp	SHORT $LN344@initVK
-$LN1319@initVK:
+	jmp	SHORT $LN345@initVK
+$LN1320@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 401
-	mov	rax, QWORD PTR vk_render_image_mems$[rbp-256]
-	mov	QWORD PTR vk_render_image_mems$1$[rbp-256], rax
-$LN374@initVK:
+	mov	rax, QWORD PTR vk_render_image_mems$52[rbp-256]
+	mov	QWORD PTR vk_render_image_mems$1$[rsp], rax
+$LN375@initVK:
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR vk_render_image_views$[rbp-256], xmm0
-	mov	QWORD PTR vk_render_image_views$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_render_image_views$51[rbp-256], xmm0
+	mov	QWORD PTR vk_render_image_views$51[rbp-240], r15
 ; Line 401
 	test	rsi, rsi
-	je	SHORT $LN1320@initVK
+	je	$LN1321@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1339@initVK
+	ja	$LN1340@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 170
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN399@initVK
+	jb	SHORT $LN400@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [rdi+39]
 ; Line 86
 	cmp	rcx, rdi
-	jbe	$LN1340@initVK
+	jbe	$LN1341@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN408@initVK
+	je	SHORT $LN409@initVK
 ; Line 92
 	lea	r14, QWORD PTR [rax+39]
 	and	r14, -32				; ffffffffffffffe0H
-	mov	QWORD PTR vk_render_image_views$1$[rbp-256], r14
+	mov	QWORD PTR vk_render_image_views$1$[rsp], r14
 ; Line 93
 	mov	QWORD PTR [r14-8], rax
 ; Line 171
-	jmp	SHORT $LN398@initVK
-$LN408@initVK:
+	jmp	SHORT $LN399@initVK
+$LN409@initVK:
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN399@initVK:
+$LN400@initVK:
 ; Line 175
 	test	rdi, rdi
-	je	SHORT $LN400@initVK
+	je	SHORT $LN401@initVK
 ; Line 47
 	mov	rcx, rdi
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	r14, rax
-	mov	QWORD PTR vk_render_image_views$1$[rbp-256], rax
+	mov	QWORD PTR vk_render_image_views$1$[rsp], rax
 ; Line 176
-	jmp	SHORT $LN398@initVK
-$LN400@initVK:
+	jmp	SHORT $LN399@initVK
+$LN401@initVK:
 ; Line 179
 	mov	r14, r15
-	mov	QWORD PTR vk_render_image_views$1$[rbp-256], r15
-$LN398@initVK:
+	mov	QWORD PTR vk_render_image_views$1$[rsp], r15
+$LN399@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_render_image_views$[rbp-256], r14
+	mov	QWORD PTR vk_render_image_views$51[rbp-256], r14
 ; Line 1602
 	lea	rbx, QWORD PTR [rdi+r14]
-	mov	QWORD PTR vk_render_image_views$[rbp-240], rbx
+	mov	QWORD PTR vk_render_image_views$51[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, rdi
@@ -33739,37 +33913,37 @@ $LN398@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_render_image_views$[rbp-248], rbx
+	mov	QWORD PTR vk_render_image_views$51[rbp-248], rbx
 ; Line 401
-	jmp	SHORT $LN428@initVK
-$LN1320@initVK:
-	mov	rax, QWORD PTR vk_render_image_views$[rbp-256]
-	mov	QWORD PTR vk_render_image_views$1$[rbp-256], rax
-$LN428@initVK:
+	jmp	SHORT $LN429@initVK
+$LN1321@initVK:
+	mov	rax, QWORD PTR vk_render_image_views$51[rbp-256]
+	mov	QWORD PTR vk_render_image_views$1$[rsp], rax
+$LN429@initVK:
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR vk_framebuffers$[rbp-256], xmm0
-	mov	QWORD PTR vk_framebuffers$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_framebuffers$50[rbp-256], xmm0
+	mov	QWORD PTR vk_framebuffers$50[rbp-240], r15
 ; Line 401
 	test	rsi, rsi
-	je	$LN1321@initVK
+	je	$LN1322@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1341@initVK
+	ja	$LN1342@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 170
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN453@initVK
+	jb	SHORT $LN454@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [rdi+39]
 ; Line 86
 	cmp	rcx, rdi
-	jbe	$LN1342@initVK
+	jbe	$LN1343@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN462@initVK
+	je	SHORT $LN463@initVK
 ; Line 92
 	lea	r14, QWORD PTR [rax+39]
 	and	r14, -32				; ffffffffffffffe0H
@@ -33777,33 +33951,33 @@ $LN428@initVK:
 ; Line 93
 	mov	QWORD PTR [r14-8], rax
 ; Line 171
-	jmp	SHORT $LN452@initVK
-$LN462@initVK:
+	jmp	SHORT $LN453@initVK
+$LN463@initVK:
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN453@initVK:
+$LN454@initVK:
 ; Line 175
 	test	rdi, rdi
-	je	SHORT $LN454@initVK
+	je	SHORT $LN455@initVK
 ; Line 47
 	mov	rcx, rdi
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	r14, rax
 	mov	QWORD PTR vk_framebuffers$1$[rsp], rax
 ; Line 176
-	jmp	SHORT $LN452@initVK
-$LN454@initVK:
+	jmp	SHORT $LN453@initVK
+$LN455@initVK:
 ; Line 179
 	mov	r14, r15
 	mov	QWORD PTR vk_framebuffers$1$[rsp], r15
-$LN452@initVK:
+$LN453@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_framebuffers$[rbp-256], r14
+	mov	QWORD PTR vk_framebuffers$50[rbp-256], r14
 ; Line 1602
 	lea	rbx, QWORD PTR [rdi+r14]
-	mov	QWORD PTR vk_framebuffers$[rbp-240], rbx
+	mov	QWORD PTR vk_framebuffers$50[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, rdi
@@ -33812,82 +33986,82 @@ $LN452@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_framebuffers$[rbp-248], rbx
+	mov	QWORD PTR vk_framebuffers$50[rbp-248], rbx
 ; Line 401
-	jmp	SHORT $LN482@initVK
-$LN1321@initVK:
-	mov	rax, QWORD PTR vk_framebuffers$[rbp-256]
+	jmp	SHORT $LN483@initVK
+$LN1322@initVK:
+	mov	rax, QWORD PTR vk_framebuffers$50[rbp-256]
 	mov	QWORD PTR vk_framebuffers$1$[rsp], rax
-$LN482@initVK:
+$LN483@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 381
+; Line 438
 	mov	rdx, rsi
 	lea	rcx, OFFSET FLAT:?vk_fences@@3V?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@A ; vk_fences
 	call	?resize@?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@QEAAX_K@Z ; std::vector<VkFence_T *,std::allocator<VkFence_T *> >::resize
-; Line 382
+; Line 439
 	mov	rdx, rsi
 	lea	rcx, OFFSET FLAT:?vk_submission_completed_semaphores@@3V?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@A ; vk_submission_completed_semaphores
 	call	?resize@?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@QEAAX_K@Z ; std::vector<VkSemaphore_T *,std::allocator<VkSemaphore_T *> >::resize
-; Line 383
+; Line 440
 	mov	rdx, rsi
 	lea	rcx, OFFSET FLAT:?vk_image_aqcuired_semaphores@@3V?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@A ; vk_image_aqcuired_semaphores
 	call	?resize@?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@QEAAX_K@Z ; std::vector<VkSemaphore_T *,std::allocator<VkSemaphore_T *> >::resize
 	xorps	xmm0, xmm0
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 314
-	movdqu	XMMWORD PTR vk_depth_images$[rbp-256], xmm0
-	mov	QWORD PTR vk_depth_images$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_depth_images$56[rbp-256], xmm0
+	mov	QWORD PTR vk_depth_images$56[rbp-240], r15
 ; Line 401
 	test	rsi, rsi
-	je	SHORT $LN1322@initVK
+	je	SHORT $LN1323@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1343@initVK
+	ja	$LN1344@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 170
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN507@initVK
+	jb	SHORT $LN508@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [rdi+39]
 ; Line 86
 	cmp	rcx, rdi
-	jbe	$LN1344@initVK
+	jbe	$LN1345@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN516@initVK
+	je	SHORT $LN517@initVK
 ; Line 92
 	lea	r14, QWORD PTR [rax+39]
 	and	r14, -32				; ffffffffffffffe0H
 ; Line 93
 	mov	QWORD PTR [r14-8], rax
 ; Line 171
-	jmp	SHORT $LN506@initVK
-$LN516@initVK:
+	jmp	SHORT $LN507@initVK
+$LN517@initVK:
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN507@initVK:
+$LN508@initVK:
 ; Line 175
 	test	rdi, rdi
-	je	SHORT $LN508@initVK
+	je	SHORT $LN509@initVK
 ; Line 47
 	mov	rcx, rdi
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	r14, rax
 ; Line 176
-	jmp	SHORT $LN506@initVK
-$LN508@initVK:
+	jmp	SHORT $LN507@initVK
+$LN509@initVK:
 ; Line 179
 	mov	r14, r15
-$LN506@initVK:
+$LN507@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_depth_images$[rbp-256], r14
+	mov	QWORD PTR vk_depth_images$56[rbp-256], r14
 ; Line 1602
 	lea	rbx, QWORD PTR [rdi+r14]
-	mov	QWORD PTR vk_depth_images$[rbp-240], rbx
+	mov	QWORD PTR vk_depth_images$56[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, rdi
@@ -33896,149 +34070,152 @@ $LN506@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_depth_images$[rbp-248], rbx
+	mov	QWORD PTR vk_depth_images$56[rbp-248], rbx
 ; Line 401
-	jmp	SHORT $LN536@initVK
-$LN1322@initVK:
-	mov	r14, QWORD PTR vk_depth_images$[rbp-256]
-$LN536@initVK:
+	jmp	SHORT $LN537@initVK
+$LN1323@initVK:
+	mov	r14, QWORD PTR vk_depth_images$56[rbp-256]
+$LN537@initVK:
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR vk_depth_image_views$[rbp-256], xmm0
-	mov	QWORD PTR vk_depth_image_views$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_depth_image_views$55[rbp-256], xmm0
+	mov	QWORD PTR vk_depth_image_views$55[rbp-240], r15
 ; Line 401
 	test	rsi, rsi
-	je	SHORT $LN1323@initVK
+	je	$LN1324@initVK
 ; Line 1616
 	cmp	rsi, r13
-	ja	$LN1345@initVK
+	ja	$LN1346@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 170
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN561@initVK
+	jb	SHORT $LN562@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [rdi+39]
 ; Line 86
 	cmp	rcx, rdi
-	jbe	$LN1346@initVK
+	jbe	$LN1347@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN570@initVK
+	je	SHORT $LN571@initVK
 ; Line 92
-	lea	r13, QWORD PTR [rax+39]
-	and	r13, -32				; ffffffffffffffe0H
+	lea	r15, QWORD PTR [rax+39]
+	and	r15, -32				; ffffffffffffffe0H
 ; Line 93
-	mov	QWORD PTR [r13-8], rax
-; Line 171
-	jmp	SHORT $LN560@initVK
-$LN570@initVK:
-; Line 91
-	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
-	int	3
-$LN561@initVK:
-; Line 175
-	test	rdi, rdi
-	je	SHORT $LN562@initVK
-; Line 47
-	mov	rcx, rdi
-	call	??2@YAPEAX_K@Z				; operator new
-	mov	r13, rax
-; Line 176
-	jmp	SHORT $LN560@initVK
-$LN562@initVK:
-; Line 179
-	mov	r13, r15
-$LN560@initVK:
+	mov	QWORD PTR [r15-8], rax
+$LN563@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR vk_depth_image_views$[rbp-256], r13
+	mov	QWORD PTR vk_depth_image_views$1$[rsp], r15
+$LN561@initVK:
+	mov	QWORD PTR vk_depth_image_views$55[rbp-256], r15
 ; Line 1602
-	lea	rbx, QWORD PTR [rdi+r13]
-	mov	QWORD PTR vk_depth_image_views$[rbp-240], rbx
+	lea	rbx, QWORD PTR [rdi+r15]
+	mov	QWORD PTR vk_depth_image_views$55[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, rdi
 	xor	edx, edx
-	mov	rcx, r13
+	mov	rcx, r15
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_depth_image_views$[rbp-248], rbx
+	mov	QWORD PTR vk_depth_image_views$55[rbp-248], rbx
 ; Line 401
-	jmp	SHORT $LN590@initVK
-$LN1323@initVK:
-	mov	r13, QWORD PTR vk_depth_image_views$[rbp-256]
-$LN590@initVK:
+	xor	r15d, r15d
+	jmp	SHORT $LN591@initVK
+$LN571@initVK:
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 91
+	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
+	int	3
+$LN562@initVK:
+; Line 175
+	test	rdi, rdi
+	je	SHORT $LN563@initVK
+; Line 47
+	mov	rcx, rdi
+	call	??2@YAPEAX_K@Z				; operator new
+	mov	r15, rax
+	mov	QWORD PTR vk_depth_image_views$1$[rsp], rax
+; Line 176
+	jmp	SHORT $LN561@initVK
+$LN1324@initVK:
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 401
+	mov	rax, QWORD PTR vk_depth_image_views$55[rbp-256]
+	mov	QWORD PTR vk_depth_image_views$1$[rsp], rax
+$LN591@initVK:
 	xorps	xmm0, xmm0
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 387
+; Line 444
 	xor	eax, eax
-	movups	XMMWORD PTR vk_depth_image_mem_reqs$[rbp-256], xmm0
-	mov	QWORD PTR vk_depth_image_mem_reqs$[rbp-240], rax
-; Line 388
-	mov	QWORD PTR vk_depth_image_dev_local_mem_index$1$[rsp], r15
+	movups	XMMWORD PTR vk_depth_image_mem_reqs$38[rbp-256], xmm0
+	mov	QWORD PTR vk_depth_image_mem_reqs$38[rbp-240], rax
+; Line 445
+	mov	r13, r15
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 314
-	movdqu	XMMWORD PTR vk_depth_image_mems$[rbp-256], xmm0
-	mov	QWORD PTR vk_depth_image_mems$[rbp-240], r15
+	movdqu	XMMWORD PTR vk_depth_image_mems$60[rbp-256], xmm0
+	mov	QWORD PTR vk_depth_image_mems$60[rbp-240], r15
 ; Line 401
-	mov	QWORD PTR $T18[rsp], r15
+	mov	QWORD PTR $T33[rbp-256], r15
 	test	rsi, rsi
-	je	$LN644@initVK
+	je	$LN645@initVK
 ; Line 1616
 	mov	rax, 2305843009213693951		; 1fffffffffffffffH
 	cmp	rsi, rax
-	ja	$LN1347@initVK
+	ja	$LN1348@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 170
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN615@initVK
+	jb	SHORT $LN616@initVK
 ; Line 85
 	lea	rcx, QWORD PTR [rdi+39]
 ; Line 86
 	cmp	rcx, rdi
-	jbe	$LN1348@initVK
+	jbe	$LN1349@initVK
 ; Line 47
 	call	??2@YAPEAX_K@Z				; operator new
 ; Line 91
 	test	rax, rax
-	je	SHORT $LN624@initVK
+	je	SHORT $LN625@initVK
 ; Line 92
 	lea	rcx, QWORD PTR [rax+39]
 	and	rcx, -32				; ffffffffffffffe0H
 ; Line 93
 	mov	QWORD PTR [rcx-8], rax
 ; Line 171
-	jmp	SHORT $LN1330@initVK
-$LN624@initVK:
+	jmp	SHORT $LN1331@initVK
+$LN625@initVK:
 ; Line 91
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN615@initVK:
+$LN616@initVK:
 ; Line 175
 	test	rdi, rdi
-	je	SHORT $LN616@initVK
+	je	SHORT $LN617@initVK
 ; Line 47
 	mov	rcx, rdi
 	call	??2@YAPEAX_K@Z				; operator new
 	mov	rcx, rax
-	mov	QWORD PTR $T18[rsp], rax
+	mov	QWORD PTR $T33[rbp-256], rax
 ; Line 176
-	jmp	SHORT $LN614@initVK
-$LN616@initVK:
+	jmp	SHORT $LN615@initVK
+$LN617@initVK:
 ; Line 179
 	mov	rcx, r15
-$LN1330@initVK:
+$LN1331@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR $T18[rsp], rcx
-$LN614@initVK:
-	mov	QWORD PTR vk_depth_image_mems$[rbp-256], rcx
+	mov	QWORD PTR $T33[rbp-256], rcx
+$LN615@initVK:
+	mov	QWORD PTR vk_depth_image_mems$60[rbp-256], rcx
 ; Line 1602
 	lea	rbx, QWORD PTR [rdi+rcx]
-	mov	QWORD PTR vk_depth_image_mems$[rbp-240], rbx
+	mov	QWORD PTR vk_depth_image_mems$60[rbp-240], rbx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1901
 	mov	r8, rdi
@@ -34046,55 +34223,54 @@ $LN614@initVK:
 	call	memset
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR vk_depth_image_mems$[rbp-248], rbx
-$LN644@initVK:
+	mov	QWORD PTR vk_depth_image_mems$60[rbp-248], rbx
+$LN645@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 389
+; Line 446
 	mov	rbx, r15
-; Line 391
+; Line 448
 	lea	r15, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+44
 	test	rsi, rsi
 	je	$LN3@initVK
-	mov	rdi, QWORD PTR vk_depth_image_dev_local_mem_index$1$[rsp]
-	npad	1
+	mov	rdi, QWORD PTR vk_render_image_views$1$[rsp]
 $LL4@initVK:
-; Line 393
-	mov	rax, QWORD PTR vk_swapchain_images$[rbp-256]
+; Line 450
+	mov	rax, QWORD PTR vk_swapchain_images$64[rbp-256]
 	mov	rcx, QWORD PTR [rax+rbx*8]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1345
-	mov	DWORD PTR info$53[rbp-256], 15
+	mov	DWORD PTR info$91[rbp-256], 15
 ; Line 1346
 	xor	edx, edx
-	mov	QWORD PTR info$53[rbp-248], rdx
+	mov	QWORD PTR info$91[rbp-248], rdx
 ; Line 1347
-	mov	DWORD PTR info$53[rbp-240], edx
+	mov	DWORD PTR info$91[rbp-240], edx
 ; Line 1348
-	mov	QWORD PTR info$53[rbp-232], rcx
+	mov	QWORD PTR info$91[rbp-232], rcx
 ; Line 1349
 	movdqa	xmm0, XMMWORD PTR __xmm@00000000000000000000002c00000001
-	movdqa	XMMWORD PTR info$53[rbp-224], xmm0
+	movdqa	XMMWORD PTR info$91[rbp-224], xmm0
 ; Line 1354
-	mov	QWORD PTR info$53[rbp-208], rdx
+	mov	QWORD PTR info$91[rbp-208], rdx
 ; Line 1358
-	mov	QWORD PTR info$53[rbp-200], 1
+	mov	QWORD PTR info$91[rbp-200], 1
 ; Line 1360
-	mov	QWORD PTR info$53[rbp-192], 1
+	mov	QWORD PTR info$91[rbp-192], 1
 ; Line 1362
-	mov	QWORD PTR info$53[rbp-184], 1
+	mov	QWORD PTR info$91[rbp-184], 1
 ; Line 1366
 	mov	QWORD PTR image_view$14[rsp], rdx
 ; Line 1368
 	lea	r9, QWORD PTR image_view$14[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$53[rbp-256]
+	lea	rdx, QWORD PTR info$91[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateImageView@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkImageViewCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkImageView_T@@@ZEA ; vkCreateImageView
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+696
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+704
-	je	SHORT $LN654@initVK
+	je	SHORT $LN655@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR image_view$14[rsp]
@@ -34103,63 +34279,63 @@ $LL4@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+696, 8
 ; Line 656
-	jmp	SHORT $LN653@initVK
-$LN654@initVK:
+	jmp	SHORT $LN654@initVK
+$LN655@initVK:
 ; Line 659
 	lea	r8, QWORD PTR image_view$14[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+688
 	call	??$_Emplace_reallocate@AEBQEAUVkImageView_T@@@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAAPEAPEAUVkImageView_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::_Emplace_reallocate<VkImageView_T * const &>
-$LN653@initVK:
+$LN654@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 393
+; Line 450
 	mov	rax, QWORD PTR image_view$14[rsp]
-	mov	rcx, QWORD PTR vk_swapchain_image_views$1$[rsp]
+	mov	rcx, QWORD PTR vk_swapchain_image_views$1$[rbp-256]
 	mov	QWORD PTR [rcx+rbx*8], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1294
-	mov	DWORD PTR info$51[rbp-256], 14
+	mov	DWORD PTR info$89[rbp-256], 14
 ; Line 1295
 	xor	eax, eax
-	mov	QWORD PTR info$51[rbp-248], rax
+	mov	QWORD PTR info$89[rbp-248], rax
 ; Line 1296
-	mov	DWORD PTR info$51[rbp-240], eax
+	mov	DWORD PTR info$89[rbp-240], eax
 ; Line 1297
-	mov	DWORD PTR info$51[rbp-236], 1
+	mov	DWORD PTR info$89[rbp-236], 1
 ; Line 1298
-	mov	DWORD PTR info$51[rbp-232], 44		; 0000002cH
+	mov	DWORD PTR info$89[rbp-232], 44		; 0000002cH
 ; Line 1300
-	mov	DWORD PTR info$51[rbp-228], 800		; 00000320H
+	mov	DWORD PTR info$89[rbp-228], 800		; 00000320H
 ; Line 1301
-	mov	DWORD PTR info$51[rbp-224], 600		; 00000258H
+	mov	DWORD PTR info$89[rbp-224], 600		; 00000258H
 ; Line 1302
-	mov	DWORD PTR info$51[rbp-220], 1
+	mov	DWORD PTR info$89[rbp-220], 1
 ; Line 1304
-	mov	DWORD PTR info$51[rbp-216], 1
+	mov	DWORD PTR info$89[rbp-216], 1
 ; Line 1305
-	mov	DWORD PTR info$51[rbp-212], 1
+	mov	DWORD PTR info$89[rbp-212], 1
 ; Line 1306
-	mov	QWORD PTR info$51[rbp-208], 4
+	mov	QWORD PTR info$89[rbp-208], 4
 ; Line 1308
-	mov	QWORD PTR info$51[rbp-200], 80		; 00000050H
+	mov	QWORD PTR info$89[rbp-200], 80		; 00000050H
 ; Line 1310
-	mov	DWORD PTR info$51[rbp-192], eax
+	mov	DWORD PTR info$89[rbp-192], eax
 ; Line 1311
-	mov	QWORD PTR info$51[rbp-184], rax
+	mov	QWORD PTR info$89[rbp-184], rax
 ; Line 1312
-	mov	DWORD PTR info$51[rbp-176], eax
+	mov	DWORD PTR info$89[rbp-176], eax
 ; Line 1315
 	mov	QWORD PTR image$13[rsp], rax
 ; Line 1317
 	lea	r9, QWORD PTR image$13[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$51[rbp-256]
+	lea	rdx, QWORD PTR info$89[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateImage@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkImageCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkImage_T@@@ZEA ; vkCreateImage
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+720
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+728
-	je	SHORT $LN667@initVK
+	je	SHORT $LN668@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR image$13[rsp]
@@ -34168,32 +34344,32 @@ $LN653@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+720, 8
 ; Line 656
-	jmp	SHORT $LN666@initVK
-$LN667@initVK:
+	jmp	SHORT $LN667@initVK
+$LN668@initVK:
 ; Line 659
 	lea	r8, QWORD PTR image$13[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+712
 	call	??$_Emplace_reallocate@AEBQEAUVkImage_T@@@?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAAPEAPEAUVkImage_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::_Emplace_reallocate<VkImage_T * const &>
-$LN666@initVK:
+$LN667@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 404
+; Line 461
 	mov	rax, QWORD PTR image$13[rsp]
 	mov	QWORD PTR [r12+rbx*8], rax
-; Line 419
+; Line 476
 	test	rbx, rbx
-	jne	SHORT $LN1327@initVK
+	jne	SHORT $LN1328@initVK
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1379
-	lea	r8, QWORD PTR $T56[rbp-256]
+	lea	r8, QWORD PTR $T94[rbp-256]
 	mov	rdx, QWORD PTR [r12]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkGetImageMemoryRequirements@@3P6AXPEAUVkDevice_T@@PEAUVkImage_T@@PEAUVkMemoryRequirements@@@ZEA ; vkGetImageMemoryRequirements
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 421
-	movups	xmm0, XMMWORD PTR $T56[rbp-256]
-	movups	XMMWORD PTR vk_render_image_mem_reqs$[rbp-256], xmm0
-	movsd	xmm1, QWORD PTR $T56[rbp-240]
-	movsd	QWORD PTR vk_render_image_mem_reqs$[rbp-240], xmm1
+; Line 478
+	movups	xmm0, XMMWORD PTR $T94[rbp-256]
+	movups	XMMWORD PTR vk_render_image_mem_reqs$42[rbp-256], xmm0
+	movsd	xmm1, QWORD PTR $T94[rbp-240]
+	movsd	QWORD PTR vk_render_image_mem_reqs$42[rbp-240], xmm1
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1395
 	mov	edx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+40
@@ -34201,59 +34377,59 @@ $LN666@initVK:
 	xor	r9d, r9d
 	mov	eax, r9d
 	test	edx, edx
-	je	SHORT $LN681@initVK
+	je	SHORT $LN682@initVK
 ; Line 1098
 	mov	rcx, r15
-	mov	r8d, DWORD PTR $T56[rbp-240]
-	npad	7
-$LL682@initVK:
+	mov	r8d, DWORD PTR $T94[rbp-240]
+	npad	5
+$LL683@initVK:
 ; Line 1399
 	bt	r8d, eax
-	jae	SHORT $LN685@initVK
+	jae	SHORT $LN686@initVK
 	test	BYTE PTR [rcx], 1
-	jne	SHORT $LN679@initVK
-$LN685@initVK:
+	jne	SHORT $LN680@initVK
+$LN686@initVK:
 ; Line 1397
 	inc	eax
 	add	rcx, 8
 	cmp	eax, edx
-	jb	SHORT $LL682@initVK
-$LN681@initVK:
+	jb	SHORT $LL683@initVK
+$LN682@initVK:
 ; Line 1407
 	mov	eax, -1					; ffffffffH
-$LN679@initVK:
+$LN680@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 423
+; Line 480
 	mov	QWORD PTR vk_render_image_dev_local_mem_index$1$[rsp], rax
-; Line 419
-	jmp	SHORT $LN9@initVK
-$LN1327@initVK:
+; Line 476
+	jmp	SHORT $LN10@initVK
+$LN1328@initVK:
 	xor	r9d, r9d
-$LN9@initVK:
+$LN10@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1420
-	mov	DWORD PTR info$52[rbp-256], 5
+	mov	DWORD PTR info$90[rbp-256], 5
 ; Line 1421
-	mov	QWORD PTR info$52[rbp-248], r9
+	mov	QWORD PTR info$90[rbp-248], r9
 ; Line 1422
-	mov	rax, QWORD PTR vk_render_image_mem_reqs$[rbp-256]
-	mov	QWORD PTR info$52[rbp-240], rax
+	mov	rax, QWORD PTR vk_render_image_mem_reqs$42[rbp-256]
+	mov	QWORD PTR info$90[rbp-240], rax
 ; Line 1423
 	mov	rax, QWORD PTR vk_render_image_dev_local_mem_index$1$[rsp]
-	mov	DWORD PTR info$52[rbp-232], eax
+	mov	DWORD PTR info$90[rbp-232], eax
 ; Line 1426
 	mov	QWORD PTR mem$12[rsp], r9
 ; Line 1428
 	lea	r9, QWORD PTR mem$12[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$52[rbp-256]
+	lea	rdx, QWORD PTR info$90[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkAllocateMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkMemoryAllocateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkDeviceMemory_T@@@ZEA ; vkAllocateMemory
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+744
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+752
-	je	SHORT $LN692@initVK
+	je	SHORT $LN693@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR mem$12[rsp]
@@ -34262,17 +34438,17 @@ $LN9@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+744, 8
 ; Line 656
-	jmp	SHORT $LN691@initVK
-$LN692@initVK:
+	jmp	SHORT $LN692@initVK
+$LN693@initVK:
 ; Line 659
 	lea	r8, QWORD PTR mem$12[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+736
 	call	??$_Emplace_reallocate@AEBQEAUVkDeviceMemory_T@@@?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAAPEAPEAUVkDeviceMemory_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::_Emplace_reallocate<VkDeviceMemory_T * const &>
-$LN691@initVK:
+$LN692@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 426
+; Line 483
 	mov	rax, QWORD PTR mem$12[rsp]
-	mov	rcx, QWORD PTR vk_render_image_mems$1$[rbp-256]
+	mov	rcx, QWORD PTR vk_render_image_mems$1$[rsp]
 	mov	QWORD PTR [rcx+rbx*8], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1437
@@ -34282,42 +34458,42 @@ $LN691@initVK:
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkBindImageMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkImage_T@@PEAUVkDeviceMemory_T@@_K@ZEA ; vkBindImageMemory
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 430
+; Line 487
 	mov	rax, QWORD PTR [r12+rbx*8]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1345
-	mov	DWORD PTR info$50[rbp-256], 15
+	mov	DWORD PTR info$88[rbp-256], 15
 ; Line 1346
 	xor	ecx, ecx
-	mov	QWORD PTR info$50[rbp-248], rcx
+	mov	QWORD PTR info$88[rbp-248], rcx
 ; Line 1347
-	mov	DWORD PTR info$50[rbp-240], ecx
+	mov	DWORD PTR info$88[rbp-240], ecx
 ; Line 1348
-	mov	QWORD PTR info$50[rbp-232], rax
+	mov	QWORD PTR info$88[rbp-232], rax
 ; Line 1349
 	movdqa	xmm0, XMMWORD PTR __xmm@00000000000000000000002c00000001
-	movdqa	XMMWORD PTR info$50[rbp-224], xmm0
+	movdqa	XMMWORD PTR info$88[rbp-224], xmm0
 ; Line 1354
-	mov	QWORD PTR info$50[rbp-208], rcx
+	mov	QWORD PTR info$88[rbp-208], rcx
 ; Line 1358
-	mov	QWORD PTR info$50[rbp-200], 1
+	mov	QWORD PTR info$88[rbp-200], 1
 ; Line 1360
-	mov	QWORD PTR info$50[rbp-192], 1
+	mov	QWORD PTR info$88[rbp-192], 1
 ; Line 1362
-	mov	QWORD PTR info$50[rbp-184], 1
+	mov	QWORD PTR info$88[rbp-184], 1
 ; Line 1366
 	mov	QWORD PTR image_view$11[rsp], rcx
 ; Line 1368
 	lea	r9, QWORD PTR image_view$11[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$50[rbp-256]
+	lea	rdx, QWORD PTR info$88[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateImageView@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkImageViewCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkImageView_T@@@ZEA ; vkCreateImageView
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+696
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+704
-	je	SHORT $LN713@initVK
+	je	SHORT $LN714@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR image_view$11[rsp]
@@ -34326,63 +34502,62 @@ $LN691@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+696, 8
 ; Line 656
-	jmp	SHORT $LN712@initVK
-$LN713@initVK:
+	jmp	SHORT $LN713@initVK
+$LN714@initVK:
 ; Line 659
 	lea	r8, QWORD PTR image_view$11[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+688
 	call	??$_Emplace_reallocate@AEBQEAUVkImageView_T@@@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAAPEAPEAUVkImageView_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::_Emplace_reallocate<VkImageView_T * const &>
-$LN712@initVK:
+$LN713@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 430
+; Line 487
 	mov	rax, QWORD PTR image_view$11[rsp]
-	mov	rcx, QWORD PTR vk_render_image_views$1$[rbp-256]
-	mov	QWORD PTR [rcx+rbx*8], rax
+	mov	QWORD PTR [rdi+rbx*8], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1294
-	mov	DWORD PTR info$48[rbp-256], 14
+	mov	DWORD PTR info$86[rbp-256], 14
 ; Line 1295
 	xor	eax, eax
-	mov	QWORD PTR info$48[rbp-248], rax
+	mov	QWORD PTR info$86[rbp-248], rax
 ; Line 1296
-	mov	DWORD PTR info$48[rbp-240], eax
+	mov	DWORD PTR info$86[rbp-240], eax
 ; Line 1297
-	mov	DWORD PTR info$48[rbp-236], 1
+	mov	DWORD PTR info$86[rbp-236], 1
 ; Line 1298
-	mov	DWORD PTR info$48[rbp-232], 126		; 0000007eH
+	mov	DWORD PTR info$86[rbp-232], 126		; 0000007eH
 ; Line 1300
-	mov	DWORD PTR info$48[rbp-228], 800		; 00000320H
+	mov	DWORD PTR info$86[rbp-228], 800		; 00000320H
 ; Line 1301
-	mov	DWORD PTR info$48[rbp-224], 600		; 00000258H
+	mov	DWORD PTR info$86[rbp-224], 600		; 00000258H
 ; Line 1302
-	mov	DWORD PTR info$48[rbp-220], 1
+	mov	DWORD PTR info$86[rbp-220], 1
 ; Line 1304
-	mov	DWORD PTR info$48[rbp-216], 1
+	mov	DWORD PTR info$86[rbp-216], 1
 ; Line 1305
-	mov	DWORD PTR info$48[rbp-212], 1
+	mov	DWORD PTR info$86[rbp-212], 1
 ; Line 1306
-	mov	QWORD PTR info$48[rbp-208], 4
+	mov	QWORD PTR info$86[rbp-208], 4
 ; Line 1308
-	mov	QWORD PTR info$48[rbp-200], 32		; 00000020H
+	mov	QWORD PTR info$86[rbp-200], 32		; 00000020H
 ; Line 1310
-	mov	DWORD PTR info$48[rbp-192], eax
+	mov	DWORD PTR info$86[rbp-192], eax
 ; Line 1311
-	mov	QWORD PTR info$48[rbp-184], rax
+	mov	QWORD PTR info$86[rbp-184], rax
 ; Line 1312
-	mov	DWORD PTR info$48[rbp-176], eax
+	mov	DWORD PTR info$86[rbp-176], eax
 ; Line 1315
 	mov	QWORD PTR image$10[rsp], rax
 ; Line 1317
 	lea	r9, QWORD PTR image$10[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$48[rbp-256]
+	lea	rdx, QWORD PTR info$86[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateImage@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkImageCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkImage_T@@@ZEA ; vkCreateImage
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+720
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+728
-	je	SHORT $LN726@initVK
+	je	SHORT $LN727@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR image$10[rsp]
@@ -34391,32 +34566,32 @@ $LN712@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+720, 8
 ; Line 656
-	jmp	SHORT $LN725@initVK
-$LN726@initVK:
+	jmp	SHORT $LN726@initVK
+$LN727@initVK:
 ; Line 659
 	lea	r8, QWORD PTR image$10[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+712
 	call	??$_Emplace_reallocate@AEBQEAUVkImage_T@@@?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAAPEAPEAUVkImage_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::_Emplace_reallocate<VkImage_T * const &>
-$LN725@initVK:
+$LN726@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 443
+; Line 500
 	mov	rax, QWORD PTR image$10[rsp]
 	mov	QWORD PTR [r14+rbx*8], rax
-; Line 458
+; Line 515
 	test	rbx, rbx
-	jne	SHORT $LN1326@initVK
+	jne	SHORT $LN1327@initVK
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1379
-	lea	r8, QWORD PTR $T55[rbp-256]
+	lea	r8, QWORD PTR $T93[rbp-256]
 	mov	rdx, QWORD PTR [r14]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkGetImageMemoryRequirements@@3P6AXPEAUVkDevice_T@@PEAUVkImage_T@@PEAUVkMemoryRequirements@@@ZEA ; vkGetImageMemoryRequirements
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 460
-	movups	xmm0, XMMWORD PTR $T55[rbp-256]
-	movups	XMMWORD PTR vk_depth_image_mem_reqs$[rbp-256], xmm0
-	movsd	xmm1, QWORD PTR $T55[rbp-240]
-	movsd	QWORD PTR vk_depth_image_mem_reqs$[rbp-240], xmm1
+; Line 517
+	movups	xmm0, XMMWORD PTR $T93[rbp-256]
+	movups	XMMWORD PTR vk_depth_image_mem_reqs$38[rbp-256], xmm0
+	movsd	xmm1, QWORD PTR $T93[rbp-240]
+	movsd	QWORD PTR vk_depth_image_mem_reqs$38[rbp-240], xmm1
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1395
 	mov	edx, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+40
@@ -34424,58 +34599,57 @@ $LN725@initVK:
 	xor	r9d, r9d
 	mov	eax, r9d
 	test	edx, edx
-	je	SHORT $LN740@initVK
+	je	SHORT $LN741@initVK
 ; Line 1098
 	mov	rcx, r15
-	mov	r8d, DWORD PTR $T55[rbp-240]
-$LL741@initVK:
+	mov	r8d, DWORD PTR $T93[rbp-240]
+$LL742@initVK:
 ; Line 1399
 	bt	r8d, eax
-	jae	SHORT $LN744@initVK
+	jae	SHORT $LN745@initVK
 	test	BYTE PTR [rcx], 1
-	jne	SHORT $LN738@initVK
-$LN744@initVK:
+	jne	SHORT $LN739@initVK
+$LN745@initVK:
 ; Line 1397
 	inc	eax
 	add	rcx, 8
 	cmp	eax, edx
-	jb	SHORT $LL741@initVK
-$LN740@initVK:
+	jb	SHORT $LL742@initVK
+$LN741@initVK:
 ; Line 1407
 	mov	eax, -1					; ffffffffH
-$LN738@initVK:
+$LN739@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 462
-	mov	QWORD PTR vk_depth_image_dev_local_mem_index$1$[rsp], rax
-	mov	rdi, rax
-; Line 458
-	jmp	SHORT $LN10@initVK
-$LN1326@initVK:
+; Line 519
+	mov	r13d, eax
+; Line 515
+	jmp	SHORT $LN11@initVK
+$LN1327@initVK:
 	xor	r9d, r9d
-$LN10@initVK:
+$LN11@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1420
-	mov	DWORD PTR info$49[rbp-256], 5
+	mov	DWORD PTR info$87[rbp-256], 5
 ; Line 1421
-	mov	QWORD PTR info$49[rbp-248], r9
+	mov	QWORD PTR info$87[rbp-248], r9
 ; Line 1422
-	mov	rax, QWORD PTR vk_depth_image_mem_reqs$[rbp-256]
-	mov	QWORD PTR info$49[rbp-240], rax
+	mov	rax, QWORD PTR vk_depth_image_mem_reqs$38[rbp-256]
+	mov	QWORD PTR info$87[rbp-240], rax
 ; Line 1423
-	mov	DWORD PTR info$49[rbp-232], edi
+	mov	DWORD PTR info$87[rbp-232], r13d
 ; Line 1426
 	mov	QWORD PTR mem$9[rsp], r9
 ; Line 1428
 	lea	r9, QWORD PTR mem$9[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$49[rbp-256]
+	lea	rdx, QWORD PTR info$87[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkAllocateMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkMemoryAllocateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkDeviceMemory_T@@@ZEA ; vkAllocateMemory
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+744
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+752
-	je	SHORT $LN751@initVK
+	je	SHORT $LN752@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR mem$9[rsp]
@@ -34484,17 +34658,17 @@ $LN10@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+744, 8
 ; Line 656
-	jmp	SHORT $LN750@initVK
-$LN751@initVK:
+	jmp	SHORT $LN751@initVK
+$LN752@initVK:
 ; Line 659
 	lea	r8, QWORD PTR mem$9[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+736
 	call	??$_Emplace_reallocate@AEBQEAUVkDeviceMemory_T@@@?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAAPEAPEAUVkDeviceMemory_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::_Emplace_reallocate<VkDeviceMemory_T * const &>
-$LN750@initVK:
+$LN751@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 465
+; Line 522
 	mov	rax, QWORD PTR mem$9[rsp]
-	mov	rcx, QWORD PTR $T18[rsp]
+	mov	rcx, QWORD PTR $T33[rbp-256]
 	mov	QWORD PTR [rcx+rbx*8], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1437
@@ -34504,42 +34678,42 @@ $LN750@initVK:
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkBindImageMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkImage_T@@PEAUVkDeviceMemory_T@@_K@ZEA ; vkBindImageMemory
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 469
+; Line 526
 	mov	rax, QWORD PTR [r14+rbx*8]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1345
-	mov	DWORD PTR info$47[rbp-256], 15
+	mov	DWORD PTR info$85[rbp-256], 15
 ; Line 1346
 	xor	ecx, ecx
-	mov	QWORD PTR info$47[rbp-248], rcx
+	mov	QWORD PTR info$85[rbp-248], rcx
 ; Line 1347
-	mov	DWORD PTR info$47[rbp-240], ecx
+	mov	DWORD PTR info$85[rbp-240], ecx
 ; Line 1348
-	mov	QWORD PTR info$47[rbp-232], rax
+	mov	QWORD PTR info$85[rbp-232], rax
 ; Line 1349
 	movdqa	xmm0, XMMWORD PTR __xmm@00000000000000000000007e00000001
-	movdqa	XMMWORD PTR info$47[rbp-224], xmm0
+	movdqa	XMMWORD PTR info$85[rbp-224], xmm0
 ; Line 1354
-	mov	QWORD PTR info$47[rbp-208], rcx
+	mov	QWORD PTR info$85[rbp-208], rcx
 ; Line 1358
-	mov	QWORD PTR info$47[rbp-200], 2
+	mov	QWORD PTR info$85[rbp-200], 2
 ; Line 1360
-	mov	QWORD PTR info$47[rbp-192], 1
+	mov	QWORD PTR info$85[rbp-192], 1
 ; Line 1362
-	mov	QWORD PTR info$47[rbp-184], 1
+	mov	QWORD PTR info$85[rbp-184], 1
 ; Line 1366
 	mov	QWORD PTR image_view$8[rsp], rcx
 ; Line 1368
 	lea	r9, QWORD PTR image_view$8[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$47[rbp-256]
+	lea	rdx, QWORD PTR info$85[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateImageView@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkImageViewCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkImageView_T@@@ZEA ; vkCreateImageView
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+696
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+704
-	je	SHORT $LN772@initVK
+	je	SHORT $LN773@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR image_view$8[rsp]
@@ -34548,61 +34722,61 @@ $LN750@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+696, 8
 ; Line 656
-	jmp	SHORT $LN771@initVK
-$LN772@initVK:
+	jmp	SHORT $LN772@initVK
+$LN773@initVK:
 ; Line 659
 	lea	r8, QWORD PTR image_view$8[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+688
 	call	??$_Emplace_reallocate@AEBQEAUVkImageView_T@@@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAAPEAPEAUVkImageView_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::_Emplace_reallocate<VkImageView_T * const &>
-$LN771@initVK:
+$LN772@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 469
+; Line 526
 	mov	rax, QWORD PTR image_view$8[rsp]
-	mov	QWORD PTR [r13+rbx*8], rax
-; Line 483
-	mov	rax, QWORD PTR vk_render_image_views$1$[rbp-256]
+	mov	rcx, QWORD PTR vk_depth_image_views$1$[rsp]
+	mov	QWORD PTR [rcx+rbx*8], rax
+; Line 540
+	mov	rax, QWORD PTR [rdi+rbx*8]
+	mov	QWORD PTR vk_framebuffer_attach$130[rbp-256], rax
+	mov	rax, QWORD PTR [rcx+rbx*8]
+	mov	QWORD PTR vk_framebuffer_attach$130[rbp-248], rax
+	mov	rax, QWORD PTR vk_swapchain_image_views$1$[rbp-256]
 	mov	rax, QWORD PTR [rax+rbx*8]
-	mov	QWORD PTR vk_framebuffer_attach$81[rbp-256], rax
-	mov	rax, QWORD PTR [r13+rbx*8]
-	mov	QWORD PTR vk_framebuffer_attach$81[rbp-248], rax
-	mov	rax, QWORD PTR vk_swapchain_image_views$1$[rsp]
-	mov	rax, QWORD PTR [rax+rbx*8]
-	mov	QWORD PTR vk_framebuffer_attach$81[rbp-240], rax
+	mov	QWORD PTR vk_framebuffer_attach$130[rbp-240], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1469
-	mov	DWORD PTR info$45[rbp-256], 37		; 00000025H
+	mov	DWORD PTR info$83[rbp-256], 37		; 00000025H
 ; Line 1470
 	xor	ecx, ecx
-	mov	QWORD PTR info$45[rbp-248], rcx
+	mov	QWORD PTR info$83[rbp-248], rcx
 ; Line 1471
-	mov	DWORD PTR info$45[rbp-240], ecx
+	mov	DWORD PTR info$83[rbp-240], ecx
 ; Line 1472
-	mov	rax, QWORD PTR render_pass$32[rbp-256]
-	mov	QWORD PTR info$45[rbp-232], rax
+	mov	rax, QWORD PTR render_pass$31[rbp-256]
+	mov	QWORD PTR info$83[rbp-232], rax
 ; Line 1473
-	mov	DWORD PTR info$45[rbp-224], 3
+	mov	DWORD PTR info$83[rbp-224], 3
 ; Line 1474
-	lea	rax, QWORD PTR vk_framebuffer_attach$81[rbp-256]
-	mov	QWORD PTR info$45[rbp-216], rax
+	lea	rax, QWORD PTR vk_framebuffer_attach$130[rbp-256]
+	mov	QWORD PTR info$83[rbp-216], rax
 ; Line 1475
-	mov	DWORD PTR info$45[rbp-208], 800		; 00000320H
+	mov	DWORD PTR info$83[rbp-208], 800		; 00000320H
 ; Line 1476
-	mov	DWORD PTR info$45[rbp-204], 600		; 00000258H
+	mov	DWORD PTR info$83[rbp-204], 600		; 00000258H
 ; Line 1477
-	mov	DWORD PTR info$45[rbp-200], 1
+	mov	DWORD PTR info$83[rbp-200], 1
 ; Line 1480
 	mov	QWORD PTR framebuffer$7[rsp], rcx
 ; Line 1482
 	lea	r9, QWORD PTR framebuffer$7[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$45[rbp-256]
+	lea	rdx, QWORD PTR info$83[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateFramebuffer@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkFramebufferCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkFramebuffer_T@@@ZEA ; vkCreateFramebuffer
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+768
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+776
-	je	SHORT $LN791@initVK
+	je	SHORT $LN792@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR framebuffer$7[rsp]
@@ -34611,39 +34785,39 @@ $LN771@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+768, 8
 ; Line 656
-	jmp	SHORT $LN790@initVK
-$LN791@initVK:
+	jmp	SHORT $LN791@initVK
+$LN792@initVK:
 ; Line 659
 	lea	r8, QWORD PTR framebuffer$7[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+760
 	call	??$_Emplace_reallocate@AEBQEAUVkFramebuffer_T@@@?$vector@PEAUVkFramebuffer_T@@V?$allocator@PEAUVkFramebuffer_T@@@std@@@std@@QEAAPEAPEAUVkFramebuffer_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >::_Emplace_reallocate<VkFramebuffer_T * const &>
-$LN790@initVK:
+$LN791@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 485
+; Line 542
 	mov	rax, QWORD PTR framebuffer$7[rsp]
 	mov	rcx, QWORD PTR vk_framebuffers$1$[rsp]
 	mov	QWORD PTR [rcx+rbx*8], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1498
-	mov	DWORD PTR info$46[rbp-256], 8
+	mov	DWORD PTR info$84[rbp-256], 8
 ; Line 1499
 	xor	r9d, r9d
-	mov	QWORD PTR info$46[rbp-248], r9
+	mov	QWORD PTR info$84[rbp-248], r9
 ; Line 1500
-	mov	DWORD PTR info$46[rbp-240], 1
+	mov	DWORD PTR info$84[rbp-240], 1
 ; Line 1503
 	mov	QWORD PTR fence$6[rsp], r9
 ; Line 1505
 	lea	r9, QWORD PTR fence$6[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$46[rbp-256]
+	lea	rdx, QWORD PTR info$84[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateFence@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkFenceCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkFence_T@@@ZEA ; vkCreateFence
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+792
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+800
-	je	SHORT $LN804@initVK
+	je	SHORT $LN805@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR fence$6[rsp]
@@ -34652,39 +34826,39 @@ $LN790@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+792, 8
 ; Line 656
-	jmp	SHORT $LN803@initVK
-$LN804@initVK:
+	jmp	SHORT $LN804@initVK
+$LN805@initVK:
 ; Line 659
 	lea	r8, QWORD PTR fence$6[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+784
 	call	??$_Emplace_reallocate@AEBQEAUVkFence_T@@@?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@QEAAPEAPEAUVkFence_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkFence_T *,std::allocator<VkFence_T *> >::_Emplace_reallocate<VkFence_T * const &>
-$LN803@initVK:
+$LN804@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 493
+; Line 550
 	mov	rcx, QWORD PTR fence$6[rsp]
 	mov	rax, QWORD PTR ?vk_fences@@3V?$vector@PEAUVkFence_T@@V?$allocator@PEAUVkFence_T@@@std@@@std@@A
 	mov	QWORD PTR [rax+rbx*8], rcx
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1521
-	mov	DWORD PTR info$44[rbp-256], 9
+	mov	DWORD PTR info$82[rbp-256], 9
 ; Line 1522
 	xor	eax, eax
-	mov	QWORD PTR info$44[rbp-248], rax
+	mov	QWORD PTR info$82[rbp-248], rax
 ; Line 1523
-	mov	DWORD PTR info$44[rbp-240], eax
+	mov	DWORD PTR info$82[rbp-240], eax
 ; Line 1526
 	mov	QWORD PTR semaphore$5[rsp], rax
 ; Line 1528
 	lea	r9, QWORD PTR semaphore$5[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$44[rbp-256]
+	lea	rdx, QWORD PTR info$82[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateSemaphore@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkSemaphoreCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkSemaphore_T@@@ZEA ; vkCreateSemaphore
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+816
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+824
-	je	SHORT $LN817@initVK
+	je	SHORT $LN818@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR semaphore$5[rsp]
@@ -34693,39 +34867,39 @@ $LN803@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+816, 8
 ; Line 656
-	jmp	SHORT $LN816@initVK
-$LN817@initVK:
+	jmp	SHORT $LN817@initVK
+$LN818@initVK:
 ; Line 659
 	lea	r8, QWORD PTR semaphore$5[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+808
 	call	??$_Emplace_reallocate@AEBQEAUVkSemaphore_T@@@?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@QEAAPEAPEAUVkSemaphore_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkSemaphore_T *,std::allocator<VkSemaphore_T *> >::_Emplace_reallocate<VkSemaphore_T * const &>
-$LN816@initVK:
+$LN817@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 494
+; Line 551
 	mov	rcx, QWORD PTR semaphore$5[rsp]
 	mov	rax, QWORD PTR ?vk_submission_completed_semaphores@@3V?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@A
 	mov	QWORD PTR [rax+rbx*8], rcx
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1521
-	mov	DWORD PTR info$43[rbp-256], 9
+	mov	DWORD PTR info$81[rbp-256], 9
 ; Line 1522
 	xor	eax, eax
-	mov	QWORD PTR info$43[rbp-248], rax
+	mov	QWORD PTR info$81[rbp-248], rax
 ; Line 1523
-	mov	DWORD PTR info$43[rbp-240], eax
+	mov	DWORD PTR info$81[rbp-240], eax
 ; Line 1526
 	mov	QWORD PTR semaphore$4[rsp], rax
 ; Line 1528
 	lea	r9, QWORD PTR semaphore$4[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$43[rbp-256]
+	lea	rdx, QWORD PTR info$81[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateSemaphore@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkSemaphoreCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkSemaphore_T@@@ZEA ; vkCreateSemaphore
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+816
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+824
-	je	SHORT $LN830@initVK
+	je	SHORT $LN831@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR semaphore$4[rsp]
@@ -34734,24 +34908,24 @@ $LN816@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+816, 8
 ; Line 656
-	jmp	SHORT $LN829@initVK
-$LN830@initVK:
+	jmp	SHORT $LN830@initVK
+$LN831@initVK:
 ; Line 659
 	lea	r8, QWORD PTR semaphore$4[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+808
 	call	??$_Emplace_reallocate@AEBQEAUVkSemaphore_T@@@?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@QEAAPEAPEAUVkSemaphore_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkSemaphore_T *,std::allocator<VkSemaphore_T *> >::_Emplace_reallocate<VkSemaphore_T * const &>
-$LN829@initVK:
+$LN830@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 495
+; Line 552
 	mov	rcx, QWORD PTR semaphore$4[rsp]
 	mov	rax, QWORD PTR ?vk_image_aqcuired_semaphores@@3V?$vector@PEAUVkSemaphore_T@@V?$allocator@PEAUVkSemaphore_T@@@std@@@std@@A
 	mov	QWORD PTR [rax+rbx*8], rcx
-; Line 391
+; Line 448
 	inc	rbx
 	cmp	rbx, rsi
 	jb	$LL4@initVK
 $LN3@initVK:
-; Line 502
+; Line 559
 	xor	r12d, r12d
 	mov	QWORD PTR [rsp+64], r12
 	mov	QWORD PTR [rsp+56], r12
@@ -34763,10 +34937,10 @@ $LN3@initVK:
 	mov	r8d, 128				; 00000080H
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	call	?Buffer@Device@VULKAN@XGK@@QEAAPEAUVkBuffer_T@@_KIW4VkSharingMode@@IPEBIIPEBXPEBUVkAllocationCallbacks@@@Z ; XGK::VULKAN::Device::Buffer
-	mov	QWORD PTR vk_vertex_buffer$[rbp-256], rax
+	mov	QWORD PTR vk_vertex_buffer$49[rbp-256], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1388
-	lea	r8, QWORD PTR vk_vertex_buffer_mem_reqs$[rbp-256]
+	lea	r8, QWORD PTR vk_vertex_buffer_mem_reqs$96[rbp-256]
 	mov	rdx, rax
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkGetBufferMemoryRequirements@@3P6AXPEAUVkDevice_T@@PEAUVkBuffer_T@@PEAUVkMemoryRequirements@@@ZEA ; vkGetBufferMemoryRequirements
@@ -34775,32 +34949,32 @@ $LN3@initVK:
 ; Line 1397
 	mov	r8d, r12d
 	test	ecx, ecx
-	je	SHORT $LN842@initVK
+	je	SHORT $LN843@initVK
 ; Line 1098
 	mov	rax, r15
-	mov	edx, DWORD PTR vk_vertex_buffer_mem_reqs$[rbp-240]
-	npad	7
-$LL843@initVK:
+	mov	edx, DWORD PTR vk_vertex_buffer_mem_reqs$96[rbp-240]
+	npad	1
+$LL844@initVK:
 ; Line 1399
 	bt	edx, r8d
-	jae	SHORT $LN846@initVK
+	jae	SHORT $LN847@initVK
 	test	BYTE PTR [rax], 4
-	jne	SHORT $LN840@initVK
-$LN846@initVK:
+	jne	SHORT $LN841@initVK
+$LN847@initVK:
 ; Line 1397
 	inc	r8d
 	add	rax, 8
 	cmp	r8d, ecx
-	jb	SHORT $LL843@initVK
-$LN842@initVK:
+	jb	SHORT $LL844@initVK
+$LN843@initVK:
 ; Line 1407
 	mov	r8d, -1					; ffffffffH
-$LN840@initVK:
+$LN841@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 508
+; Line 565
 	mov	QWORD PTR [rsp+32], r12
 	xor	r9d, r9d
-	mov	rdx, QWORD PTR vk_vertex_buffer_mem_reqs$[rbp-256]
+	mov	rdx, QWORD PTR vk_vertex_buffer_mem_reqs$96[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	call	?Mem@Device@VULKAN@XGK@@QEAAPEAUVkDeviceMemory_T@@_KIPEBXPEBUVkAllocationCallbacks@@@Z ; XGK::VULKAN::Device::Mem
 	mov	rbx, rax
@@ -34808,13 +34982,13 @@ $LN840@initVK:
 ; Line 1442
 	xor	r9d, r9d
 	mov	r8, rax
-	mov	rdx, QWORD PTR vk_vertex_buffer$[rbp-256]
+	mov	rdx, QWORD PTR vk_vertex_buffer$49[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkBindBufferMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkBuffer_T@@PEAUVkDeviceMemory_T@@_K@ZEA ; vkBindBufferMemory
 ; Line 1447
-	mov	QWORD PTR mem_addr$29[rsp], r12
+	mov	QWORD PTR mem_addr$28[rsp], r12
 ; Line 1449
-	lea	rax, QWORD PTR mem_addr$29[rsp]
+	lea	rax, QWORD PTR mem_addr$28[rsp]
 	mov	QWORD PTR [rsp+40], rax
 	mov	DWORD PTR [rsp+32], r12d
 	mov	r9d, 432				; 000001b0H
@@ -34823,11 +34997,11 @@ $LN840@initVK:
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkMapMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkDeviceMemory_T@@_K2IPEAPEAX@ZEA ; vkMapMemory
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 514
-	mov	rax, QWORD PTR mem_addr$29[rsp]
+; Line 571
+	mov	rax, QWORD PTR mem_addr$28[rsp]
 	lea	rcx, OFFSET FLAT:?vertices@@3QBMB
 	mov	edx, 3
-$LL1315@initVK:
+$LL1316@initVK:
 	movups	xmm0, XMMWORD PTR [rcx]
 	movups	XMMWORD PTR [rax], xmm0
 	movups	xmm1, XMMWORD PTR [rcx+16]
@@ -34847,14 +35021,14 @@ $LL1315@initVK:
 	movups	XMMWORD PTR [rax-16], xmm1
 	lea	rcx, QWORD PTR [rcx+128]
 	sub	rdx, 1
-	jne	SHORT $LL1315@initVK
+	jne	SHORT $LL1316@initVK
 	movups	xmm0, XMMWORD PTR [rcx]
 	movups	XMMWORD PTR [rax], xmm0
 	movups	xmm1, XMMWORD PTR [rcx+16]
 	movups	XMMWORD PTR [rax+16], xmm1
 	movups	xmm0, XMMWORD PTR [rcx+32]
 	movups	XMMWORD PTR [rax+32], xmm0
-; Line 518
+; Line 575
 	mov	QWORD PTR [rsp+64], r12
 	mov	QWORD PTR [rsp+56], r12
 	mov	DWORD PTR [rsp+48], r12d
@@ -34868,7 +35042,7 @@ $LL1315@initVK:
 	mov	rdi, rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1388
-	lea	r8, QWORD PTR vk_uniform_buffer_mem_reqs$[rbp-256]
+	lea	r8, QWORD PTR vk_uniform_buffer_mem_reqs$97[rbp-256]
 	mov	rdx, rax
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkGetBufferMemoryRequirements@@3P6AXPEAUVkDevice_T@@PEAUVkBuffer_T@@PEAUVkMemoryRequirements@@@ZEA ; vkGetBufferMemoryRequirements
@@ -34877,30 +35051,30 @@ $LL1315@initVK:
 ; Line 1397
 	mov	r8d, r12d
 	test	ecx, ecx
-	je	SHORT $LN856@initVK
+	je	SHORT $LN857@initVK
 ; Line 1098
-	mov	edx, DWORD PTR vk_uniform_buffer_mem_reqs$[rbp-240]
-$LL857@initVK:
+	mov	edx, DWORD PTR vk_uniform_buffer_mem_reqs$97[rbp-240]
+$LL858@initVK:
 ; Line 1399
 	bt	edx, r8d
-	jae	SHORT $LN860@initVK
+	jae	SHORT $LN861@initVK
 	test	BYTE PTR [r15], 4
-	jne	SHORT $LN854@initVK
-$LN860@initVK:
+	jne	SHORT $LN855@initVK
+$LN861@initVK:
 ; Line 1397
 	inc	r8d
 	add	r15, 8
 	cmp	r8d, ecx
-	jb	SHORT $LL857@initVK
-$LN856@initVK:
+	jb	SHORT $LL858@initVK
+$LN857@initVK:
 ; Line 1407
 	mov	r8d, -1					; ffffffffH
-$LN854@initVK:
+$LN855@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 524
+; Line 581
 	mov	QWORD PTR [rsp+32], r12
 	xor	r9d, r9d
-	mov	rdx, QWORD PTR vk_uniform_buffer_mem_reqs$[rbp-256]
+	mov	rdx, QWORD PTR vk_uniform_buffer_mem_reqs$97[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	call	?Mem@Device@VULKAN@XGK@@QEAAPEAUVkDeviceMemory_T@@_KIPEBXPEBUVkAllocationCallbacks@@@Z ; XGK::VULKAN::Device::Mem
 	mov	rbx, rax
@@ -34912,9 +35086,9 @@ $LN854@initVK:
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkBindBufferMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkBuffer_T@@PEAUVkDeviceMemory_T@@_K@ZEA ; vkBindBufferMemory
 ; Line 1447
-	mov	QWORD PTR mem_addr$28[rsp], r12
+	mov	QWORD PTR mem_addr$27[rsp], r12
 ; Line 1449
-	lea	rax, QWORD PTR mem_addr$28[rsp]
+	lea	rax, QWORD PTR mem_addr$27[rsp]
 	mov	QWORD PTR [rsp+40], rax
 	mov	DWORD PTR [rsp+32], r12d
 	mov	r9d, 128				; 00000080H
@@ -34923,10 +35097,10 @@ $LN854@initVK:
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkMapMemory@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEAUVkDeviceMemory_T@@_K2IPEAPEAX@ZEA ; vkMapMemory
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 528
-	mov	rax, QWORD PTR mem_addr$28[rsp]
+; Line 585
+	mov	rax, QWORD PTR mem_addr$27[rsp]
 	mov	QWORD PTR ?vk_uniform_buffer_mem_addr@@3PEAXEA, rax ; vk_uniform_buffer_mem_addr
-; Line 530
+; Line 587
 	movaps	xmm0, XMMWORD PTR ?orbit@@3UOrbit@XGK@@A
 	movups	XMMWORD PTR [rax], xmm0
 	movaps	xmm1, XMMWORD PTR ?orbit@@3UOrbit@XGK@@A+16
@@ -34943,171 +35117,171 @@ $LN854@initVK:
 	movups	XMMWORD PTR [rax+96], xmm0
 	movaps	xmm1, XMMWORD PTR ?orbit@@3UOrbit@XGK@@A+112
 	movups	XMMWORD PTR [rax+112], xmm1
-; Line 536
-	mov	DWORD PTR vk_descr_set_layout_binding$[rbp-256], r12d
-	mov	DWORD PTR vk_descr_set_layout_binding$[rbp-252], 6
-	mov	DWORD PTR vk_descr_set_layout_binding$[rbp-248], 1
-	mov	DWORD PTR vk_descr_set_layout_binding$[rbp-244], 1
-	mov	QWORD PTR vk_descr_set_layout_binding$[rbp-240], r12
+; Line 593
+	mov	DWORD PTR vk_descr_set_layout_binding$63[rbp-256], r12d
+	mov	DWORD PTR vk_descr_set_layout_binding$63[rbp-252], 6
+	mov	DWORD PTR vk_descr_set_layout_binding$63[rbp-248], 1
+	mov	DWORD PTR vk_descr_set_layout_binding$63[rbp-244], 1
+	mov	QWORD PTR vk_descr_set_layout_binding$63[rbp-240], r12
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1579
-	mov	DWORD PTR info$62[rbp-256], 32		; 00000020H
+	mov	DWORD PTR info$110[rbp-256], 32		; 00000020H
 ; Line 1580
-	mov	QWORD PTR info$62[rbp-248], r12
+	mov	QWORD PTR info$110[rbp-248], r12
 ; Line 1581
-	mov	DWORD PTR info$62[rbp-240], r12d
+	mov	DWORD PTR info$110[rbp-240], r12d
 ; Line 1582
-	mov	DWORD PTR info$62[rbp-236], 1
+	mov	DWORD PTR info$110[rbp-236], 1
 ; Line 1583
-	lea	rax, QWORD PTR vk_descr_set_layout_binding$[rbp-256]
-	mov	QWORD PTR info$62[rbp-232], rax
+	lea	rax, QWORD PTR vk_descr_set_layout_binding$63[rbp-256]
+	mov	QWORD PTR info$110[rbp-232], rax
 ; Line 1586
-	mov	QWORD PTR layout$23[rsp], r12
+	mov	QWORD PTR layout$22[rsp], r12
 ; Line 1588
-	lea	r9, QWORD PTR layout$23[rsp]
+	lea	r9, QWORD PTR layout$22[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$62[rbp-256]
+	lea	rdx, QWORD PTR info$110[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateDescriptorSetLayout@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkDescriptorSetLayoutCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkDescriptorSetLayout_T@@@ZEA ; vkCreateDescriptorSetLayout
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+864
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+872
-	je	SHORT $LN871@initVK
+	je	SHORT $LN872@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR layout$23[rsp]
+	mov	rax, QWORD PTR layout$22[rsp]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+864, 8
 ; Line 656
-	jmp	SHORT $LN870@initVK
-$LN871@initVK:
+	jmp	SHORT $LN871@initVK
+$LN872@initVK:
 ; Line 659
-	lea	r8, QWORD PTR layout$23[rsp]
+	lea	r8, QWORD PTR layout$22[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+856
 	call	??$_Emplace_reallocate@AEBQEAUVkDescriptorSetLayout_T@@@?$vector@PEAUVkDescriptorSetLayout_T@@V?$allocator@PEAUVkDescriptorSetLayout_T@@@std@@@std@@QEAAPEAPEAUVkDescriptorSetLayout_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkDescriptorSetLayout_T *,std::allocator<VkDescriptorSetLayout_T *> >::_Emplace_reallocate<VkDescriptorSetLayout_T * const &>
-$LN870@initVK:
+$LN871@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 538
-	mov	rax, QWORD PTR layout$23[rsp]
-	mov	QWORD PTR vk_descr_set_layout$[rbp-256], rax
-; Line 542
-	mov	DWORD PTR vk_descr_pool_size$[rbp-256], 6
-	mov	DWORD PTR vk_descr_pool_size$[rbp-252], 1
+; Line 595
+	mov	rax, QWORD PTR layout$22[rsp]
+	mov	QWORD PTR vk_descr_set_layout$48[rbp-256], rax
+; Line 599
+	mov	DWORD PTR vk_descr_pool_size$47[rbp-256], 6
+	mov	DWORD PTR vk_descr_pool_size$47[rbp-252], 1
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1607
-	mov	DWORD PTR info$61[rbp-256], 33		; 00000021H
+	mov	DWORD PTR info$109[rbp-256], 33		; 00000021H
 ; Line 1608
-	mov	QWORD PTR info$61[rbp-248], r12
+	mov	QWORD PTR info$109[rbp-248], r12
 ; Line 1609
-	mov	DWORD PTR info$61[rbp-240], r12d
+	mov	DWORD PTR info$109[rbp-240], r12d
 ; Line 1610
-	mov	DWORD PTR info$61[rbp-236], 1
+	mov	DWORD PTR info$109[rbp-236], 1
 ; Line 1611
-	mov	DWORD PTR info$61[rbp-232], 1
+	mov	DWORD PTR info$109[rbp-232], 1
 ; Line 1612
-	lea	rax, QWORD PTR vk_descr_pool_size$[rbp-256]
-	mov	QWORD PTR info$61[rbp-224], rax
+	lea	rax, QWORD PTR vk_descr_pool_size$47[rbp-256]
+	mov	QWORD PTR info$109[rbp-224], rax
 ; Line 1615
-	mov	QWORD PTR pool$22[rsp], r12
+	mov	QWORD PTR pool$21[rsp], r12
 ; Line 1617
-	lea	r9, QWORD PTR pool$22[rsp]
+	lea	r9, QWORD PTR pool$21[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$61[rbp-256]
+	lea	rdx, QWORD PTR info$109[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateDescriptorPool@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkDescriptorPoolCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkDescriptorPool_T@@@ZEA ; vkCreateDescriptorPool
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+912
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+920
-	je	SHORT $LN882@initVK
+	je	SHORT $LN883@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR pool$22[rsp]
+	mov	rax, QWORD PTR pool$21[rsp]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+912, 8
 ; Line 656
-	jmp	SHORT $LN881@initVK
-$LN882@initVK:
+	jmp	SHORT $LN882@initVK
+$LN883@initVK:
 ; Line 659
-	lea	r8, QWORD PTR pool$22[rsp]
+	lea	r8, QWORD PTR pool$21[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+904
 	call	??$_Emplace_reallocate@AEBQEAUVkDescriptorPool_T@@@?$vector@PEAUVkDescriptorPool_T@@V?$allocator@PEAUVkDescriptorPool_T@@@std@@@std@@QEAAPEAPEAUVkDescriptorPool_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkDescriptorPool_T *,std::allocator<VkDescriptorPool_T *> >::_Emplace_reallocate<VkDescriptorPool_T * const &>
-$LN881@initVK:
+$LN882@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 546
+; Line 603
 	mov	QWORD PTR [rsp+40], r12
-	lea	rax, QWORD PTR vk_descr_set_layout$[rbp-256]
+	lea	rax, QWORD PTR vk_descr_set_layout$48[rbp-256]
 	mov	QWORD PTR [rsp+32], rax
 	mov	r9d, 1
-	mov	r8, QWORD PTR pool$22[rsp]
-	lea	rdx, QWORD PTR vk_descr_set$[rbp-256]
+	mov	r8, QWORD PTR pool$21[rsp]
+	lea	rdx, QWORD PTR vk_descr_set$66[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A ; vk_dev
 	call	?DescrSet@Device@VULKAN@XGK@@QEAA?AV?$vector@PEAUVkDescriptorSet_T@@V?$allocator@PEAUVkDescriptorSet_T@@@std@@@std@@PEAUVkDescriptorPool_T@@IPEBQEAUVkDescriptorSetLayout_T@@PEBX@Z ; XGK::VULKAN::Device::DescrSet
 	npad	1
-; Line 550
-	mov	QWORD PTR vk_descr_bi$[rbp-256], rdi
-	mov	QWORD PTR vk_descr_bi$[rbp-248], r12
-	mov	QWORD PTR vk_descr_bi$[rbp-240], -1
-; Line 552
-	mov	rax, QWORD PTR vk_descr_set$[rbp-256]
+; Line 607
+	mov	QWORD PTR vk_descr_bi$65[rbp-256], rdi
+	mov	QWORD PTR vk_descr_bi$65[rbp-248], r12
+	mov	QWORD PTR vk_descr_bi$65[rbp-240], -1
+; Line 609
+	mov	rax, QWORD PTR vk_descr_set$66[rbp-256]
 	mov	rcx, QWORD PTR [rax]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 837
-	mov	DWORD PTR $T80[rbp-256], 35		; 00000023H
+	mov	DWORD PTR $T129[rbp-256], 35		; 00000023H
 ; Line 838
-	mov	QWORD PTR $T80[rbp-248], r12
+	mov	QWORD PTR $T129[rbp-248], r12
 ; Line 839
-	mov	QWORD PTR $T80[rbp-240], rcx
+	mov	QWORD PTR $T129[rbp-240], rcx
 ; Line 840
-	mov	QWORD PTR $T80[rbp-232], r12
+	mov	QWORD PTR $T129[rbp-232], r12
 ; Line 842
-	mov	DWORD PTR $T80[rbp-224], 1
+	mov	DWORD PTR $T129[rbp-224], 1
 ; Line 843
-	mov	DWORD PTR $T80[rbp-220], 6
+	mov	DWORD PTR $T129[rbp-220], 6
 ; Line 844
-	mov	QWORD PTR $T80[rbp-216], r12
+	mov	QWORD PTR $T129[rbp-216], r12
 ; Line 845
-	lea	rax, QWORD PTR vk_descr_bi$[rbp-256]
-	mov	QWORD PTR $T80[rbp-208], rax
+	lea	rax, QWORD PTR vk_descr_bi$65[rbp-256]
+	mov	QWORD PTR $T129[rbp-208], rax
 ; Line 846
-	mov	QWORD PTR $T80[rbp-200], r12
+	mov	QWORD PTR $T129[rbp-200], r12
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 552
-	movups	xmm0, XMMWORD PTR $T80[rbp-256]
-	movaps	XMMWORD PTR write_descr_set$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T80[rbp-240]
-	movaps	XMMWORD PTR write_descr_set$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T80[rbp-224]
-	movaps	XMMWORD PTR write_descr_set$[rbp-224], xmm0
-	movups	xmm1, XMMWORD PTR $T80[rbp-208]
-	movaps	XMMWORD PTR write_descr_set$[rbp-208], xmm1
+; Line 609
+	movups	xmm0, XMMWORD PTR $T129[rbp-256]
+	movaps	XMMWORD PTR write_descr_set$77[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T129[rbp-240]
+	movaps	XMMWORD PTR write_descr_set$77[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T129[rbp-224]
+	movaps	XMMWORD PTR write_descr_set$77[rbp-224], xmm0
+	movups	xmm1, XMMWORD PTR $T129[rbp-208]
+	movaps	XMMWORD PTR write_descr_set$77[rbp-208], xmm1
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1650
 	mov	QWORD PTR [rsp+32], r12
 	xor	r9d, r9d
-	lea	r8, QWORD PTR write_descr_set$[rbp-256]
+	lea	r8, QWORD PTR write_descr_set$77[rbp-256]
 	lea	edx, QWORD PTR [r9+1]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkUpdateDescriptorSets@@3P6AXPEAUVkDevice_T@@IPEBUVkWriteDescriptorSet@@IPEBUVkCopyDescriptorSet@@@ZEA ; vkUpdateDescriptorSets
 ; Line 552
-	mov	DWORD PTR $T79[rbp-256], 20
+	mov	DWORD PTR $T128[rbp-256], 20
 ; Line 553
-	mov	QWORD PTR $T79[rbp-248], r12
+	mov	QWORD PTR $T128[rbp-248], r12
 ; Line 554
-	mov	DWORD PTR $T79[rbp-240], r12d
+	mov	DWORD PTR $T128[rbp-240], r12d
 ; Line 555
-	mov	QWORD PTR $T79[rbp-236], 3
+	mov	QWORD PTR $T128[rbp-236], 3
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 568
-	movups	xmm0, XMMWORD PTR $T79[rbp-256]
-	movups	XMMWORD PTR vk_default_ppl_input_asm$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T79[rbp-240]
-	movups	XMMWORD PTR vk_default_ppl_input_asm$[rbp-240], xmm1
+; Line 625
+	movups	xmm0, XMMWORD PTR $T128[rbp-256]
+	movups	XMMWORD PTR vk_default_ppl_input_asm$72[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T128[rbp-240]
+	movups	XMMWORD PTR vk_default_ppl_input_asm$72[rbp-240], xmm1
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 573
 	mov	DWORD PTR $T37[rbp-256], 21
@@ -35116,281 +35290,216 @@ $LN881@initVK:
 ; Line 575
 	mov	QWORD PTR $T37[rbp-240], r12
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 570
+; Line 627
 	movups	xmm0, XMMWORD PTR $T37[rbp-256]
-	movups	XMMWORD PTR vk_default_ppl_tess$[rbp-256], xmm0
+	movups	XMMWORD PTR vk_default_ppl_tess$69[rbp-256], xmm0
 	movsd	xmm1, QWORD PTR $T37[rbp-240]
-	movsd	QWORD PTR vk_default_ppl_tess$[rbp-240], xmm1
-; Line 573
+	movsd	QWORD PTR vk_default_ppl_tess$69[rbp-240], xmm1
+; Line 630
 	movaps	xmm0, XMMWORD PTR __xmm@c4160000444800004416000000000000
-	movups	XMMWORD PTR viewport$[rbp-256], xmm0
-	mov	DWORD PTR viewport$[rbp-240], 0
-	mov	DWORD PTR viewport$[rbp-236], 1065353216 ; 3f800000H
-; Line 574
-	mov	QWORD PTR scissor$[rbp-256], r12
-	mov	DWORD PTR scissor$[rbp-248], 800	; 00000320H
-	mov	DWORD PTR scissor$[rbp-244], 600	; 00000258H
+	movups	XMMWORD PTR viewport$103[rbp-256], xmm0
+	mov	DWORD PTR viewport$103[rbp-240], 0
+	mov	DWORD PTR viewport$103[rbp-236], 1065353216 ; 3f800000H
+; Line 631
+	mov	QWORD PTR scissor$99[rbp-256], r12
+	mov	DWORD PTR scissor$99[rbp-248], 800	; 00000320H
+	mov	DWORD PTR scissor$99[rbp-244], 600	; 00000258H
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 596
-	mov	DWORD PTR $T78[rbp-256], 22
+	mov	DWORD PTR $T127[rbp-256], 22
 ; Line 597
-	mov	QWORD PTR $T78[rbp-248], r12
+	mov	QWORD PTR $T127[rbp-248], r12
 ; Line 598
-	mov	DWORD PTR $T78[rbp-240], r12d
+	mov	DWORD PTR $T127[rbp-240], r12d
 ; Line 599
-	mov	DWORD PTR $T78[rbp-236], 1
+	mov	DWORD PTR $T127[rbp-236], 1
 ; Line 600
-	lea	rax, QWORD PTR viewport$[rbp-256]
-	mov	QWORD PTR $T78[rbp-232], rax
+	lea	rax, QWORD PTR viewport$103[rbp-256]
+	mov	QWORD PTR $T127[rbp-232], rax
 ; Line 601
-	mov	DWORD PTR $T78[rbp-224], 1
+	mov	DWORD PTR $T127[rbp-224], 1
 ; Line 602
-	lea	rax, QWORD PTR scissor$[rbp-256]
-	mov	QWORD PTR $T78[rbp-216], rax
+	lea	rax, QWORD PTR scissor$99[rbp-256]
+	mov	QWORD PTR $T127[rbp-216], rax
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 576
-	movups	xmm0, XMMWORD PTR $T78[rbp-256]
-	movups	XMMWORD PTR vk_default_ppl_view$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T78[rbp-240]
-	movups	XMMWORD PTR vk_default_ppl_view$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T78[rbp-224]
-	movups	XMMWORD PTR vk_default_ppl_view$[rbp-224], xmm0
+; Line 633
+	movups	xmm0, XMMWORD PTR $T127[rbp-256]
+	movups	XMMWORD PTR vk_default_ppl_view$75[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T127[rbp-240]
+	movups	XMMWORD PTR vk_default_ppl_view$75[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T127[rbp-224]
+	movups	XMMWORD PTR vk_default_ppl_view$75[rbp-224], xmm0
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 624
-	mov	DWORD PTR $T77[rbp-256], 24
+	mov	DWORD PTR $T126[rbp-256], 24
 ; Line 625
-	mov	QWORD PTR $T77[rbp-248], r12
+	mov	QWORD PTR $T126[rbp-248], r12
 ; Line 626
-	mov	DWORD PTR $T77[rbp-240], r12d
+	mov	DWORD PTR $T126[rbp-240], r12d
 ; Line 627
-	mov	QWORD PTR $T77[rbp-236], 4
+	mov	QWORD PTR $T126[rbp-236], 4
 ; Line 629
-	mov	DWORD PTR $T77[rbp-228], 0
+	mov	DWORD PTR $T126[rbp-228], 0
 ; Line 630
-	mov	QWORD PTR $T77[rbp-224], r12
+	mov	QWORD PTR $T126[rbp-224], r12
 ; Line 631
-	mov	QWORD PTR $T77[rbp-216], r12
+	mov	QWORD PTR $T126[rbp-216], r12
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 578
-	movups	xmm0, XMMWORD PTR $T77[rbp-256]
-	movups	XMMWORD PTR vk_default_ppl_sample$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T77[rbp-240]
-	movups	XMMWORD PTR vk_default_ppl_sample$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T77[rbp-224]
-	movups	XMMWORD PTR vk_default_ppl_sample$[rbp-224], xmm0
+; Line 635
+	movups	xmm0, XMMWORD PTR $T126[rbp-256]
+	movups	XMMWORD PTR vk_default_ppl_sample$76[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T126[rbp-240]
+	movups	XMMWORD PTR vk_default_ppl_sample$76[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T126[rbp-224]
+	movups	XMMWORD PTR vk_default_ppl_sample$76[rbp-224], xmm0
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 658
-	mov	DWORD PTR $T76[rbp-256], 23
+	mov	DWORD PTR $T125[rbp-256], 23
 ; Line 659
-	mov	QWORD PTR $T76[rbp-248], r12
+	mov	QWORD PTR $T125[rbp-248], r12
 ; Line 660
-	mov	QWORD PTR $T76[rbp-240], r12
+	mov	QWORD PTR $T125[rbp-240], r12
 ; Line 662
-	mov	QWORD PTR $T76[rbp-232], r12
+	mov	QWORD PTR $T125[rbp-232], r12
 ; Line 664
-	mov	QWORD PTR $T76[rbp-224], r12
+	mov	QWORD PTR $T125[rbp-224], r12
 ; Line 666
-	mov	DWORD PTR $T76[rbp-216], r12d
+	mov	DWORD PTR $T125[rbp-216], r12d
 ; Line 667
 	movaps	xmm0, XMMWORD PTR __xmm@3f800000000000000000000000000000
-	movups	XMMWORD PTR $T76[rbp-212], xmm0
+	movups	XMMWORD PTR $T125[rbp-212], xmm0
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 581
-	movups	xmm0, XMMWORD PTR $T76[rbp-256]
-	movaps	XMMWORD PTR vk_default_ppl_rast$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T76[rbp-240]
-	movaps	XMMWORD PTR vk_default_ppl_rast$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T76[rbp-224]
-	movaps	XMMWORD PTR vk_default_ppl_rast$[rbp-224], xmm0
-	movups	xmm1, XMMWORD PTR $T76[rbp-208]
-	movaps	XMMWORD PTR vk_default_ppl_rast$[rbp-208], xmm1
-; Line 583
+; Line 638
+	movups	xmm0, XMMWORD PTR $T125[rbp-256]
+	movaps	XMMWORD PTR vk_default_ppl_rast$78[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T125[rbp-240]
+	movaps	XMMWORD PTR vk_default_ppl_rast$78[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T125[rbp-224]
+	movaps	XMMWORD PTR vk_default_ppl_rast$78[rbp-224], xmm0
+	movups	xmm1, XMMWORD PTR $T125[rbp-208]
+	movaps	XMMWORD PTR vk_default_ppl_rast$78[rbp-208], xmm1
+; Line 640
 	movdqa	xmm3, XMMWORD PTR __xmm@00000007000000000000000000000000
-	mov	QWORD PTR vk_default_ppl_stenc$[rbp-240], r12
+	mov	QWORD PTR vk_default_ppl_stenc$124[rbp-240], r12
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 695
-	mov	DWORD PTR $T54[rbp-256], 25
+	mov	DWORD PTR $T92[rbp-256], 25
 ; Line 696
-	mov	QWORD PTR $T54[rbp-248], r12
+	mov	QWORD PTR $T92[rbp-248], r12
 ; Line 697
-	mov	DWORD PTR $T54[rbp-240], r12d
+	mov	DWORD PTR $T92[rbp-240], r12d
 ; Line 698
-	mov	DWORD PTR $T54[rbp-236], 1
+	mov	DWORD PTR $T92[rbp-236], 1
 ; Line 699
-	mov	DWORD PTR $T54[rbp-232], 1
+	mov	DWORD PTR $T92[rbp-232], 1
 ; Line 700
-	mov	QWORD PTR $T54[rbp-228], 3
+	mov	QWORD PTR $T92[rbp-228], 3
 ; Line 702
-	mov	DWORD PTR $T54[rbp-220], r12d
+	mov	DWORD PTR $T92[rbp-220], r12d
 ; Line 703
-	movups	XMMWORD PTR $T54[rbp-216], xmm3
-	movsd	xmm0, QWORD PTR vk_default_ppl_stenc$[rbp-240]
+	movups	XMMWORD PTR $T92[rbp-216], xmm3
+	movsd	xmm0, QWORD PTR vk_default_ppl_stenc$124[rbp-240]
 	movaps	xmm2, xmm0
-	mov	DWORD PTR $T54[rbp-192], r12d
+	mov	DWORD PTR $T92[rbp-192], r12d
 ; Line 704
-	movups	XMMWORD PTR $T54[rbp-188], xmm3
-	movsd	QWORD PTR $T54[rbp-172], xmm0
-	mov	DWORD PTR $T54[rbp-164], r12d
+	movups	XMMWORD PTR $T92[rbp-188], xmm3
+	movsd	QWORD PTR $T92[rbp-172], xmm0
+	mov	DWORD PTR $T92[rbp-164], r12d
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 597
-	movups	xmm0, XMMWORD PTR $T54[rbp-256]
-	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T54[rbp-240]
-	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T54[rbp-224]
-	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$[rbp-224], xmm0
-	movups	xmm1, XMMWORD PTR $T54[rbp-208]
+; Line 654
+	movups	xmm0, XMMWORD PTR $T92[rbp-256]
+	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$105[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T92[rbp-240]
+	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$105[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T92[rbp-224]
+	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$105[rbp-224], xmm0
+	movups	xmm1, XMMWORD PTR $T92[rbp-208]
 	unpcklpd xmm1, xmm2
-	movups	XMMWORD PTR $T54[rbp-208], xmm1
-	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$[rbp-208], xmm1
-	movups	xmm0, XMMWORD PTR $T54[rbp-192]
-	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$[rbp-192], xmm0
-	movups	xmm1, XMMWORD PTR $T54[rbp-176]
-	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$[rbp-176], xmm1
+	movups	XMMWORD PTR $T92[rbp-208], xmm1
+	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$105[rbp-208], xmm1
+	movups	xmm0, XMMWORD PTR $T92[rbp-192]
+	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$105[rbp-192], xmm0
+	movups	xmm1, XMMWORD PTR $T92[rbp-176]
+	movaps	XMMWORD PTR vk_default_ppl_depth_stenc$105[rbp-176], xmm1
 	xorps	xmm0, xmm0
 	unpcklps xmm0, xmm6
-	movsd	QWORD PTR vk_default_ppl_depth_stenc$[rbp-160], xmm0
-; Line 603
-	mov	DWORD PTR vk_blend_attach$[rbp-256], r12d
+	movsd	QWORD PTR vk_default_ppl_depth_stenc$105[rbp-160], xmm0
+; Line 660
+	mov	DWORD PTR vk_blend_attach$102[rbp-256], r12d
 	xorps	xmm0, xmm0
-; Line 604
-	movdqu	XMMWORD PTR vk_blend_attach$[rbp-252], xmm0
-; Line 605
-	mov	QWORD PTR vk_blend_attach$[rbp-236], r12
-; Line 606
-	mov	DWORD PTR vk_blend_attach$[rbp-228], 15
+; Line 661
+	movdqu	XMMWORD PTR vk_blend_attach$102[rbp-252], xmm0
+; Line 662
+	mov	QWORD PTR vk_blend_attach$102[rbp-236], r12
+; Line 663
+	mov	DWORD PTR vk_blend_attach$102[rbp-228], 15
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 730
-	mov	DWORD PTR $T75[rbp-256], 26
+	mov	DWORD PTR $T123[rbp-256], 26
 ; Line 731
-	mov	QWORD PTR $T75[rbp-248], r12
+	mov	QWORD PTR $T123[rbp-248], r12
 ; Line 732
-	mov	QWORD PTR $T75[rbp-240], r12
+	mov	QWORD PTR $T123[rbp-240], r12
 ; Line 734
-	mov	DWORD PTR $T75[rbp-232], r12d
+	mov	DWORD PTR $T123[rbp-232], r12d
 ; Line 735
-	mov	DWORD PTR $T75[rbp-228], 1
+	mov	DWORD PTR $T123[rbp-228], 1
 ; Line 736
-	lea	rax, QWORD PTR vk_blend_attach$[rbp-256]
-	mov	QWORD PTR $T75[rbp-224], rax
+	lea	rax, QWORD PTR vk_blend_attach$102[rbp-256]
+	mov	QWORD PTR $T123[rbp-224], rax
 	xorps	xmm2, xmm2
 ; Line 737
-	movups	XMMWORD PTR $T75[rbp-216], xmm2
+	movups	XMMWORD PTR $T123[rbp-216], xmm2
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 609
-	movups	xmm0, XMMWORD PTR $T75[rbp-256]
-	movups	XMMWORD PTR vk_default_ppl_blend$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T75[rbp-240]
-	movups	XMMWORD PTR vk_default_ppl_blend$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T75[rbp-224]
-	movups	XMMWORD PTR vk_default_ppl_blend$[rbp-224], xmm0
+; Line 666
+	movups	xmm0, XMMWORD PTR $T123[rbp-256]
+	movups	XMMWORD PTR vk_default_ppl_blend$104[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T123[rbp-240]
+	movups	XMMWORD PTR vk_default_ppl_blend$104[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T123[rbp-224]
+	movups	XMMWORD PTR vk_default_ppl_blend$104[rbp-224], xmm0
 	unpckhpd xmm2, xmm2
-	movsd	QWORD PTR vk_default_ppl_blend$[rbp-208], xmm2
+	movsd	QWORD PTR vk_default_ppl_blend$104[rbp-208], xmm2
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 758
-	mov	DWORD PTR $T74[rbp-256], 27
+	mov	DWORD PTR $T122[rbp-256], 27
 ; Line 759
-	mov	QWORD PTR $T74[rbp-248], r12
+	mov	QWORD PTR $T122[rbp-248], r12
 ; Line 760
-	mov	QWORD PTR $T74[rbp-240], r12
+	mov	QWORD PTR $T122[rbp-240], r12
 ; Line 762
-	mov	QWORD PTR $T74[rbp-232], r12
+	mov	QWORD PTR $T122[rbp-232], r12
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 617
-	movups	xmm0, XMMWORD PTR $T74[rbp-256]
-	movups	XMMWORD PTR vk_default_ppl_dyn$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T74[rbp-240]
-	movups	XMMWORD PTR vk_default_ppl_dyn$[rbp-240], xmm1
+; Line 674
+	movups	xmm0, XMMWORD PTR $T122[rbp-256]
+	movups	XMMWORD PTR vk_default_ppl_dyn$70[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T122[rbp-240]
+	movups	XMMWORD PTR vk_default_ppl_dyn$70[rbp-240], xmm1
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1664
-	mov	DWORD PTR info$60[rbp-256], 16
+	mov	DWORD PTR info$108[rbp-256], 16
 ; Line 1665
-	mov	QWORD PTR info$60[rbp-248], r12
+	mov	QWORD PTR info$108[rbp-248], r12
 ; Line 1666
-	mov	DWORD PTR info$60[rbp-240], r12d
+	mov	DWORD PTR info$108[rbp-240], r12d
 ; Line 1667
-	mov	QWORD PTR info$60[rbp-232], 1368	; 00000558H
+	mov	QWORD PTR info$108[rbp-232], 1368	; 00000558H
 ; Line 1668
 	lea	rax, OFFSET FLAT:?vertex_shader_code_vulkan@@3QBIB
-	mov	QWORD PTR info$60[rbp-224], rax
-; Line 1671
-	mov	QWORD PTR module$21[rsp], r12
-; Line 1673
-	lea	r9, QWORD PTR module$21[rsp]
-	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$60[rbp-256]
-	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
-	call	QWORD PTR ?vkCreateShaderModule@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkShaderModuleCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkShaderModule_T@@@ZEA ; vkCreateShaderModule
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 655
-	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+936
-	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+944
-	je	SHORT $LN956@initVK
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
-; Line 758
-	mov	rax, QWORD PTR module$21[rsp]
-	mov	QWORD PTR [rdx], rax
-; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
-; Line 641
-	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+936, 8
-; Line 656
-	jmp	SHORT $LN955@initVK
-$LN956@initVK:
-; Line 659
-	lea	r8, QWORD PTR module$21[rsp]
-	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+928
-	call	??$_Emplace_reallocate@AEBQEAUVkShaderModule_T@@@?$vector@PEAUVkShaderModule_T@@V?$allocator@PEAUVkShaderModule_T@@@std@@@std@@QEAAPEAPEAUVkShaderModule_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkShaderModule_T *,std::allocator<VkShaderModule_T *> >::_Emplace_reallocate<VkShaderModule_T * const &>
-$LN955@initVK:
-; File E:\reps\denis-belov\xgk\src\api\vulkan.h
-; Line 782
-	mov	DWORD PTR $T73[rbp-256], 18
-; Line 783
-	mov	QWORD PTR $T73[rbp-248], r12
-; Line 784
-	mov	DWORD PTR $T73[rbp-240], r12d
-; Line 785
-	mov	DWORD PTR $T73[rbp-236], 1
-; Line 786
-	mov	rax, QWORD PTR module$21[rsp]
-	mov	QWORD PTR $T73[rbp-232], rax
-; Line 787
-	lea	rbx, OFFSET FLAT:??_C@_04GHJNJNPO@main@
-	mov	QWORD PTR $T73[rbp-224], rbx
-; Line 788
-	mov	QWORD PTR $T73[rbp-216], r12
-; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 623
-	movups	xmm0, XMMWORD PTR $T73[rbp-256]
-	movaps	XMMWORD PTR vk_ppl_stages$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T73[rbp-240]
-	movaps	XMMWORD PTR vk_ppl_stages$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T73[rbp-224]
-	movaps	XMMWORD PTR vk_ppl_stages$[rbp-224], xmm0
-; File E:\reps\denis-belov\xgk\src\api\vulkan.h
-; Line 1664
-	mov	DWORD PTR info$59[rbp-256], 16
-; Line 1665
-	mov	QWORD PTR info$59[rbp-248], r12
-; Line 1666
-	mov	DWORD PTR info$59[rbp-240], r12d
-; Line 1667
-	mov	QWORD PTR info$59[rbp-232], 536		; 00000218H
-; Line 1668
-	lea	rax, OFFSET FLAT:?fragment_shader_code_vulkan@@3QBIB
-	mov	QWORD PTR info$59[rbp-224], rax
+	mov	QWORD PTR info$108[rbp-224], rax
 ; Line 1671
 	mov	QWORD PTR module$20[rsp], r12
 ; Line 1673
 	lea	r9, QWORD PTR module$20[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$59[rbp-256]
+	lea	rdx, QWORD PTR info$108[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateShaderModule@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkShaderModuleCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkShaderModule_T@@@ZEA ; vkCreateShaderModule
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+936
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+944
-	je	SHORT $LN969@initVK
+	je	SHORT $LN957@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR module$20[rsp]
@@ -35399,173 +35508,238 @@ $LN955@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+936, 8
 ; Line 656
-	jmp	SHORT $LN968@initVK
-$LN969@initVK:
+	jmp	SHORT $LN956@initVK
+$LN957@initVK:
 ; Line 659
 	lea	r8, QWORD PTR module$20[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+928
 	call	??$_Emplace_reallocate@AEBQEAUVkShaderModule_T@@@?$vector@PEAUVkShaderModule_T@@V?$allocator@PEAUVkShaderModule_T@@@std@@@std@@QEAAPEAPEAUVkShaderModule_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkShaderModule_T *,std::allocator<VkShaderModule_T *> >::_Emplace_reallocate<VkShaderModule_T * const &>
-$LN968@initVK:
+$LN956@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 782
-	mov	DWORD PTR $T72[rbp-256], 18
+	mov	DWORD PTR $T121[rbp-256], 18
 ; Line 783
-	mov	QWORD PTR $T72[rbp-248], r12
+	mov	QWORD PTR $T121[rbp-248], r12
 ; Line 784
-	mov	DWORD PTR $T72[rbp-240], r12d
+	mov	DWORD PTR $T121[rbp-240], r12d
 ; Line 785
-	mov	DWORD PTR $T72[rbp-236], 16
+	mov	DWORD PTR $T121[rbp-236], 1
 ; Line 786
 	mov	rax, QWORD PTR module$20[rsp]
-	mov	QWORD PTR $T72[rbp-232], rax
+	mov	QWORD PTR $T121[rbp-232], rax
 ; Line 787
-	mov	QWORD PTR $T72[rbp-224], rbx
+	lea	rbx, OFFSET FLAT:??_C@_04GHJNJNPO@main@
+	mov	QWORD PTR $T121[rbp-224], rbx
 ; Line 788
-	mov	QWORD PTR $T72[rbp-216], r12
+	mov	QWORD PTR $T121[rbp-216], r12
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 624
-	movups	xmm0, XMMWORD PTR $T72[rbp-256]
-	movaps	XMMWORD PTR vk_ppl_stages$[rbp-208], xmm0
-	movups	xmm1, XMMWORD PTR $T72[rbp-240]
-	movaps	XMMWORD PTR vk_ppl_stages$[rbp-192], xmm1
-	movups	xmm0, XMMWORD PTR $T72[rbp-224]
-	movaps	XMMWORD PTR vk_ppl_stages$[rbp-176], xmm0
-; Line 627
-	mov	DWORD PTR vk_vertex_binding$[rbp-256], r12d
-	mov	QWORD PTR vk_vertex_binding$[rbp-252], 12
-; Line 628
-	mov	QWORD PTR vk_vertex_attr$[rbp-256], r12
-	mov	QWORD PTR vk_vertex_attr$[rbp-248], 106	; 0000006aH
+; Line 680
+	movups	xmm0, XMMWORD PTR $T121[rbp-256]
+	movaps	XMMWORD PTR vk_ppl_stages$79[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T121[rbp-240]
+	movaps	XMMWORD PTR vk_ppl_stages$79[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T121[rbp-224]
+	movaps	XMMWORD PTR vk_ppl_stages$79[rbp-224], xmm0
+; File E:\reps\denis-belov\xgk\src\api\vulkan.h
+; Line 1664
+	mov	DWORD PTR info$107[rbp-256], 16
+; Line 1665
+	mov	QWORD PTR info$107[rbp-248], r12
+; Line 1666
+	mov	DWORD PTR info$107[rbp-240], r12d
+; Line 1667
+	mov	QWORD PTR info$107[rbp-232], 536	; 00000218H
+; Line 1668
+	lea	rax, OFFSET FLAT:?fragment_shader_code_vulkan@@3QBIB
+	mov	QWORD PTR info$107[rbp-224], rax
+; Line 1671
+	mov	QWORD PTR module$19[rsp], r12
+; Line 1673
+	lea	r9, QWORD PTR module$19[rsp]
+	xor	r8d, r8d
+	lea	rdx, QWORD PTR info$107[rbp-256]
+	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
+	call	QWORD PTR ?vkCreateShaderModule@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkShaderModuleCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkShaderModule_T@@@ZEA ; vkCreateShaderModule
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 655
+	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+936
+	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+944
+	je	SHORT $LN970@initVK
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
+; Line 758
+	mov	rax, QWORD PTR module$19[rsp]
+	mov	QWORD PTR [rdx], rax
+; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
+; Line 641
+	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+936, 8
+; Line 656
+	jmp	SHORT $LN969@initVK
+$LN970@initVK:
+; Line 659
+	lea	r8, QWORD PTR module$19[rsp]
+	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+928
+	call	??$_Emplace_reallocate@AEBQEAUVkShaderModule_T@@@?$vector@PEAUVkShaderModule_T@@V?$allocator@PEAUVkShaderModule_T@@@std@@@std@@QEAAPEAPEAUVkShaderModule_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkShaderModule_T *,std::allocator<VkShaderModule_T *> >::_Emplace_reallocate<VkShaderModule_T * const &>
+$LN969@initVK:
+; File E:\reps\denis-belov\xgk\src\api\vulkan.h
+; Line 782
+	mov	DWORD PTR $T120[rbp-256], 18
+; Line 783
+	mov	QWORD PTR $T120[rbp-248], r12
+; Line 784
+	mov	DWORD PTR $T120[rbp-240], r12d
+; Line 785
+	mov	DWORD PTR $T120[rbp-236], 16
+; Line 786
+	mov	rax, QWORD PTR module$19[rsp]
+	mov	QWORD PTR $T120[rbp-232], rax
+; Line 787
+	mov	QWORD PTR $T120[rbp-224], rbx
+; Line 788
+	mov	QWORD PTR $T120[rbp-216], r12
+; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
+; Line 681
+	movups	xmm0, XMMWORD PTR $T120[rbp-256]
+	movaps	XMMWORD PTR vk_ppl_stages$79[rbp-208], xmm0
+	movups	xmm1, XMMWORD PTR $T120[rbp-240]
+	movaps	XMMWORD PTR vk_ppl_stages$79[rbp-192], xmm1
+	movups	xmm0, XMMWORD PTR $T120[rbp-224]
+	movaps	XMMWORD PTR vk_ppl_stages$79[rbp-176], xmm0
+; Line 684
+	mov	DWORD PTR vk_vertex_binding$98[rbp-256], r12d
+	mov	QWORD PTR vk_vertex_binding$98[rbp-252], 12
+; Line 685
+	mov	QWORD PTR vk_vertex_attr$100[rbp-256], r12
+	mov	QWORD PTR vk_vertex_attr$100[rbp-248], 106 ; 0000006aH
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 808
-	mov	DWORD PTR $T71[rbp-256], 19
+	mov	DWORD PTR $T119[rbp-256], 19
 ; Line 809
-	mov	QWORD PTR $T71[rbp-248], r12
+	mov	QWORD PTR $T119[rbp-248], r12
 ; Line 810
-	mov	DWORD PTR $T71[rbp-240], r12d
+	mov	DWORD PTR $T119[rbp-240], r12d
 ; Line 811
-	mov	DWORD PTR $T71[rbp-236], 1
+	mov	DWORD PTR $T119[rbp-236], 1
 ; Line 812
-	lea	rax, QWORD PTR vk_vertex_binding$[rbp-256]
-	mov	QWORD PTR $T71[rbp-232], rax
+	lea	rax, QWORD PTR vk_vertex_binding$98[rbp-256]
+	mov	QWORD PTR $T119[rbp-232], rax
 ; Line 813
-	mov	DWORD PTR $T71[rbp-224], 1
+	mov	DWORD PTR $T119[rbp-224], 1
 ; Line 814
-	lea	rax, QWORD PTR vk_vertex_attr$[rbp-256]
-	mov	QWORD PTR $T71[rbp-216], rax
+	lea	rax, QWORD PTR vk_vertex_attr$100[rbp-256]
+	mov	QWORD PTR $T119[rbp-216], rax
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 630
-	movups	xmm0, XMMWORD PTR $T71[rbp-256]
-	movups	XMMWORD PTR vk_ppl_vertex$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T71[rbp-240]
-	movups	XMMWORD PTR vk_ppl_vertex$[rbp-240], xmm1
-	movups	xmm0, XMMWORD PTR $T71[rbp-224]
-	movups	XMMWORD PTR vk_ppl_vertex$[rbp-224], xmm0
+; Line 687
+	movups	xmm0, XMMWORD PTR $T119[rbp-256]
+	movups	XMMWORD PTR vk_ppl_vertex$74[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T119[rbp-240]
+	movups	XMMWORD PTR vk_ppl_vertex$74[rbp-240], xmm1
+	movups	xmm0, XMMWORD PTR $T119[rbp-224]
+	movups	XMMWORD PTR vk_ppl_vertex$74[rbp-224], xmm0
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1693
-	mov	DWORD PTR info$42[rbp-256], 30
+	mov	DWORD PTR info$80[rbp-256], 30
 ; Line 1694
-	mov	QWORD PTR info$42[rbp-248], r12
+	mov	QWORD PTR info$80[rbp-248], r12
 ; Line 1695
-	mov	DWORD PTR info$42[rbp-240], r12d
+	mov	DWORD PTR info$80[rbp-240], r12d
 ; Line 1696
-	mov	DWORD PTR info$42[rbp-236], 1
+	mov	DWORD PTR info$80[rbp-236], 1
 ; Line 1697
-	lea	rax, QWORD PTR vk_descr_set_layout$[rbp-256]
-	mov	QWORD PTR info$42[rbp-232], rax
+	lea	rax, QWORD PTR vk_descr_set_layout$48[rbp-256]
+	mov	QWORD PTR info$80[rbp-232], rax
 ; Line 1698
-	mov	DWORD PTR info$42[rbp-224], r12d
+	mov	DWORD PTR info$80[rbp-224], r12d
 ; Line 1699
-	mov	QWORD PTR info$42[rbp-216], r12
+	mov	QWORD PTR info$80[rbp-216], r12
 ; Line 1702
-	mov	QWORD PTR layout$19[rsp], r12
+	mov	QWORD PTR layout$18[rsp], r12
 ; Line 1704
-	lea	r9, QWORD PTR layout$19[rsp]
+	lea	r9, QWORD PTR layout$18[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$42[rbp-256]
+	lea	rdx, QWORD PTR info$80[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreatePipelineLayout@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkPipelineLayoutCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkPipelineLayout_T@@@ZEA ; vkCreatePipelineLayout
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+888
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+896
-	je	SHORT $LN984@initVK
+	je	SHORT $LN985@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR layout$19[rsp]
+	mov	rax, QWORD PTR layout$18[rsp]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+888, 8
 ; Line 656
-	jmp	SHORT $LN983@initVK
-$LN984@initVK:
+	jmp	SHORT $LN984@initVK
+$LN985@initVK:
 ; Line 659
-	lea	r8, QWORD PTR layout$19[rsp]
+	lea	r8, QWORD PTR layout$18[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+880
 	call	??$_Emplace_reallocate@AEBQEAUVkPipelineLayout_T@@@?$vector@PEAUVkPipelineLayout_T@@V?$allocator@PEAUVkPipelineLayout_T@@@std@@@std@@QEAAPEAPEAUVkPipelineLayout_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkPipelineLayout_T *,std::allocator<VkPipelineLayout_T *> >::_Emplace_reallocate<VkPipelineLayout_T * const &>
-$LN983@initVK:
+$LN984@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 632
-	mov	rax, QWORD PTR layout$19[rsp]
+; Line 689
+	mov	rax, QWORD PTR layout$18[rsp]
 	mov	QWORD PTR vk_ppl_layout$1$[rbp-256], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1737
-	mov	DWORD PTR info$41[rbp-256], 28
+	mov	DWORD PTR info$67[rbp-256], 28
 ; Line 1738
-	mov	QWORD PTR info$41[rbp-248], r12
+	mov	QWORD PTR info$67[rbp-248], r12
 ; Line 1739
-	mov	DWORD PTR info$41[rbp-240], r12d
+	mov	DWORD PTR info$67[rbp-240], r12d
 ; Line 1740
-	mov	DWORD PTR info$41[rbp-236], 2
+	mov	DWORD PTR info$67[rbp-236], 2
 ; Line 1741
-	lea	rcx, QWORD PTR vk_ppl_stages$[rbp-256]
-	mov	QWORD PTR info$41[rbp-232], rcx
+	lea	rcx, QWORD PTR vk_ppl_stages$79[rbp-256]
+	mov	QWORD PTR info$67[rbp-232], rcx
 ; Line 1742
-	lea	rcx, QWORD PTR vk_ppl_vertex$[rbp-256]
-	mov	QWORD PTR info$41[rbp-224], rcx
+	lea	rcx, QWORD PTR vk_ppl_vertex$74[rbp-256]
+	mov	QWORD PTR info$67[rbp-224], rcx
 ; Line 1743
-	lea	rcx, QWORD PTR vk_default_ppl_input_asm$[rbp-256]
-	mov	QWORD PTR info$41[rbp-216], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_input_asm$72[rbp-256]
+	mov	QWORD PTR info$67[rbp-216], rcx
 ; Line 1744
-	lea	rcx, QWORD PTR vk_default_ppl_tess$[rbp-256]
-	mov	QWORD PTR info$41[rbp-208], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_tess$69[rbp-256]
+	mov	QWORD PTR info$67[rbp-208], rcx
 ; Line 1745
-	lea	rcx, QWORD PTR vk_default_ppl_view$[rbp-256]
-	mov	QWORD PTR info$41[rbp-200], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_view$75[rbp-256]
+	mov	QWORD PTR info$67[rbp-200], rcx
 ; Line 1746
-	lea	rcx, QWORD PTR vk_default_ppl_rast$[rbp-256]
-	mov	QWORD PTR info$41[rbp-192], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_rast$78[rbp-256]
+	mov	QWORD PTR info$67[rbp-192], rcx
 ; Line 1747
-	lea	rcx, QWORD PTR vk_default_ppl_sample$[rbp-256]
-	mov	QWORD PTR info$41[rbp-184], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_sample$76[rbp-256]
+	mov	QWORD PTR info$67[rbp-184], rcx
 ; Line 1748
-	lea	rcx, QWORD PTR vk_default_ppl_depth_stenc$[rbp-256]
-	mov	QWORD PTR info$41[rbp-176], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_depth_stenc$105[rbp-256]
+	mov	QWORD PTR info$67[rbp-176], rcx
 ; Line 1749
-	lea	rcx, QWORD PTR vk_default_ppl_blend$[rbp-256]
-	mov	QWORD PTR info$41[rbp-168], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_blend$104[rbp-256]
+	mov	QWORD PTR info$67[rbp-168], rcx
 ; Line 1750
-	lea	rcx, QWORD PTR vk_default_ppl_dyn$[rbp-256]
-	mov	QWORD PTR info$41[rbp-160], rcx
+	lea	rcx, QWORD PTR vk_default_ppl_dyn$70[rbp-256]
+	mov	QWORD PTR info$67[rbp-160], rcx
 ; Line 1751
-	mov	QWORD PTR info$41[rbp-152], rax
+	mov	QWORD PTR info$67[rbp-152], rax
 ; Line 1752
-	mov	rax, QWORD PTR render_pass$32[rbp-256]
-	mov	QWORD PTR info$41[rbp-144], rax
+	mov	rax, QWORD PTR render_pass$31[rbp-256]
+	mov	QWORD PTR info$67[rbp-144], rax
 ; Line 1753
-	mov	DWORD PTR info$41[rbp-136], r12d
+	mov	DWORD PTR info$67[rbp-136], r12d
 ; Line 1754
-	mov	QWORD PTR info$41[rbp-128], r12
+	mov	QWORD PTR info$67[rbp-128], r12
 ; Line 1755
-	mov	DWORD PTR info$41[rbp-120], r12d
+	mov	DWORD PTR info$67[rbp-120], r12d
 ; Line 1758
 	mov	QWORD PTR pipeline$34[rbp-256], r12
 ; Line 1760
 	lea	rax, QWORD PTR pipeline$34[rbp-256]
 	mov	QWORD PTR [rsp+40], rax
 	mov	QWORD PTR [rsp+32], r12
-	lea	r9, QWORD PTR info$41[rbp-256]
+	lea	r9, QWORD PTR info$67[rbp-256]
 	xor	edx, edx
 	lea	r8d, QWORD PTR [rdx+1]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
@@ -35574,7 +35748,7 @@ $LN983@initVK:
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+960
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+968
-	je	SHORT $LN995@initVK
+	je	SHORT $LN996@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
 	mov	rax, QWORD PTR pipeline$34[rbp-256]
@@ -35583,69 +35757,69 @@ $LN983@initVK:
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+960, 8
 ; Line 656
-	jmp	SHORT $LN994@initVK
-$LN995@initVK:
+	jmp	SHORT $LN995@initVK
+$LN996@initVK:
 ; Line 659
 	lea	r8, QWORD PTR pipeline$34[rbp-256]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+952
 	call	??$_Emplace_reallocate@AEBQEAUVkPipeline_T@@@?$vector@PEAUVkPipeline_T@@V?$allocator@PEAUVkPipeline_T@@@std@@@std@@QEAAPEAPEAUVkPipeline_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkPipeline_T *,std::allocator<VkPipeline_T *> >::_Emplace_reallocate<VkPipeline_T * const &>
-$LN994@initVK:
+$LN995@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 634
+; Line 691
 	mov	rax, QWORD PTR pipeline$34[rbp-256]
 	mov	QWORD PTR vk_ppl$1$[rsp], rax
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1777
-	mov	DWORD PTR info$38[rbp-256], 39		; 00000027H
+	mov	DWORD PTR info$40[rbp-256], 39		; 00000027H
 ; Line 1778
-	mov	QWORD PTR info$38[rbp-248], r12
+	mov	QWORD PTR info$40[rbp-248], r12
 ; Line 1779
-	mov	DWORD PTR info$38[rbp-240], r12d
+	mov	DWORD PTR info$40[rbp-240], r12d
 ; Line 1780
 	mov	eax, DWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+612
-	mov	DWORD PTR info$38[rbp-236], eax
+	mov	DWORD PTR info$40[rbp-236], eax
 ; Line 1783
-	mov	QWORD PTR pool$31[rsp], r12
+	mov	QWORD PTR pool$30[rsp], r12
 ; Line 1785
-	lea	r9, QWORD PTR pool$31[rsp]
+	lea	r9, QWORD PTR pool$30[rsp]
 	xor	r8d, r8d
-	lea	rdx, QWORD PTR info$38[rbp-256]
+	lea	rdx, QWORD PTR info$40[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkCreateCommandPool@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkCommandPoolCreateInfo@@PEBUVkAllocationCallbacks@@PEAPEAUVkCommandPool_T@@@ZEA ; vkCreateCommandPool
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 655
 	mov	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+984
 	cmp	rdx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+992
-	je	SHORT $LN1006@initVK
+	je	SHORT $LN1007@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 758
-	mov	rax, QWORD PTR pool$31[rsp]
+	mov	rax, QWORD PTR pool$30[rsp]
 	mov	QWORD PTR [rdx], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 641
 	add	QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A+984, 8
 ; Line 656
-	jmp	SHORT $LN1005@initVK
-$LN1006@initVK:
+	jmp	SHORT $LN1006@initVK
+$LN1007@initVK:
 ; Line 659
-	lea	r8, QWORD PTR pool$31[rsp]
+	lea	r8, QWORD PTR pool$30[rsp]
 	lea	rcx, OFFSET FLAT:?vk_dev@@3UDevice@VULKAN@XGK@@A+976
 	call	??$_Emplace_reallocate@AEBQEAUVkCommandPool_T@@@?$vector@PEAUVkCommandPool_T@@V?$allocator@PEAUVkCommandPool_T@@@std@@@std@@QEAAPEAPEAUVkCommandPool_T@@QEAPEAU2@AEBQEAU2@@Z ; std::vector<VkCommandPool_T *,std::allocator<VkCommandPool_T *> >::_Emplace_reallocate<VkCommandPool_T * const &>
 	npad	1
-$LN1005@initVK:
+$LN1006@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1802
-	mov	DWORD PTR info$58[rbp-256], 40		; 00000028H
+	mov	DWORD PTR info$106[rbp-256], 40		; 00000028H
 ; Line 1803
-	mov	QWORD PTR info$58[rbp-248], r12
+	mov	QWORD PTR info$106[rbp-248], r12
 ; Line 1804
-	mov	rax, QWORD PTR pool$31[rsp]
-	mov	QWORD PTR info$58[rbp-240], rax
+	mov	rax, QWORD PTR pool$30[rsp]
+	mov	QWORD PTR info$106[rbp-240], rax
 ; Line 1805
-	mov	DWORD PTR info$58[rbp-232], r12d
+	mov	DWORD PTR info$106[rbp-232], r12d
 ; Line 1806
 	mov	ebx, esi
-	mov	DWORD PTR info$58[rbp-228], ebx
+	mov	DWORD PTR info$106[rbp-228], ebx
 	xorps	xmm0, xmm0
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 314
@@ -35655,7 +35829,7 @@ $LN1005@initVK:
 	mov	r14, r12
 ; Line 401
 	test	esi, esi
-	je	SHORT $LN1324@initVK
+	je	SHORT $LN1325@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 35
 	lea	rbx, QWORD PTR [rbx*8]
@@ -35680,16 +35854,16 @@ $LN1005@initVK:
 ; Line 404
 	mov	QWORD PTR $T36[rbp-248], r14
 ; Line 401
-	jmp	SHORT $LN1047@initVK
-$LN1324@initVK:
+	jmp	SHORT $LN1048@initVK
+$LN1325@initVK:
 	mov	r15, QWORD PTR $T36[rbp-256]
-$LN1047@initVK:
+$LN1048@initVK:
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 1813
-	mov	DWORD PTR $T39[rbp-256], 4
+	mov	DWORD PTR $T43[rbp-256], 4
 ; Line 1811
 	mov	r8, r15
-	lea	rdx, QWORD PTR info$58[rbp-256]
+	lea	rdx, QWORD PTR info$106[rbp-256]
 	mov	rcx, QWORD PTR ?vk_dev@@3UDevice@VULKAN@XGK@@A
 	call	QWORD PTR ?vkAllocateCommandBuffers@@3P6A?AW4VkResult@@PEAUVkDevice_T@@PEBUVkCommandBufferAllocateInfo@@PEAPEAUVkCommandBuffer_T@@@ZEA ; vkAllocateCommandBuffers
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
@@ -35703,33 +35877,33 @@ $LN1047@initVK:
 ; Line 328
 	mov	QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A+16, r14
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 660
+; Line 717
 	mov	DWORD PTR ?vk_wait_stages@@3IA, 1024	; vk_wait_stages, 00000400H
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 863
-	mov	DWORD PTR $T70[rbp-256], 42		; 0000002aH
+	mov	DWORD PTR $T118[rbp-256], 42		; 0000002aH
 ; Line 864
-	mov	QWORD PTR $T70[rbp-248], r12
+	mov	QWORD PTR $T118[rbp-248], r12
 ; Line 865
-	mov	DWORD PTR $T70[rbp-240], 4
+	mov	DWORD PTR $T118[rbp-240], 4
 ; Line 866
-	mov	QWORD PTR $T70[rbp-232], r12
+	mov	QWORD PTR $T118[rbp-232], r12
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 662
-	movups	xmm0, XMMWORD PTR $T70[rbp-256]
-	movups	XMMWORD PTR vk_command_buffer_bi$[rbp-256], xmm0
-	movups	xmm1, XMMWORD PTR $T70[rbp-240]
-	movups	XMMWORD PTR vk_command_buffer_bi$[rbp-240], xmm1
+; Line 719
+	movups	xmm0, XMMWORD PTR $T118[rbp-256]
+	movups	XMMWORD PTR vk_command_buffer_bi$71[rbp-256], xmm0
+	movups	xmm1, XMMWORD PTR $T118[rbp-240]
+	movups	XMMWORD PTR vk_command_buffer_bi$71[rbp-240], xmm1
 	xorps	xmm0, xmm0
-; Line 664
-	movups	XMMWORD PTR clear_value$[rbp-240], xmm0
-; Line 665
+; Line 721
+	movups	XMMWORD PTR clear_value$136[rbp-240], xmm0
+; Line 722
 	movaps	xmm1, XMMWORD PTR __xmm@3f800000000000000000000000000000
-	movups	XMMWORD PTR clear_value$[rbp-256], xmm1
-; Line 666
-	mov	QWORD PTR $T30[rsp], 1065353216		; 3f800000H
-	mov	rax, QWORD PTR $T30[rsp]
-	mov	QWORD PTR clear_value$[rbp-240], rax
+	movups	XMMWORD PTR clear_value$136[rbp-256], xmm1
+; Line 723
+	mov	QWORD PTR $T29[rsp], 1065353216		; 3f800000H
+	mov	rax, QWORD PTR $T29[rsp]
+	mov	QWORD PTR clear_value$136[rbp-240], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1193
 	mov	BYTE PTR $T16[rsp], 0
@@ -35748,16 +35922,16 @@ $LN1047@initVK:
 	add	r8, rax
 ; Line 1167
 	cmp	rsi, r8
-	jae	SHORT $LN1089@initVK
+	jae	SHORT $LN1090@initVK
 ; Line 1168
 	lea	rax, QWORD PTR [rsi+rsi*8]
 	lea	rcx, QWORD PTR [r9+rax*8]
 	mov	QWORD PTR ?vk_submit_i@@3V?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@A+8, rcx
 ; Line 1172
-	jmp	SHORT $LN1090@initVK
-$LN1089@initVK:
+	jmp	SHORT $LN1091@initVK
+$LN1090@initVK:
 ; Line 1175
-	jbe	SHORT $LN1090@initVK
+	jbe	SHORT $LN1091@initVK
 ; Line 1176
 	mov	rcx, QWORD PTR ?vk_submit_i@@3V?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@A+16
 	sub	rcx, r9
@@ -35769,21 +35943,21 @@ $LN1089@initVK:
 	add	rdx, rax
 ; Line 1177
 	cmp	rsi, rdx
-	jbe	SHORT $LN1091@initVK
+	jbe	SHORT $LN1092@initVK
 ; Line 1178
 	lea	r8, QWORD PTR $T16[rsp]
 	mov	rdx, rsi
 	lea	rcx, OFFSET FLAT:?vk_submit_i@@3V?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@A ; vk_submit_i
 	call	??$_Resize_reallocate@U_Value_init_tag@std@@@?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@AEAAX_KAEBU_Value_init_tag@1@@Z ; std::vector<VkSubmitInfo,std::allocator<VkSubmitInfo> >::_Resize_reallocate<std::_Value_init_tag>
 ; Line 1179
-	jmp	SHORT $LN1090@initVK
-$LN1091@initVK:
+	jmp	SHORT $LN1091@initVK
+$LN1092@initVK:
 ; Line 1183
 	mov	rax, rsi
 	sub	rax, r8
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1918
-	je	SHORT $LN1098@initVK
+	je	SHORT $LN1099@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1182
 	lea	rax, QWORD PTR [rax+rax*8]
@@ -35793,10 +35967,10 @@ $LN1091@initVK:
 	mov	rcx, rdi
 	call	memset
 	add	rdi, rbx
-$LN1098@initVK:
+$LN1099@initVK:
 ; Line 1183
 	mov	QWORD PTR ?vk_submit_i@@3V?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@A+8, rdi
-$LN1090@initVK:
+$LN1091@initVK:
 ; Line 1193
 	mov	BYTE PTR $T15[rsp], 0
 ; Line 1166
@@ -35807,7 +35981,7 @@ $LN1090@initVK:
 	sar	rcx, 6
 ; Line 1167
 	cmp	rsi, rcx
-	jae	SHORT $LN1111@initVK
+	jae	SHORT $LN1112@initVK
 ; Line 1168
 	mov	rax, rsi
 	shl	rax, 6
@@ -35815,31 +35989,31 @@ $LN1090@initVK:
 ; Line 1171
 	mov	QWORD PTR ?vk_present_i@@3V?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@A+8, rax
 ; Line 1172
-	jmp	SHORT $LN1112@initVK
-$LN1111@initVK:
+	jmp	SHORT $LN1113@initVK
+$LN1112@initVK:
 ; Line 1175
-	jbe	SHORT $LN1112@initVK
+	jbe	SHORT $LN1113@initVK
 ; Line 1176
 	mov	rax, QWORD PTR ?vk_present_i@@3V?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@A+16
 	sub	rax, rdx
 	sar	rax, 6
 ; Line 1177
 	cmp	rsi, rax
-	jbe	SHORT $LN1113@initVK
+	jbe	SHORT $LN1114@initVK
 ; Line 1178
 	lea	r8, QWORD PTR $T15[rsp]
 	mov	rdx, rsi
 	lea	rcx, OFFSET FLAT:?vk_present_i@@3V?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@A ; vk_present_i
 	call	??$_Resize_reallocate@U_Value_init_tag@std@@@?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@AEAAX_KAEBU_Value_init_tag@1@@Z ; std::vector<VkPresentInfoKHR,std::allocator<VkPresentInfoKHR> >::_Resize_reallocate<std::_Value_init_tag>
 ; Line 1179
-	jmp	SHORT $LN1112@initVK
-$LN1113@initVK:
+	jmp	SHORT $LN1113@initVK
+$LN1114@initVK:
 ; Line 1183
 	mov	rbx, rsi
 	sub	rbx, rcx
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1918
-	je	SHORT $LN1120@initVK
+	je	SHORT $LN1121@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1182
 	mov	r8, rbx
@@ -35849,23 +36023,23 @@ $LN1113@initVK:
 	call	memset
 	shl	rbx, 6
 	add	rdi, rbx
-$LN1120@initVK:
+$LN1121@initVK:
 ; Line 1183
 	mov	QWORD PTR ?vk_present_i@@3V?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@A+8, rdi
-$LN1112@initVK:
+$LN1113@initVK:
 	xorps	xmm0, xmm0
 ; Line 314
-	movdqu	XMMWORD PTR render_pass_bi$[rbp-256], xmm0
+	movdqu	XMMWORD PTR render_pass_bi$41[rbp-256], xmm0
 	mov	rdi, r12
 	mov	QWORD PTR _Bytes$1$[rsp], r12
-	mov	QWORD PTR render_pass_bi$[rbp-240], r12
+	mov	QWORD PTR render_pass_bi$41[rbp-240], r12
 ; Line 401
 	test	rsi, rsi
-	je	SHORT $LN1325@initVK
+	je	SHORT $LN1326@initVK
 ; Line 1616
 	mov	rax, 288230376151711743			; 03ffffffffffffffH
 	cmp	rsi, rax
-	ja	$LN1349@initVK
+	ja	$LN1350@initVK
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 35
 	mov	rbx, rsi
@@ -35877,15 +36051,15 @@ $LN1112@initVK:
 	mov	QWORD PTR _Ptr$1$[rsp], rax
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1600
-	mov	QWORD PTR render_pass_bi$[rbp-256], rax
+	mov	QWORD PTR render_pass_bi$41[rbp-256], rax
 ; Line 1602
 	lea	rdi, QWORD PTR [rbx+rax]
 	mov	QWORD PTR _Bytes$1$[rsp], rdi
-	mov	QWORD PTR render_pass_bi$[rbp-240], rdi
+	mov	QWORD PTR render_pass_bi$41[rbp-240], rdi
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 1918
 	test	rsi, rsi
-	je	SHORT $LN1159@initVK
+	je	SHORT $LN1160@initVK
 ; Line 35
 	mov	r8, rsi
 	shl	r8, 6
@@ -35893,16 +36067,16 @@ $LN1112@initVK:
 	mov	rcx, rax
 	call	memset
 	mov	rax, rdi
-$LN1159@initVK:
+$LN1160@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 404
-	mov	QWORD PTR render_pass_bi$[rbp-248], rax
+	mov	QWORD PTR render_pass_bi$41[rbp-248], rax
 ; Line 401
-	jmp	SHORT $LN1170@initVK
-$LN1325@initVK:
-	mov	r14, QWORD PTR render_pass_bi$[rbp-256]
+	jmp	SHORT $LN1171@initVK
+$LN1326@initVK:
+	mov	r14, QWORD PTR render_pass_bi$41[rbp-256]
 	mov	QWORD PTR _Ptr$1$[rsp], r14
-$LN1170@initVK:
+$LN1171@initVK:
 ; Line 1193
 	mov	BYTE PTR $T17[rsp], 0
 ; Line 1166
@@ -35913,29 +36087,29 @@ $LN1170@initVK:
 	sar	rcx, 2
 ; Line 1167
 	cmp	rsi, rcx
-	jae	SHORT $LN1176@initVK
+	jae	SHORT $LN1177@initVK
 ; Line 1168
 	lea	rax, QWORD PTR [rdx+rsi*4]
 ; Line 1172
-	jmp	SHORT $LN1331@initVK
-$LN1176@initVK:
+	jmp	SHORT $LN1332@initVK
+$LN1177@initVK:
 ; Line 1175
-	jbe	SHORT $LN1177@initVK
+	jbe	SHORT $LN1178@initVK
 ; Line 1176
 	mov	rax, QWORD PTR ?vk_image_indices@@3V?$vector@IV?$allocator@I@std@@@std@@A+16
 	sub	rax, rdx
 	sar	rax, 2
 ; Line 1177
 	cmp	rsi, rax
-	jbe	SHORT $LN1178@initVK
+	jbe	SHORT $LN1179@initVK
 ; Line 1178
 	lea	r8, QWORD PTR $T17[rsp]
 	mov	rdx, rsi
 	lea	rcx, OFFSET FLAT:?vk_image_indices@@3V?$vector@IV?$allocator@I@std@@@std@@A ; vk_image_indices
 	call	??$_Resize_reallocate@U_Value_init_tag@std@@@?$vector@IV?$allocator@I@std@@@std@@AEAAX_KAEBU_Value_init_tag@1@@Z ; std::vector<unsigned int,std::allocator<unsigned int> >::_Resize_reallocate<std::_Value_init_tag>
 ; Line 1179
-	jmp	SHORT $LN1177@initVK
-$LN1178@initVK:
+	jmp	SHORT $LN1178@initVK
+$LN1179@initVK:
 ; Line 1183
 	mov	rax, rsi
 	sub	rax, rcx
@@ -35949,17 +36123,17 @@ $LN1178@initVK:
 	call	memset
 ; Line 1914
 	lea	rax, QWORD PTR [r15+rbx]
-$LN1331@initVK:
+$LN1332@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 673
+; Line 730
 	mov	QWORD PTR ?vk_image_indices@@3V?$vector@IV?$allocator@I@std@@@std@@A+8, rax
-$LN1177@initVK:
-	mov	QWORD PTR vk_vertex_buffer_offset$[rbp-256], r12
+$LN1178@initVK:
+	mov	QWORD PTR vk_vertex_buffer_offset$59[rbp-256], r12
 	mov	rbx, r12
-; Line 675
+; Line 732
 	test	rsi, rsi
 	je	$LN6@initVK
-; Line 677
+; Line 734
 	mov	QWORD PTR $T35[rbp-256], r12
 	mov	DWORD PTR $T35[rbp-248], 800		; 00000320H
 	mov	DWORD PTR $T35[rbp-244], 600		; 00000258H
@@ -35975,38 +36149,38 @@ $LL7@initVK:
 	mov	rax, QWORD PTR [rax+rbx*8]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 886
-	mov	DWORD PTR $T69[rbp-256], 43		; 0000002bH
+	mov	DWORD PTR $T117[rbp-256], 43		; 0000002bH
 ; Line 887
-	mov	QWORD PTR $T69[rbp-248], r9
+	mov	QWORD PTR $T117[rbp-248], r9
 ; Line 888
-	mov	rcx, QWORD PTR render_pass$32[rbp-256]
-	mov	QWORD PTR $T69[rbp-240], rcx
+	mov	rcx, QWORD PTR render_pass$31[rbp-256]
+	mov	QWORD PTR $T117[rbp-240], rcx
 ; Line 889
-	mov	QWORD PTR $T69[rbp-232], rax
+	mov	QWORD PTR $T117[rbp-232], rax
 ; Line 891
-	mov	DWORD PTR $T69[rbp-208], 2
+	mov	DWORD PTR $T117[rbp-208], 2
 ; Line 892
-	lea	rax, QWORD PTR clear_value$[rbp-256]
-	mov	QWORD PTR $T69[rbp-200], rax
+	lea	rax, QWORD PTR clear_value$136[rbp-256]
+	mov	QWORD PTR $T117[rbp-200], rax
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 677
-	movups	xmm0, XMMWORD PTR $T69[rbp-256]
+; Line 734
+	movups	xmm0, XMMWORD PTR $T117[rbp-256]
 	movups	XMMWORD PTR [r15], xmm0
-	movups	xmm1, XMMWORD PTR $T69[rbp-240]
+	movups	xmm1, XMMWORD PTR $T117[rbp-240]
 	movups	XMMWORD PTR [r15+16], xmm1
 	movups	XMMWORD PTR [r15+32], xmm6
-	movups	xmm0, XMMWORD PTR $T69[rbp-208]
+	movups	xmm0, XMMWORD PTR $T117[rbp-208]
 	movups	XMMWORD PTR [r15+48], xmm0
-; Line 679
-	lea	rdx, QWORD PTR vk_command_buffer_bi$[rbp-256]
+; Line 736
+	lea	rdx, QWORD PTR vk_command_buffer_bi$71[rbp-256]
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkBeginCommandBuffer@@3P6A?AW4VkResult@@PEAUVkCommandBuffer_T@@PEBUVkCommandBufferBeginInfo@@@ZEA ; vkBeginCommandBuffer
-; Line 680
+; Line 737
 	xor	eax, eax
 	mov	QWORD PTR [rsp+56], rax
 	mov	DWORD PTR [rsp+48], eax
-	mov	rax, QWORD PTR vk_descr_set$[rbp-256]
+	mov	rax, QWORD PTR vk_descr_set$66[rbp-256]
 	mov	QWORD PTR [rsp+40], rax
 	mov	DWORD PTR [rsp+32], 1
 	xor	r9d, r9d
@@ -36015,28 +36189,28 @@ $LL7@initVK:
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkCmdBindDescriptorSets@@3P6AXPEAUVkCommandBuffer_T@@W4VkPipelineBindPoint@@PEAUVkPipelineLayout_T@@IIPEBQEAUVkDescriptorSet_T@@IPEBI@ZEA ; vkCmdBindDescriptorSets
-; Line 681
-	lea	rax, QWORD PTR vk_vertex_buffer_offset$[rbp-256]
+; Line 738
+	lea	rax, QWORD PTR vk_vertex_buffer_offset$59[rbp-256]
 	mov	QWORD PTR [rsp+32], rax
-	lea	r9, QWORD PTR vk_vertex_buffer$[rbp-256]
+	lea	r9, QWORD PTR vk_vertex_buffer$49[rbp-256]
 	xor	edx, edx
 	lea	r8d, QWORD PTR [rdx+1]
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkCmdBindVertexBuffers@@3P6AXPEAUVkCommandBuffer_T@@IIPEBQEAUVkBuffer_T@@PEB_K@ZEA ; vkCmdBindVertexBuffers
-; Line 682
+; Line 739
 	xor	r8d, r8d
 	mov	rdx, r15
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkCmdBeginRenderPass@@3P6AXPEAUVkCommandBuffer_T@@PEBUVkRenderPassBeginInfo@@W4VkSubpassContents@@@ZEA ; vkCmdBeginRenderPass
-; Line 683
+; Line 740
 	mov	r8, r14
 	xor	edx, edx
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkCmdBindPipeline@@3P6AXPEAUVkCommandBuffer_T@@W4VkPipelineBindPoint@@PEAUVkPipeline_T@@@ZEA ; vkCmdBindPipeline
-; Line 684
+; Line 741
 	xor	r9d, r9d
 	mov	DWORD PTR [rsp+32], r9d
 	lea	edx, QWORD PTR [r9+36]
@@ -36044,11 +36218,11 @@ $LL7@initVK:
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkCmdDraw@@3P6AXPEAUVkCommandBuffer_T@@IIII@ZEA ; vkCmdDraw
-; Line 685
+; Line 742
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkCmdEndRenderPass@@3P6AXPEAUVkCommandBuffer_T@@@ZEA ; vkCmdEndRenderPass
-; Line 686
+; Line 743
 	mov	rcx, QWORD PTR ?vk_cmd_buffers@@3V?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@A
 	mov	rcx, QWORD PTR [rcx+rbx*8]
 	call	QWORD PTR ?vkEndCommandBuffer@@3P6A?AW4VkResult@@PEAUVkCommandBuffer_T@@@ZEA ; vkEndCommandBuffer
@@ -36062,39 +36236,39 @@ $LL7@initVK:
 	lea	rcx, QWORD PTR [rax+rbx*8]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 914
-	mov	DWORD PTR $T68[rbp-256], 4
+	mov	DWORD PTR $T116[rbp-256], 4
 ; Line 915
 	xor	r9d, r9d
-	mov	QWORD PTR $T68[rbp-248], r9
+	mov	QWORD PTR $T116[rbp-248], r9
 ; Line 916
-	mov	DWORD PTR $T68[rbp-240], 1
+	mov	DWORD PTR $T116[rbp-240], 1
 ; Line 917
-	mov	QWORD PTR $T68[rbp-232], rcx
+	mov	QWORD PTR $T116[rbp-232], rcx
 ; Line 918
 	lea	rax, OFFSET FLAT:?vk_wait_stages@@3IA	; vk_wait_stages
-	mov	QWORD PTR $T68[rbp-224], rax
+	mov	QWORD PTR $T116[rbp-224], rax
 ; Line 919
-	mov	DWORD PTR $T68[rbp-216], 1
+	mov	DWORD PTR $T116[rbp-216], 1
 ; Line 920
-	mov	QWORD PTR $T68[rbp-208], rdx
+	mov	QWORD PTR $T116[rbp-208], rdx
 ; Line 921
-	mov	DWORD PTR $T68[rbp-200], 1
+	mov	DWORD PTR $T116[rbp-200], 1
 ; Line 922
-	mov	QWORD PTR $T68[rbp-192], r8
+	mov	QWORD PTR $T116[rbp-192], r8
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1458
 	mov	rax, QWORD PTR ?vk_submit_i@@3V?$vector@UVkSubmitInfo@@V?$allocator@UVkSubmitInfo@@@std@@@std@@A
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 688
-	movups	xmm0, XMMWORD PTR $T68[rbp-256]
+; Line 745
+	movups	xmm0, XMMWORD PTR $T116[rbp-256]
 	movups	XMMWORD PTR [rax+r12], xmm0
-	movups	xmm1, XMMWORD PTR $T68[rbp-240]
+	movups	xmm1, XMMWORD PTR $T116[rbp-240]
 	movups	XMMWORD PTR [rax+r12+16], xmm1
-	movups	xmm0, XMMWORD PTR $T68[rbp-224]
+	movups	xmm0, XMMWORD PTR $T116[rbp-224]
 	movups	XMMWORD PTR [rax+r12+32], xmm0
-	movups	xmm1, XMMWORD PTR $T68[rbp-208]
+	movups	xmm1, XMMWORD PTR $T116[rbp-208]
 	movups	XMMWORD PTR [rax+r12+48], xmm1
-	movsd	xmm0, QWORD PTR $T68[rbp-192]
+	movsd	xmm0, QWORD PTR $T116[rbp-192]
 	movsd	QWORD PTR [rax+r12+64], xmm0
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1458
@@ -36104,38 +36278,38 @@ $LL7@initVK:
 	lea	rcx, QWORD PTR [rax+rbx*8]
 ; File E:\reps\denis-belov\xgk\src\api\vulkan.h
 ; Line 943
-	mov	DWORD PTR $T67[rbp-256], 1000001001	; 3b9acde9H
+	mov	DWORD PTR $T115[rbp-256], 1000001001	; 3b9acde9H
 ; Line 944
-	mov	QWORD PTR $T67[rbp-248], r9
+	mov	QWORD PTR $T115[rbp-248], r9
 ; Line 945
-	mov	DWORD PTR $T67[rbp-240], 1
+	mov	DWORD PTR $T115[rbp-240], 1
 ; Line 946
-	mov	QWORD PTR $T67[rbp-232], rcx
+	mov	QWORD PTR $T115[rbp-232], rcx
 ; Line 947
-	mov	DWORD PTR $T67[rbp-224], 1
+	mov	DWORD PTR $T115[rbp-224], 1
 ; Line 948
 	lea	rax, OFFSET FLAT:?vk_swapchain@@3PEAUVkSwapchainKHR_T@@EA ; vk_swapchain
-	mov	QWORD PTR $T67[rbp-216], rax
+	mov	QWORD PTR $T115[rbp-216], rax
 ; Line 949
-	mov	QWORD PTR $T67[rbp-208], rdx
+	mov	QWORD PTR $T115[rbp-208], rdx
 ; Line 950
-	mov	QWORD PTR $T67[rbp-200], r9
+	mov	QWORD PTR $T115[rbp-200], r9
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1458
 	mov	rax, QWORD PTR ?vk_present_i@@3V?$vector@UVkPresentInfoKHR@@V?$allocator@UVkPresentInfoKHR@@@std@@@std@@A
 	sub	rax, r13
 	add	rax, r15
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 694
-	movups	xmm0, XMMWORD PTR $T67[rbp-256]
+; Line 751
+	movups	xmm0, XMMWORD PTR $T115[rbp-256]
 	movups	XMMWORD PTR [rax], xmm0
-	movups	xmm1, XMMWORD PTR $T67[rbp-240]
+	movups	xmm1, XMMWORD PTR $T115[rbp-240]
 	movups	XMMWORD PTR [rax+16], xmm1
-	movups	xmm0, XMMWORD PTR $T67[rbp-224]
+	movups	xmm0, XMMWORD PTR $T115[rbp-224]
 	movups	XMMWORD PTR [rax+32], xmm0
-	movups	xmm1, XMMWORD PTR $T67[rbp-208]
+	movups	xmm1, XMMWORD PTR $T115[rbp-208]
 	movups	XMMWORD PTR [rax+48], xmm1
-; Line 675
+; Line 732
 	inc	rbx
 	lea	r12, QWORD PTR [r12+72]
 	add	r15, 64					; 00000040H
@@ -36144,18 +36318,18 @@ $LL7@initVK:
 	mov	rdi, QWORD PTR _Bytes$1$[rsp]
 	mov	r14, QWORD PTR _Ptr$1$[rsp]
 $LN6@initVK:
-; Line 701
+; Line 758
 	mov	BYTE PTR ?curr_image@@3EA, 0		; curr_image
-; Line 703
+; Line 760
 	lea	rax, OFFSET FLAT:?loop_function_VK@@YAXXZ ; loop_function_VK
 	mov	QWORD PTR ?loop_function@@3P6AXXZEA, rax ; loop_function
-; Line 705
+; Line 762
 	lea	rax, OFFSET FLAT:?destroyVK@@YAXXZ	; destroyVK
 	mov	QWORD PTR ?destroy_api_function@@3P6AXXZEA, rax ; destroy_api_function
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1650
 	test	r14, r14
-	je	SHORT $LN1233@initVK
+	je	SHORT $LN1234@initVK
 ; Line 1652
 	sub	rdi, r14
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
@@ -36164,7 +36338,7 @@ $LN6@initVK:
 	mov	rax, r14
 ; Line 186
 	cmp	rdi, 4096				; 00001000H
-	jb	SHORT $LN1249@initVK
+	jb	SHORT $LN1250@initVK
 ; Line 104
 	add	rdi, 39					; 00000027H
 ; Line 107
@@ -36173,54 +36347,55 @@ $LN6@initVK:
 ; Line 121
 	add	rax, -8
 	cmp	rax, 31
-	jbe	SHORT $LN1249@initVK
+	jbe	SHORT $LN1250@initVK
 	call	QWORD PTR __imp__invalid_parameter_noinfo_noreturn
 	int	3
-$LN1249@initVK:
+$LN1250@initVK:
 ; Line 191
 	mov	rdx, rdi
 	mov	rcx, r14
 	call	??3@YAXPEAX_K@Z				; operator delete
 	npad	1
-$LN1233@initVK:
+$LN1234@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 706
-	lea	rcx, QWORD PTR vk_descr_set$[rbp-256]
+; Line 763
+	lea	rcx, QWORD PTR vk_descr_set$66[rbp-256]
 	call	??1?$vector@PEAUVkDescriptorSet_T@@V?$allocator@PEAUVkDescriptorSet_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDescriptorSet_T *,std::allocator<VkDescriptorSet_T *> >::~vector<VkDescriptorSet_T *,std::allocator<VkDescriptorSet_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_depth_image_mems$[rbp-256]
+	lea	rcx, QWORD PTR vk_depth_image_mems$60[rbp-256]
 	call	??1?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::~vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_depth_image_views$[rbp-256]
+	lea	rcx, QWORD PTR vk_depth_image_views$55[rbp-256]
 	call	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_depth_images$[rbp-256]
+	lea	rcx, QWORD PTR vk_depth_images$56[rbp-256]
 	call	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_framebuffers$[rbp-256]
+	lea	rcx, QWORD PTR vk_framebuffers$50[rbp-256]
 	call	??1?$vector@PEAUVkFramebuffer_T@@V?$allocator@PEAUVkFramebuffer_T@@@std@@@std@@QEAA@XZ ; std::vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >::~vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_render_image_views$[rbp-256]
+	lea	rcx, QWORD PTR vk_render_image_views$51[rbp-256]
 	call	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_render_image_mems$[rbp-256]
+	lea	rcx, QWORD PTR vk_render_image_mems$52[rbp-256]
 	call	??1?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::~vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_render_images$[rbp-256]
+	lea	rcx, QWORD PTR vk_render_images$53[rbp-256]
 	call	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_swapchain_image_views$[rbp-256]
+	lea	rcx, QWORD PTR vk_swapchain_image_views$54[rbp-256]
 	call	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 	npad	1
-	lea	rcx, QWORD PTR vk_swapchain_images$[rbp-256]
+	lea	rcx, QWORD PTR vk_swapchain_images$64[rbp-256]
 	call	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 	npad	1
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 624
-	lea	rcx, QWORD PTR queue_ci$[rbp-256]
+	lea	rcx, QWORD PTR queue_ci$62[rbp-256]
 	call	?_Tidy@?$vector@UVkDeviceQueueCreateInfo@@V?$allocator@UVkDeviceQueueCreateInfo@@@std@@@std@@AEAAXXZ ; std::vector<VkDeviceQueueCreateInfo,std::allocator<VkDeviceQueueCreateInfo> >::_Tidy
+$LN1256@initVK:
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 706
+; Line 764
 	mov	rcx, QWORD PTR __$ArrayPad$[rbp-256]
 	xor	rcx, rsp
 	call	__security_check_cookie
@@ -36236,95 +36411,95 @@ $LN1233@initVK:
 	pop	r12
 	pop	rbp
 	ret	0
-$LN1349@initVK:
+$LN1350@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@UVkRenderPassBeginInfo@@V?$allocator@UVkRenderPassBeginInfo@@@std@@@std@@CAXXZ ; std::vector<VkRenderPassBeginInfo,std::allocator<VkRenderPassBeginInfo> >::_Xlength
 	npad	1
-$LN1333@initVK:
+$LN1334@initVK:
 	call	?_Xlength@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@CAXXZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::_Xlength
 	int	3
-$LN1334@initVK:
+$LN1335@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1335@initVK:
+$LN1336@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@CAXXZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::_Xlength
 	int	3
-$LN1336@initVK:
+$LN1337@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1337@initVK:
+$LN1338@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@CAXXZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::_Xlength
 	int	3
-$LN1338@initVK:
+$LN1339@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1339@initVK:
+$LN1340@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@CAXXZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::_Xlength
 	int	3
-$LN1340@initVK:
+$LN1341@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1341@initVK:
+$LN1342@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkFramebuffer_T@@V?$allocator@PEAUVkFramebuffer_T@@@std@@@std@@CAXXZ ; std::vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >::_Xlength
 	int	3
-$LN1342@initVK:
+$LN1343@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1343@initVK:
+$LN1344@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@CAXXZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::_Xlength
 	int	3
-$LN1344@initVK:
+$LN1345@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1345@initVK:
+$LN1346@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@CAXXZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::_Xlength
 	int	3
-$LN1346@initVK:
+$LN1347@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	npad	1
-$LN1347@initVK:
+$LN1348@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\vector
 ; Line 1617
 	call	?_Xlength@?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@CAXXZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::_Xlength
 	int	3
-$LN1348@initVK:
+$LN1349@initVK:
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xmemory
 ; Line 87
 	call	?_Throw_bad_array_new_length@std@@YAXXZ	; std::_Throw_bad_array_new_length
 	int	3
-$LN1328@initVK:
+$LN1329@initVK:
 ?initVK@@YAXXZ ENDP					; initVK
 _TEXT	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -36340,142 +36515,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$0@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$0
-	lea	rcx, QWORD PTR queue_ci$[rdx]
+	lea	rcx, QWORD PTR queue_ci$62[rdx]
 	jmp	??1?$vector@UVkDeviceQueueCreateInfo@@V?$allocator@UVkDeviceQueueCreateInfo@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceQueueCreateInfo,std::allocator<VkDeviceQueueCreateInfo> >::~vector<VkDeviceQueueCreateInfo,std::allocator<VkDeviceQueueCreateInfo> >
 ?dtor$0@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$0
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -36491,142 +36666,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$1@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$1
-	lea	rcx, QWORD PTR vk_swapchain_images$[rdx]
+	lea	rcx, QWORD PTR vk_swapchain_images$64[rdx]
 	jmp	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 ?dtor$1@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$1
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -36642,142 +36817,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$2@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$2
-	lea	rcx, QWORD PTR vk_swapchain_image_views$[rdx]
+	lea	rcx, QWORD PTR vk_swapchain_image_views$54[rdx]
 	jmp	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 ?dtor$2@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$2
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -36793,142 +36968,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$3@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$3
-	lea	rcx, QWORD PTR vk_render_images$[rdx]
+	lea	rcx, QWORD PTR vk_render_images$53[rdx]
 	jmp	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 ?dtor$3@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$3
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -36944,142 +37119,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$4@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$4
-	lea	rcx, QWORD PTR vk_render_image_mems$[rdx]
+	lea	rcx, QWORD PTR vk_render_image_mems$52[rdx]
 	jmp	??1?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::~vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >
 ?dtor$4@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$4
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -37095,142 +37270,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$5@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$5
-	lea	rcx, QWORD PTR vk_render_image_views$[rdx]
+	lea	rcx, QWORD PTR vk_render_image_views$51[rdx]
 	jmp	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 ?dtor$5@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$5
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -37246,142 +37421,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$6@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$6
-	lea	rcx, QWORD PTR vk_framebuffers$[rdx]
+	lea	rcx, QWORD PTR vk_framebuffers$50[rdx]
 	jmp	??1?$vector@PEAUVkFramebuffer_T@@V?$allocator@PEAUVkFramebuffer_T@@@std@@@std@@QEAA@XZ ; std::vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >::~vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >
 ?dtor$6@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$6
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -37397,142 +37572,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$7@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$7
-	lea	rcx, QWORD PTR vk_depth_images$[rdx]
+	lea	rcx, QWORD PTR vk_depth_images$56[rdx]
 	jmp	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 ?dtor$7@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$7
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -37548,142 +37723,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$8@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$8
-	lea	rcx, QWORD PTR vk_depth_image_views$[rdx]
+	lea	rcx, QWORD PTR vk_depth_image_views$55[rdx]
 	jmp	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 ?dtor$8@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$8
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -37699,142 +37874,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$9@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$9
-	lea	rcx, QWORD PTR vk_depth_image_mems$[rdx]
+	lea	rcx, QWORD PTR vk_depth_image_mems$60[rdx]
 	jmp	??1?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::~vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >
 ?dtor$9@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$9
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -37850,142 +38025,142 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$10@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$10
-	lea	rcx, QWORD PTR vk_descr_set$[rdx]
+	lea	rcx, QWORD PTR vk_descr_set$66[rdx]
 	jmp	??1?$vector@PEAUVkDescriptorSet_T@@V?$allocator@PEAUVkDescriptorSet_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDescriptorSet_T *,std::allocator<VkDescriptorSet_T *> >::~vector<VkDescriptorSet_T *,std::allocator<VkDescriptorSet_T *> >
 ?dtor$10@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$10
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38001,146 +38176,146 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$26@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$26
 	push	rbp
 	sub	rsp, 32					; 00000020H
 	mov	rbp, rdx
-	mov	eax, DWORD PTR $T39[rbp]
+	mov	eax, DWORD PTR $T43[rbp]
 	and	eax, 4
 	test	eax, eax
-	je	SHORT $LN1015@dtor$26
-	and	DWORD PTR $T39[rbp], -5
+	je	SHORT $LN1016@dtor$26
+	and	DWORD PTR $T43[rbp], -5
 	lea	rcx, QWORD PTR $T36[rbp]
 	call	??1?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@QEAA@XZ ; std::vector<VkCommandBuffer_T *,std::allocator<VkCommandBuffer_T *> >::~vector<VkCommandBuffer_T *,std::allocator<VkCommandBuffer_T *> >
-$LN1015@dtor$26:
+$LN1016@dtor$26:
 	add	rsp, 32					; 00000020H
 	pop	rbp
 	ret	0
@@ -38148,7 +38323,7 @@ $LN1015@dtor$26:
 text$x	ENDS
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38164,143 +38339,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$12@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$12
-	lea	rcx, QWORD PTR render_pass_bi$[rdx]
+	lea	rcx, QWORD PTR render_pass_bi$41[rdx]
 	jmp	??1?$vector@UVkRenderPassBeginInfo@@V?$allocator@UVkRenderPassBeginInfo@@@std@@@std@@QEAA@XZ ; std::vector<VkRenderPassBeginInfo,std::allocator<VkRenderPassBeginInfo> >::~vector<VkRenderPassBeginInfo,std::allocator<VkRenderPassBeginInfo> >
 ?dtor$12@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$12
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38316,143 +38491,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$0@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$0
-	lea	rcx, QWORD PTR queue_ci$[rdx]
+	lea	rcx, QWORD PTR queue_ci$62[rdx]
 	jmp	??1?$vector@UVkDeviceQueueCreateInfo@@V?$allocator@UVkDeviceQueueCreateInfo@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceQueueCreateInfo,std::allocator<VkDeviceQueueCreateInfo> >::~vector<VkDeviceQueueCreateInfo,std::allocator<VkDeviceQueueCreateInfo> >
 ?dtor$0@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$0
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38468,143 +38643,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$1@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$1
-	lea	rcx, QWORD PTR vk_swapchain_images$[rdx]
+	lea	rcx, QWORD PTR vk_swapchain_images$64[rdx]
 	jmp	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 ?dtor$1@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$1
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38620,143 +38795,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$2@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$2
-	lea	rcx, QWORD PTR vk_swapchain_image_views$[rdx]
+	lea	rcx, QWORD PTR vk_swapchain_image_views$54[rdx]
 	jmp	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 ?dtor$2@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$2
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38772,143 +38947,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$3@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$3
-	lea	rcx, QWORD PTR vk_render_images$[rdx]
+	lea	rcx, QWORD PTR vk_render_images$53[rdx]
 	jmp	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 ?dtor$3@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$3
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -38924,143 +39099,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$4@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$4
-	lea	rcx, QWORD PTR vk_render_image_mems$[rdx]
+	lea	rcx, QWORD PTR vk_render_image_mems$52[rdx]
 	jmp	??1?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::~vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >
 ?dtor$4@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$4
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39076,143 +39251,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$5@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$5
-	lea	rcx, QWORD PTR vk_render_image_views$[rdx]
+	lea	rcx, QWORD PTR vk_render_image_views$51[rdx]
 	jmp	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 ?dtor$5@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$5
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39228,143 +39403,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$6@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$6
-	lea	rcx, QWORD PTR vk_framebuffers$[rdx]
+	lea	rcx, QWORD PTR vk_framebuffers$50[rdx]
 	jmp	??1?$vector@PEAUVkFramebuffer_T@@V?$allocator@PEAUVkFramebuffer_T@@@std@@@std@@QEAA@XZ ; std::vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >::~vector<VkFramebuffer_T *,std::allocator<VkFramebuffer_T *> >
 ?dtor$6@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$6
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39380,143 +39555,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$7@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$7
-	lea	rcx, QWORD PTR vk_depth_images$[rdx]
+	lea	rcx, QWORD PTR vk_depth_images$56[rdx]
 	jmp	??1?$vector@PEAUVkImage_T@@V?$allocator@PEAUVkImage_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImage_T *,std::allocator<VkImage_T *> >::~vector<VkImage_T *,std::allocator<VkImage_T *> >
 ?dtor$7@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$7
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39532,143 +39707,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$8@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$8
-	lea	rcx, QWORD PTR vk_depth_image_views$[rdx]
+	lea	rcx, QWORD PTR vk_depth_image_views$55[rdx]
 	jmp	??1?$vector@PEAUVkImageView_T@@V?$allocator@PEAUVkImageView_T@@@std@@@std@@QEAA@XZ ; std::vector<VkImageView_T *,std::allocator<VkImageView_T *> >::~vector<VkImageView_T *,std::allocator<VkImageView_T *> >
 ?dtor$8@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$8
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39684,143 +39859,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$9@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$9
-	lea	rcx, QWORD PTR vk_depth_image_mems$[rdx]
+	lea	rcx, QWORD PTR vk_depth_image_mems$60[rdx]
 	jmp	??1?$vector@PEAUVkDeviceMemory_T@@V?$allocator@PEAUVkDeviceMemory_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >::~vector<VkDeviceMemory_T *,std::allocator<VkDeviceMemory_T *> >
 ?dtor$9@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$9
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39836,143 +40011,143 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$10@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$10
-	lea	rcx, QWORD PTR vk_descr_set$[rdx]
+	lea	rcx, QWORD PTR vk_descr_set$66[rdx]
 	jmp	??1?$vector@PEAUVkDescriptorSet_T@@V?$allocator@PEAUVkDescriptorSet_T@@@std@@@std@@QEAA@XZ ; std::vector<VkDescriptorSet_T *,std::allocator<VkDescriptorSet_T *> >::~vector<VkDescriptorSet_T *,std::allocator<VkDescriptorSet_T *> >
 ?dtor$10@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$10
 text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -39988,146 +40163,146 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$26@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$26
 	push	rbp
 	sub	rsp, 32					; 00000020H
 	mov	rbp, rdx
-	mov	eax, DWORD PTR $T39[rbp]
+	mov	eax, DWORD PTR $T43[rbp]
 	and	eax, 4
 	test	eax, eax
-	je	SHORT $LN1015@dtor$26
-	and	DWORD PTR $T39[rbp], -5
+	je	SHORT $LN1016@dtor$26
+	and	DWORD PTR $T43[rbp], -5
 	lea	rcx, QWORD PTR $T36[rbp]
 	call	??1?$vector@PEAUVkCommandBuffer_T@@V?$allocator@PEAUVkCommandBuffer_T@@@std@@@std@@QEAA@XZ ; std::vector<VkCommandBuffer_T *,std::allocator<VkCommandBuffer_T *> >::~vector<VkCommandBuffer_T *,std::allocator<VkCommandBuffer_T *> >
-$LN1015@dtor$26:
+$LN1016@dtor$26:
 	add	rsp, 32					; 00000020H
 	pop	rbp
 	ret	0
@@ -40136,7 +40311,7 @@ text$x	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT text$x
 text$x	SEGMENT
-vk_depth_image_dev_local_mem_index$1$ = 80
+vk_render_image_views$1$ = 80
 vk_ppl$1$ = 80
 semaphore$4 = 80
 semaphore$5 = 80
@@ -40152,136 +40327,136 @@ image_view$14 = 80
 $T15 = 88
 $T16 = 88
 $T17 = 88
-$T18 = 96
-layout$19 = 96
+vk_depth_image_views$1$ = 96
+layout$18 = 96
+module$19 = 96
 module$20 = 96
-module$21 = 96
-pool$22 = 96
-layout$23 = 96
+pool$21 = 96
+layout$22 = 96
+queue$23 = 96
 queue$24 = 96
-queue$25 = 96
 vk_framebuffers$1$ = 104
-swapchain$26 = 104
-surface$27 = 104
+swapchain$25 = 104
+surface$26 = 104
 _Bytes$1$ = 112
 vk_render_image_dev_local_mem_index$1$ = 112
+mem_addr$27 = 112
 mem_addr$28 = 112
-mem_addr$29 = 112
-$T30 = 112
-vk_swapchain_image_views$1$ = 120
+$T29 = 112
+vk_render_image_mems$1$ = 120
 _Ptr$1$ = 120
-pool$31 = 120
-render_pass$32 = 128
-surface_support$33 = 128
-vk_render_image_mems$1$ = 136
+pool$30 = 120
+render_pass$31 = 128
+surface_support$32 = 128
+$T33 = 136
 pipeline$34 = 136
-vk_render_image_views$1$ = 144
+vk_swapchain_image_views$1$ = 144
 vk_ppl_layout$1$ = 144
 $T35 = 152
 $T36 = 152
 $T37 = 152
-vk_depth_image_mem_reqs$ = 152
-queue_priorities$ = 176
-info$38 = 184
-render_pass_bi$ = 184
-vk_render_image_mem_reqs$ = 184
-$T39 = 208
-color_attach_ref$ = 216
-color_attach_resolve_ref$ = 224
-depth_attach_ref$ = 232
-vk_descr_pool_size$ = 240
-vk_descr_set_layout$ = 248
-vk_vertex_buffer$ = 256
-vk_framebuffers$ = 264
-vk_render_image_views$ = 288
-vk_render_image_mems$ = 312
-vk_render_images$ = 336
-vk_swapchain_image_views$ = 360
-vk_depth_image_views$ = 384
-vk_depth_images$ = 408
-vk_inst_layers$ = 432
-vk_dev_exts$ = 440
-vk_vertex_buffer_offset$ = 448
-vk_depth_image_mems$ = 456
-$T40 = 456
-queue_ci$ = 496
-vk_descr_set_layout_binding$ = 520
-vk_swapchain_images$ = 544
-vk_descr_bi$ = 568
-vk_descr_set$ = 592
-info$41 = 624
-subpass_desc$ = 768
-vk_default_ppl_tess$ = 848
-vk_default_ppl_dyn$ = 872
-vk_command_buffer_bi$ = 904
-vk_default_ppl_input_asm$ = 936
-app_i$ = 968
-vk_ppl_vertex$ = 1016
-vk_default_ppl_view$ = 1064
-vk_default_ppl_sample$ = 1112
-write_descr_set$ = 1168
-vk_default_ppl_rast$ = 1232
-vk_ppl_stages$ = 1296
-info$42 = 1392
-info$43 = 1392
-info$44 = 1392
-info$45 = 1392
-info$46 = 1392
-info$47 = 1392
-info$48 = 1392
-info$49 = 1392
-info$50 = 1392
-info$51 = 1392
-info$52 = 1392
-info$53 = 1392
-$T54 = 1392
-$T55 = 1392
-$T56 = 1392
-$T57 = 1392
-vk_vertex_buffer_mem_reqs$ = 1504
-vk_uniform_buffer_mem_reqs$ = 1528
-vk_vertex_binding$ = 1552
-scissor$ = 1568
-vk_vertex_attr$ = 1584
-subpass_dep$ = 1600
-vk_blend_attach$ = 1632
-viewport$ = 1664
-vk_default_ppl_blend$ = 1688
-vk_default_ppl_depth_stenc$ = 1744
-info$58 = 1856
-info$59 = 1856
-info$60 = 1856
-info$61 = 1856
-info$62 = 1856
-info$63 = 1856
-info$64 = 1856
-info$65 = 1856
-info$66 = 1856
-$T67 = 1856
-$T68 = 1856
-$T69 = 1856
-$T70 = 1856
-$T71 = 1856
-$T72 = 1856
-$T73 = 1856
-$T74 = 1856
-$T75 = 1856
-vk_default_ppl_stenc$ = 1856
-$T76 = 1856
-$T77 = 1856
-$T78 = 1856
-$T79 = 1856
-$T80 = 1856
-vk_framebuffer_attach$81 = 1856
-$T82 = 1856
-$T83 = 1856
-$T84 = 1856
-vk_render_pass_attach$ = 1968
-vk_inst_exts$ = 2080
-clear_value$ = 2104
+vk_depth_image_mem_reqs$38 = 152
+queue_priorities$39 = 176
+info$40 = 184
+render_pass_bi$41 = 184
+vk_render_image_mem_reqs$42 = 184
+$T43 = 208
+color_attach_ref$44 = 216
+color_attach_resolve_ref$45 = 224
+depth_attach_ref$46 = 232
+vk_descr_pool_size$47 = 240
+vk_descr_set_layout$48 = 248
+vk_vertex_buffer$49 = 256
+vk_framebuffers$50 = 264
+vk_render_image_views$51 = 288
+vk_render_image_mems$52 = 312
+vk_render_images$53 = 336
+vk_swapchain_image_views$54 = 360
+vk_depth_image_views$55 = 384
+vk_depth_images$56 = 408
+vk_inst_layers$57 = 432
+vk_dev_exts$58 = 440
+vk_vertex_buffer_offset$59 = 448
+vk_depth_image_mems$60 = 456
+$T61 = 456
+queue_ci$62 = 496
+vk_descr_set_layout_binding$63 = 520
+vk_swapchain_images$64 = 544
+vk_descr_bi$65 = 568
+vk_descr_set$66 = 592
+info$67 = 624
+subpass_desc$68 = 768
+vk_default_ppl_tess$69 = 848
+vk_default_ppl_dyn$70 = 872
+vk_command_buffer_bi$71 = 904
+vk_default_ppl_input_asm$72 = 936
+app_i$73 = 968
+vk_ppl_vertex$74 = 1016
+vk_default_ppl_view$75 = 1064
+vk_default_ppl_sample$76 = 1112
+write_descr_set$77 = 1168
+vk_default_ppl_rast$78 = 1232
+vk_ppl_stages$79 = 1296
+info$80 = 1392
+info$81 = 1392
+info$82 = 1392
+info$83 = 1392
+info$84 = 1392
+info$85 = 1392
+info$86 = 1392
+info$87 = 1392
+info$88 = 1392
+info$89 = 1392
+info$90 = 1392
+info$91 = 1392
+$T92 = 1392
+$T93 = 1392
+$T94 = 1392
+$T95 = 1392
+vk_vertex_buffer_mem_reqs$96 = 1504
+vk_uniform_buffer_mem_reqs$97 = 1528
+vk_vertex_binding$98 = 1552
+scissor$99 = 1568
+vk_vertex_attr$100 = 1584
+subpass_dep$101 = 1600
+vk_blend_attach$102 = 1632
+viewport$103 = 1664
+vk_default_ppl_blend$104 = 1688
+vk_default_ppl_depth_stenc$105 = 1744
+info$106 = 1856
+info$107 = 1856
+info$108 = 1856
+info$109 = 1856
+info$110 = 1856
+info$111 = 1856
+info$112 = 1856
+info$113 = 1856
+info$114 = 1856
+$T115 = 1856
+$T116 = 1856
+$T117 = 1856
+$T118 = 1856
+$T119 = 1856
+$T120 = 1856
+$T121 = 1856
+$T122 = 1856
+$T123 = 1856
+vk_default_ppl_stenc$124 = 1856
+$T125 = 1856
+$T126 = 1856
+$T127 = 1856
+$T128 = 1856
+$T129 = 1856
+vk_framebuffer_attach$130 = 1856
+$T131 = 1856
+$T132 = 1856
+$T133 = 1856
+vk_render_pass_attach$134 = 1968
+vk_inst_exts$135 = 2080
+clear_value$136 = 2104
 __$ArrayPad$ = 2136
 ?dtor$12@?0??initVK@@YAXXZ@4HA PROC			; `initVK'::`1'::dtor$12
-	lea	rcx, QWORD PTR render_pass_bi$[rdx]
+	lea	rcx, QWORD PTR render_pass_bi$41[rdx]
 	jmp	??1?$vector@UVkRenderPassBeginInfo@@V?$allocator@UVkRenderPassBeginInfo@@@std@@@std@@QEAA@XZ ; std::vector<VkRenderPassBeginInfo,std::allocator<VkRenderPassBeginInfo> >::~vector<VkRenderPassBeginInfo,std::allocator<VkRenderPassBeginInfo> >
 ?dtor$12@?0??initVK@@YAXXZ@4HA ENDP			; `initVK'::`1'::dtor$12
 text$x	ENDS
@@ -40290,164 +40465,201 @@ text$x	ENDS
 _TEXT	SEGMENT
 ?destroyGL@@YAXXZ PROC					; destroyGL, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 721
+; Line 789
 $LN4:
 	sub	rsp, 40					; 00000028H
-; Line 723
+; Line 791
+	call	?ImGui_ImplOpenGL3_Shutdown@@YAXXZ	; ImGui_ImplOpenGL3_Shutdown
+; Line 792
+	call	?ImGui_ImplGlfw_Shutdown@@YAXXZ		; ImGui_ImplGlfw_Shutdown
+; Line 793
+	xor	ecx, ecx
+	call	?DestroyContext@ImGui@@YAXPEAUImGuiContext@@@Z ; ImGui::DestroyContext
+; Line 795
 	call	QWORD PTR glad_glFinish
-; Line 725
+; Line 797
 	mov	rcx, QWORD PTR ?window@@3PEAUGLFWwindow@@EA ; window
-; Line 726
+; Line 798
 	add	rsp, 40					; 00000028H
-; Line 725
+; Line 797
 	jmp	glfwDestroyWindow
 ?destroyGL@@YAXXZ ENDP					; destroyGL
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ?initGL@@YAXXZ
 _TEXT	SEGMENT
-uniform_buffer$ = 64
-vertex_buffer$ = 72
+uniform_buffer$1 = 96
+vertex_buffer$2 = 104
 ?initGL@@YAXXZ PROC					; initGL, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 728
-$LN4:
-	mov	QWORD PTR [rsp+24], rbx
-	mov	QWORD PTR [rsp+32], rsi
-	push	rdi
-	sub	rsp, 48					; 00000030H
-; Line 730
-	call	QWORD PTR ?destroy_api_function@@3P6AXXZEA ; destroy_api_function
-; Line 732
+; Line 800
+$LN5:
+	push	r14
+	sub	rsp, 80					; 00000050H
+; Line 802
+	mov	rax, QWORD PTR ?destroy_api_function@@3P6AXXZEA ; destroy_api_function
+	lea	r14, OFFSET FLAT:?destroyGL@@YAXXZ	; destroyGL
+	cmp	rax, r14
+	je	$LN2@initGL
+; Line 804
+	mov	QWORD PTR [rsp+112], rbx
+	mov	QWORD PTR [rsp+72], rsi
+	mov	QWORD PTR [rsp+64], rdi
+	call	rax
+; Line 806
 	mov	edx, 196609				; 00030001H
 	mov	ecx, 139265				; 00022001H
 	call	glfwWindowHint
-; Line 733
+; Line 807
 	mov	edx, 2
 	mov	ecx, 139266				; 00022002H
 	call	glfwWindowHint
-; Line 734
+; Line 808
 	xor	edx, edx
 	mov	ecx, 139267				; 00022003H
 	call	glfwWindowHint
-; Line 736
+; Line 810
 	xor	r9d, r9d
 	mov	QWORD PTR [rsp+32], 0
 	lea	r8, OFFSET FLAT:??_C@_00CNPNBAHC@@
 	mov	edx, 600				; 00000258H
 	mov	ecx, 800				; 00000320H
 	call	glfwCreateWindow
-; Line 738
+; Line 812
 	lea	rdx, OFFSET FLAT:?glfw_key_callback@@YAXPEAUGLFWwindow@@HHHH@Z ; glfw_key_callback
 	mov	QWORD PTR ?window@@3PEAUGLFWwindow@@EA, rax ; window
 	mov	rcx, rax
 	call	glfwSetKeyCallback
-; Line 739
+; Line 813
 	mov	rcx, QWORD PTR ?window@@3PEAUGLFWwindow@@EA ; window
 	call	glfwMakeContextCurrent
-; Line 740
+; Line 814
 	mov	ecx, 1
 	call	glfwSwapInterval
-; Line 742
+; Line 816
 	call	gladLoadGL
-; Line 744
+; Line 818
 	xor	edx, edx
 	xor	ecx, ecx
 	mov	r9d, 600				; 00000258H
 	mov	r8d, 800				; 00000320H
 	call	QWORD PTR glad_glViewport
-; Line 745
+; Line 819
 	mov	ecx, 2929				; 00000b71H
 	call	QWORD PTR glad_glEnable
-; Line 746
+; Line 820
 	mov	ecx, 513				; 00000201H
 	call	QWORD PTR glad_glDepthFunc
-; Line 747
+; Line 821
 	movss	xmm3, DWORD PTR __real@3f800000
 	xorps	xmm2, xmm2
 	xorps	xmm1, xmm1
 	xorps	xmm0, xmm0
 	call	QWORD PTR glad_glClearColor
-; Line 752
-	lea	rdx, QWORD PTR uniform_buffer$[rsp]
+; Line 825
+	mov	QWORD PTR [rsp+48], 2
+	lea	rcx, OFFSET FLAT:??_C@_08OKBABAGJ@1?477?5WIP@
+	mov	QWORD PTR [rsp+40], 20
+	mov	edx, 5472				; 00001560H
+	mov	r9d, 8
+	mov	QWORD PTR [rsp+32], 16
+	mov	r8d, 952				; 000003b8H
+	call	?DebugCheckVersionAndDataLayout@ImGui@@YA_NPEBD_K11111@Z ; ImGui::DebugCheckVersionAndDataLayout
+; Line 826
+	xor	ecx, ecx
+	call	?CreateContext@ImGui@@YAPEAUImGuiContext@@PEAUImFontAtlas@@@Z ; ImGui::CreateContext
+; Line 827
+	call	?GetIO@ImGui@@YAAEAUImGuiIO@@XZ		; ImGui::GetIO
+; Line 832
+	xor	ecx, ecx
+	call	?StyleColorsDark@ImGui@@YAXPEAUImGuiStyle@@@Z ; ImGui::StyleColorsDark
+; Line 836
+	mov	rcx, QWORD PTR ?window@@3PEAUGLFWwindow@@EA ; window
+	mov	dl, 1
+	call	?ImGui_ImplGlfw_InitForOpenGL@@YA_NPEAUGLFWwindow@@_N@Z ; ImGui_ImplGlfw_InitForOpenGL
+; Line 837
+	lea	rcx, OFFSET FLAT:??_C@_0N@OMJDJCFB@?$CDversion?5450@
+	call	?ImGui_ImplOpenGL3_Init@@YA_NPEBD@Z	; ImGui_ImplOpenGL3_Init
+; Line 842
+	lea	rdx, QWORD PTR uniform_buffer$1[rsp]
 	mov	ecx, 1
 	call	QWORD PTR glad_glGenBuffers
-; Line 753
-	mov	edx, DWORD PTR uniform_buffer$[rsp]
+; Line 843
+	mov	edx, DWORD PTR uniform_buffer$1[rsp]
 	mov	ecx, 35345				; 00008a11H
 	call	QWORD PTR glad_glBindBuffer
-; Line 754
+; Line 844
 	mov	r9d, 35048				; 000088e8H
 	lea	r8, OFFSET FLAT:?orbit@@3UOrbit@XGK@@A	; orbit
 	mov	edx, 128				; 00000080H
 	mov	ecx, 35345				; 00008a11H
 	call	QWORD PTR glad_glBufferData
-; Line 755
-	mov	r8d, DWORD PTR uniform_buffer$[rsp]
+; Line 845
+	mov	r8d, DWORD PTR uniform_buffer$1[rsp]
 	xor	edx, edx
 	mov	ecx, 35345				; 00008a11H
 	call	QWORD PTR glad_glBindBufferBase
-; Line 760
-	lea	rdx, QWORD PTR vertex_buffer$[rsp]
+; Line 850
+	lea	rdx, QWORD PTR vertex_buffer$2[rsp]
 	mov	ecx, 1
 	call	QWORD PTR glad_glGenBuffers
-; Line 761
-	mov	edx, DWORD PTR vertex_buffer$[rsp]
+; Line 851
+	mov	edx, DWORD PTR vertex_buffer$2[rsp]
 	mov	ecx, 34962				; 00008892H
 	call	QWORD PTR glad_glBindBuffer
-; Line 762
+; Line 852
 	mov	r9d, 35044				; 000088e4H
 	lea	r8, OFFSET FLAT:?vertices@@3QBMB
 	mov	edx, 432				; 000001b0H
 	lea	ecx, QWORD PTR [r9-82]
 	call	QWORD PTR glad_glBufferData
-; Line 764
+; Line 854
 	mov	ecx, 35633				; 00008b31H
 	call	QWORD PTR glad_glCreateShader
-; Line 765
+; Line 855
 	xor	r9d, r9d
 	lea	r8, OFFSET FLAT:?vertex_shader_code_opengl@@3PEBDEB ; vertex_shader_code_opengl
 	mov	ecx, eax
 	mov	esi, eax
 	lea	edx, QWORD PTR [r9+1]
 	call	QWORD PTR glad_glShaderSource
-; Line 766
+; Line 856
 	mov	ecx, esi
 	call	QWORD PTR glad_glCompileShader
-; Line 768
+; Line 858
 	mov	ecx, 35632				; 00008b30H
 	call	QWORD PTR glad_glCreateShader
-; Line 769
+; Line 859
 	xor	r9d, r9d
 	lea	r8, OFFSET FLAT:?fragment_shader_code_opengl@@3PEBDEB ; fragment_shader_code_opengl
+	mov	ecx, eax
 	mov	edi, eax
 	lea	edx, QWORD PTR [r9+1]
-	mov	ecx, eax
 	call	QWORD PTR glad_glShaderSource
-; Line 770
+; Line 860
 	mov	ecx, edi
 	call	QWORD PTR glad_glCompileShader
-; Line 772
+; Line 862
 	call	QWORD PTR glad_glCreateProgram
-; Line 773
+; Line 863
 	mov	ecx, eax
 	mov	edx, esi
 	mov	ebx, eax
 	call	QWORD PTR glad_glAttachShader
-; Line 774
+; Line 864
 	mov	edx, edi
 	mov	ecx, ebx
 	call	QWORD PTR glad_glAttachShader
-; Line 775
+; Line 865
 	mov	ecx, ebx
 	call	QWORD PTR glad_glLinkProgram
-; Line 777
+; Line 867
 	mov	ecx, ebx
 	call	QWORD PTR glad_glUseProgram
-; Line 781
+; Line 871
 	xor	ecx, ecx
 	call	QWORD PTR glad_glEnableVertexAttribArray
-; Line 782
+; Line 872
 	xor	r9d, r9d
 	mov	QWORD PTR [rsp+40], 0
 	xor	ecx, ecx
@@ -40455,15 +40667,17 @@ $LN4:
 	mov	r8d, 5126				; 00001406H
 	lea	edx, QWORD PTR [r9+3]
 	call	QWORD PTR glad_glVertexAttribPointer
-; Line 789
-	mov	rbx, QWORD PTR [rsp+80]
+; Line 878
+	mov	rdi, QWORD PTR [rsp+64]
 	lea	rax, OFFSET FLAT:?loop_function_GL@@YAXXZ ; loop_function_GL
-	mov	rsi, QWORD PTR [rsp+88]
+	mov	rsi, QWORD PTR [rsp+72]
+	mov	rbx, QWORD PTR [rsp+112]
 	mov	QWORD PTR ?loop_function@@3P6AXXZEA, rax ; loop_function
-	lea	rax, OFFSET FLAT:?destroyGL@@YAXXZ	; destroyGL
-	mov	QWORD PTR ?destroy_api_function@@3P6AXXZEA, rax ; destroy_api_function
-	add	rsp, 48					; 00000030H
-	pop	rdi
+	mov	QWORD PTR ?destroy_api_function@@3P6AXXZEA, r14 ; destroy_api_function
+$LN2@initGL:
+; Line 880
+	add	rsp, 80					; 00000050H
+	pop	r14
 	ret	0
 ?initGL@@YAXXZ ENDP					; initGL
 _TEXT	ENDS
@@ -40472,7 +40686,7 @@ _TEXT	ENDS
 _TEXT	SEGMENT
 ?idle_function@@YAXXZ PROC				; idle_function, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 118
+; Line 173
 	ret	0
 ?idle_function@@YAXXZ ENDP				; idle_function
 _TEXT	ENDS
@@ -40481,24 +40695,24 @@ _TEXT	ENDS
 _TEXT	SEGMENT
 ?transition_thread_function@@YAXXZ PROC			; transition_thread_function, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 107
+; Line 162
 $LN10:
 	sub	rsp, 40					; 00000028H
-; Line 109
+; Line 164
 	cmp	BYTE PTR ?render_flag@@3EA, 0		; render_flag
 	je	SHORT $LN3@transition
 	npad	3
 $LL2@transition:
-; Line 111
+; Line 166
 	lea	rcx, OFFSET FLAT:?time_@@3UTime@XGK@@A	; time_
 	call	?getFrameTime@TIME@XGK@@YAXPEAUTime@2@@Z ; XGK::TIME::getFrameTime
-; Line 112
+; Line 167
 	lea	rcx, OFFSET FLAT:?time_@@3UTime@XGK@@A	; time_
 	call	?updateTransitions@TIME@XGK@@YAXPEAUTime@2@@Z ; XGK::TIME::updateTransitions
 	cmp	BYTE PTR ?render_flag@@3EA, 0		; render_flag
 	jne	SHORT $LL2@transition
 $LN3@transition:
-; Line 114
+; Line 169
 	add	rsp, 40					; 00000028H
 	ret	0
 ?transition_thread_function@@YAXXZ ENDP			; transition_thread_function
@@ -40510,11 +40724,11 @@ interpolation$ = 48
 additional$ = 56
 ?test@@YAXMPEAX@Z PROC					; test, COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 89
+; Line 144
 $LN21:
 	push	rbx
 	sub	rsp, 32					; 00000020H
-; Line 93
+; Line 148
 	mulss	xmm0, DWORD PTR __real@447a0000
 	xor	ecx, ecx
 	mov	rbx, rdx
@@ -40535,11 +40749,11 @@ $LN16@test:
 ; Line 47
 	lea	rcx, OFFSET FLAT:?orbit_mutex@@3Vmutex@std@@A ; orbit_mutex
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 93
+; Line 148
 	mulss	xmm0, DWORD PTR __real@4048f5c3
-; Line 95
+; Line 150
 	movss	DWORD PTR [rdx+144], xmm0
-; Line 96
+; Line 151
 	movss	DWORD PTR [rdx+148], xmm0
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\mutex
 ; Line 47
@@ -40549,7 +40763,7 @@ $LN16@test:
 	test	eax, eax
 	jne	SHORT $LN19@test
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 100
+; Line 155
 	mov	rcx, rbx
 	call	?rotate@ORBIT@XGK@@YAXPEAUOrbit@2@@Z	; XGK::ORBIT::rotate
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\mutex
@@ -40561,7 +40775,7 @@ $LN16@test:
 	test	eax, eax
 	jne	SHORT $LN20@test
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 103
+; Line 158
 	add	rsp, 32					; 00000020H
 	pop	rbx
 	ret	0
@@ -40635,7 +40849,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Etime_@@YAXXZ PROC					; `dynamic initializer for 'time_'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 42
+; Line 97
 	lea	rcx, OFFSET FLAT:??__Ftime_@@YAXXZ	; `dynamic atexit destructor for 'time_''
 	jmp	atexit
 ??__Etime_@@YAXXZ ENDP					; `dynamic initializer for 'time_''
@@ -40655,7 +40869,7 @@ text$yd	ENDS
 text$di	SEGMENT
 ??__Eorbit_mutex@@YAXXZ PROC				; `dynamic initializer for 'orbit_mutex'', COMDAT
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 37
+; Line 92
 	sub	rsp, 40					; 00000028H
 ; File C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\mutex
 ; Line 36
@@ -40663,7 +40877,7 @@ text$di	SEGMENT
 	lea	rcx, OFFSET FLAT:?orbit_mutex@@3Vmutex@std@@A ; orbit_mutex
 	call	_Mtx_init_in_situ
 ; File E:\reps\denis-belov\c-test\xgk\src\test.cpp
-; Line 37
+; Line 92
 	lea	rcx, OFFSET FLAT:??__Forbit_mutex@@YAXXZ ; `dynamic atexit destructor for 'orbit_mutex''
 	add	rsp, 40					; 00000028H
 	jmp	atexit
@@ -60383,6 +60597,21 @@ $LN4:
 	add	rsp, 40					; 00000028H
 	ret	0
 ?loadGlobalFunctions@VULKAN@XGK@@YAXXZ ENDP		; XGK::VULKAN::loadGlobalFunctions
+_TEXT	ENDS
+; Function compile flags: /Ogtpy
+;	COMDAT ??0ImVec2@@QEAA@MM@Z
+_TEXT	SEGMENT
+this$ = 8
+_x$ = 16
+_y$ = 24
+??0ImVec2@@QEAA@MM@Z PROC				; ImVec2::ImVec2, COMDAT
+; File E:\reps\ocornut\imgui\imgui.h
+; Line 212
+	movss	DWORD PTR [rcx], xmm1
+	mov	rax, rcx
+	movss	DWORD PTR [rcx+4], xmm2
+	ret	0
+??0ImVec2@@QEAA@MM@Z ENDP				; ImVec2::ImVec2
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
 ;	COMDAT ??1mutex@std@@QEAA@XZ

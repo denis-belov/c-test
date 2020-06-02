@@ -1,6 +1,7 @@
 DIR=E:/reps/denis-belov/c-test/$(FOLDER)
 SRC=$(DIR)/src
 BUILD=$(DIR)/build-win-x64
+IMGUI=E:/reps/ocornut/imgui
 XGK_BUILD=E:/reps/denis-belov/xgk/build-win-x64
 XGK_SRC=E:/reps/denis-belov/xgk/src
 NAME=test
@@ -9,10 +10,20 @@ NAME=test
 
 $(BUILD)/exe/$(NAME).exe : \
 $(BUILD)/obj/glad.obj \
+$(BUILD)/obj/imgui.obj \
+$(BUILD)/obj/imgui_draw.obj \
+$(BUILD)/obj/imgui_widgets.obj \
+$(BUILD)/obj/imgui_impl_glfw.obj \
+$(BUILD)/obj/imgui_impl_opengl3.obj \
 $(BUILD)/obj/$(NAME).obj \
 $(XGK_BUILD)/lib/xgk.lib
   link \
   $(BUILD)/obj/glad.obj \
+  $(BUILD)/obj/imgui.obj \
+  $(BUILD)/obj/imgui_draw.obj \
+  $(BUILD)/obj/imgui_widgets.obj \
+  $(BUILD)/obj/imgui_impl_glfw.obj \
+  $(BUILD)/obj/imgui_impl_opengl3.obj \
   $(BUILD)/obj/$(NAME).obj \
   xgk.lib \
   gdi32.lib \
@@ -66,9 +77,92 @@ $(BUILD)/obj/glad.obj : E:/clibs/glad/src/glad.c
 
 
 
+$(BUILD)/obj/imgui.obj : \
+$(IMGUI)/imgui.h \
+$(IMGUI)/imgui.cpp
+  cl \
+  $(IMGUI)/imgui.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /I$(IMGUI) \
+  /Fo$(BUILD)/obj/imgui.obj \
+  /FA \
+  /Fa$(BUILD)/masm/imgui.asm
+
+
+
+$(BUILD)/obj/imgui_draw.obj : \
+$(IMGUI)/imgui_draw.cpp
+  cl \
+  $(IMGUI)/imgui_draw.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /I$(IMGUI) \
+  /Fo$(BUILD)/obj/imgui_draw.obj \
+  /FA \
+  /Fa$(BUILD)/masm/imgui_draw.asm
+
+
+
+$(BUILD)/obj/imgui_widgets.obj : \
+$(IMGUI)/imgui_widgets.cpp
+  cl \
+  $(IMGUI)/imgui_widgets.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /I$(IMGUI) \
+  /Fo$(BUILD)/obj/imgui_widgets.obj \
+  /FA \
+  /Fa$(BUILD)/masm/imgui_widgets.asm
+
+
+
+$(BUILD)/obj/imgui_impl_glfw.obj : \
+$(IMGUI)/examples/imgui_impl_glfw.cpp
+  cl \
+  $(IMGUI)/examples/imgui_impl_glfw.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include \
+  /I$(IMGUI) \
+  /Fo$(BUILD)/obj/imgui_impl_glfw.obj \
+  /FA \
+  /Fa$(BUILD)/masm/imgui_impl_glfw.asm
+
+
+
+$(BUILD)/obj/imgui_impl_opengl3.obj : \
+$(IMGUI)/examples/imgui_impl_opengl3.cpp
+  cl \
+  $(IMGUI)/examples\imgui_impl_opengl3.cpp \
+  /c \
+  /EHsc \
+  /MD \
+  /MP999 \
+  /O2 \
+  /IE:/clibs/glad/include \
+  /I$(IMGUI) \
+  /Fo$(BUILD)/obj/imgui_impl_opengl3.obj \
+  /FA \
+  /Fa$(BUILD)/masm/imgui_impl_opengl3.asm
+
+
+
 $(BUILD)/obj/$(NAME).obj : \
 $(SRC)/$(NAME).cpp \
-$(XGK_SRC)/api/opengl.h \
+$(IMGUI)/imgui.h \
 $(XGK_SRC)/api/vulkan.h \
 $(XGK_SRC)/util/util.h \
 $(XGK_SRC)/data/data.h \
@@ -87,6 +181,7 @@ $(BUILD)/temp/shaders.h
   /IE:/clibs/glfw-3.3.bin.WIN64/glfw-3.3.bin.WIN64/include/GLFW \
   /IE:/clibs/glad/include \
   /IE:/clibs/VulkanSDK/1.1.121.0/Include/vulkan \
+  /I$(IMGUI) \
   /I$(XGK_SRC) \
   /I$(BUILD) \
   /Fo$(BUILD)/obj/$(NAME).obj \
