@@ -2,67 +2,6 @@
 
 
 
-#define IMGUI_LOOP\
-  ImGui_ImplOpenGL3_NewFrame();\
-  ImGui_ImplGlfw_NewFrame();\
-  ImGui::NewFrame();\
-  \
-  {\
-      ImGui::Begin("XGK");\
-      \
-      if (ImGui::Button("opengl")) {\
-        \
-        initGL();\
-      }\
-      \
-      ImGui::SameLine();\
-      \
-      if (ImGui::Button("vulkan 128")) {\
-        \
-        initVK();\
-      }\
-      \
-      if (ImGui::Button("simd 32")) {\
-        \
-        XGK::DATA::simd32();\
-      }\
-      \
-      ImGui::SameLine();\
-      \
-      if (ImGui::Button("simd 128")) {\
-        \
-        XGK::DATA::simd128();\
-      }\
-      \
-      if (ImGui::Button("exit")) {\
-        \
-        render_flag = 0;\
-      }\
-      \
-      ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);\
-      ImGui::End();\
-  }\
-  \
-  ImGui::Render();\
-  ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-#define DESTROY_IMGUI_GL\
-  ImGui_ImplOpenGL3_Shutdown();\
-  ImGui_ImplGlfw_Shutdown();\
-  ImGui::DestroyContext();
-
-#define INIT_IMGUI_GL\
-  IMGUI_CHECKVERSION();\
-  ImGui::CreateContext();\
-  ImGuiIO& io = ImGui::GetIO(); (void)io;\
-  \
-  ImGui::StyleColorsDark();\
-  \
-  ImGui_ImplGlfw_InitForOpenGL(window, true);\
-  ImGui_ImplOpenGL3_Init("#version 450");
-
-
-
 #include <cstdint>
 #include <iostream>
 #include <string.h>
@@ -83,11 +22,7 @@
 
 #define VK_NO_PROTOTYPES
 #define VK_USE_PLATFORM_WIN32_KHR
-#include "vulkan.h"
-
-#include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
+#include "vulkan/vulkan.h"
 
 #include "api/vulkan.h"
 #include "util/util.h"
@@ -106,6 +41,8 @@ float bez[1000];
 
 std::mutex orbit_mutex;
 uint8_t render_flag = 1;
+uint8_t menu = 0;
+int swap_interval = 0;
 
 
 
@@ -174,7 +111,7 @@ void test (const float interpolation, void* additional) {
 
 
 
-void transition_thread_function (void) {
+void transition_thread (void) {
 
   while (render_flag) {
 
@@ -216,6 +153,10 @@ void glfw_key_callback (GLFWwindow* window, int key, int scancode, int action, i
 
       orbit_mutex.unlock();
     }
+    else if (key == GLFW_KEY_M) {
+
+      menu = 1 - menu;
+    }
   }
 };
 
@@ -238,17 +179,30 @@ void* vk_uniform_buffer_mem_addr = nullptr;
 uint8_t curr_image = 0;
 std::vector<VkFence> vk_fences;
 VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE;
+VkRenderPass vk_render_pass = VK_NULL_HANDLE;
+std::vector<VkFramebuffer> vk_framebuffers;
 std::vector<VkSemaphore> vk_image_aqcuired_semaphores;
 std::vector<VkSemaphore> vk_submission_completed_semaphores;
 std::vector<uint32_t> vk_image_indices;
 std::vector<VkSubmitInfo> vk_submit_i;
 std::vector<VkPresentInfoKHR> vk_present_i;
+std::vector<VkRenderPassBeginInfo> render_pass_bi;
 VkPipelineStageFlags vk_wait_stages = 0;
 std::vector<VkCommandBuffer> vk_cmd_buffers;
+VkClearValue clear_value[] = { {}, {} };
+VkPipelineLayout vk_ppl_layout = VK_NULL_HANDLE;
+std::vector<VkDescriptorSet> vk_descr_set;
+VkPipeline vk_ppl = VK_NULL_HANDLE;
+VkBuffer vk_vertex_buffer = VK_NULL_HANDLE;
 
 
 
 void loop_function_VK (void) {
+
+  // ImGui_ImplVulkan_NewFrame();
+  // IMGUI_LOOP
+  // FrameRender(wd, ImGui::GetDrawData());
+  // FramePresent(wd);
 
   memcpy(vk_uniform_buffer_mem_addr, &orbit, 64);
 
@@ -257,6 +211,36 @@ void loop_function_VK (void) {
   vkResetFences(vk_dev.handle, 1, &vk_fences[curr_image]);
 
   vkAcquireNextImageKHR(vk_dev.handle, vk_swapchain, 0xFFFFFFFF, vk_image_aqcuired_semaphores[curr_image], VK_NULL_HANDLE, &vk_image_indices[curr_image]);
+
+  vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+
+  VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
+
+  VkDeviceSize vk_vertex_buffer_offset = 0;
+
+  render_pass_bi[curr_image] = RenderPassBeginI(vk_render_pass, vk_framebuffers[curr_image], { 0, 0, 800, 600 }, 2, clear_value);
+
+  vkBeginCommandBuffer(vk_cmd_buffers[curr_image], &vk_command_buffer_bi);
+  vkCmdBindDescriptorSets(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
+  vkCmdBindVertexBuffers(vk_cmd_buffers[curr_image], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
+  vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
+  vkCmdBindPipeline(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
+  vkCmdDraw(vk_cmd_buffers[curr_image], sizeof(vertices) / 12, 1, 0, 0);
+
+  vkCmdEndRenderPass(vk_cmd_buffers[curr_image]);
+  vkEndCommandBuffer(vk_cmd_buffers[curr_image]);
+
+  vk_submit_i[curr_image] = SubmitI(
+    1, &vk_image_aqcuired_semaphores[curr_image], &vk_wait_stages,
+    1, &vk_cmd_buffers[curr_image],
+    1, &vk_submission_completed_semaphores[curr_image]
+  );
+
+  vk_present_i[curr_image] = PresentI(
+    1, &vk_submission_completed_semaphores[curr_image],
+    1, &vk_swapchain,
+    &vk_image_indices[curr_image]
+  );
 
   vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_fences[curr_image]);
 
@@ -393,7 +377,7 @@ void initVK (void) {
       0, VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT
     };
 
-    VkRenderPass vk_render_pass = vk_dev.RenderPass(
+    vk_render_pass = vk_dev.RenderPass(
 
       3, vk_render_pass_attach,
       1, &subpass_desc,
@@ -431,7 +415,7 @@ void initVK (void) {
     uint64_t vk_render_image_dev_local_mem_index = 0;
     std::vector<VkDeviceMemory> vk_render_image_mems(vk_swapchain_image_count);
     std::vector<VkImageView> vk_render_image_views(vk_swapchain_image_count);
-    std::vector<VkFramebuffer> vk_framebuffers(vk_swapchain_image_count);
+    vk_framebuffers.resize(vk_swapchain_image_count);
     vk_fences.resize(vk_swapchain_image_count);
     vk_submission_completed_semaphores.resize(vk_swapchain_image_count);
     vk_image_aqcuired_semaphores.resize(vk_swapchain_image_count);
@@ -553,7 +537,7 @@ void initVK (void) {
 
     // memory allocation
 
-    VkBuffer vk_vertex_buffer = vk_dev.Buffer(sizeof(vertices), VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_SHARING_MODE_EXCLUSIVE);
+    vk_vertex_buffer = vk_dev.Buffer(sizeof(vertices), VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_SHARING_MODE_EXCLUSIVE);
 
     VkMemoryRequirements vk_vertex_buffer_mem_reqs = vk_dev.MemReqs(vk_vertex_buffer);
 
@@ -597,7 +581,7 @@ void initVK (void) {
 
     VkDescriptorPool vk_descr_pool = vk_dev.DescrPool(1, 1, &vk_descr_pool_size);
 
-    std::vector<VkDescriptorSet> vk_descr_set = vk_dev.DescrSet(vk_descr_pool, 1, &vk_descr_set_layout);
+    vk_descr_set = vk_dev.DescrSet(vk_descr_pool, 1, &vk_descr_set_layout);
 
 
 
@@ -683,9 +667,9 @@ void initVK (void) {
 
     VkPipelineVertexInputStateCreateInfo vk_ppl_vertex = PplVertex(1, &vk_vertex_binding, 1, &vk_vertex_attr);
 
-    VkPipelineLayout vk_ppl_layout = vk_dev.PplLayout(1, &vk_descr_set_layout);
+    vk_ppl_layout = vk_dev.PplLayout(1, &vk_descr_set_layout);
 
-    VkPipeline vk_ppl = vk_dev.PplG(
+    vk_ppl = vk_dev.PplG(
 
       2, vk_ppl_stages,
       &vk_ppl_vertex,
@@ -705,52 +689,51 @@ void initVK (void) {
 
     // command buffers
 
-    VkCommandPool vk_cmd_pool = vk_dev.CmdPool(vk_dev.graphics_queue_family_index);
+    VkCommandPool vk_cmd_pool = vk_dev.CmdPool(vk_dev.graphics_queue_family_index, VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT);
 
     vk_cmd_buffers = vk_dev.CmdBuffer(vk_cmd_pool, VK_COMMAND_BUFFER_LEVEL_PRIMARY, vk_swapchain_image_count);
 
 
 
-    vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    // vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
 
     VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
 
-    VkClearValue clear_value[] = { {}, {} };
     clear_value[0].color = { 0.0f, 0.0f, 0.0f, 1.0f };
     clear_value[1].depthStencil = { 1.0f, 0 };
 
     vk_submit_i.resize(vk_swapchain_image_count);
     vk_present_i.resize(vk_swapchain_image_count);
-    std::vector<VkRenderPassBeginInfo> render_pass_bi(vk_swapchain_image_count);
+    render_pass_bi.resize(vk_swapchain_image_count);
     vk_image_indices.resize(vk_swapchain_image_count);
 
-    VkDeviceSize vk_vertex_buffer_offset = 0;
+    // VkDeviceSize vk_vertex_buffer_offset = 0;
 
-    for (uint64_t i = 0; i < vk_swapchain_image_count; i++) {
+    // for (uint64_t i = 0; i < vk_swapchain_image_count; i++) {
 
-      render_pass_bi[i] = RenderPassBeginI(vk_render_pass, vk_framebuffers[i], { 0, 0, 800, 600 }, 2, clear_value);
+    //   render_pass_bi[i] = RenderPassBeginI(vk_render_pass, vk_framebuffers[i], { 0, 0, 800, 600 }, 2, clear_value);
 
-      vkBeginCommandBuffer(vk_cmd_buffers[i], &vk_command_buffer_bi);
-      vkCmdBindDescriptorSets(vk_cmd_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
-      vkCmdBindVertexBuffers(vk_cmd_buffers[i], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
-      vkCmdBeginRenderPass(vk_cmd_buffers[i], &render_pass_bi[i], VK_SUBPASS_CONTENTS_INLINE);
-      vkCmdBindPipeline(vk_cmd_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
-      vkCmdDraw(vk_cmd_buffers[i], sizeof(vertices) / 12, 1, 0, 0);
-      vkCmdEndRenderPass(vk_cmd_buffers[i]);
-      vkEndCommandBuffer(vk_cmd_buffers[i]);
+    //   vkBeginCommandBuffer(vk_cmd_buffers[i], &vk_command_buffer_bi);
+    //   vkCmdBindDescriptorSets(vk_cmd_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
+    //   vkCmdBindVertexBuffers(vk_cmd_buffers[i], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
+    //   vkCmdBeginRenderPass(vk_cmd_buffers[i], &render_pass_bi[i], VK_SUBPASS_CONTENTS_INLINE);
+    //   vkCmdBindPipeline(vk_cmd_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
+    //   vkCmdDraw(vk_cmd_buffers[i], sizeof(vertices) / 12, 1, 0, 0);
+    //   vkCmdEndRenderPass(vk_cmd_buffers[i]);
+    //   vkEndCommandBuffer(vk_cmd_buffers[i]);
 
-      vk_submit_i[i] = SubmitI(
-        1, &vk_image_aqcuired_semaphores[i], &vk_wait_stages,
-        1, &vk_cmd_buffers[i],
-        1, &vk_submission_completed_semaphores[i]
-      );
+    //   vk_submit_i[i] = SubmitI(
+    //     1, &vk_image_aqcuired_semaphores[i], &vk_wait_stages,
+    //     1, &vk_cmd_buffers[i],
+    //     1, &vk_submission_completed_semaphores[i]
+    //   );
 
-      vk_present_i[i] = PresentI(
-        1, &vk_submission_completed_semaphores[i],
-        1, &vk_swapchain,
-        &vk_image_indices[i]
-      );
-    }
+    //   vk_present_i[i] = PresentI(
+    //     1, &vk_submission_completed_semaphores[i],
+    //     1, &vk_swapchain,
+    //     &vk_image_indices[i]
+    //   );
+    // }
 
     curr_image = 0;
 
@@ -778,14 +761,10 @@ void loop_function_GL (void) {
 
   glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / 4);
 
-  IMGUI_LOOP
-
   glfwSwapBuffers(window);
 };
 
 void destroyGL (void) {
-
-  DESTROY_IMGUI_GL
 
   glFinish();
 
@@ -806,7 +785,7 @@ void initGL (void) {
 
     glfwSetKeyCallback(window, glfw_key_callback);
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
+    glfwSwapInterval(swap_interval);
 
     gladLoadGL();
 
@@ -814,10 +793,6 @@ void initGL (void) {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-
-
-    INIT_IMGUI_GL
 
 
 
@@ -892,7 +867,7 @@ int main (void) {
   // wrap into function
   // vkGetPhysicalDeviceFormatProperties(vulkan_context.physical_devices[0], VK_FORMAT_R32G32B32_SFLOAT, &vulkan_context.format_props);
   // std::cout << (vulkan_context.format_props.bufferFeatures & VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT) << std::endl;
-  initGL();
+  initVK();
 
 
 
@@ -904,7 +879,7 @@ int main (void) {
 
 
 
-  std::thread transition_thread(transition_thread_function);
+  std::thread transition_thread(transition_thread);
 
 
 
