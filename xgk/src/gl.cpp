@@ -71,15 +71,21 @@ extern const uint32_t vertices_size;
 extern void (* loop_function) (void);
 extern void (* destroy_api_function) (void);
 extern GLFWwindow* window;
-extern struct Orbit orbit;
+// extern struct ORBIT::Orbit orbit;
+namespace ORBIT {
+
+	struct Orbit;
+};
+
+extern ORBIT::Orbit orbit;
 
 int swap_interval = 0;
 
+void idle_function (void);
 void glfw_key_callback (GLFWwindow*, int, int, int, int);
 
 
 // GUI
-const char* glsl_version = "#version 130";
 ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 //
 
@@ -88,54 +94,70 @@ void loop_function_GL (void) {
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-	// glBufferSubData(GL_UNIFORM_BUFFER, 0, 64, &orbit);
-
-	glDrawArrays(GL_TRIANGLES, 0, vertices_size / 4);
 
 
 	// GUI
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
+	extern uint8_t gui_g;
 
-	{
-		static float f = 0.0f;
-		static int counter = 0;
+	if (gui_g) {
 
-		ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
-		ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-		// ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-		// ImGui::Checkbox("Another Window", &show_another_window);
+		{
+			static float f = 0.0f;
+			static int counter = 0;
 
-		ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-		ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+			ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-				counter++;
-		ImGui::SameLine();
-		ImGui::Text("counter = %d", counter);
+			ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+			// ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+			// ImGui::Checkbox("Another Window", &show_another_window);
 
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-		ImGui::End();
+			ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+			ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+
+			if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+					counter++;
+			ImGui::SameLine();
+			ImGui::Text("counter = %d", counter);
+
+			// ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+			ImGui::End();
+		}
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
-
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	//
+
+	else {
+
+		// glBufferSubData(GL_UNIFORM_BUFFER, 0, 64, &orbit);
+
+		glDrawArrays(GL_TRIANGLES, 0, vertices_size / 4);
+	}
 
 
 
 	glfwSwapBuffers(window);
+	// glFlush();
 };
 
 void destroyGL (void) {
+
+	loop_function = idle_function;
+
+
 
 	// GUI
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 	//
+
+
 
 	glFinish();
 
@@ -165,24 +187,20 @@ void initGL (void) {
 
 		gladLoadGL();
 
-		// GUI
-		// const char* glsl_version = "#version 130";
 
-		// Setup Dear ImGui context
+
+		// GUI
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
-		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-		//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-
-		// Setup Dear ImGui style
 		ImGui::StyleColorsDark();
-		//ImGui::StyleColorsClassic();
 
 		// Setup Platform/Renderer bindings
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL3_Init(glsl_version);
+		ImGui_ImplGlfw_InitForOpenGL(window, false);
+		ImGui_ImplOpenGL3_Init("#version 130");
 		//
+
+
 
 		glViewport(0, 0, 800, 600);
 		glEnable(GL_DEPTH_TEST);

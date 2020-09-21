@@ -28,10 +28,14 @@
 
 #include "xgk-aux/src/api/vulkan.h"
 
+// GUI
+#include "imgui.h"
+#include "examples/imgui_impl_glfw.h"
+#include "examples/imgui_impl_vulkan.h"
+//
+
 #include "c-test/xgk/build/gnu-x64/h/vertex_shader_code_vulkan.h"
 #include "c-test/xgk/build/gnu-x64/h/fragment_shader_code_vulkan.h"
-
-// #include "xgk-math/src/data/data.h"
 
 
 
@@ -45,8 +49,15 @@ extern const uint32_t vertices_size;
 extern void (* loop_function) (void);
 extern void (* destroy_api_function) (void);
 extern GLFWwindow* window;
-extern struct Orbit orbit;
+// extern struct ORBIT::Orbit orbit;
+namespace ORBIT {
 
+  struct Orbit;
+};
+
+extern ORBIT::Orbit orbit;
+
+void idle_function (void);
 void glfw_key_callback (GLFWwindow*, int, int, int, int);
 
 
@@ -59,8 +70,9 @@ Device vk_dev;
 VkQueue vk_graphics_queue = VK_NULL_HANDLE;
 VkQueue vk_present_queue = VK_NULL_HANDLE;
 
+uint64_t vk_swapchain_image_count = 0;
+
 void* vk_uniform_buffer_mem_addr = nullptr;
-uint8_t curr_image = 0;
 std::vector<VkFence> vk_fences;
 VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE;
 VkRenderPass vk_render_pass = VK_NULL_HANDLE;
@@ -71,7 +83,6 @@ std::vector<uint32_t> vk_image_indices;
 std::vector<VkSubmitInfo> vk_submit_i;
 std::vector<VkPresentInfoKHR> vk_present_i;
 std::vector<VkRenderPassBeginInfo> render_pass_bi;
-VkPipelineStageFlags vk_wait_stages = 0;
 std::vector<VkCommandBuffer> vk_cmd_buffers;
 VkClearValue clear_value[] = { {}, {} };
 VkPipelineLayout vk_ppl_layout = VK_NULL_HANDLE;
@@ -81,9 +92,19 @@ VkBuffer vk_vertex_buffer = VK_NULL_HANDLE;
 
 
 
+// GUI
+VkDescriptorPool g_DescriptorPool = VK_NULL_HANDLE;
+ImGui_ImplVulkanH_Window g_MainWindowData;
+//
+
+
+
 void loop_function_VK (void) {
 
   // memcpy(vk_uniform_buffer_mem_addr, &orbit, 64);
+
+  // causes validation error without crashing, has to be global static
+  static uint8_t curr_image = 0;
 
   vkWaitForFences(vk_dev.handle, 1, &vk_fences[curr_image], VK_TRUE, 0xFFFFFFFF);
 
@@ -91,20 +112,66 @@ void loop_function_VK (void) {
 
   vkAcquireNextImageKHR(vk_dev.handle, vk_swapchain, 0xFFFFFFFF, vk_image_aqcuired_semaphores[curr_image], VK_NULL_HANDLE, &vk_image_indices[curr_image]);
 
-  vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+  static const VkPipelineStageFlags vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
 
-  VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
+  static const VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
 
-  VkDeviceSize vk_vertex_buffer_offset = 0;
+  static const VkDeviceSize vk_vertex_buffer_offset = 0;
 
   render_pass_bi[curr_image] = RenderPassBeginI(vk_render_pass, vk_framebuffers[curr_image], { 0, 0, 800, 600 }, 2, clear_value);
 
   vkBeginCommandBuffer(vk_cmd_buffers[curr_image], &vk_command_buffer_bi);
-  vkCmdBindDescriptorSets(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
-  vkCmdBindVertexBuffers(vk_cmd_buffers[curr_image], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
-  vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
-  vkCmdBindPipeline(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
-  vkCmdDraw(vk_cmd_buffers[curr_image], vertices_size / 12, 1, 0, 0);
+
+
+
+  // GUI
+  extern uint8_t gui_g;
+
+  if (gui_g) {
+
+    vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
+
+    ImGui_ImplVulkan_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
+
+    {
+        static float f = 0.0f;
+        static int counter = 0;
+
+        ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+
+        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+        // ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+        // ImGui::Checkbox("Another Window", &show_another_window);
+
+        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+        // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+
+        if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            counter++;
+        ImGui::SameLine();
+        ImGui::Text("counter = %d", counter);
+
+        // ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+        ImGui::End();
+    }
+
+    ImGui::Render();
+    ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), vk_cmd_buffers[curr_image]);
+  }
+  //
+
+  else {
+
+    vkCmdBindDescriptorSets(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
+    vkCmdBindVertexBuffers(vk_cmd_buffers[curr_image], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
+    vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
+    vkCmdBindPipeline(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
+    vkCmdDraw(vk_cmd_buffers[curr_image], vertices_size / 12, 1, 0, 0);
+  }
+
+
 
   vkCmdEndRenderPass(vk_cmd_buffers[curr_image]);
   vkEndCommandBuffer(vk_cmd_buffers[curr_image]);
@@ -115,19 +182,20 @@ void loop_function_VK (void) {
     1, &vk_submission_completed_semaphores[curr_image]
   );
 
+  vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_fences[curr_image]);
+
   vk_present_i[curr_image] = PresentI(
     1, &vk_submission_completed_semaphores[curr_image],
     1, &vk_swapchain,
     &vk_image_indices[curr_image]
   );
 
-  vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_fences[curr_image]);
-
   vkQueuePresentKHR(vk_present_queue, &vk_present_i[curr_image]);
 
   curr_image++;
 
-  if (curr_image > 3) {
+  // add extra variable evaluated vk_swapchain_image_count - 1
+  if (curr_image > vk_swapchain_image_count - 1) {
 
     curr_image = 0;
   }
@@ -135,7 +203,19 @@ void loop_function_VK (void) {
 
 void destroyVK (void) {
 
+  loop_function = idle_function;
+
   vkDeviceWaitIdle(vk_dev.handle);
+
+
+
+  // GUI
+  ImGui_ImplVulkan_Shutdown();
+  ImGui_ImplGlfw_Shutdown();
+  ImGui::DestroyContext();
+  //
+
+
 
   vk_dev.destroy();
 
@@ -147,8 +227,6 @@ void destroyVK (void) {
 };
 
 void initVK (void) {
-
-  // cout << _vertices << endl;
 
   if (destroy_api_function != destroyVK) {
 
@@ -169,19 +247,19 @@ void initVK (void) {
 
     glfwSetKeyCallback(window, glfw_key_callback);
     glfwMakeContextCurrent(window);
-    // glfwSwapInterval(swap_interval);
 
 
 
     // base vulkan
 
-    const char* vk_inst_layers[] = { "VK_LAYER_KHRONOS_validation" };
     // const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_win32_surface", VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
     const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_xlib_surface", VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
 
     VkApplicationInfo app_i = AppI();
 
     #ifdef DEBUG
+
+      const char* vk_inst_layers[] = { "VK_LAYER_KHRONOS_validation" };
 
       vk_inst.create(&app_i, 1, vk_inst_layers, 3, vk_inst_exts);
     #else
@@ -289,7 +367,7 @@ void initVK (void) {
     vk_swapchain = vk_dev.SwapchainKHR(
 
       vk_surf,
-      4,
+      3,
       VK_FORMAT_B8G8R8A8_UNORM,
       VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
       800, 600,
@@ -299,13 +377,14 @@ void initVK (void) {
       0, nullptr,
       VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR,
       VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
-      VK_PRESENT_MODE_FIFO_KHR,
+      VK_PRESENT_MODE_IMMEDIATE_KHR,
+      // VK_PRESENT_MODE_FIFO_KHR,
       VK_TRUE
     );
 
     std::vector<VkImage> vk_swapchain_images = vk_dev.getSwapchainImages(vk_swapchain);
 
-    uint64_t vk_swapchain_image_count = vk_swapchain_images.size();
+    vk_swapchain_image_count = vk_swapchain_images.size();
 
     std::vector<VkImageView> vk_swapchain_image_views(vk_swapchain_image_count);
     std::vector<VkImage> vk_render_images(vk_swapchain_image_count);
@@ -596,7 +675,73 @@ void initVK (void) {
 
 
 
-    // vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    // GUI
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGui::StyleColorsDark();
+
+    // Create Descriptor Pool
+    {
+        VkDescriptorPoolSize pool_sizes[] =
+        {
+            { VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
+            { VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
+            { VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
+            { VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
+            { VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
+            { VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
+            { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
+            { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
+            { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
+            { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
+            { VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
+        };
+        VkDescriptorPoolCreateInfo pool_info = {};
+        pool_info.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
+        pool_info.flags = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
+        pool_info.maxSets = 1000 * IM_ARRAYSIZE(pool_sizes);
+        pool_info.poolSizeCount = (uint32_t)IM_ARRAYSIZE(pool_sizes);
+        pool_info.pPoolSizes = pool_sizes;
+        vkCreateDescriptorPool(vk_dev.handle, &pool_info, nullptr, &g_DescriptorPool);
+    }
+
+    // Setup Platform/Renderer bindings
+    ImGui_ImplGlfw_InitForVulkan(window, true);
+    ImGui_ImplVulkan_InitInfo init_info = {};
+    init_info.Instance = vk_inst.handle;
+    init_info.PhysicalDevice = vk_physical_device;
+    init_info.Device = vk_dev.handle;
+    init_info.QueueFamily = vk_dev.graphics_queue_family_index;
+    init_info.Queue = vk_graphics_queue;
+    init_info.DescriptorPool = g_DescriptorPool;
+    init_info.MinImageCount = 3;
+    init_info.ImageCount = 3;
+    init_info.MSAASamples = VK_SAMPLE_COUNT_4_BIT;
+    ImGui_ImplVulkan_Init(&init_info, vk_render_pass);
+
+    // Upload Fonts
+    {
+      vkResetCommandPool(vk_dev.handle, vk_cmd_pool, 0);
+      VkCommandBufferBeginInfo begin_info = {};
+      begin_info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+      begin_info.flags |= VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+      vkBeginCommandBuffer(vk_cmd_buffers[0], &begin_info);
+
+      ImGui_ImplVulkan_CreateFontsTexture(vk_cmd_buffers[0]);
+
+      VkSubmitInfo end_info = {};
+      end_info.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+      end_info.commandBufferCount = 1;
+      end_info.pCommandBuffers = &vk_cmd_buffers[0];
+      vkEndCommandBuffer(vk_cmd_buffers[0]);
+      vkQueueSubmit(vk_graphics_queue, 1, &end_info, VK_NULL_HANDLE);
+
+      vkDeviceWaitIdle(vk_dev.handle);
+      ImGui_ImplVulkan_DestroyFontUploadObjects();
+    }
+    //
+
+
 
     VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
 
@@ -608,35 +753,7 @@ void initVK (void) {
     render_pass_bi.resize(vk_swapchain_image_count);
     vk_image_indices.resize(vk_swapchain_image_count);
 
-    // VkDeviceSize vk_vertex_buffer_offset = 0;
 
-    // for (uint64_t i = 0; i < vk_swapchain_image_count; i++) {
-
-    //   render_pass_bi[i] = RenderPassBeginI(vk_render_pass, vk_framebuffers[i], { 0, 0, 800, 600 }, 2, clear_value);
-
-    //   vkBeginCommandBuffer(vk_cmd_buffers[i], &vk_command_buffer_bi);
-    //   vkCmdBindDescriptorSets(vk_cmd_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
-    //   vkCmdBindVertexBuffers(vk_cmd_buffers[i], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
-    //   vkCmdBeginRenderPass(vk_cmd_buffers[i], &render_pass_bi[i], VK_SUBPASS_CONTENTS_INLINE);
-    //   vkCmdBindPipeline(vk_cmd_buffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
-    //   vkCmdDraw(vk_cmd_buffers[i], vertices_size / 12, 1, 0, 0);
-    //   vkCmdEndRenderPass(vk_cmd_buffers[i]);
-    //   vkEndCommandBuffer(vk_cmd_buffers[i]);
-
-    //   vk_submit_i[i] = SubmitI(
-    //     1, &vk_image_aqcuired_semaphores[i], &vk_wait_stages,
-    //     1, &vk_cmd_buffers[i],
-    //     1, &vk_submission_completed_semaphores[i]
-    //   );
-
-    //   vk_present_i[i] = PresentI(
-    //     1, &vk_submission_completed_semaphores[i],
-    //     1, &vk_swapchain,
-    //     &vk_image_indices[i]
-    //   );
-    // }
-
-    curr_image = 0;
 
     loop_function = loop_function_VK;
 
