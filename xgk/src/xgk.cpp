@@ -51,12 +51,14 @@ namespace TIME {
 		std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
 		std::chrono::time_point<std::chrono::high_resolution_clock> program_time;
 		std::chrono::time_point<std::chrono::high_resolution_clock> last_program_time;
-		float now_seconds;
-		float last_seconds;
+		uint64_t now_seconds;
+		uint64_t last_seconds;
 		uint64_t frames = 0;
 		uint64_t frame_time;
 		uint64_t stack_length;
 		uint64_t stack_counter;
+
+		double _time;
 
 		Transition** stack;
 	};
@@ -197,9 +199,10 @@ namespace TIME {
 		time->frame_time = std::chrono::duration_cast<std::chrono::microseconds>(time->program_time - time->last_program_time).count();
 		time->last_program_time = time->program_time;
 
-		time->now_seconds = floor(((float) std::chrono::duration_cast<std::chrono::microseconds>(time->program_time - time->start_time).count()) * 0.000001f);
+		// time->now_seconds = floor(((float) std::chrono::duration_cast<std::chrono::microseconds>(time->program_time - time->start_time).count()) * 0.000001f);
+		time->now_seconds = ((std::chrono::duration_cast<std::chrono::seconds>(time->program_time - time->start_time).count()));
 
-		if ((time->now_seconds - time->last_seconds) > 0.5f) {
+		if (time->now_seconds - time->last_seconds) { // > 0
 
 			time->last_seconds = time->now_seconds;
 
@@ -209,6 +212,22 @@ namespace TIME {
 
 			time->frames = 0;
 		}
+	};
+
+
+
+	void getTime (Time* time) {
+
+		time->frames++;
+
+		time->program_time = std::chrono::high_resolution_clock::now();
+		time->_time = std::chrono::duration_cast<std::chrono::microseconds>(time->program_time - time->last_program_time).count();
+		time->last_program_time = time->program_time;
+
+		// time->now_seconds = floor(((float) std::chrono::duration_cast<std::chrono::microseconds>(time->program_time - time->start_time).count()) * 0.000001f);
+		time->now_seconds = ((std::chrono::duration_cast<std::chrono::seconds>(time->program_time - time->start_time).count()));
+
+		printf("%f\n", time->_time);
 	};
 };
 
@@ -356,7 +375,7 @@ const float vertices[] = {
 
 const float* _vertices = vertices;
 
-volatile const uint32_t vertices_size = sizeof(vertices);
+extern const uint32_t vertices_size = sizeof(vertices);
 
 
 
@@ -507,7 +526,7 @@ int main (void) {
 
 
 
-	std::thread transition_thread(transition_thread_function);
+	// std::thread transition_thread(transition_thread_function);
 
 
 
@@ -515,9 +534,9 @@ int main (void) {
 
 	while (render_flag) {
 
-		getFrameTime(&_time);
-
 		glfwPollEvents();
+
+		getFrameTime(&_time);
 
 		// orbit_mutex.lock();
 
@@ -530,7 +549,7 @@ int main (void) {
 
 
 
-	transition_thread.join();
+	// transition_thread.join();
 
 	// for (uint64_t i = 0; i < spawned_threads.size(); i++) {
 

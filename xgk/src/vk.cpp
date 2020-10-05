@@ -1,4 +1,4 @@
-#define DEBUG
+// #define DEBUG
 
 
 
@@ -28,11 +28,11 @@
 
 #include "xgk-aux/src/api/vulkan.h"
 
-// GUI
-#include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_vulkan.h"
-//
+// // GUI
+// #include "imgui.h"
+// #include "examples/imgui_impl_glfw.h"
+// #include "examples/imgui_impl_vulkan.h"
+// //
 
 #include "c-test/xgk/build/gnu-x64/h/vertex_shader_code_vulkan.h"
 #include "c-test/xgk/build/gnu-x64/h/fragment_shader_code_vulkan.h"
@@ -73,16 +73,16 @@ VkQueue vk_present_queue = VK_NULL_HANDLE;
 uint64_t vk_swapchain_image_count = 0;
 
 void* vk_uniform_buffer_mem_addr = nullptr;
-std::vector<VkFence> vk_fences;
+std::vector<VkFence> vk_submission_completed_fences;
 VkSwapchainKHR vk_swapchain = VK_NULL_HANDLE;
 VkRenderPass vk_render_pass = VK_NULL_HANDLE;
 std::vector<VkFramebuffer> vk_framebuffers;
-std::vector<VkSemaphore> vk_image_aqcuired_semaphores;
+std::vector<VkSemaphore> vk_image_available_semaphores;
 std::vector<VkSemaphore> vk_submission_completed_semaphores;
 std::vector<uint32_t> vk_image_indices;
 std::vector<VkSubmitInfo> vk_submit_i;
 std::vector<VkPresentInfoKHR> vk_present_i;
-std::vector<VkRenderPassBeginInfo> render_pass_bi;
+std::vector<VkRenderPassBeginInfo> vk_render_pass_bi;
 std::vector<VkCommandBuffer> vk_cmd_buffers;
 VkClearValue clear_value[] = { {}, {} };
 VkPipelineLayout vk_ppl_layout = VK_NULL_HANDLE;
@@ -92,10 +92,21 @@ VkBuffer vk_vertex_buffer = VK_NULL_HANDLE;
 
 
 
-// GUI
-VkDescriptorPool g_DescriptorPool = VK_NULL_HANDLE;
-ImGui_ImplVulkanH_Window g_MainWindowData;
-//
+// // GUI
+// VkDescriptorPool g_DescriptorPool = VK_NULL_HANDLE;
+// ImGui_ImplVulkanH_Window g_MainWindowData;
+// //
+
+
+
+namespace TIME {
+
+  struct Time;
+
+  void getTime (Time* time);
+};
+
+extern TIME::Time _time;
 
 
 
@@ -104,98 +115,115 @@ void loop_function_VK (void) {
   // memcpy(vk_uniform_buffer_mem_addr, &orbit, 64);
 
   // causes validation error without crashing, has to be global static
-  static uint8_t curr_image = 0;
+  static uint32_t curr_image = 0;
 
-  vkWaitForFences(vk_dev.handle, 1, &vk_fences[curr_image], VK_TRUE, 0xFFFFFFFF);
+  printf("\n%i\n", curr_image);
+  // printf("command buffer -> %lu\n", vk_cmd_buffers[curr_image]);
+  printf("start -> ");
+  getTime(&_time);
 
-  vkResetFences(vk_dev.handle, 1, &vk_fences[curr_image]);
+  vkAcquireNextImageKHR(vk_dev.handle, vk_swapchain, 0xFFFFFFFF, vk_image_available_semaphores[curr_image], VK_NULL_HANDLE, &vk_image_indices[curr_image]);
 
-  vkAcquireNextImageKHR(vk_dev.handle, vk_swapchain, 0xFFFFFFFF, vk_image_aqcuired_semaphores[curr_image], VK_NULL_HANDLE, &vk_image_indices[curr_image]);
+  printf("%i\n", vk_image_indices[curr_image]);
 
-  static const VkPipelineStageFlags vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+  printf("vkAcquireNextImageKHR -> ");
+  getTime(&_time);
 
   static const VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
 
   static const VkDeviceSize vk_vertex_buffer_offset = 0;
 
-  render_pass_bi[curr_image] = RenderPassBeginI(vk_render_pass, vk_framebuffers[curr_image], { 0, 0, 800, 600 }, 2, clear_value);
+  vkWaitForFences(vk_dev.handle, 1, &vk_submission_completed_fences[curr_image], VK_TRUE, 0xFFFFFFFF);
+
+  printf("vkWaitForFences -> ");
+  getTime(&_time);
 
   vkBeginCommandBuffer(vk_cmd_buffers[curr_image], &vk_command_buffer_bi);
 
 
 
   // GUI
-  extern uint8_t gui_g;
+  // extern uint8_t gui_g;
 
-  if (gui_g) {
+  // if (gui_g) {
 
-    vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
+  //   vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &vk_render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
 
-    ImGui_ImplVulkan_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
+  //   ImGui_ImplVulkan_NewFrame();
+  //   ImGui_ImplGlfw_NewFrame();
+  //   ImGui::NewFrame();
 
-    {
-        static float f = 0.0f;
-        static int counter = 0;
+  //   {
+  //       static float f = 0.0f;
+  //       static int counter = 0;
 
-        ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+  //       ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-        // ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-        // ImGui::Checkbox("Another Window", &show_another_window);
+  //       ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+  //       // ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+  //       // ImGui::Checkbox("Another Window", &show_another_window);
 
-        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+  //       ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+  //       // ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 
-        if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-            counter++;
-        ImGui::SameLine();
-        ImGui::Text("counter = %d", counter);
+  //       if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+  //           counter++;
+  //       ImGui::SameLine();
+  //       ImGui::Text("counter = %d", counter);
 
-        // ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
-    }
+  //       // ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+  //       ImGui::End();
+  //   }
 
-    ImGui::Render();
-    ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), vk_cmd_buffers[curr_image]);
-  }
-  //
+  //   ImGui::Render();
+  //   ImGui_ImplVulkan_RenderDrawData(ImGui::GetDrawData(), vk_cmd_buffers[curr_image]);
+  // }
+  // //
 
-  else {
+  // else {
 
     vkCmdBindDescriptorSets(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl_layout, 0, 1, &vk_descr_set[0], 0, nullptr);
     vkCmdBindVertexBuffers(vk_cmd_buffers[curr_image], 0, 1, &vk_vertex_buffer, &vk_vertex_buffer_offset);
-    vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
+    vkCmdBeginRenderPass(vk_cmd_buffers[curr_image], &vk_render_pass_bi[curr_image], VK_SUBPASS_CONTENTS_INLINE);
     vkCmdBindPipeline(vk_cmd_buffers[curr_image], VK_PIPELINE_BIND_POINT_GRAPHICS, vk_ppl);
     vkCmdDraw(vk_cmd_buffers[curr_image], vertices_size / 12, 1, 0, 0);
-  }
+  // }
 
 
 
   vkCmdEndRenderPass(vk_cmd_buffers[curr_image]);
   vkEndCommandBuffer(vk_cmd_buffers[curr_image]);
 
-  vk_submit_i[curr_image] = SubmitI(
-    1, &vk_image_aqcuired_semaphores[curr_image], &vk_wait_stages,
-    1, &vk_cmd_buffers[curr_image],
-    1, &vk_submission_completed_semaphores[curr_image]
-  );
+  // printf("vkEndCommandBuffer -> ");
+  // getTime(&_time);
 
-  vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_fences[curr_image]);
+  vkResetFences(vk_dev.handle, 1, &vk_submission_completed_fences[curr_image]);
 
-  vk_present_i[curr_image] = PresentI(
-    1, &vk_submission_completed_semaphores[curr_image],
-    1, &vk_swapchain,
-    &vk_image_indices[curr_image]
-  );
+  printf("vkResetFences -> ");
+  getTime(&_time);
+
+  // printf("command buffer -> %lu\n", vk_submit_i[curr_image].pCommandBuffers[0]);
+
+  vkQueueSubmit(vk_graphics_queue, 1, &vk_submit_i[curr_image], vk_submission_completed_fences[curr_image]);
+
+  printf("vkQueueSubmit -> ");
+  getTime(&_time);
+
+  vk_present_i[curr_image].pImageIndices = &vk_image_indices[curr_image];
+
+  // printf("curr_image -> %i\n", vk_image_indices[curr_image]);
+
+  printf("pImageIndices -> ");
+  getTime(&_time);
 
   vkQueuePresentKHR(vk_present_queue, &vk_present_i[curr_image]);
 
-  curr_image++;
+  printf("vkQueuePresentKHR -> ");
+  getTime(&_time);
 
-  // add extra variable evaluated vk_swapchain_image_count - 1
-  if (curr_image > vk_swapchain_image_count - 1) {
+  const static uint64_t max_swapchain_image_index = vk_swapchain_image_count - 1;
+
+  if (++curr_image > max_swapchain_image_index) {
 
     curr_image = 0;
   }
@@ -209,11 +237,11 @@ void destroyVK (void) {
 
 
 
-  // GUI
-  ImGui_ImplVulkan_Shutdown();
-  ImGui_ImplGlfw_Shutdown();
-  ImGui::DestroyContext();
-  //
+  // // GUI
+  // ImGui_ImplVulkan_Shutdown();
+  // ImGui_ImplGlfw_Shutdown();
+  // ImGui::DestroyContext();
+  // //
 
 
 
@@ -252,8 +280,14 @@ void initVK (void) {
 
     // base vulkan
 
-    // const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_win32_surface", VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
-    const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_xlib_surface", VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
+    #ifdef DEBUG
+
+      // const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_win32_surface", VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
+      const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_xlib_surface", VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
+    #else
+
+      const char* vk_inst_exts[] = { "VK_KHR_surface", "VK_KHR_xlib_surface" };
+    #endif
 
     VkApplicationInfo app_i = AppI();
 
@@ -264,7 +298,7 @@ void initVK (void) {
       vk_inst.create(&app_i, 1, vk_inst_layers, 3, vk_inst_exts);
     #else
 
-      vk_inst.create(&app_i, 0, nullptr, 3, vk_inst_exts);
+      vk_inst.create(&app_i, 0, nullptr, 2, vk_inst_exts);
     #endif
 
     // cout << vk_inst.physical_devices << endl;
@@ -278,7 +312,7 @@ void initVK (void) {
 
     vk_dev.getProps(vk_physical_device, vk_surf);
 
-    const float queue_priorities = 1.0f;
+    static const float queue_priorities = 1.0f;
 
     std::vector<VkDeviceQueueCreateInfo> queue_ci = { DevQueueCI(vk_dev.graphics_queue_family_index, 1, &queue_priorities) };
 
@@ -306,8 +340,9 @@ void initVK (void) {
       {
         0,
         VK_FORMAT_B8G8R8A8_UNORM,
-        VK_SAMPLE_COUNT_4_BIT,
-        VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_DONT_CARE,
+        VK_SAMPLE_COUNT_1_BIT,
+        // VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_DONT_CARE,
+        VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_STORE,
         VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
         VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
       },
@@ -317,33 +352,34 @@ void initVK (void) {
       {
         0,
         VK_FORMAT_D32_SFLOAT,
-        VK_SAMPLE_COUNT_4_BIT,
+        VK_SAMPLE_COUNT_1_BIT,
         VK_ATTACHMENT_LOAD_OP_CLEAR, VK_ATTACHMENT_STORE_OP_DONT_CARE,
         VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
         VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL
       },
 
-      // color_resolve
-      {
-        0,
-        VK_FORMAT_B8G8R8A8_UNORM,
-        VK_SAMPLE_COUNT_1_BIT,
-        VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_STORE,
-        VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
-        VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
-      },
+      // // color_resolve
+      // {
+      //   0,
+      //   VK_FORMAT_B8G8R8A8_UNORM,
+      //   VK_SAMPLE_COUNT_1_BIT,
+      //   VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_STORE,
+      //   VK_ATTACHMENT_LOAD_OP_DONT_CARE, VK_ATTACHMENT_STORE_OP_DONT_CARE,
+      //   VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
+      // },
     };
 
     // object accessed by subpass
     VkAttachmentReference color_attach_ref = { 0, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL };
     VkAttachmentReference depth_attach_ref = { 1, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL };
-    VkAttachmentReference color_attach_resolve_ref = { 2, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL };
+    // VkAttachmentReference color_attach_resolve_ref = { 2, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL };
 
     VkSubpassDescription subpass_desc = {
 
       0, VK_PIPELINE_BIND_POINT_GRAPHICS,
       0, nullptr,
-      1, &color_attach_ref, &color_attach_resolve_ref, &depth_attach_ref
+      // 1, &color_attach_ref, &color_attach_resolve_ref, &depth_attach_ref
+      1, &color_attach_ref, nullptr, &depth_attach_ref
     };
 
     VkSubpassDependency subpass_dep = {
@@ -355,30 +391,36 @@ void initVK (void) {
 
     vk_render_pass = vk_dev.RenderPass(
 
-      3, vk_render_pass_attach,
+      // 3, vk_render_pass_attach,
+      2, vk_render_pass_attach,
       1, &subpass_desc,
       1, &subpass_dep
     );
 
 
 
-    // resourses
+    //
+
+    const uint32_t qfi[] = { vk_dev.graphics_queue_family_index, vk_dev.present_queue_family_index };
 
     vk_swapchain = vk_dev.SwapchainKHR(
 
       vk_surf,
-      3,
+      8,
       VK_FORMAT_B8G8R8A8_UNORM,
       VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
       800, 600,
       1,
       VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
-      VK_SHARING_MODE_EXCLUSIVE,
-      0, nullptr,
+      // VK_SHARING_MODE_EXCLUSIVE,
+      // 0, nullptr,
+      VK_SHARING_MODE_CONCURRENT,
+      2, qfi,
       VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR,
       VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
       VK_PRESENT_MODE_IMMEDIATE_KHR,
       // VK_PRESENT_MODE_FIFO_KHR,
+      // VK_PRESENT_MODE_FIFO_RELAXED_KHR,
       VK_TRUE
     );
 
@@ -393,9 +435,9 @@ void initVK (void) {
     std::vector<VkDeviceMemory> vk_render_image_mems(vk_swapchain_image_count);
     std::vector<VkImageView> vk_render_image_views(vk_swapchain_image_count);
     vk_framebuffers.resize(vk_swapchain_image_count);
-    vk_fences.resize(vk_swapchain_image_count);
+    vk_submission_completed_fences.resize(vk_swapchain_image_count);
     vk_submission_completed_semaphores.resize(vk_swapchain_image_count);
-    vk_image_aqcuired_semaphores.resize(vk_swapchain_image_count);
+    vk_image_available_semaphores.resize(vk_swapchain_image_count);
 
     std::vector<VkImage> vk_depth_images(vk_swapchain_image_count);
     std::vector<VkImageView> vk_depth_image_views(vk_swapchain_image_count);
@@ -423,7 +465,7 @@ void initVK (void) {
         800, 600, 1,
         1,
         1,
-        VK_SAMPLE_COUNT_4_BIT,
+        VK_SAMPLE_COUNT_1_BIT,
         VK_IMAGE_TILING_OPTIMAL,
         VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT | VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
         VK_SHARING_MODE_EXCLUSIVE,
@@ -462,7 +504,7 @@ void initVK (void) {
         800, 600, 1,
         1,
         1,
-        VK_SAMPLE_COUNT_4_BIT,
+        VK_SAMPLE_COUNT_1_BIT,
         VK_IMAGE_TILING_OPTIMAL,
         VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT,
         VK_SHARING_MODE_EXCLUSIVE,
@@ -495,19 +537,30 @@ void initVK (void) {
 
 
       // VkImageView vk_framebuffer_attach[] = { vk_render_image_views[i], vk_depth_image_views[i], vk_swapchain_image_views[i] };
-      VkImageView vk_framebuffer_attach[] = { vk_render_image_views[i], vk_depth_image_views[i], vk_swapchain_image_views[i] };
+      // VkImageView vk_framebuffer_attach[] = { vk_render_image_views[i], vk_depth_image_views[i], vk_swapchain_image_views[i] };
+      VkImageView vk_framebuffer_attach[] = { vk_swapchain_image_views[i], vk_depth_image_views[i] };
 
       vk_framebuffers[i] = vk_dev.Framebuffer(
 
         vk_render_pass,
-        3, vk_framebuffer_attach,
+        // 3, vk_framebuffer_attach,
+        2, vk_framebuffer_attach,
         800, 600,
         1
       );
 
-      vk_fences[i] = vk_dev.Fence(VK_FENCE_CREATE_SIGNALED_BIT);
-      vk_submission_completed_semaphores[i] = vk_dev.Semaphore();
-      vk_image_aqcuired_semaphores[i] = vk_dev.Semaphore();
+      vk_submission_completed_fences[i] = vk_dev.Fence(VK_FENCE_CREATE_SIGNALED_BIT);
+
+      VkSemaphoreTypeCreateInfo vk_semaphore_type_ci = {
+
+        VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO,
+        nullptr,
+        VK_SEMAPHORE_TYPE_BINARY,
+        0
+      };
+
+      vk_submission_completed_semaphores[i] = vk_dev.Semaphore(0, &vk_semaphore_type_ci);
+      vk_image_available_semaphores[i] = vk_dev.Semaphore(0, &vk_semaphore_type_ci);
     }
 
 
@@ -587,13 +640,13 @@ void initVK (void) {
     VkPipelineTessellationStateCreateInfo vk_default_ppl_tess = PplTess(0, 0);
 
     // flip vulkan viewport
-    // VkViewport viewport = { 0.0f, 0.0f, 800.0f, 600.0f, 0.0f, 1.0f };
-    VkViewport viewport = { 0.0f, 600.0f, 800.0f, -600.0f, 0.0f, 1.0f };
+    VkViewport viewport = { 0.0f, 0.0f, 800.0f, 600.0f, 0.0f, 1.0f };
+    // VkViewport viewport = { 0.0f, 600.0f, 800.0f, -600.0f, 0.0f, 1.0f };
     VkRect2D scissor = { { 0, 0 }, { 800, 600 } };
 
     VkPipelineViewportStateCreateInfo vk_default_ppl_view = PplView(1, &viewport, 1, &scissor);
 
-    VkPipelineMultisampleStateCreateInfo vk_default_ppl_sample = PplSample(VK_SAMPLE_COUNT_4_BIT, VK_FALSE, 0.0f, nullptr, VK_FALSE, VK_FALSE);
+    VkPipelineMultisampleStateCreateInfo vk_default_ppl_sample = PplSample(VK_SAMPLE_COUNT_1_BIT, VK_FALSE, 0.0f, nullptr, VK_FALSE, VK_FALSE);
     // VkPipelineMultisampleStateCreateInfo vk_default_ppl_sample = PplSample(VK_SAMPLE_COUNT_1_BIT, VK_FALSE, 0.0f, nullptr, VK_FALSE, VK_FALSE);
 
     VkPipelineRasterizationStateCreateInfo vk_default_ppl_rast = PplRast(VK_FALSE, VK_FALSE, VK_POLYGON_MODE_FILL, VK_CULL_MODE_NONE, VK_FRONT_FACE_COUNTER_CLOCKWISE, VK_FALSE, 0.0f, 0.0f, 0.0f, 1.0f);
@@ -675,83 +728,104 @@ void initVK (void) {
 
 
 
-    // GUI
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-    ImGui::StyleColorsDark();
+    // // GUI
+    // IMGUI_CHECKVERSION();
+    // ImGui::CreateContext();
+    // ImGui::StyleColorsDark();
 
-    // Create Descriptor Pool
-    {
-        VkDescriptorPoolSize pool_sizes[] =
-        {
-            { VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
-            { VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
-            { VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
-            { VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
-            { VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
-            { VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
-            { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
-            { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
-            { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
-            { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
-            { VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
-        };
-        VkDescriptorPoolCreateInfo pool_info = {};
-        pool_info.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-        pool_info.flags = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
-        pool_info.maxSets = 1000 * IM_ARRAYSIZE(pool_sizes);
-        pool_info.poolSizeCount = (uint32_t)IM_ARRAYSIZE(pool_sizes);
-        pool_info.pPoolSizes = pool_sizes;
-        vkCreateDescriptorPool(vk_dev.handle, &pool_info, nullptr, &g_DescriptorPool);
-    }
+    // // Create Descriptor Pool
+    // {
+    //     VkDescriptorPoolSize pool_sizes[] =
+    //     {
+    //         { VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
+    //         { VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
+    //     };
+    //     VkDescriptorPoolCreateInfo pool_info = {};
+    //     pool_info.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
+    //     pool_info.flags = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
+    //     pool_info.maxSets = 1000 * IM_ARRAYSIZE(pool_sizes);
+    //     pool_info.poolSizeCount = (uint32_t)IM_ARRAYSIZE(pool_sizes);
+    //     pool_info.pPoolSizes = pool_sizes;
+    //     vkCreateDescriptorPool(vk_dev.handle, &pool_info, nullptr, &g_DescriptorPool);
+    // }
 
-    // Setup Platform/Renderer bindings
-    ImGui_ImplGlfw_InitForVulkan(window, true);
-    ImGui_ImplVulkan_InitInfo init_info = {};
-    init_info.Instance = vk_inst.handle;
-    init_info.PhysicalDevice = vk_physical_device;
-    init_info.Device = vk_dev.handle;
-    init_info.QueueFamily = vk_dev.graphics_queue_family_index;
-    init_info.Queue = vk_graphics_queue;
-    init_info.DescriptorPool = g_DescriptorPool;
-    init_info.MinImageCount = 3;
-    init_info.ImageCount = 3;
-    init_info.MSAASamples = VK_SAMPLE_COUNT_4_BIT;
-    ImGui_ImplVulkan_Init(&init_info, vk_render_pass);
+    // // Setup Platform/Renderer bindings
+    // ImGui_ImplGlfw_InitForVulkan(window, true);
+    // ImGui_ImplVulkan_InitInfo init_info = {};
+    // init_info.Instance = vk_inst.handle;
+    // init_info.PhysicalDevice = vk_physical_device;
+    // init_info.Device = vk_dev.handle;
+    // init_info.QueueFamily = vk_dev.graphics_queue_family_index;
+    // init_info.Queue = vk_graphics_queue;
+    // init_info.DescriptorPool = g_DescriptorPool;
+    // init_info.MinImageCount = 3;
+    // init_info.ImageCount = 3;
+    // init_info.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
+    // ImGui_ImplVulkan_Init(&init_info, vk_render_pass);
 
-    // Upload Fonts
-    {
-      vkResetCommandPool(vk_dev.handle, vk_cmd_pool, 0);
-      VkCommandBufferBeginInfo begin_info = {};
-      begin_info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-      begin_info.flags |= VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
-      vkBeginCommandBuffer(vk_cmd_buffers[0], &begin_info);
+    // // Upload Fonts
+    // {
+    //   vkResetCommandPool(vk_dev.handle, vk_cmd_pool, 0);
+    //   VkCommandBufferBeginInfo begin_info = {};
+    //   begin_info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+    //   begin_info.flags |= VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+    //   vkBeginCommandBuffer(vk_cmd_buffers[0], &begin_info);
 
-      ImGui_ImplVulkan_CreateFontsTexture(vk_cmd_buffers[0]);
+    //   ImGui_ImplVulkan_CreateFontsTexture(vk_cmd_buffers[0]);
 
-      VkSubmitInfo end_info = {};
-      end_info.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
-      end_info.commandBufferCount = 1;
-      end_info.pCommandBuffers = &vk_cmd_buffers[0];
-      vkEndCommandBuffer(vk_cmd_buffers[0]);
-      vkQueueSubmit(vk_graphics_queue, 1, &end_info, VK_NULL_HANDLE);
+    //   VkSubmitInfo end_info = {};
+    //   end_info.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+    //   end_info.commandBufferCount = 1;
+    //   end_info.pCommandBuffers = &vk_cmd_buffers[0];
+    //   vkEndCommandBuffer(vk_cmd_buffers[0]);
+    //   vkQueueSubmit(vk_graphics_queue, 1, &end_info, VK_NULL_HANDLE);
 
-      vkDeviceWaitIdle(vk_dev.handle);
-      ImGui_ImplVulkan_DestroyFontUploadObjects();
-    }
-    //
+    //   vkDeviceWaitIdle(vk_dev.handle);
+    //   ImGui_ImplVulkan_DestroyFontUploadObjects();
+    // }
+    // //
 
 
 
-    VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
+    // VkCommandBufferBeginInfo vk_command_buffer_bi = CmdBufferBeginI(nullptr, VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT);
 
     clear_value[0].color = { 0.0f, 0.0f, 0.0f, 1.0f };
     clear_value[1].depthStencil = { 1.0f, 0 };
 
     vk_submit_i.resize(vk_swapchain_image_count);
     vk_present_i.resize(vk_swapchain_image_count);
-    render_pass_bi.resize(vk_swapchain_image_count);
     vk_image_indices.resize(vk_swapchain_image_count);
+    vk_render_pass_bi.resize(vk_swapchain_image_count);
+
+    static const VkPipelineStageFlags vk_wait_stages = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+
+    for (uint64_t i = 0; i < vk_swapchain_image_count; i++) {
+
+      vk_submit_i[i] = SubmitI(
+
+        1, &vk_image_available_semaphores[i], &vk_wait_stages,
+        1, &vk_cmd_buffers[i],
+        1, &vk_submission_completed_semaphores[i]
+      );
+
+      vk_present_i[i] = PresentI(
+
+        1, &vk_submission_completed_semaphores[i],
+        1, &vk_swapchain,
+        nullptr
+      );
+
+      vk_render_pass_bi[i] = RenderPassBeginI(vk_render_pass, vk_framebuffers[i], { 0, 0, 800, 600 }, 2, clear_value);
+    }
 
 
 

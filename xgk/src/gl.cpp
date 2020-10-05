@@ -79,10 +79,23 @@ namespace ORBIT {
 
 extern ORBIT::Orbit orbit;
 
-int swap_interval = 0;
-
 void idle_function (void);
 void glfw_key_callback (GLFWwindow*, int, int, int, int);
+
+
+
+// GLuint uniform_buffer;
+// glGenBuffers(1, &uniform_buffer);
+// glBindBuffer(GL_UNIFORM_BUFFER, uniform_buffer);
+// glBufferData(GL_UNIFORM_BUFFER, 128, &orbit, GL_DYNAMIC_DRAW);
+// glBindBufferBase(GL_UNIFORM_BUFFER, 0, uniform_buffer);
+
+
+
+GLuint vertex_buffer = 0;
+GLuint vertex_buffer2 = 0;
+GLuint program = 0;
+
 
 
 // GUI
@@ -90,7 +103,22 @@ ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 //
 
 
+
+namespace TIME {
+
+	struct Time;
+
+	void getTime (Time* time);
+};
+
+extern TIME::Time _time;
+
+
+
 void loop_function_GL (void) {
+
+	// printf("\nstart -> ");
+	// getTime(&_time);
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -136,13 +164,34 @@ void loop_function_GL (void) {
 
 		// glBufferSubData(GL_UNIFORM_BUFFER, 0, 64, &orbit);
 
-		glDrawArrays(GL_TRIANGLES, 0, vertices_size / 4);
+		static uint8_t test = 0;
+
+		if ((test = 1 - test) == 0) {
+
+			glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
+			glUseProgram(program);
+			glDrawArrays(GL_TRIANGLES, 0, vertices_size / 4);
+			glUseProgram(0);
+		}
+		else {
+
+			glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer2);
+			glUseProgram(program);
+			glDrawArrays(GL_LINES, 0, vertices_size / 4);
+			glUseProgram(0);
+		}
+
+		// printf("glUseProgram(0) -> ");
+		// getTime(&_time);
 	}
 
 
 
 	glfwSwapBuffers(window);
 	// glFlush();
+
+	// printf("glfwSwapBuffers -> ");
+	// getTime(&_time);
 };
 
 void destroyGL (void) {
@@ -183,7 +232,7 @@ void initGL (void) {
 
 		glfwSetKeyCallback(window, glfw_key_callback);
 		glfwMakeContextCurrent(window);
-		glfwSwapInterval(swap_interval);
+		glfwSwapInterval(0);
 
 		gladLoadGL();
 
@@ -217,10 +266,14 @@ void initGL (void) {
 
 
 
-		GLuint vertex_buffer;
+		// GLuint vertex_buffer;
 		glGenBuffers(1, &vertex_buffer);
 		glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-		glBufferData(GL_ARRAY_BUFFER, vertices_size, _vertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, vertices_size, _vertices, GL_DYNAMIC_DRAW);
+
+		glGenBuffers(1, &vertex_buffer2);
+		glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer2);
+		glBufferData(GL_ARRAY_BUFFER, vertices_size, _vertices, GL_DYNAMIC_DRAW);
 
 		GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertex_shader, 1, &vertex_shader_code_opengl, nullptr);
@@ -230,7 +283,7 @@ void initGL (void) {
 		glShaderSource(fragment_shader, 1, &fragment_shader_code_opengl, nullptr);
 		glCompileShader(fragment_shader);
 
-		GLuint program = glCreateProgram();
+		program = glCreateProgram();
 		glAttachShader(program, vertex_shader);
 		glAttachShader(program, fragment_shader);
 		glLinkProgram(program);
