@@ -1,4 +1,4 @@
-# build and run command
+#
 # clear && make && ~/reps/denis-belov/c-test/xgk/build/gnu-x64/bin/xgk
 #
 
